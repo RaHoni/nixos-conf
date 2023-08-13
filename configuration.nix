@@ -151,6 +151,8 @@ sansSerif = ["MesloLGS NF Regular"];
       git
       nmap
       gnupg
+      kdeconnect
+      filelight
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
