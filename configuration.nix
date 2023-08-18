@@ -48,11 +48,11 @@ in
   };
 
   fonts.fonts = with pkgs; [
-  (nerdfonts.override { fonts = [ "Meslo" ]; })
-];
-fonts.fontconfig.defaultFonts = {
-sansSerif = ["MesloLGS NF Regular"];
-};
+    (nerdfonts.override { fonts = [ "Meslo" ]; })
+  ];
+  fonts.fontconfig.defaultFonts = {
+    sansSerif = ["MesloLGS NF Regular"];
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -108,7 +108,7 @@ sansSerif = ["MesloLGS NF Regular"];
       kmail
       nixos-generators
       kleopatra
-    #  thunderbird
+      #thunderbird
     ];
     openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/3EQ9XhwTdsWUSmpBfjqKxPFfeFg/RArJ1uZSZf3fm Surface"
