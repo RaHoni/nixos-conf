@@ -48,11 +48,18 @@ in
     LC_TIME = "de_DE.UTF-8";
   };
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "Meslo" ]; })
-  ];
-  fonts.fontconfig.defaultFonts = {
-    sansSerif = ["MesloLGS NF Regular"];
+  fonts = {
+    enableDefaultFonts = true;
+
+    fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "Meslo" ]; })
+    ];
+
+    fontconfig.defaultFonts = {
+      serif = ["MesloLGS NF Regular"];
+      sansSerif = ["MesloLGS NF Regular"];
+      monospace = [ "MesloLGS NF Monospace"];
+    };
   };
 
   # Enable the X11 windowing system.
