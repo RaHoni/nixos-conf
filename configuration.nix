@@ -143,7 +143,6 @@ in
       git
       nmap
       gnupg
-      kdeconnect
       filelight
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
@@ -164,6 +163,7 @@ in
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
 
+  programs.kdeconnect.enable = true;
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
