@@ -166,6 +166,7 @@ in
   programs.ssh.startAgent = true;
 
   programs.kdeconnect.enable = true;
+  system.autoUpgrade.enable = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
