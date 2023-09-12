@@ -27,6 +27,7 @@
     [ { device = "/dev/disk/by-uuid/0a4fc3a2-6196-4086-8774-dfceb166c908"; }
     ];
 
+  hardware.sensor.iio.enable = true;
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
