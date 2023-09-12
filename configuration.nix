@@ -12,6 +12,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./bacula.nix
+      #./nextcloud.nix
       #./copy_usb.nix
       ./users.nix
 #       <home-manager/nixos>
