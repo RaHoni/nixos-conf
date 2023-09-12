@@ -12,6 +12,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./bacula.nix
+      ./users.nix
 #       <home-manager/nixos>
     ];
 
@@ -95,25 +96,6 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.raoul = {
-    isNormalUser = true;
-    description = "Raoul Honermann";
-    hashedPassword = "$y$j9T$2qmWuo6/DJXoG.45LLjDX/$Y/NnNHfsQXULwubyI1lPavjfe3fYv/KTWMR4aPLhsSB";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      keepassxc
-      jetbrains.webstorm
-      jetbrains.gateway
-      kmail
-      nixos-generators
-      kleopatra
-      #thunderbird
-    ];
-    openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/3EQ9XhwTdsWUSmpBfjqKxPFfeFg/RArJ1uZSZf3fm Surface"
-    ];
-  };
 
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
@@ -122,15 +104,17 @@ in
     promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     enable = true;
 
+
 #      oh-my-zsh = {
     ohMyZsh = {
       enable = true;
       plugins = [ "git" "sudo"];
+      customPkgs = [pkgs.zsh-nix-shell];
     };
       shellAliases = {
         ll = "ls -l";
         update = "sudo nixos-rebuild switch";
-        upgrade = "sudo nix-channel --update";
+        upgrade = "sudo nixos-rebuild switch --upgrade";
       };
   };
 
