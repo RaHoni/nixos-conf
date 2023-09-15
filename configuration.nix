@@ -116,16 +116,36 @@ in
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
 
+  nixpkgs.overlays = [ (final: prev: {
+    zsh-powerlevel10k = prev.zsh-powerlevel10k.overrideAttrs {
+#    pname = "powerlevel10k-raoul";
+       installPhase = ''
+       install -D powerlevel10k.zsh-theme --target-directory=$out/share/zsh/themes/powerlevel10k
+       install -D powerlevel9k.zsh-theme --target-directory=$out/share/zsh/themes/powerlevel10k
+       install -D config/* --target-directory=$out/share/zsh/themes/powerlevel10k/config
+       install -D internal/* --target-directory=$out/share/zsh/themes/powerlevel10k/internal
+       cp -R gitstatus $out/share/zsh/themes/powerlevel10k/gitstatus
+       '';
+    };
+    zsh-nix-shell = prev.zsh-nix-shell.overrideAttrs {
+    installPhase = ''
+      install -D nix-shell.plugin.zsh --target-directory=$out/share/zsh/plugins/nix-shell
+      install -D scripts/* --target-directory=$out/share/zsh/plugins/nix-shell/scripts
+    '';
+  };
+    }
+  ) ];
+
   programs.zsh = {
-    promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     enable = true;
 
 
 #      oh-my-zsh = {
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" "sudo"];
-      customPkgs = [pkgs.zsh-nix-shell];
+      customPkgs = with pkgs; [zsh-nix-shell zsh-powerlevel10k];
+      plugins = [ "git" "sudo" "nix-shell"];
+      theme = "powerlevel10k/powerlevel10k";
     };
       shellAliases = {
         ll = "ls -l";
