@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, options, ... }:
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   inherit (builtins) concatStringsSep;
@@ -17,6 +17,13 @@ in
       ./users.nix
 #       <home-manager/nixos>
     ];
+
+  nix.nixPath =
+    # Prepend default nixPath values.
+    options.nix.nixPath.default ++
+    # Append our nixpkgs-overlays.
+    [ "nixpkgs-overlays=/etc/nixos/overlays-compat/" ]
+  ;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
