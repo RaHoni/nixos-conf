@@ -4,7 +4,7 @@
 
 { config, pkgs, options, ... }:
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  #home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   inherit (builtins) concatStringsSep;
 in
 {
@@ -15,7 +15,6 @@ in
       #./nextcloud.nix
       #./copy_usb.nix
       ./users.nix
-#       <home-manager/nixos>
     ];
 
   nix.nixPath =
