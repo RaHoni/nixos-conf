@@ -1,6 +1,7 @@
 {config, pkgs, ...}:
 
 {
+  imports = [ ./home-manager.nix ];
   users.users.raoul = {
     isNormalUser = true;
     description = "Raoul Honermann";
