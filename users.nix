@@ -18,6 +18,8 @@
       ddcutil
       grepcidr
       rnix-lsp
+      gh
+      tetex
       #thunderbird
     ];
     openssh.authorizedKeys.keys = [
