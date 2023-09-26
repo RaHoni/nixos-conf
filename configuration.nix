@@ -9,7 +9,8 @@ let
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./bacula.nix
       #./nextcloud.nix
@@ -44,7 +45,7 @@ in
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.supportedLocales = ["de_DE.UTF-8/UTF-8" "en_GB.UTF-8/UTF-8"];
+  i18n.supportedLocales = [ "de_DE.UTF-8/UTF-8" "en_GB.UTF-8/UTF-8" ];
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
@@ -66,9 +67,9 @@ in
     ];
 
     fontconfig.defaultFonts = {
-      serif = ["MesloLGS NF Regular"];
-      sansSerif = ["MesloLGS NF Regular"];
-      monospace = [ "MesloLGS NF Monospace"];
+      serif = [ "MesloLGS NF Regular" ];
+      sansSerif = [ "MesloLGS NF Regular" ];
+      monospace = [ "MesloLGS NF Monospace" ];
     };
   };
 
@@ -117,42 +118,44 @@ in
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
 
-  nixpkgs.overlays = [ (final: prev: {
-    zsh-powerlevel10k = prev.zsh-powerlevel10k.overrideAttrs {
-#    pname = "powerlevel10k-raoul";
-       installPhase = ''
-       install -D powerlevel10k.zsh-theme --target-directory=$out/share/zsh/themes/powerlevel10k
-       install -D powerlevel9k.zsh-theme --target-directory=$out/share/zsh/themes/powerlevel10k
-       install -D config/* --target-directory=$out/share/zsh/themes/powerlevel10k/config
-       install -D internal/* --target-directory=$out/share/zsh/themes/powerlevel10k/internal
-       cp -R gitstatus $out/share/zsh/themes/powerlevel10k/gitstatus
-       '';
-    };
-    zsh-nix-shell = prev.zsh-nix-shell.overrideAttrs {
-    installPhase = ''
-      install -D nix-shell.plugin.zsh --target-directory=$out/share/zsh/plugins/nix-shell
-      install -D scripts/* --target-directory=$out/share/zsh/plugins/nix-shell/scripts
-    '';
-  };
+  nixpkgs.overlays = [
+    (final: prev: {
+      zsh-powerlevel10k = prev.zsh-powerlevel10k.overrideAttrs {
+        #    pname = "powerlevel10k-raoul";
+        installPhase = ''
+          install -D powerlevel10k.zsh-theme --target-directory=$out/share/zsh/themes/powerlevel10k
+          install -D powerlevel9k.zsh-theme --target-directory=$out/share/zsh/themes/powerlevel10k
+          install -D config/* --target-directory=$out/share/zsh/themes/powerlevel10k/config
+          install -D internal/* --target-directory=$out/share/zsh/themes/powerlevel10k/internal
+          cp -R gitstatus $out/share/zsh/themes/powerlevel10k/gitstatus
+        '';
+      };
+      zsh-nix-shell = prev.zsh-nix-shell.overrideAttrs {
+        installPhase = ''
+          install -D nix-shell.plugin.zsh --target-directory=$out/share/zsh/plugins/nix-shell
+          install -D scripts/* --target-directory=$out/share/zsh/plugins/nix-shell/scripts
+        '';
+      };
     }
-  ) ];
+    )
+  ];
 
   programs.zsh = {
     enable = true;
 
 
-#      oh-my-zsh = {
+    #      oh-my-zsh = {
     ohMyZsh = {
       enable = true;
-      customPkgs = with pkgs; [zsh-nix-shell zsh-powerlevel10k];
-      plugins = [ "git" "sudo" "nix-shell"];
+      customPkgs = with pkgs; [ zsh-nix-shell zsh-powerlevel10k ];
+      plugins = [ "git" "sudo" "nix-shell" ];
       theme = "powerlevel10k/powerlevel10k";
     };
-      shellAliases = {
-        ll = "ls -l";
-        update = "sudo nixos-rebuild switch";
-        upgrade = "sudo nixos-rebuild switch --upgrade";
-      };
+    shellAliases = {
+      ll = "ls -l";
+      update = "sudo nixos-rebuild switch";
+      upgrade = "nix flake update --commit-lock-file /etc/nixos";
+    };
   };
 
   # Allow unfree packages
@@ -161,32 +164,31 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-      xournalpp
-      firefox
-      kate
-      libreoffice
-      jdk
-      android-tools
-      python3
-      signal-desktop
-      zsh-completions
-      git
-      nmap
-      gnupg
-      filelight
-      vlc
-      ffmpeg
-      nodePackages.bash-language-server
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    xournalpp
+    firefox
+    kate
+    libreoffice
+    jdk
+    android-tools
+    python3
+    signal-desktop
+    zsh-completions
+    git
+    nmap
+    gnupg
+    filelight
+    vlc
+    ffmpeg
+    nodePackages.bash-language-server
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
-  #   enableSSHSupport = true;
+    #   enableSSHSupport = true;
   };
   hardware.gpgSmartcards.enable = true;
 
