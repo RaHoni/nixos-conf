@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager-stable, ... }:
+{ config, pkgs, lib, home-manager-stable, plasma-manager, ... }:
 with lib;
 let
   sshIdentity = keyname: "~/.ssh/keys/${keyname}.pub";
@@ -6,6 +6,7 @@ in
 {
   imports = [
     home-manager-stable.nixosModules.default
+    plasma-manager.homeManagerModules.plasma-manager
   ];
 
   home-manager.useGlobalPkgs = true;
@@ -13,6 +14,8 @@ in
     home.stateVersion = "23.05";
 
     home.file.".ssh/keys".source = ./sshPubkeys;
+
+imports = [ ./plasma_raoul.nix ];
 
     programs = {
       git = {
