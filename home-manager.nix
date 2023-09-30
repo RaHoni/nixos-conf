@@ -1,11 +1,11 @@
-{ config, pkgs, lib, home-manager, ... }:
+{ config, pkgs, lib, home-manager-stable, ... }:
 with lib;
 let
   sshIdentity = keyname: "~/.ssh/keys/${keyname}.pub";
 in
 {
   imports = [
-    home-manager.nixosModules.default
+    home-manager-stable.nixosModules.default
   ];
 
   home-manager.useGlobalPkgs = true;
