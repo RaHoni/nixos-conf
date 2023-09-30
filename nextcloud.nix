@@ -1,10 +1,10 @@
-{pkgs, modulesPath, ...}:
+{ pkgs, modulesPath, ... }:
 
 {
 
   services.nextcloud = {
     enable = true;
-#     datadir = "/var/data";
+    #    datadir = "/var/data";
     package = pkgs.nextcloud27;
     hostName = "192.168.2.105";
     configureRedis = true;

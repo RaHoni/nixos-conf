@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "rtsx_pci_sdmmc" ];
@@ -14,22 +15,23 @@
   boot.extraModulePackages = [ ];
 
   services.udev.extraRules = ''
-        KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+    KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
   '';
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a46db7f0-af06-4d86-b64b-4a23bc78ab67";
+    {
+      device = "/dev/disk/by-uuid/a46db7f0-af06-4d86-b64b-4a23bc78ab67";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/BFBC-F2CD";
+    {
+      device = "/dev/disk/by-uuid/BFBC-F2CD";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/0a4fc3a2-6196-4086-8774-dfceb166c908"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/0a4fc3a2-6196-4086-8774-dfceb166c908"; }];
 
   hardware.sensor.iio.enable = true;
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

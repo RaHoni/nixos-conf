@@ -12,7 +12,7 @@ in
 
   systemd.services."usbcopy@" = {
     enable = true;
-    path = [pkgs.dosfstools pkgs.util-linux];
+    path = [ pkgs.dosfstools pkgs.util-linux ];
     description = "Renames fat32 patition and copys /usbcopy to it.";
     script = (builtins.readFile ./copy_usb.sh);
     scriptArgs = "%i";
