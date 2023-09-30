@@ -21,6 +21,7 @@
       gh
       tetex
       nixpkgs-fmt
+      pre-commit
       #thunderbird
     ];
     openssh.authorizedKeys.keys = [
