@@ -104,10 +104,6 @@ in
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -146,8 +142,8 @@ in
     #      oh-my-zsh = {
     ohMyZsh = {
       enable = true;
-      customPkgs = with pkgs; [ zsh-nix-shell zsh-powerlevel10k ];
-      plugins = [ "git" "sudo" "nix-shell" ];
+      customPkgs = with pkgs; [ zsh-nix-shell zsh-powerlevel10k zsh-you-should-use];
+      plugins = [ "git" "sudo" "nix-shell" "you-should-use" ];
       theme = "powerlevel10k/powerlevel10k";
     };
     shellAliases = {
