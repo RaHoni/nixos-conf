@@ -198,6 +198,7 @@ in
   programs.ssh.startAgent = true;
 
   programs.kdeconnect.enable = true;
+  services.xserver.wacom.enable = true;
   system.autoUpgrade.enable = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 22 ];
