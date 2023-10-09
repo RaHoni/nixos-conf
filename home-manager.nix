@@ -28,6 +28,7 @@ imports = [ ./plasma_raoul.nix ];
         };
         extraConfig = {
           push = { autoSetupRemote = true; };
+          pull = { rebase = true; };
         };
       };
 
