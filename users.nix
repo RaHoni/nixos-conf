@@ -22,6 +22,7 @@
       tetex
       nixpkgs-fmt
       pre-commit
+      maliit-keyboard
       #thunderbird
     ];
     openssh.authorizedKeys.keys = [
