@@ -6,16 +6,16 @@ in
 {
   imports = [
     home-manager-stable.nixosModules.default
-    plasma-manager.homeManagerModules.plasma-manager
   ];
 
   home-manager.useGlobalPkgs = true;
+  home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
   home-manager.users.raoul = {
     home.stateVersion = "23.05";
 
     home.file.".ssh/keys".source = ./sshPubkeys;
 
-imports = [ ./plasma_raoul.nix ];
+    imports = [ ./plasma_raoul.nix ];
 
     programs = {
       git = {
@@ -86,7 +86,5 @@ imports = [ ./plasma_raoul.nix ];
         };
       };
     };
-
   };
-
 }

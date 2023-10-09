@@ -10,9 +10,12 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    plasma-manager.url = "github:pjones/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs-stable";
+    plasma-manager.inputs.home-manager.follows = "home-manager-stable";
   };
 
-  outputs = { self, nixpkgs-stable, home-manager-stable, ... }@attrs: {
+  outputs = { self, nixpkgs-stable, home-manager-stable, plasma-manager, ... }@attrs: {
     nixosConfigurations.surface-raoul-nixos = nixpkgs-stable.lib.nixosSystem rec {
       system = "x86_64-linux";
       pkgs = import nixpkgs-stable {
