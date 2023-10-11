@@ -46,7 +46,14 @@
         };
       };
       specialArgs = attrs;
-      modules = [ ./configuration.nix ./nextcloud.nix ];
+      modules = [ 
+        ./configuration.nix 
+        ./nextcloud.nix 
+        home-manager-stable.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+        }
+      ];
     };
   };
 }

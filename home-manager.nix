@@ -4,13 +4,7 @@ let
   sshIdentity = keyname: "~/.ssh/keys/${keyname}.pub";
 in
 {
-  imports = [
-    home-manager-stable.nixosModules.default
-  ];
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-  home-manager.users.raoul = {
+    home-manager.users.raoul = {
     home.stateVersion = "23.05";
 
     home.file.".ssh/keys".source = ./sshPubkeys;
