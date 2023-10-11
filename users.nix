@@ -23,6 +23,7 @@
       nixpkgs-fmt
       pre-commit
       maliit-keyboard
+      jq
       #thunderbird
     ];
     openssh.authorizedKeys.keys = [
