@@ -4,7 +4,7 @@ let
   sshIdentity = keyname: "~/.ssh/keys/${keyname}.pub";
 in
 {
-    home-manager.users.raoul = {
+  home-manager.users.raoul = {
     home.stateVersion = "23.05";
 
     home.file.".ssh/keys".source = ./sshPubkeys;
