@@ -47,7 +47,7 @@
       };
       specialArgs = attrs;
       modules = [
-        ./configuration.nix
+        ./Surface/configuration.nix
         ./nextcloud.nix
         home-manager-stable.nixosModules.home-manager
         {
