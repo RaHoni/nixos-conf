@@ -48,7 +48,6 @@
       specialArgs = attrs;
       modules = [
         ./Surface/configuration.nix
-        ./nextcloud.nix
         home-manager-stable.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
