@@ -4,10 +4,9 @@ let
   sshIdentity = keyname: "~/.ssh/keys/${keyname}.pub";
 in
 {
-  home-manager.users.raoul = {
     home.stateVersion = "23.05";
 
-    home.file.".ssh/keys".source = ./sshPubkeys;
+    home.file.".ssh/keys".source = ../sshPubkeys;
 
     imports = [ ./plasma_raoul.nix ];
 
@@ -80,5 +79,4 @@ in
         };
       };
     };
-  };
 }

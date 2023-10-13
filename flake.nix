@@ -50,8 +50,13 @@
         ./Surface/configuration.nix
         home-manager-stable.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+          home-manager = {
+            useGlobalPkgs = true;
+            sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+            users = {
+              raoul = import ./generic/raoul/home-manager.nix;
+            };
+          };
         }
       ];
     };

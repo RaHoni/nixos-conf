@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./home-manager.nix ];
   users.users.raoul = {
     isNormalUser = true;
     description = "Raoul Honermann";
@@ -25,7 +24,6 @@
       maliit-keyboard
       jq
       kdiff3
-      #thunderbird
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/3EQ9XhwTdsWUSmpBfjqKxPFfeFg/RArJ1uZSZf3fm Surface"
