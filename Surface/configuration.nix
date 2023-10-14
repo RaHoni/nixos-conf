@@ -13,6 +13,7 @@ in
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./users.nix
+      ./secrets.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.nixPath =

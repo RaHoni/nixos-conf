@@ -1,0 +1,16 @@
+keys:
+  - &admin B054287D42FC91AD36137D9F03ECA132FD38CD59
+  - &surface age1k7dljw9mthfr8y6c99hrkn2ncs0f4dfsm5e42fvfat70wvd7e48qhz0dzl
+creation_rules:
+  - path_regex: ^secrets/Surface/.*$
+    key_groups:
+    - pgp:
+      - *admin
+      age:
+      - *surface
+  - path_regex: ^secrets/[^/]*$
+    key_groups:
+    - pgp:
+      - *admin
+      age:
+      - *surface
