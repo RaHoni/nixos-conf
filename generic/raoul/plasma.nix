@@ -1,5 +1,6 @@
+{ lib, osConfig, plasma-manager, inputs, ... }:
 {
-  programs.plasma = {
+  programs.plasma = lib.mkIf osConfig.services.xserver.desktopManager.plasma5.enable {
     enable = false;
     workspace.clickItemTo = "select";
     shortcuts = {
