@@ -62,7 +62,7 @@ in
             identitiesOnly = true;
             forwardAgent = true;
           };
-          sylvia-fujitso = {
+          sylvia-fujitsu = {
             hostname = "sylvia-fujitsu.fritz.box";
             user = "sylvia";
             identityFile = sshIdentity "id_rsa_sylvia";
