@@ -14,6 +14,7 @@ in
       ./hardware-configuration.nix
       ./users.nix
       ./secrets.nix
+      ./bacula.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.nixPath =

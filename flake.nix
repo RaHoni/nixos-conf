@@ -18,6 +18,8 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    private-nixpkgs.url = "github:rahoni/nixpkgs";
+
   };
 
   outputs = { self, ... }@inputs:
