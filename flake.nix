@@ -64,14 +64,12 @@
               useGlobalPkgs = true;
               sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
               users = {
-                raoul.imports = [
-                  ./generic/raoul/home-manager.nix
-                ];
+                raoul = import ./generic/raoul/home-manager.nix;
               };
             };
           }
         ];
       };
+
     };
 }
-          
