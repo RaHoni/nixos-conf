@@ -55,7 +55,7 @@
         };
         specialArgs = inputs;
         modules = [
-          ./Surface/configuration.nix
+          ./surface-raoul-nixos/configuration.nix
           ./generic/sops.nix
           sops-nix.nixosModules.sops
           home-manager-stable.nixosModules.home-manager
