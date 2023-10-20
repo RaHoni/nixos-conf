@@ -23,7 +23,7 @@
   };
 
   outputs = { self, ... }@inputs:
-    with inputs; {
+    with inputs; rec {
       nixosConfigurations.surface-raoul-nixos = nixpkgs-stable.lib.nixosSystem rec {
         system = "x86_64-linux";
         pkgs = import nixpkgs-stable {
@@ -52,6 +52,21 @@
           }
         ];
       };
+      nixosConfigurations.aarch64-image = nixpkgs-stable.lib.nixosSystem {
+        modules = [
+          ./iso/configuration.nix
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+          {
+            nixpkgs.config.allowUnsupportedSystem = true;
+            nixpkgs.hostPlatform.system = "aarch64-linux";
+            nixpkgs.buildPlatform.system = "x86_64-linux"; #If you build on x86 other wise changes this.
+            # ... extra configs as above
+
+          }
+        ];
+      };
+
+      images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
 
     };
 }
