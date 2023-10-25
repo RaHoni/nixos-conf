@@ -10,8 +10,6 @@
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   users.users.root = {
     openssh.authorizedKeys.keys = [
