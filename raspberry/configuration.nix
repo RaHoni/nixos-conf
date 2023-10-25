@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  networking.hostname = "raspberry";
+  networking.hostName = "raspberry";
   hardware.enableRedistributableFirmware = true;
   networking.wireless.enable = true;
   imports = [ ./hardware-configuration.nix ];
