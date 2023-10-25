@@ -51,6 +51,35 @@
           }
         ];
       };
+
+
+      nixosConfigurations.raspberry = nixpkgs-stable.lib.nixosSystem rec {
+        system = "aarch64-linux";
+        pkgs = import nixpkgs-stable {
+          overlays = [
+            (import ./generic/overlays.nix)
+          ];
+          inherit system;
+          config = {
+            allowUnfree = true; #allow Unfree packages
+          };
+        };
+        specialArgs = inputs;
+        modules = [
+          ./raspberry/configuration.nix
+          ./generic/default.nix
+          home-manager-stable.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              users = {
+                root = import ./generic/users/root/home-manager.nix;
+              };
+            };
+          }
+        ];
+      };
+
       nixosConfigurations.aarch64-image = nixpkgs-stable.lib.nixosSystem {
         modules = [
           ./iso/configuration.nix
@@ -69,3 +98,9 @@
 
     };
 }
+
+
+
+
+
+

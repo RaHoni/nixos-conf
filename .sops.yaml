@@ -8,6 +8,10 @@ creation_rules:
       - *admin
       age:
       - *surface
+  - path_regex: ^secrets/raspberry/.*$
+    key_groups:
+    - pgp:
+      - *admin
   - path_regex: ^secrets/[^/]*$
     key_groups:
     - pgp:
