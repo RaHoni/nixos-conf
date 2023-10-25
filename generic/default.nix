@@ -1,7 +1,14 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./sops.nix
+  ];
+
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
+
+  # Set your time zone.
+  time.timeZone = "Europe/Berlin";
 
   fonts = {
     enableDefaultFonts = true;

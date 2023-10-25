@@ -15,7 +15,6 @@
       kleopatra
       whatsapp-for-linux
       ddcutil
-      grepcidr
       rnix-lsp
       gh
       tetex

@@ -38,9 +38,7 @@
         specialArgs = inputs;
         modules = [
           ./surface-raoul-nixos/configuration.nix
-          ./generic/sops.nix
           ./generic/default.nix
-          sops-nix.nixosModules.sops
           home-manager-stable.nixosModules.home-manager
           {
             home-manager = {

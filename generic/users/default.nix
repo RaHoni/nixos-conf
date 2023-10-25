@@ -9,6 +9,10 @@ in
     ".p10k.zsh".source = ./p10k.zsh;
   };
 
+  home.packages = with pkgs; [
+    grepcidr
+  ];
+
   programs = {
     ssh = {
       enable = true;

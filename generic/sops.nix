@@ -1,5 +1,8 @@
-{ config, ... }:
+{ config, sops-nix, ... }:
 {
+  imports = [
+    sops-nix.nixosModules.sops
+  ];
   sops = {
     defaultSopsFile = ../secrets/general.yaml;
     age = {
