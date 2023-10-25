@@ -58,6 +58,13 @@ in
           identitiesOnly = true;
           forwardAgent = true;
         };
+	raspberry = {
+	  hostname = "192.168.2.80";
+          user = "root";
+          identityFile = sshIdentity "id_ed25519_raspberry";
+          identitiesOnly = true;
+          forwardAgent = true;
+        };
         proxmox = {
           match = ''exec "grepcidr '192.168.3.1/24 fd00::4:1/112' <(host %h) <(echo %h) &>/dev/null"'';
           identityFile = sshIdentity "id_ecdsa_proxmox";
