@@ -13,6 +13,12 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  users.users.root = {
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/3EQ9XhwTdsWUSmpBfjqKxPFfeFg/RArJ1uZSZf3fm Surface"
+    ];
+  };
+
   hardware.bluetooth.enable = true;
 
   # Configure console keymap
