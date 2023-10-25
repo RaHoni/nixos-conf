@@ -39,6 +39,7 @@
         modules = [
           ./surface-raoul-nixos/configuration.nix
           ./generic/sops.nix
+          ./generic/default.nix
           sops-nix.nixosModules.sops
           home-manager-stable.nixosModules.home-manager
           {
@@ -46,7 +47,7 @@
               useGlobalPkgs = true;
               sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
               users = {
-                raoul = import ./generic/raoul/home-manager.nix;
+                raoul = import ./generic/users/raoul/home-manager.nix;
               };
             };
           }

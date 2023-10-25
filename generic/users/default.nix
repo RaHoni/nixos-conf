@@ -1,32 +1,14 @@
-{ config, pkgs, lib, home-manager-stable, plasma-manager, ... }:
+{ config, pkgs, lib, ... }:
 with lib;
 let
   sshIdentity = keyname: "~/.ssh/keys/${keyname}.pub";
 in
 {
-  home.stateVersion = "23.05";
-
-  home.file.".ssh/keys".source = ../sshPubkeys;
-
-  imports = [ ./plasma.nix ];
-
-
+  home.file = {
+    ".ssh/keys".source = ../sshPubkeys;
+  };
 
   programs = {
-    git = {
-      enable = true;
-      userName = "RaHoni";
-      userEmail = "honisuess@gmail.com";
-      signing = {
-        key = "54D11CB37C713D5457ACF0C35962F3E9516FD551";
-        signByDefault = true;
-      };
-      extraConfig = {
-        push = { autoSetupRemote = true; };
-        pull = { rebase = true; };
-      };
-    };
-
     ssh = {
       enable = true;
       extraConfig = "user raoul";
