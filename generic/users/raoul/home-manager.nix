@@ -5,6 +5,15 @@ with lib;
   home.stateVersion = "23.05";
 
   programs = {
+    gpg.settings =
+      {
+
+        ignore-cache-for-signing = false;
+        min-passphrase-len = 9;
+        max-cache-ttl = 1000000;
+        default-cache-ttl = 604800;
+      };
+
     git = {
       enable = true;
       userName = "RaHoni";
