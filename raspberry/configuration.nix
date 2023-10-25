@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   networking.hostname = "raspberry";
   hardware.enableRedistributableFirmware = true;
