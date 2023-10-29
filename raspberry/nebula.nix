@@ -3,10 +3,11 @@
   services.nebula.networks."nebulaHonermann" = {
     lighthouses = [ ];
     isLighthouse = true;
-    seetings = {
+    settings = {
       lighthouse.dns = {
         host = "0.0.0.0";
         port = 53;
       };
     };
-  }
+  };
+}
