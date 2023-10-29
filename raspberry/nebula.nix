@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
   services.nebula.networks."nebulaHonermann" = {
-    lighthouses = lib.mkOverride [ ];
+    lighthouses = [ ];
     isLighthouse = true;
     settings = {
       lighthouse.dns = {
