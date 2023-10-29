@@ -99,6 +99,7 @@ in
 
 
   # Allow unfree packages
+  nixpkgs.pkgs = pkgs;
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
