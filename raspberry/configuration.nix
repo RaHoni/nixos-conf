@@ -3,7 +3,7 @@
   networking.hostName = "raspberry";
   hardware.enableRedistributableFirmware = true;
   networking.wireless.enable = true;
-  imports = [ ./hardware-configuration.nix ./nebbula.nix ];
+  imports = [ ./hardware-configuration.nix ./nebula.nix ];
 
   # NixOS wants to enable GRUB by default
   boot.loader.grub.enable = false;
@@ -31,16 +31,7 @@
 
   services.openssh.enable = true;
 
-  services.nebula.networks."nebulaHonermann" = {
-    lighthouses = [ ];
-    isLighthouse = true;
-    settings = {
-      lighthouse.dns = {
-        host = "0.0.0.0";
-        port = 53;
-      };
-    };
-  };
+
 
 
   # Open ports in the firewall.
