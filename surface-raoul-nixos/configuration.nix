@@ -94,6 +94,10 @@ in
     #jack.enable = true;
   };
 
+  # Needed for yubikey ccid Functionality
+  services.pcscd.enable = true;
+
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
