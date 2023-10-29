@@ -4,15 +4,19 @@ with lib;
   imports = [ ./../default.nix ./plasma.nix ];
   home.stateVersion = "23.05";
 
-  programs = {
-    gpg.settings =
-      {
+  services.gpg-agent = {
+    enable = true;
+    pinentryFlavor = "qt";
+    #extraConfig = "ignore-cache-for-signing false";
+    #maxCacheTtl = 604800;
+    defaultCacheTtl = 604800;
+  };
 
-        ignore-cache-for-signing = false;
-        min-passphrase-len = 9;
-        max-cache-ttl = 1000000;
-        default-cache-ttl = 604800;
-      };
+  programs = {
+    gpg = {
+      enable = true;
+      scdaemonSettings.disable-ccid = true;
+    };
 
     git = {
       enable = true;
