@@ -38,8 +38,7 @@ in
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -57,19 +56,7 @@ in
     LC_TIME = "de_DE.UTF-8";
   };
 
-  fonts = {
-    enableDefaultFonts = true;
 
-    fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "Meslo" ]; })
-    ];
-
-    fontconfig.defaultFonts = {
-      serif = [ "MesloLGS NF Regular" ];
-      sansSerif = [ "MesloLGS NF Regular" ];
-      monospace = [ "MesloLGS NF Monospace" ];
-    };
-  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -107,54 +94,16 @@ in
     #jack.enable = true;
   };
 
+  # Needed for yubikey ccid Functionality
+  services.pcscd.enable = true;
+
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
 
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      zsh-powerlevel10k = prev.zsh-powerlevel10k.overrideAttrs {
-        #    pname = "powerlevel10k-raoul";
-        installPhase = ''
-          install -D powerlevel10k.zsh-theme --target-directory=$out/share/zsh/themes/powerlevel10k
-          install -D powerlevel9k.zsh-theme --target-directory=$out/share/zsh/themes/powerlevel10k
-          install -D config/* --target-directory=$out/share/zsh/themes/powerlevel10k/config
-          install -D internal/* --target-directory=$out/share/zsh/themes/powerlevel10k/internal
-          cp -R gitstatus $out/share/zsh/themes/powerlevel10k/gitstatus
-        '';
-      };
-      zsh-nix-shell = prev.zsh-nix-shell.overrideAttrs {
-        installPhase = ''
-          install -D nix-shell.plugin.zsh --target-directory=$out/share/zsh/plugins/nix-shell
-          install -D scripts/* --target-directory=$out/share/zsh/plugins/nix-shell/scripts
-        '';
-      };
-    }
-    )
-  ];
-
-  programs.zsh = {
-    enable = true;
-
-
-    #      oh-my-zsh = {
-    ohMyZsh = {
-      enable = true;
-      customPkgs = with pkgs; [ zsh-nix-shell zsh-powerlevel10k zsh-you-should-use ];
-      plugins = [ "git" "sudo" "nix-shell" "you-should-use" ];
-      theme = "powerlevel10k/powerlevel10k";
-    };
-    shellAliases = {
-      ll = "ls -l";
-      update = "sudo nixos-rebuild switch";
-      upgrade = "nix flake update --commit-lock-file /etc/nixos";
-    };
-  };
-
   # Allow unfree packages
+  nixpkgs.pkgs = pkgs;
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
@@ -183,17 +132,7 @@ in
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    #   enableSSHSupport = true;
-  };
-  hardware.gpgSmartcards.enable = true;
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  programs.ssh.startAgent = true;
 
   programs.kdeconnect.enable = true;
   services.xserver.wacom.enable = true;

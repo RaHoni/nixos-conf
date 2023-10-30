@@ -1,16 +1,24 @@
 keys:
   - &admin B054287D42FC91AD36137D9F03ECA132FD38CD59
   - &surface age1k7dljw9mthfr8y6c99hrkn2ncs0f4dfsm5e42fvfat70wvd7e48qhz0dzl
+  - &raspberry age1m9p4emndr47d4ddwrzeydlmnqxwd8k2yrgu2rt5nsacvhgrrjp0s0dm73q
 creation_rules:
-  - path_regex: ^secrets/Surface/.*$
+  - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
     - pgp:
       - *admin
       age:
       - *surface
+  - path_regex: ^secrets/raspberry/.*$
+    key_groups:
+    - pgp:
+      - *admin
+      age:
+      - *raspberry
   - path_regex: ^secrets/[^/]*$
     key_groups:
     - pgp:
       - *admin
       age:
       - *surface
+      - *raspberry

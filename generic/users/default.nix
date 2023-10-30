@@ -1,32 +1,19 @@
-{ config, pkgs, lib, home-manager-stable, plasma-manager, ... }:
+{ config, pkgs, lib, ... }:
 with lib;
 let
   sshIdentity = keyname: "~/.ssh/keys/${keyname}.pub";
 in
 {
-  home.stateVersion = "23.05";
+  home.file = {
+    ".ssh/keys".source = ../sshPubkeys;
+    ".p10k.zsh".source = ./p10k.zsh;
+  };
 
-  home.file.".ssh/keys".source = ../sshPubkeys;
-
-  imports = [ ./plasma.nix ];
-
-
+  home.packages = with pkgs; [
+    grepcidr
+  ];
 
   programs = {
-    git = {
-      enable = true;
-      userName = "RaHoni";
-      userEmail = "honisuess@gmail.com";
-      signing = {
-        key = "54D11CB37C713D5457ACF0C35962F3E9516FD551";
-        signByDefault = true;
-      };
-      extraConfig = {
-        push = { autoSetupRemote = true; };
-        pull = { rebase = true; };
-      };
-    };
-
     ssh = {
       enable = true;
       extraConfig = "user raoul";
@@ -71,6 +58,13 @@ in
           identitiesOnly = true;
           forwardAgent = true;
         };
+	raspberry = {
+	  hostname = "192.168.2.80";
+          user = "root";
+          identityFile = sshIdentity "id_ed25519_raspberry";
+          identitiesOnly = true;
+          forwardAgent = true;
+        };
         proxmox = {
           match = ''exec "grepcidr '192.168.3.1/24 fd00::4:1/112' <(host %h) <(echo %h) &>/dev/null"'';
           identityFile = sshIdentity "id_ecdsa_proxmox";
@@ -82,3 +76,4 @@ in
     };
   };
 }
+

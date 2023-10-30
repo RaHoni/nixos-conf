@@ -1,0 +1,4 @@
+{ config, ... }:
+{
+  sops.secrets = { };
+}

@@ -23,30 +23,12 @@
   };
 
   outputs = { self, ... }@inputs:
-    with inputs; {
+    with inputs; rec {
       nixosConfigurations.surface-raoul-nixos = nixpkgs-stable.lib.nixosSystem rec {
         system = "x86_64-linux";
         pkgs = import nixpkgs-stable {
           overlays = [
-            (final: prev: {
-              zsh-powerlevel10k = prev.zsh-powerlevel10k.overrideAttrs {
-                #    pname = "powerlevel10k-raoul";
-                installPhase = ''
-                  install -D powerlevel10k.zsh-theme --target-directory=$out/share/zsh/themes/powerlevel10k
-                  install -D powerlevel9k.zsh-theme --target-directory=$out/share/zsh/themes/powerlevel10k
-                  install -D config/* --target-directory=$out/share/zsh/themes/powerlevel10k/config
-                  install -D internal/* --target-directory=$out/share/zsh/themes/powerlevel10k/internal
-                  cp -R gitstatus $out/share/zsh/themes/powerlevel10k/gitstatus
-                '';
-              };
-              zsh-nix-shell = prev.zsh-nix-shell.overrideAttrs {
-                installPhase = ''
-                  install -D nix-shell.plugin.zsh --target-directory=$out/share/zsh/plugins/nix-shell
-                  install -D scripts/* --target-directory=$out/share/zsh/plugins/nix-shell/scripts
-                '';
-              };
-            }
-            )
+            (import ./generic/overlays.nix)
           ];
           inherit system;
           config = {
@@ -55,21 +37,72 @@
         };
         specialArgs = inputs;
         modules = [
-          ./Surface/configuration.nix
-          ./generic/sops.nix
-          sops-nix.nixosModules.sops
+          ./surface-raoul-nixos/configuration.nix
+          ./generic/default.nix
+          ./generic/nebula.nix
           home-manager-stable.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
               users = {
-                raoul = import ./generic/raoul/home-manager.nix;
+                raoul = import ./generic/users/raoul/home-manager.nix;
               };
             };
           }
         ];
       };
 
+
+      nixosConfigurations.raspberry = nixpkgs-stable.lib.nixosSystem rec {
+        system = "aarch64-linux";
+        pkgs = import nixpkgs-stable {
+          overlays = [
+            (import ./generic/overlays.nix)
+          ];
+          inherit system;
+          config = {
+            allowUnfree = true; #allow Unfree packages
+          };
+        };
+        specialArgs = inputs;
+        modules = [
+          ./raspberry/configuration.nix
+          ./generic/default.nix
+          ./generic/nebula.nix
+          home-manager-stable.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              users = {
+                root = import ./generic/users/root/home-manager.nix;
+              };
+            };
+          }
+        ];
+      };
+
+      nixosConfigurations.aarch64-image = nixpkgs-stable.lib.nixosSystem {
+        modules = [
+          ./iso/configuration.nix
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+          {
+            nixpkgs.config.allowUnsupportedSystem = true;
+            nixpkgs.hostPlatform.system = "aarch64-linux";
+            nixpkgs.buildPlatform.system = "x86_64-linux"; #If you build on x86 other wise changes this.
+            # ... extra configs as above
+
+          }
+        ];
+      };
+
+      images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
+
     };
 }
+
+
+
+
+
+

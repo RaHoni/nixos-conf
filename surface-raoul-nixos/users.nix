@@ -15,7 +15,6 @@
       kleopatra
       whatsapp-for-linux
       ddcutil
-      grepcidr
       rnix-lsp
       gh
       tetex
@@ -25,12 +24,12 @@
       jq
       kdiff3
       sops
+      kaddressbook
+      yubioath-flutter
+      nebula
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/3EQ9XhwTdsWUSmpBfjqKxPFfeFg/RArJ1uZSZf3fm Surface"
     ];
   };
-
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
 }
