@@ -39,6 +39,7 @@
         modules = [
           ./surface-raoul-nixos/configuration.nix
           ./generic/default.nix
+          ./generic/nebula.nix
           home-manager-stable.nixosModules.home-manager
           {
             home-manager = {
