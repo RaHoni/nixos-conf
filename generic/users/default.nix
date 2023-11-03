@@ -75,5 +75,19 @@ in
       };
     };
   };
+
+  # Signal start in tray fix
+  home.file.".local/share/applications/signal-desktop.desktop".text = ''
+    [Desktop Entry]
+    Name=Signal
+    Exec=${pkgs.signal-desktop}/bin/signal-desktop --no-sandbox --start-in-tray %U
+    Terminal=false
+    Type=Application
+    Icon=signal-desktop
+    StartupWMClass=Signal
+    Comment=Private messaging from your desktop
+    MimeType=x-scheme-handler/sgnl;x-scheme-handler/signalcaptcha;
+    Categories=Network;InstantMessaging;Chat;
+  '';
 }
 
