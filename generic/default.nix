@@ -7,6 +7,12 @@
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
 
+  security.pam.u2f = {
+    authFile = config.sops.secrets.yubikey-auths.path;
+    origin = "pam://rahoni";
+    cue = true;
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 

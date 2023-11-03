@@ -13,6 +13,7 @@
     gnupg.sshKeyPaths = [ ];
     secrets = {
       example-key = { };
+      yubikey-auths = { };
       # Setup ssh-Hostkeys from sops
       "ssh_host_ed25519_key" = {
         path = "/etc/ssh/ssh_host_ed25519_key";
