@@ -47,6 +47,7 @@
               sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
               users = {
                 raoul = import ./generic/users/raoul/home-manager.nix;
+                root = import ./generic/users/root/home-manager.nix;
               };
             };
           }
