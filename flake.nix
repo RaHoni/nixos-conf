@@ -67,6 +67,7 @@
         };
         specialArgs = inputs;
         modules = [
+          ./packete/configuration.nix
           ./generic
           home-manager-stable.nixosModules.home-manager
           {
