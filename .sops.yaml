@@ -19,6 +19,10 @@ creation_rules:
     key_groups:
     - pgp:
       - *admin
+  - path_regex: ^secrets/packete/.*$
+    key_groups:
+    - pgp:
+      - *admin
   - path_regex: ^secrets/[^/]*$
     key_groups:
     - pgp:
