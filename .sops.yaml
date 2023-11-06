@@ -15,26 +15,7 @@ creation_rules:
       - *admin
       age:
       - *raspberry
-  - path_regex: ^secrets/packete/.*$
-    key_groups:
-    - pgp:
-      - *admin
-  - path_regex: ^secrets/packete/.*$
-    key_groups:
-    - pgp:
-      - *admin
-  - path_regex: ^secrets/packete/.*$
-    key_groups:
-    - pgp:
-      - *admin
-  - path_regex: ^secrets/packete/.*$
-    key_groups:
-    - pgp:
-      - *admin
-  - path_regex: ^secrets/packete/.*$
-    key_groups:
-    - pgp:
-      - *admin
+
   - path_regex: ^secrets/[^/]*$
     key_groups:
     - pgp:
