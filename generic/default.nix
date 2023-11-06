@@ -13,6 +13,10 @@
     cue = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    git
+  ];
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
