@@ -16,7 +16,6 @@ creation_rules:
       - *admin
       age:
       - *raspberry
-
   - path_regex: ^secrets/packete/.*$
     key_groups:
     - pgp:
@@ -30,3 +29,7 @@ creation_rules:
       age:
       - *surface
       - *raspberry
+      - *packete
+  - key_groups:
+    - pgp:
+      - *admin
