@@ -1,0 +1,5 @@
+### Kate template
+# Swap Files #
+.*.kate-swp
+.swp.*
+
