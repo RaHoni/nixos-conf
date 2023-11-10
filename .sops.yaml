@@ -21,7 +21,11 @@ creation_rules:
     - pgp:
       - *admin
       age:
-      - *packete
+        - *packete
+  - path_regex: ^secrets/r-dektop/.*$
+    key_groups:
+      - pgp:
+          - *admin
   - path_regex: ^secrets/[^/]*$
     key_groups:
     - pgp:
