@@ -22,10 +22,10 @@ creation_rules:
       - *admin
       age:
         - *packete
-  - path_regex: ^secrets/r-dektop/.*$
+  - path_regex: ^secrets/r-desktop/.*$
     key_groups:
       - pgp:
-          - *admin
+        - *admin
   - path_regex: ^secrets/[^/]*$
     key_groups:
     - pgp:

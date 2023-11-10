@@ -54,6 +54,36 @@
         ];
       };
 
+      nixosConfigurations.r-desktop = nixpkgs-stable.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        pkgs = import nixpkgs-stable {
+          overlays = [
+            (import ./generic/overlays.nix)
+          ];
+          inherit system;
+          config = {
+            allowUnfree = true; #allow Unfree packages
+          };
+        };
+        specialArgs = inputs;
+        modules = [
+          ./r-desktop/configuration.nix
+          ./generic/default.nix
+          #./generic/nebula.nix
+          home-manager-stable.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+              users = {
+                raoul = import ./generic/users/raoul/home-manager.nix;
+                root = import ./generic/users/root/home-manager.nix;
+              };
+            };
+          }
+        ];
+      };
+
       nixosConfigurations.packete = nixpkgs-stable.lib.nixosSystem rec {
         system = "x86_64-linux";
         pkgs = import nixpkgs-stable {
