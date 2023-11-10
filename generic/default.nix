@@ -4,6 +4,15 @@
     ./sops.nix
   ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.nixPath =
+    # Prepend default nixPath values.
+    options.nix.nixPath.default ++
+    # Append our nixpkgs-overlays.
+    [ "nixpkgs-overlays=/etc/nixos/overlays-compat/" ]
+  ;
+
+
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
 

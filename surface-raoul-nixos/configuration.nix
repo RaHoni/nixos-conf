@@ -16,13 +16,6 @@ in
       ./secrets.nix
       ./bacula.nix
     ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.nixPath =
-    # Prepend default nixPath values.
-    options.nix.nixPath.default ++
-    # Append our nixpkgs-overlays.
-    [ "nixpkgs-overlays=/etc/nixos/overlays-compat/" ]
-  ;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -157,4 +150,6 @@ in
   system.stateVersion = "23.05"; # Did you read the comment?
 
 }
+
+
 
