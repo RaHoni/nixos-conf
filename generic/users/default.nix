@@ -31,6 +31,13 @@ in
           identitiesOnly = true;
           forwardAgent = true;
         };
+        ffmpeg = {
+          hostname = "192.168.2.29";
+          user = "ffmpeg";
+          identityFile = sshIdentity "id_ffmpeg";
+          identitiesOnly = true;
+          forwardAgent = true;
+        };
         honermannmedia = {
           hostname = "192.168.2.37";
           user = "root";
@@ -58,8 +65,8 @@ in
           identitiesOnly = true;
           forwardAgent = true;
         };
-	raspberry = {
-	  hostname = "192.168.2.80";
+        raspberry = {
+          hostname = "192.168.2.80";
           user = "root";
           identityFile = sshIdentity "id_ed25519_raspberry";
           identitiesOnly = true;
