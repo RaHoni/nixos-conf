@@ -1,17 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-stable, ... }:
 {
   imports = [
     ./sops.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.nixPath =
-    # Prepend default nixPath values.
-    options.nix.nixPath.default ++
-    # Append our nixpkgs-overlays.
-    [ "nixpkgs-overlays=/etc/nixos/overlays-compat/" ]
-  ;
-
+  nix.registry.nixpkgs.flake = nixpkgs-stable;
+  environment.etc."channels/nixpkgs".source = nixpkgs-stable.outPath;
 
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
