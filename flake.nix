@@ -23,18 +23,23 @@
   };
 
   outputs = { self, ... }@inputs:
-    with inputs; rec {
+    with inputs;
+    let
+      stable-nixpkgs = system: import nixpkgs-stable {
+        overlays = [
+          (import ./generic/overlays.nix)
+        ];
+        inherit system;
+        config = {
+          allowUnfree = true; #allow Unfree packages
+        };
+      };
+
+    in
+    rec {
       nixosConfigurations.surface-raoul-nixos = nixpkgs-stable.lib.nixosSystem rec {
         system = "x86_64-linux";
-        pkgs = import nixpkgs-stable {
-          overlays = [
-            (import ./generic/overlays.nix)
-          ];
-          inherit system;
-          config = {
-            allowUnfree = true; #allow Unfree packages
-          };
-        };
+        pkgs = stable-nixpkgs system;
         specialArgs = inputs;
         modules = [
           ./surface-raoul-nixos/configuration.nix
@@ -56,15 +61,7 @@
 
       nixosConfigurations.r-desktop = nixpkgs-stable.lib.nixosSystem rec {
         system = "x86_64-linux";
-        pkgs = import nixpkgs-stable {
-          overlays = [
-            (import ./generic/overlays.nix)
-          ];
-          inherit system;
-          config = {
-            allowUnfree = true; #allow Unfree packages
-          };
-        };
+        pkgs = stable-nixpkgs system;
         specialArgs = inputs;
         modules = [
           ./r-desktop/configuration.nix
@@ -78,86 +75,80 @@
               users = {
                 raoul = import ./generic/users/raoul/home-manager.nix;
                 root = import ./generic/users/root/home-manager.nix;
+                ffmpeg = import ./r-desktop/ffmpeg-home.nix;
               };
             };
           }
         ];
       };
 
-      nixosConfigurations.packete = nixpkgs-stable.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        pkgs = import nixpkgs-stable {
-          overlays = [
-            (import ./generic/overlays.nix)
+      nixosConfigurations.packete = nixpkgs-stable.lib.nixosSystem
+        rec {
+          system = "x86_64-linux";
+          pkgs = stable-nixpkgs system;
+          specialArgs = inputs;
+          modules = [
+            ./packete/configuration.nix
+            ./generic
+            home-manager-stable.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                users = {
+                  root = import ./generic/users/root/home-manager.nix;
+                };
+              };
+            }
           ];
-          inherit system;
-          config = {
-            allowUnfree = true; #allow Unfree packages
-          };
         };
-        specialArgs = inputs;
-        modules = [
-          ./packete/configuration.nix
-          ./generic
-          home-manager-stable.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              users = {
-                root = import ./generic/users/root/home-manager.nix;
+
+
+      nixosConfigurations.raspberry = nixpkgs-stable.lib.nixosSystem
+        rec {
+          system = "aarch64-linux";
+          pkgs = stable-nixpkgs system;
+          specialArgs = inputs;
+          modules = [
+            ./raspberry/configuration.nix
+            ./generic/default.nix
+            ./generic/nebula.nix
+            home-manager-stable.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                users = {
+                  root = import ./generic/users/root/home-manager.nix;
+                };
               };
-            };
-          }
-        ];
-      };
-
-
-      nixosConfigurations.raspberry = nixpkgs-stable.lib.nixosSystem rec {
-        system = "aarch64-linux";
-        pkgs = import nixpkgs-stable {
-          overlays = [
-            (import ./generic/overlays.nix)
+            }
           ];
-          inherit system;
-          config = {
-            allowUnfree = true; #allow Unfree packages
-          };
         };
-        specialArgs = inputs;
-        modules = [
-          ./raspberry/configuration.nix
-          ./generic/default.nix
-          ./generic/nebula.nix
-          home-manager-stable.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              users = {
-                root = import ./generic/users/root/home-manager.nix;
-              };
-            };
-          }
-        ];
-      };
 
-      nixosConfigurations.aarch64-image = nixpkgs-stable.lib.nixosSystem {
-        modules = [
-          ./iso/configuration.nix
-          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
-          {
-            nixpkgs.config.allowUnsupportedSystem = true;
-            nixpkgs.hostPlatform.system = "aarch64-linux";
-            nixpkgs.buildPlatform.system = "x86_64-linux"; #If you build on x86 other wise changes this.
-            # ... extra configs as above
+      nixosConfigurations.aarch64-image = nixpkgs-stable.lib.nixosSystem
+        {
+          modules = [
+            ./iso/configuration.nix
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+            {
+              nixpkgs.config.allowUnsupportedSystem = true;
+              nixpkgs.hostPlatform.system = "aarch64-linux";
+              nixpkgs.buildPlatform.system = "x86_64-linux"; #If you build on x86 other wise changes this.
+              # ... extra configs as above
 
-          }
-        ];
-      };
+            }
+          ];
+        };
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
 
     };
 }
+
+
+
+
+
+
 
 
 
