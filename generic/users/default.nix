@@ -84,7 +84,7 @@ in
   };
 
   # Signal start in tray fix
-  home.file.".local/share/applications/signal-desktop.desktop".text = ''
+  home.file.".local/share/applications/signal-desktop.desktop".text = lib.mkIf config.services.xserver.desktopManager.plasma5.enable ''
     [Desktop Entry]
     Name=Signal
     Exec=${pkgs.signal-desktop}/bin/signal-desktop --no-sandbox --start-in-tray %U
