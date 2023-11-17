@@ -54,7 +54,7 @@
         ];
       };
 
-      nixosConfigurations.r-dektop = nixpkgs-stable.lib.nixosSystem rec {
+      nixosConfigurations.r-desktop = nixpkgs-stable.lib.nixosSystem rec {
         system = "x86_64-linux";
         pkgs = import nixpkgs-stable {
           overlays = [
