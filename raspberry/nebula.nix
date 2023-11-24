@@ -7,6 +7,7 @@
   services.nebula.networks."nebulaHonermann" = {
     lighthouses = [ ];
     isLighthouse = true;
+    listen.port = 123;
     settings = {
       lighthouse = {
         serve_dns = true;
