@@ -9,7 +9,7 @@
     packages = with pkgs; [
       keepassxc
       jetbrains.webstorm
-      jetbrains.intelij
+      jetbrains.idea-ultimate
       jetbrains.clion
       kmail
       nixos-generators
