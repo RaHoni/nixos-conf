@@ -49,6 +49,10 @@
     statdPort = 4000;
   };
 
+
+  system.autoUpgrade.flake = "github:RaHoni/nixos-conf";
+  system.autoUpgrade.enable = true;
+
   networking.firewall = {
     enable = true;
     # for NFSv3; view with `rpcinfo -p`
