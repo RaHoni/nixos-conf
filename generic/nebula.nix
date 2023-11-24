@@ -28,11 +28,10 @@ in
     ca = config.sops.secrets."nebula/ca.crt".path;
     key = config.sops.secrets."nebula/${hostName}.key".path;
     cert = config.sops.secrets."nebula/${hostName}.crt".path;
-    listen.port = 51821;
     lighthouses = lib.mkIf (!config.services.nebula.networks."${netName}".isLighthouse) [ "172.20.0.1" ];
     staticHostMap = {
       "172.20.0.1" = [
-        "lighthouse.honermann.info:51821"
+        "lighthouse.honermann.info:123"
       ];
     };
     settings = {
@@ -60,3 +59,4 @@ in
     };
   };
 }
+
