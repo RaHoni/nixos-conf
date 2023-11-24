@@ -31,7 +31,8 @@
 
   services.openssh.enable = true;
 
-
+  system.autoUpgrade.flake = "github:RaHoni/nixos-conf";
+  system.autoUpgrade.enable = true;
 
 
   # Open ports in the firewall.
