@@ -113,6 +113,24 @@
             }
           ];
         };
+      nixosConfigurations.smb = nixpkgs-stable.lib.nixosSystem
+        rec {
+          system = "x86_64-linux";
+          pkgs = stable-nixpkgs system;
+          specialArgs = inputs;
+          modules = [
+            ./smb
+            ./generic
+            ./generic/proxmox.nix
+            home-manager-stable.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                users.root = import ./generic/users/root/home-manager.nix;
+              };
+            }
+          ];
+        };
 
 
       nixosConfigurations.raspberry = nixpkgs-stable.lib.nixosSystem
