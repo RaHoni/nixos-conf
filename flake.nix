@@ -101,6 +101,7 @@
           modules = [
             ./packete/configuration.nix
             ./generic
+            ./generic/proxmox.nix
             home-manager-stable.nixosModules.home-manager
             {
               home-manager = {
