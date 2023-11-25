@@ -52,6 +52,7 @@
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
+      update-server = "nixos-rebuild switch --flake github:RaHoni/nixos-conf --refresh";
       upgrade = "nix flake update --commit-lock-file /etc/nixos";
       nixos = "cd /etc/nixos";
     };
