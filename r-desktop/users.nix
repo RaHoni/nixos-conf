@@ -11,6 +11,7 @@
       jetbrains.webstorm
       jetbrains.idea-ultimate
       jetbrains.clion
+      jetbrains.pycharm-professional
       kmail
       nixos-generators
       kleopatra
@@ -31,5 +32,10 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/3EQ9XhwTdsWUSmpBfjqKxPFfeFg/RArJ1uZSZf3fm Surface"
     ];
+  };
+  users.users.ffmpeg.isNormalUser = true;
+  users.users.ffmpeg = {
+    description = "This user is used for hardware AV1 encoding.";
+    openssh.authorizedKeys.keyFiles = [ ../generic/sshPubkeys/id_ffmpeg.pub ];
   };
 }
