@@ -3,10 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, options, ... }:
-let
-  #home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-  inherit (builtins) concatStringsSep;
-in
 {
   imports =
     [
@@ -142,6 +138,3 @@ in
   system.stateVersion = "23.05"; # Did you read the comment?
 
 }
-
-
-
