@@ -58,7 +58,7 @@
         specialArgs = inputs;
         modules = [
           ./surface-raoul-nixos/configuration.nix
-          ./generic/default.nix
+          ./generic
           ./generic/nebula.nix
           home-manager-stable.nixosModules.home-manager
           {
@@ -80,7 +80,7 @@
         specialArgs = inputs;
         modules = [
           ./r-desktop/configuration.nix
-          ./generic/default.nix
+          ./generic
           #./generic/nebula.nix
           home-manager-stable.nixosModules.home-manager
           {

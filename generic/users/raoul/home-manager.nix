@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager-stable, plasma-manager, ... }:
+{ config, pkgs, lib, home-manager-stable, ... }:
 with lib;
 {
   imports = [ ./../default.nix ./plasma.nix ];
