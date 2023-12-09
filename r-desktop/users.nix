@@ -2,6 +2,7 @@
 
 {
   users.users.raoul = {
+    uid = 1000;
     isNormalUser = true;
     description = "Raoul Honermann";
     hashedPassword = "$y$j9T$2qmWuo6/DJXoG.45LLjDX/$Y/NnNHfsQXULwubyI1lPavjfe3fYv/KTWMR4aPLhsSB";
