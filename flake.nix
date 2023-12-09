@@ -89,6 +89,7 @@
         modules = [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-ffmpeg ]; })
           ./r-desktop/configuration.nix
+          ./r-desktop/bacula.nix
           ./generic
           ./generic/nebula.nix
           home-manager-stable.nixosModules.home-manager
