@@ -3,6 +3,17 @@ with lib;
 {
   imports = [ ./../default.nix ./plasma.nix ];
   home.stateVersion = "23.05";
+  home.file.".config/kate/lspclient/settings.json".text = ''
+      {
+        "servers": {
+            "nix": {
+                "command": ["rnix-lsp"],
+    "highlightingModeRegex": "^nix$"
+    }
+    }
+    }
+
+  '';
 
   services.gpg-agent = {
     enable = true;
