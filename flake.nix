@@ -90,7 +90,7 @@
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-ffmpeg ]; })
           ./r-desktop/configuration.nix
           ./generic
-          #./generic/nebula.nix
+          ./generic/nebula.nix
           home-manager-stable.nixosModules.home-manager
           {
             home-manager = {
