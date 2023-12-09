@@ -1,7 +1,7 @@
 { lib, osConfig, plasma-manager, inputs, ... }:
 {
   programs.plasma = lib.mkIf osConfig.services.xserver.desktopManager.plasma5.enable {
-    enable = false;
+    enable = true;
     workspace.clickItemTo = "select";
     shortcuts = {
       "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Meta+Alt+K";
