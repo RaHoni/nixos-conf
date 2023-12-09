@@ -10,7 +10,6 @@
   services.bacula-fd = {
     enable = true;
     director."dir.bacula" = {
-      password = "oWwZjE1DOm+ex+pchPyW8ZSPBya4rXShSG6bjB/T";
       tls = {
         enable = true;
         require = true;
