@@ -36,7 +36,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  #  services.xserver.displayManager.defaultSession = "plasmawayland";
 
 
   # Enable the KDE Plasma Desktop Environment.
