@@ -13,6 +13,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "i2c-dev" "ddcci_backlight" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
+  boot.kernelParams = [ "i915.force_probe=56a1"];
 
   services.udev.extraRules = ''
     KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
