@@ -7,6 +7,7 @@ in
   home.file = {
     ".ssh/keys".source = ../sshPubkeys;
     ".p10k.zsh".source = ./p10k.zsh;
+    ".zshrc".source = ./zshrc;
   };
 
   home.packages = with pkgs; [
