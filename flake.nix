@@ -42,7 +42,7 @@
     let
       stable-nixpkgs = system: import nixpkgs-stable {
         overlays = [
-          (import ./generic/overlays.nix)
+          (import ./generic/overlays)
         ];
         inherit system;
         config = {
