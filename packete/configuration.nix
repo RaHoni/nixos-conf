@@ -14,7 +14,6 @@
       documentRoot = "/var/www/packete";
     };
   };
-  system.stateVersion = "23.11";
 
   systemd.tmpfiles.rules = [
     "d ${config.services.httpd.virtualHosts.packete.documentRoot} 1777 1000 1000 "
