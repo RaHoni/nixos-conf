@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-ffmpeg.url = "github:evanrichter/nixpkgs/libvpl-for-intel-gpu";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +50,13 @@
           allowUnfree = true; #allow Unfree packages
         };
       };
-
+      overlay-ffmpeg = final: prev: {
+        ffmpeg-vpl = import nixpkgs-ffmpeg {
+          overlays = [ (import ./generic/overlays/ffmpeg.nix) ];
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+      };
     in
     rec {
       nixosConfigurations.surface-raoul-nixos = nixpkgs-stable.lib.nixosSystem rec {
@@ -80,6 +87,7 @@
         pkgs = stable-nixpkgs system;
         specialArgs = inputs;
         modules = [
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-ffmpeg ]; })
           ./r-desktop/configuration.nix
           ./generic
           #./generic/nebula.nix

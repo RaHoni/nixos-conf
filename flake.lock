@@ -57,6 +57,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-ffmpeg": {
+      "locked": {
+        "lastModified": 1701843807,
+        "narHash": "sha256-FBmfgoRT/6m/zb4xgLhowUjm3ztWO4WtQUcuvDQKAaw=",
+        "owner": "evanrichter",
+        "repo": "nixpkgs",
+        "rev": "4cab558d76b642a4fd7be88660de4d232a4b6d9e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "evanrichter",
+        "ref": "libvpl-for-intel-gpu",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1701389149,
@@ -132,6 +148,7 @@
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-ffmpeg": "nixpkgs-ffmpeg",
         "nixpkgs-stable": "nixpkgs-stable",
         "plasma-manager": "plasma-manager",
         "private-nixpkgs": "private-nixpkgs",
