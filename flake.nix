@@ -64,6 +64,7 @@
           {
             home-manager = {
               useGlobalPkgs = true;
+              backupFileExtension = "bak";
               sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
               users = {
                 raoul = import ./generic/users/raoul/home-manager.nix;
@@ -86,6 +87,7 @@
           {
             home-manager = {
               useGlobalPkgs = true;
+              backupFileExtension = "bak";
               sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
               users = {
                 raoul = import ./generic/users/raoul/home-manager.nix;
@@ -109,6 +111,7 @@
             home-manager-stable.nixosModules.home-manager
             {
               home-manager = {
+                backupFileExtension = "bak";
                 useGlobalPkgs = true;
                 users = {
                   root = import ./generic/users/root/home-manager.nix;
@@ -129,6 +132,7 @@
             home-manager-stable.nixosModules.home-manager
             {
               home-manager = {
+                backupFileExtension = "bak";
                 useGlobalPkgs = true;
                 users.root = import ./generic/users/root/home-manager.nix;
               };
@@ -149,6 +153,7 @@
             home-manager-stable.nixosModules.home-manager
             {
               home-manager = {
+                backupFileExtension = "bak";
                 useGlobalPkgs = true;
                 users = {
                   root = import ./generic/users/root/home-manager.nix;
@@ -177,16 +182,3 @@
 
     };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
