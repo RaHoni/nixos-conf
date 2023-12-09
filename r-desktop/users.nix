@@ -33,8 +33,16 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/3EQ9XhwTdsWUSmpBfjqKxPFfeFg/RArJ1uZSZf3fm Surface"
     ];
   };
-  users.users.ffmpeg.isNormalUser = true;
   users.users.ffmpeg = {
+    isSystemUser = true; # required if we want UID < 1000
+    uid = 900; # Matches old setup and hides it from sddm
+
+    # things that isNormalUser would give us by default:
+    group = "users";
+    createHome = true;
+    home = "/home/ffmpeg";
+    homeMode = "700";
+    useDefaultShell = true;
     description = "This user is used for hardware AV1 encoding.";
     openssh.authorizedKeys.keyFiles = [ ../generic/sshPubkeys/id_ffmpeg.pub ];
   };
