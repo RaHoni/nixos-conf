@@ -29,4 +29,6 @@
       key = config.sops.secrets.fd-key.path;
     };
   };
+  networking.firewall.allowedTCPPorts = [ 9102 ];
+
 }
