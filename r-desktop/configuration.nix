@@ -116,6 +116,22 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
+  services.foldingathome = {
+    enable = true;
+    user = "Honi2002";
+    team = 223518;
+    extraArgs = [ "--password=Password" "--web-allow" "172.20.0.0/16" ];
+    daemonNiceLevel = 19;
+  };
+
+  services.nebula.networks.nebulaHonermann.settings.firewall = {
+    inbound = [{
+      port = "36330";
+      proto = "tcp";
+      host = "any";
+    }];
+  };
+
   security.pam.services = {
     login.u2fAuth = true;
     sudo.u2fAuth = true;
