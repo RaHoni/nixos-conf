@@ -129,6 +129,14 @@
     polkit-1.u2fAuth = true;
   };
 
+  services.foldingathome = {
+    enable = false;
+    user = "Honi2002";
+    team = 223518;
+    extraArgs = [ "--password=Password" "--web-allow" "172.20.0.0/16" ];
+    daemonNiceLevel = 19;
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
