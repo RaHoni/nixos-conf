@@ -19,8 +19,8 @@
     "d ${config.services.httpd.virtualHosts.packete.documentRoot} 1777 1000 1000 "
   ];
 
-  fileSystems."/export/packete" = {
-    device = "${config.services.httpd.virtualHosts.packete.documentRoot}";
+  fileSystems."${config.services.httpd.virtualHosts.packete.documentRoot}" = {
+    device = "/export/packete";
     options = [ "bind" ];
   };
 
