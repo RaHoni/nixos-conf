@@ -13,7 +13,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
+  networking.interfaces.eth0.wakeOnLan.enable = true;
 
 
   # Select internationalisation properties.
