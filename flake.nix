@@ -67,6 +67,7 @@
           ./surface-raoul-nixos/configuration.nix
           ./generic
           ./generic/nebula.nix
+          ./generic/pim.nix
           home-manager-stable.nixosModules.home-manager
           {
             home-manager = {
@@ -92,6 +93,7 @@
           ./r-desktop/bacula.nix
           ./generic
           ./generic/nebula.nix
+          ./generic/pim.nix
           home-manager-stable.nixosModules.home-manager
           {
             home-manager = {
