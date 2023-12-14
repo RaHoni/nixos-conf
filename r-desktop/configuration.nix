@@ -102,13 +102,10 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
   ];
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-
 
   programs.kdeconnect.enable = true;
   programs.steam.enable = true;
+  programs.partition-manager.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 22 ];
