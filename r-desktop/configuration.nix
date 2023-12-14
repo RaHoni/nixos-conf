@@ -9,12 +9,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  #Kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   networking.hostName = "r-desktop"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
   networking.interfaces.eth0.wakeOnLan.enable = true;
-
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -32,12 +34,8 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  #  services.xserver.displayManager.defaultSession = "plasmawayland";
-
 
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
