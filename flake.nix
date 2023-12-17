@@ -21,6 +21,10 @@
     };
     private-nixpkgs.url = "github:rahoni/nixpkgs";
 
+    nix-on-droid.url = "github:nix-community/nix-on-droid/release-23.11";
+    nix-on-droid.inputs.nixpkgs.follows = "nixpkgs";
+    nix-on-droid.inputs.home-manager.follows = "home-manager";
+
   };
 
   nixConfig = {
@@ -59,114 +63,24 @@
       };
     in
     rec {
-      nixosConfigurations.surface-raoul-nixos = nixpkgs-stable.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        pkgs = stable-nixpkgs system;
-        specialArgs = inputs;
-        modules = [
-          ./surface-raoul-nixos/configuration.nix
-          ./generic
-          ./generic/nebula.nix
-          ./generic/pim.nix
-          home-manager-stable.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              backupFileExtension = "bak";
-              sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-              users = {
-                raoul = import ./generic/users/raoul/home-manager.nix;
-                root = import ./generic/users/root/home-manager.nix;
-              };
-            };
-          }
-        ];
-      };
-
-      nixosConfigurations.r-desktop = nixpkgs-stable.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        pkgs = stable-nixpkgs system;
-        specialArgs = inputs;
-        modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-ffmpeg ]; })
-          ./r-desktop/configuration.nix
-          ./r-desktop/bacula.nix
-          ./generic
-          ./generic/nebula.nix
-          ./generic/pim.nix
-          home-manager-stable.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              backupFileExtension = "bak";
-              sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-              users = {
-                raoul = import ./generic/users/raoul/home-manager.nix;
-                root = import ./generic/users/root/home-manager.nix;
-                ffmpeg = import ./r-desktop/ffmpeg-home.nix;
-              };
-            };
-          }
-        ];
-      };
-
-      nixosConfigurations.packete = nixpkgs-stable.lib.nixosSystem
-        rec {
+      nixosConfigurations = {
+        surface-raoul-nixos = nixpkgs-stable.lib.nixosSystem rec {
           system = "x86_64-linux";
           pkgs = stable-nixpkgs system;
           specialArgs = inputs;
           modules = [
-            ./packete/configuration.nix
+            ./surface-raoul-nixos/configuration.nix
             ./generic
-            ./generic/proxmox.nix
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                backupFileExtension = "bak";
-                useGlobalPkgs = true;
-                users = {
-                  root = import ./generic/users/root/home-manager.nix;
-                };
-              };
-            }
-          ];
-        };
-      nixosConfigurations.smb = nixpkgs-stable.lib.nixosSystem
-        rec {
-          system = "x86_64-linux";
-          pkgs = stable-nixpkgs system;
-          specialArgs = inputs;
-          modules = [
-            ./smb
-            ./generic
-            ./generic/proxmox.nix
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                backupFileExtension = "bak";
-                useGlobalPkgs = true;
-                users.root = import ./generic/users/root/home-manager.nix;
-              };
-            }
-          ];
-        };
-
-
-      nixosConfigurations.raspberry = nixpkgs-stable.lib.nixosSystem
-        rec {
-          system = "aarch64-linux";
-          pkgs = stable-nixpkgs system;
-          specialArgs = inputs;
-          modules = [
-            ./raspberry/configuration.nix
-            ./generic/default.nix
             ./generic/nebula.nix
+            ./generic/pim.nix
             home-manager-stable.nixosModules.home-manager
             {
               home-manager = {
-                backupFileExtension = "bak";
                 useGlobalPkgs = true;
+                backupFileExtension = "bak";
+                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
                 users = {
+                  raoul = import ./generic/users/raoul/home-manager.nix;
                   root = import ./generic/users/root/home-manager.nix;
                 };
               };
@@ -174,20 +88,112 @@
           ];
         };
 
-      nixosConfigurations.aarch64-image = nixpkgs-stable.lib.nixosSystem
-        {
+        r-desktop = nixpkgs-stable.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          pkgs = stable-nixpkgs system;
+          specialArgs = inputs;
           modules = [
-            ./iso/configuration.nix
-            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-ffmpeg ]; })
+            ./r-desktop/configuration.nix
+            ./r-desktop/bacula.nix
+            ./generic
+            ./generic/nebula.nix
+            ./generic/pim.nix
+            home-manager-stable.nixosModules.home-manager
             {
-              nixpkgs.config.allowUnsupportedSystem = true;
-              nixpkgs.hostPlatform.system = "aarch64-linux";
-              nixpkgs.buildPlatform.system = "x86_64-linux"; #If you build on x86 other wise changes this.
-              # ... extra configs as above
-
+              home-manager = {
+                useGlobalPkgs = true;
+                backupFileExtension = "bak";
+                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+                users = {
+                  raoul = import ./generic/users/raoul/home-manager.nix;
+                  root = import ./generic/users/root/home-manager.nix;
+                  ffmpeg = import ./r-desktop/ffmpeg-home.nix;
+                };
+              };
             }
           ];
         };
+
+        packete = nixpkgs-stable.lib.nixosSystem
+          rec {
+            system = "x86_64-linux";
+            pkgs = stable-nixpkgs system;
+            specialArgs = inputs;
+            modules = [
+              ./packete/configuration.nix
+              ./generic
+              ./generic/proxmox.nix
+              home-manager-stable.nixosModules.home-manager
+              {
+                home-manager = {
+                  backupFileExtension = "bak";
+                  useGlobalPkgs = true;
+                  users = {
+                    root = import ./generic/users/root/home-manager.nix;
+                  };
+                };
+              }
+            ];
+          };
+        smb = nixpkgs-stable.lib.nixosSystem
+          rec {
+            system = "x86_64-linux";
+            pkgs = stable-nixpkgs system;
+            specialArgs = inputs;
+            modules = [
+              ./smb
+              ./generic
+              ./generic/proxmox.nix
+              home-manager-stable.nixosModules.home-manager
+              {
+                home-manager = {
+                  backupFileExtension = "bak";
+                  useGlobalPkgs = true;
+                  users.root = import ./generic/users/root/home-manager.nix;
+                };
+              }
+            ];
+          };
+
+
+        raspberry = nixpkgs-stable.lib.nixosSystem
+          rec {
+            system = "aarch64-linux";
+            pkgs = stable-nixpkgs system;
+            specialArgs = inputs;
+            modules = [
+              ./raspberry/configuration.nix
+              ./generic/default.nix
+              ./generic/nebula.nix
+              home-manager-stable.nixosModules.home-manager
+              {
+                home-manager = {
+                  backupFileExtension = "bak";
+                  useGlobalPkgs = true;
+                  users = {
+                    root = import ./generic/users/root/home-manager.nix;
+                  };
+                };
+              }
+            ];
+          };
+
+        aarch64-image = nixpkgs-stable.lib.nixosSystem
+          {
+            modules = [
+              ./iso/configuration.nix
+              "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+              {
+                nixpkgs.config.allowUnsupportedSystem = true;
+                nixpkgs.hostPlatform.system = "aarch64-linux";
+                nixpkgs.buildPlatform.system = "x86_64-linux"; #If you build on x86 other wise changes this.
+                # ... extra configs as above
+
+              }
+            ];
+          };
+      };
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
 
