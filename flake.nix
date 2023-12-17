@@ -21,7 +21,7 @@
     };
     private-nixpkgs.url = "github:rahoni/nixpkgs";
 
-    nix-on-droid.url = "github:nix-community/nix-on-droid/release-23.11";
+    nix-on-droid.url = "github:nix-community/nix-on-droid/release-23.05";
     nix-on-droid.inputs.nixpkgs.follows = "nixpkgs";
     nix-on-droid.inputs.home-manager.follows = "home-manager";
 
@@ -193,6 +193,26 @@
               }
             ];
           };
+      };
+
+      nixOnDroidConfigurations.fp4 = nix-on-droid.lib.nixOnDroidConfiguration {
+        system = "aarch64-linux";
+        pkgs = stable-nixpkgs "aarch64-linux";
+        modules = [
+          ./fp4
+          ./generic
+          home-manager-stable.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              backupFileExtension = "bak";
+              sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+              imports = [
+                ../generic/users/raoul/home-manager.nix
+              ];
+            };
+          }
+        ];
       };
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
