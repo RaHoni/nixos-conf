@@ -18,8 +18,8 @@ with lib;
   services.gpg-agent = {
     enable = true;
     pinentryFlavor = "qt";
-    #extraConfig = "ignore-cache-for-signing false";
-    #maxCacheTtl = 604800;
+    extraConfig = "no-grab";
+    maxCacheTtl = 604800;
     defaultCacheTtl = 604800;
   };
 
