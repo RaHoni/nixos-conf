@@ -27,6 +27,7 @@ in
       hoerbuecher =
         {
           path = "/mnt/data/hoerbuecher";
+          browseable = "yes";
           "read only" = "no";
           "directory mask" = "0755";
           "create mask" = "0775";
