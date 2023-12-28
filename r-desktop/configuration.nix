@@ -61,7 +61,10 @@
   console.keyMap = "de";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.gutenprint ];
+  };
   services.avahi = {
     enable = true;
     nssmdns = true;
