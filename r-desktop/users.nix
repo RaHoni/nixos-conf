@@ -1,12 +1,15 @@
 { config, pkgs, ... }:
 
 {
+  users.groups = {
+    raoul = {gid = 1000;};
+  };
   users.users.raoul = {
     uid = 1000;
     isNormalUser = true;
     description = "Raoul Honermann";
     hashedPassword = "$y$j9T$2qmWuo6/DJXoG.45LLjDX/$Y/NnNHfsQXULwubyI1lPavjfe3fYv/KTWMR4aPLhsSB";
-    extraGroups = [ "networkmanager" "wheel" "i2c" "render" "raoul"];
+    extraGroups = [ "networkmanager" "wheel" "i2c" "raoul"];
     packages = with pkgs; [
       keepassxc
       jetbrains.webstorm
