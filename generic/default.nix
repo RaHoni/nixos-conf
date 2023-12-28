@@ -1,8 +1,10 @@
-{ config, pkgs, nixpkgs-stable, ... }:
+{ self, config, pkgs, nixpkgs-stable, ... }:
 {
   imports = [
     ./sops.nix
   ];
+
+  system.configurationRevision = self.rev or "dirty";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.registry.nixpkgs.flake = nixpkgs-stable;
