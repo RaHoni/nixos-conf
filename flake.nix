@@ -97,6 +97,7 @@
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-ffmpeg ]; })
             ./r-desktop/configuration.nix
             ./r-desktop/bacula.nix
+            ./r-desktop/pio.nix
             ./generic
             ./generic/nebula.nix
             ./generic/pim.nix
