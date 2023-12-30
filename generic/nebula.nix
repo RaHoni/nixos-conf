@@ -41,7 +41,7 @@ in
         respond = true;
       };
     };
-    firewall = lib.mkDefault {
+    firewall = {
       outbound = [
         {
           host = "any";
@@ -50,6 +50,11 @@ in
         }
       ];
       inbound = [
+        {
+          port = 22;
+          proto = "tcp";
+          host = "any";
+        }
         {
           port = "any";
           proto = "icmp";
