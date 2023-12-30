@@ -27,8 +27,14 @@ in
           identitiesOnly = true;
         };
         r-desktop = {
-          hostname = "honermann.info";
+          hostname = "r-desktop.nb.honermann.info";
           identityFile = sshIdentity "r-desktop-ed25519";
+          identitiesOnly = true;
+          forwardAgent = true;
+        };
+        surface = {
+          hostname = "surface-raoul-nixos.nb.honermann.info";
+          identityFile = sshIdentity "Surface_id_ed25519";
           identitiesOnly = true;
           forwardAgent = true;
         };
