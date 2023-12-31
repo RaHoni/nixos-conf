@@ -126,14 +126,13 @@
     extraArgs = [ "--password=Password" "--web-allow" "172.20.0.0/16" ];
     daemonNiceLevel = 19;
   };
-
-  services.nebula.networks.nebulaHonermann.settings.firewall = {
-    inbound = [{
-      port = "36330";
-      proto = "tcp";
-      host = "any";
-    }];
-  };
+#   services.nebula.networks.nebulaHonermann.settings.firewall = {
+#     inbound = [{
+#       port = "36330";
+#       proto = "tcp";
+#       host = "any";
+#     }];
+#   };
 
   security.pam.services = {
     login.u2fAuth = true;
