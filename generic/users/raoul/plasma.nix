@@ -231,7 +231,7 @@
       "kwalletrc"."Wallet"."First Use" = false;
       "kwinrc"."Desktops"."Id_1" = "deea9854-7e00-4cf7-8729-2a1707e3fd55";
       "kwinrc"."Desktops"."Id_2" = "f71943af-5e07-402d-8667-dd352c17061c";
-      "kwinrc"."Desktops"."Number" = 2;
+      "kwinrc"."Desktops"."Number" = 4;
       "kwinrc"."Desktops"."Rows" = 2;
       "kwinrc"."Effect-windowview"."TouchBorderActivate" = 2;
       "kwinrc"."Effect-windowview"."TouchBorderActivateAll" = 6;
