@@ -11,7 +11,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "i2c-dev" "ddcci_backlight" ];
+  boot.kernelModules = [ "kvm-amd" "i2c-dev" "ddcci_backlight" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
   boot.kernelParams = [ "i915.force_probe=56a1"];
   boot.tmp.useTmpfs = true;
