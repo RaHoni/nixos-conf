@@ -4,7 +4,7 @@
     ./sops.nix
   ];
 
-  system.configurationRevision = self.rev or "dirty";
+  system.configurationRevision = self.shortRev or self.dirtyShortRev;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.registry.nixpkgs.flake = nixpkgs-stable;
