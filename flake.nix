@@ -158,6 +158,26 @@
             ];
           };
 
+        ssl-proxy = nixpkgs-stable.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          pkgs = stable-nixpkgs system;
+          specialArgs = inputs;
+          modules = [
+            ./proxy
+            ./generic
+            ./generic/proxmox.nix
+            ./generic/proxy.nix
+            home-manager-stable.nixosModules.home-manager
+            {
+              home-manager = {
+                backupFileExtension = "bak";
+                useGlobalPkgs = true;
+                users.root = import ./generic/users/root/home-manager.nix;
+              };
+            }
+          ];
+        };
+
 
         raspberry = nixpkgs-stable.lib.nixosSystem
           rec {
