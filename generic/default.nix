@@ -6,8 +6,12 @@
 
   system.configurationRevision = self.shortRev or self.dirtyShortRev;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.registry.nixpkgs.flake = nixpkgs-stable;
+  nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+    registry.nixpkgs.flake = nixpkgs-stable;
+    optimise.automatic = true;
+  };
+
   environment.etc."channels/nixpkgs".source = nixpkgs-stable.outPath;
 
   users.defaultUserShell = pkgs.zsh;
