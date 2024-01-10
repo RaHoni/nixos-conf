@@ -10,7 +10,7 @@
       generateKey = true; #generate key above if it does not exist yet (has to be added manually to .sops.yaml)
       sshKeyPaths = [ ];
     };
-    gnupg.sshKeyPaths = [ ];
+
     secrets = {
       example-key = { };
       yubikey-auths = { };
@@ -33,5 +33,15 @@
       ];
     };
   };
+  services.openssh.hostKeys = [
+    {
+      path = config.sops.secrets."ssh_host_ed25519_key".path;
+      type = "ed25519";
+    }
+    {
+      path = config.sops.secrets."ssh_host_rsa_key".path;
+      type = "rsa";
+    }
+  ];
 }
 
