@@ -42,6 +42,7 @@
       "kwin"."Switch to Desktop 3" = "Ctrl+F3";
       "kwin"."Switch to Desktop 4" = "Ctrl+F4";
       "kwin"."Switch to Next Desktop" = "Meta+Tab";
+      "kwin"."Switch to Previous Desktop" = "Meta+Shift+Tab";
       "kwin"."ToggleMouseClick" = "Meta+*";
       "kwin"."Walk Through Windows" = "Alt+Tab";
       "kwin"."Walk Through Windows (Reverse)" = "Alt+Shift+Backtab";
@@ -101,7 +102,7 @@
       "plasmashell"."clipboard_action" = "Meta+Ctrl+X";
       "plasmashell"."cycle-panels" = "Meta+Alt+P";
       "plasmashell"."manage activities" = "Meta+Q";
-      "plasmashell"."previous activity" = "Meta+Shift+Tab";
+      "plasmashell"."previous activity" = "Meta+Alt+Tab";
       "plasmashell"."repeat_action" = "Meta+Ctrl+R";
       "plasmashell"."show dashboard" = "Ctrl+F12";
       "plasmashell"."show-on-mouse-pos" = "Meta+V";
