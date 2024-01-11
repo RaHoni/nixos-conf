@@ -1,4 +1,4 @@
-{ lib, osConfig, plasma-manager, inputs, ... }:
+{ lib, osConfig, ... }:
 {
   programs.plasma = lib.mkIf osConfig.services.xserver.desktopManager.plasma5.enable {
     enable = true;
