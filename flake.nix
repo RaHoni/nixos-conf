@@ -15,6 +15,11 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs-stable";
     plasma-manager.inputs.home-manager.follows = "home-manager-stable";
 
+    nixvim-stable = {
+      url = "github:nix-community/nixvim/nixos-23.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -79,9 +84,9 @@
               home-manager = {
                 useGlobalPkgs = true;
                 backupFileExtension = "bak";
-                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager nixvim-stable.homeManagerModules.nixvim ];
                 users = {
-                  raoul = import ./generic/users/raoul/home-manager.nix;
+                  raoul = import ./surface-raoul-nixos/raoulHM.nix;
                   root = import ./generic/users/root/home-manager.nix;
                 };
               };

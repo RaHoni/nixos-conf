@@ -17,7 +17,6 @@
       ddcutil
       rnix-lsp
       gh
-      tetex
       nixpkgs-fmt
       pre-commit
       maliit-keyboard
@@ -28,6 +27,8 @@
       yubioath-flutter
       nebula
       korganizer
+
+      texlive.combined.scheme-full
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/3EQ9XhwTdsWUSmpBfjqKxPFfeFg/RArJ1uZSZf3fm Surface"
