@@ -93,7 +93,7 @@
       }
 
       #for luasnips
-      { 
+      {
         mode = [
           ""
           "i"
@@ -102,7 +102,7 @@
         action = "<cmd>lua require('luasnip').jump(1)<Cr>";
         options.silent = true;
       }
-      { 
+      {
         mode = [
           ""
           "i"
@@ -111,7 +111,7 @@
         action = "<cmd>lua require('luasnip').jump(-1)<Cr>";
         options.silent = true;
       }
-      { 
+      {
         mode = [
           ""
           "i"
@@ -195,6 +195,8 @@
         disabledLanguages = [ "latex" ];
       };
 
+
+
       #LaTeX support
       vimtex.enable = true;
 
@@ -253,6 +255,7 @@
         };
       };
       nvim-cmp = {
+        enable = true;
         snippet.expand = "luasnip";
         sources = [
           { name = "nvim_lsp"; }
@@ -260,8 +263,28 @@
           { name = "path"; }
           { name = "buffer"; }
         ];
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm({select = true})";
+          "<Tab>" = {
+            modes = [ "i" "s" ];
+            action = ''
+              function(fallback)
+                if cmp.visible() then
+                  cmp.select_next_item()
+                else
+                  fallback()
+                end
+              end
+            '';
+          };
+        };
       };
     };
+    #collection of default snippets
+    extraPlugins = with pkgs.vimPlugins; [
+      friendly-snippets
+    ];
+
   };
 }
 
