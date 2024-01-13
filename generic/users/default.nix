@@ -88,6 +88,15 @@ in
         };
       };
     };
+
+
+    git = {
+      enable = true;
+      extraConfig = {
+        push = { autoSetupRemote = true; };
+        pull = { rebase = true; };
+      };
+    };
   };
 
   # Signal start in tray fix
