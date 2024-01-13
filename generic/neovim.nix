@@ -195,7 +195,11 @@
         disabledLanguages = [ "latex" ];
       };
 
+      #shows indentation levels and variable scopes (treesitter)
+      indent-blankline.enable = true;
 
+      #automatically creates pairs of brackets, etc.
+      nvim-autopairs.enable = true;
 
       #LaTeX support
       vimtex.enable = true;
