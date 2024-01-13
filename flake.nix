@@ -111,9 +111,9 @@
               home-manager = {
                 useGlobalPkgs = true;
                 backupFileExtension = "bak";
-                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager nixvim-stable.homeManagerModules.nixvim ];
                 users = {
-                  raoul = import ./generic/users/raoul/home-manager.nix;
+                  raoul = import ./r-desktop/raoulHM.nix;
                   root = import ./generic/users/root/home-manager.nix;
                   ffmpeg = import ./r-desktop/ffmpeg-home.nix;
                 };
