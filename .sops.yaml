@@ -3,7 +3,7 @@ keys:
   - &smb age1n8ukjh0krslvv3v5cqy6v5t5utgspek2g3kx3j0gxjszvszllaasllc3hk
   - &packete age1zpaywdwrwu3y47usg9xrn4uufasaq49dyvm08uj0ssvq40le0yrqlj3utt
   - &surface age1k7dljw9mthfr8y6c99hrkn2ncs0f4dfsm5e42fvfat70wvd7e48qhz0dzl
-  - &raspberry age1m9p4emndr47d4ddwrzeydlmnqxwd8k2yrgu2rt5nsacvhgrrjp0s0dm73q
+  - &nebula-lighthouse age109w25c2fjtv2wslwy8hvsms4r6hjmrkfucq2mysskz6wg5jg5s7ql98tzn
   - &r-desktop age1pkwflrjlcf494fcc48rqmcnf0xq5as0ly6w95leq350r9tk4pg8qutw0sc
   - &ssl-proxy age1y3wylf37kmspatvwj4884r7pn87mlhvcpejudsyv0dkthvmqmurslukpu0
 creation_rules:
@@ -13,12 +13,12 @@ creation_rules:
       - *admin
       age:
       - *surface
-  - path_regex: ^secrets/raspberry/.*$
+  - path_regex: ^secrets/nebula-lighthouse/.*$
     key_groups:
     - pgp:
       - *admin
       age:
-      - *raspberry
+      - *nebula-lighthouse
   - path_regex: ^secrets/packete/.*$
     key_groups:
     - pgp:
@@ -49,7 +49,7 @@ creation_rules:
       - *admin
       age:
       - *surface
-      - *raspberry
+      - *nebula-lighthouse
       - *packete
       - *smb
       - *r-desktop

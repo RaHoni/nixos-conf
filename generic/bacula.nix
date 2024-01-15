@@ -1,5 +1,13 @@
-{ config, private-nixpkgs, ... }:
+{ config, private-nixpkgs, lib, ... }:
 {
+  options = {
+  services.bacula-fd.shutdown-on-finish = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+    description = lib.mdDoc ''Enable the generation of a shutdown script for this host.''; 
+  };
+  };
+  config = {
   disabledModules = [ "services/backup/bacula.nix" ];
   imports = [ "${private-nixpkgs}/nixos/modules/services/backup/bacula.nix" ];
   sops.secrets = {
@@ -30,4 +38,6 @@
   };
   networking.firewall.allowedTCPPorts = [ 9102 ];
 
+  envirement.etc."bacula/shutdown.sh".source = ./shutdown.sh;
+};
 }

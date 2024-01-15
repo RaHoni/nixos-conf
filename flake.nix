@@ -184,14 +184,15 @@
         };
 
 
-        raspberry = nixpkgs-stable.lib.nixosSystem
+        nebula-lighthouse = nixpkgs-stable.lib.nixosSystem
           rec {
-            system = "aarch64-linux";
+            system = "x86_64-linux";
             pkgs = stable-nixpkgs system;
             specialArgs = inputs;
             modules = [
-              ./raspberry/configuration.nix
-              ./generic/default.nix
+              ./nebula-lighthouse/configuration.nix
+              ./generic
+              ./generic/proxmox.nix
               ./generic/nebula.nix
               home-manager-stable.nixosModules.home-manager
               {

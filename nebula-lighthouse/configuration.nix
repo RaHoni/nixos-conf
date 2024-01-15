@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 {
-  networking.hostName = "raspberry";
-  hardware.enableRedistributableFirmware = true;
-  networking.wireless.enable = true;
-  imports = [ ./hardware-configuration.nix ./nebula.nix ];
+  networking.hostName = "nebula-lighthouse";
+#   hardware.enableRedistributableFirmware = true;
+#   networking.wireless.enable = true;
+  imports = [ ./nebula.nix ];
 
   # NixOS wants to enable GRUB by default
-  boot.loader.grub.enable = false;
+#   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
+#   boot.loader.generic-extlinux-compatible.enable = true;
 
 
   users.users.root = {
@@ -17,7 +17,7 @@
     ];
   };
 
-  hardware.bluetooth.enable = true;
+#   hardware.bluetooth.enable = true;
 
   # Configure console keymap
   console.keyMap = "de";
@@ -36,10 +36,10 @@
 
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  # networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowedUDPPorts = [ 53 51821 ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

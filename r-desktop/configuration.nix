@@ -109,10 +109,14 @@
     #  wget
   ];
 
-  programs.kdeconnect.enable = true;
-  programs.steam.enable = true;
-  programs.partition-manager.enable = true;
+  programs = {
+  kdeconnect.enable = true;
+  steam.enable = true;
+  partition-manager.enable = true;
+  nix-ld.enable = true;
+  };
 
+  services.teamviewer.enable = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -140,7 +144,6 @@
     polkit-1.u2fAuth = true;
   };
 
-  programs.nix-ld.enable = true;
 
 
   # This value determines the NixOS release from which the default
