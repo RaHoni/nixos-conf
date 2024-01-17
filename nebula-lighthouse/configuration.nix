@@ -1,14 +1,32 @@
-{ config, pkgs, ... }:
+{ pkgs, lib, ... }:
 {
-  networking.hostName = "nebula-lighthouse";
-#   hardware.enableRedistributableFirmware = true;
-#   networking.wireless.enable = true;
+  networking = {
+    hostName = "nebula-lighthouse";
+    useNetworkd = lib.mkForce false;
+    nameservers = [
+      "192.168.3.102"
+      "192.168.2.1"
+      "1.1.1.1"
+    ];
+    interfaces.eth0.ipv4.addresses = [{
+      address = "192.168.3.208";
+      prefixLength = 23;
+    }];
+
+
+    defaultGateway = {
+      address = "192.168.2.1";
+      interface = "eth0";
+    };
+  };
+  #   hardware.enableRedistributableFirmware = true;
+  #   networking.wireless.enable = true;
   imports = [ ./nebula.nix ];
 
   # NixOS wants to enable GRUB by default
-#   boot.loader.grub.enable = false;
+  #   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
-#   boot.loader.generic-extlinux-compatible.enable = true;
+  #   boot.loader.generic-extlinux-compatible.enable = true;f
 
 
   users.users.root = {
@@ -17,7 +35,7 @@
     ];
   };
 
-#   hardware.bluetooth.enable = true;
+  #   hardware.bluetooth.enable = true;
 
   # Configure console keymap
   console.keyMap = "de";
