@@ -11,7 +11,7 @@ sshKeys() {
     rsakey=$(</tmp/rsa)
     echo \{\"ssh_host_ed25519_key\": \"$ed25519key\",\"ssh_host_rsa_key\": \"$rsakey\"\} | yq -p json > secrets/$hostname/sshd.yaml
     sops -i -e secrets/$hostname/sshd.yaml
-    git add secrets/ssl-proxy/sshd.yaml
+    git add secrets/$hostname/sshd.yaml
     git commit -o secrets/ssl-proxy/sshd.yaml -m "$hostname: Added ssh hostkeys for $hostname"
     }
     
