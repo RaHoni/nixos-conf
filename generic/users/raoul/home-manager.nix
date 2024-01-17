@@ -36,6 +36,9 @@ with lib;
         key = "54D11CB37C713D5457ACF0C35962F3E9516FD551";
         signByDefault = true;
       };
+      extraConfig = {
+        merge.tool = "kdiff3";
+      };
     };
   };
 }
