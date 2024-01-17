@@ -61,6 +61,7 @@ updateNebula)
     exit 0
     ;;
     *)
+    echo Unknown Command
     exit 1
     ;;
 esac
