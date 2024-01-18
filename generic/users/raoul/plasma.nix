@@ -1,5 +1,6 @@
-{ lib, osConfig, ... }:
+{ lib, osConfig, pkgs, ... }:
 {
+  home.packages = [ pkgs.libsForQt5.plasma-browser-integration ];
   programs.plasma = lib.mkIf osConfig.services.xserver.desktopManager.plasma5.enable {
     enable = true;
     workspace.clickItemTo = "select";
