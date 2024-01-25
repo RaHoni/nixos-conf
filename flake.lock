@@ -206,16 +206,16 @@
     },
     "nixpkgs-ffmpeg": {
       "locked": {
-        "lastModified": 1706048652,
-        "narHash": "sha256-1W13nntdh6iO1qXoyBD4CkvuCjkg7T/+wL0r317Dq+0=",
+        "lastModified": 1706047860,
+        "narHash": "sha256-S/PsqNoXNrWxdD8n2GwvLrrML9nlSzzicwNYjrrKzf8=",
         "owner": "evanrichter",
         "repo": "nixpkgs",
-        "rev": "6a669a17b8a37cd177778f1f6fb8a0571869cac4",
+        "rev": "99b140360f6aecd3dec48642fc886343143befaa",
         "type": "github"
       },
       "original": {
         "owner": "evanrichter",
-        "ref": "libvpl-for-intel-gpu",
+        "ref": "libvpl-for-intel-gpu-cp",
         "repo": "nixpkgs",
         "type": "github"
       }
