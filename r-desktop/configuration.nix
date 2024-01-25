@@ -1,9 +1,15 @@
-{ config, pkgs, nixpkgs-ffmpeg, ... }: {
+{ pkgs, lib, nixpkgs-ffmpeg, ... }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./users.nix
   ];
+
+  environment.sessionVariables = {
+    INTEL_MEDIA_RUNTIME = "ONEVPL";
+    LIBVA_DRIVER_NAME = "iHD";
+    ONEVPL_SEARCH_PATH = lib.strings.makeLibraryPath (with pkgs.ffmpeg-vpl; [ oneVPL-intel-gpu ]);
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -110,10 +116,10 @@
   ];
 
   programs = {
-  kdeconnect.enable = true;
-  steam.enable = true;
-  partition-manager.enable = true;
-  nix-ld.enable = true;
+    kdeconnect.enable = true;
+    steam.enable = true;
+    partition-manager.enable = true;
+    nix-ld.enable = true;
   };
 
   services.teamviewer.enable = true;
@@ -130,13 +136,13 @@
     extraArgs = [ "--password=Password" "--web-allow" "172.20.0.0/16" ];
     daemonNiceLevel = 19;
   };
-#   services.nebula.networks.nebulaHonermann.settings.firewall = {
-#     inbound = [{
-#       port = "36330";
-#       proto = "tcp";
-#       host = "any";
-#     }];
-#   };
+  #   services.nebula.networks.nebulaHonermann.settings.firewall = {
+  #     inbound = [{
+  #       port = "36330";
+  #       proto = "tcp";
+  #       host = "any";
+  #     }];
+  #   };
 
   security.pam.services = {
     login.u2fAuth = true;
