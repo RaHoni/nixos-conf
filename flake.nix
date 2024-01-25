@@ -103,6 +103,7 @@
             ./r-desktop/configuration.nix
             ./r-desktop/bacula.nix
             ./r-desktop/pio.nix
+            ./r-desktop/incron.nix
             ./generic
             ./generic/nebula.nix
             ./generic/pim.nix
