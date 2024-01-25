@@ -113,6 +113,13 @@
       }
       {
         mode = [
+          "i"
+        ];
+        key = "<c-u>";
+        action = "<C-O>:update<CR>";
+      }
+      {
+        mode = [
           ""
           "i"
         ];
