@@ -13,7 +13,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "i2c-dev" "ddcci_backlight" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
-  boot.kernelParams = [ "i915.force_probe=56a1"];
+  boot.kernelParams = [ "i915.force_probe=56a1" ];
   boot.tmp.useTmpfs = true;
 
   services.udev.extraRules = ''
@@ -42,11 +42,14 @@
     };
 
   fileSystems."/boot" =
-{
-    device = "/dev/disk/by-uuid/D0D5-FFD7";
-    fsType = "vfat";
-  };
+    {
+      device = "/dev/disk/by-uuid/D0D5-FFD7";
+      fsType = "vfat";
+    };
 
+  swapDevices = [{
+    label = "swap-hdd";
+  }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
