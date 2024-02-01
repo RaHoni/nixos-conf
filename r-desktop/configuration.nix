@@ -113,6 +113,9 @@
     nodePackages.bash-language-server
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
+    unstable.wineWowPackages.stable
+    unstable.lutris
+    unstable.winetricks
   ];
 
   programs = {
