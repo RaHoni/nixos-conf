@@ -60,10 +60,15 @@
           allowUnfree = true; #allow Unfree packages
         };
       };
-      overlay-ffmpeg = final: prev: {
+      overlays = system: final: prev: {
+        unstable = import nixpkgs {
+          overlays = [ (import ./generic/overlays) ];
+          inherit system;
+          config.allowUnfree = true;
+        };
         ffmpeg-vpl = import nixpkgs-ffmpeg {
           overlays = [ (import ./generic/overlays/ffmpeg.nix) ];
-          system = "x86_64-linux";
+          inherit system;
           config.allowUnfree = true;
         };
       };
@@ -99,7 +104,7 @@
           pkgs = stable-nixpkgs system;
           specialArgs = inputs;
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-ffmpeg ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ (overlays system) ]; })
             ./r-desktop/configuration.nix
             ./r-desktop/bacula.nix
             ./r-desktop/pio.nix
