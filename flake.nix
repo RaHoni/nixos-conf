@@ -128,46 +128,68 @@
           ];
         };
 
-        packete = nixpkgs-stable.lib.nixosSystem
-          rec {
-            system = "x86_64-linux";
-            pkgs = stable-nixpkgs system;
-            specialArgs = inputs;
-            modules = [
-              ./packete/configuration.nix
-              ./generic
-              ./generic/proxmox.nix
-              home-manager-stable.nixosModules.home-manager
-              {
-                home-manager = {
-                  backupFileExtension = "bak";
-                  useGlobalPkgs = true;
-                  users = {
-                    root = import ./generic/users/root/home-manager.nix;
-                  };
+        jasmine-laptop = nixpkgs-stable.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          pkgs = stable-nixpkgs system;
+          specialArgs = inputs;
+          modules = [
+            ./jasmine
+            ./generic/default.nix
+            ./generic/pim.nix
+            ./generic/nebula.nix
+            home-manager-stable.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                backupFileExtension = "bak";
+                sharedModules = [ ];
+                users = {
+                  jasmine = import ./jasmine/jasmineHM.nix;
+                  root = import ./generic/users/root/home-manager.nix;
                 };
-              }
-            ];
-          };
-        smb = nixpkgs-stable.lib.nixosSystem
-          rec {
-            system = "x86_64-linux";
-            pkgs = stable-nixpkgs system;
-            specialArgs = inputs;
-            modules = [
-              ./smb
-              ./generic
-              ./generic/proxmox.nix
-              home-manager-stable.nixosModules.home-manager
-              {
-                home-manager = {
-                  backupFileExtension = "bak";
-                  useGlobalPkgs = true;
-                  users.root = import ./generic/users/root/home-manager.nix;
+              };
+            }
+          ];
+        };
+
+        packete = nixpkgs-stable.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          pkgs = stable-nixpkgs system;
+          specialArgs = inputs;
+          modules = [
+            ./packete/configuration.nix
+            ./generic
+            ./generic/proxmox.nix
+            home-manager-stable.nixosModules.home-manager
+            {
+              home-manager = {
+                backupFileExtension = "bak";
+                useGlobalPkgs = true;
+                users = {
+                  root = import ./generic/users/root/home-manager.nix;
                 };
-              }
-            ];
-          };
+              };
+            }
+          ];
+        };
+        smb = nixpkgs-stable.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          pkgs = stable-nixpkgs system;
+          specialArgs = inputs;
+          modules = [
+            ./smb
+            ./generic
+            ./generic/proxmox.nix
+            home-manager-stable.nixosModules.home-manager
+            {
+              home-manager = {
+                backupFileExtension = "bak";
+                useGlobalPkgs = true;
+                users.root = import ./generic/users/root/home-manager.nix;
+              };
+            }
+          ];
+        };
 
         ssl-proxy = nixpkgs-stable.lib.nixosSystem rec {
           system = "x86_64-linux";
@@ -190,28 +212,27 @@
         };
 
 
-        nebula-lighthouse = nixpkgs-stable.lib.nixosSystem
-          rec {
-            system = "x86_64-linux";
-            pkgs = stable-nixpkgs system;
-            specialArgs = inputs;
-            modules = [
-              ./nebula-lighthouse/configuration.nix
-              ./generic
-              ./generic/proxmox.nix
-              ./generic/nebula.nix
-              home-manager-stable.nixosModules.home-manager
-              {
-                home-manager = {
-                  backupFileExtension = "bak";
-                  useGlobalPkgs = true;
-                  users = {
-                    root = import ./generic/users/root/home-manager.nix;
-                  };
+        nebula-lighthouse = nixpkgs-stable.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          pkgs = stable-nixpkgs system;
+          specialArgs = inputs;
+          modules = [
+            ./nebula-lighthouse/configuration.nix
+            ./generic
+            ./generic/proxmox.nix
+            ./generic/nebula.nix
+            home-manager-stable.nixosModules.home-manager
+            {
+              home-manager = {
+                backupFileExtension = "bak";
+                useGlobalPkgs = true;
+                users = {
+                  root = import ./generic/users/root/home-manager.nix;
                 };
-              }
-            ];
-          };
+              };
+            }
+          ];
+        };
 
         aarch64-image = nixpkgs-stable.lib.nixosSystem
           {
