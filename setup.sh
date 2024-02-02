@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash --packages git sops yq-go nebula cryptsetup
+#! nix-shell -i bash --packages git sops nebula cryptsetup
 
 hostname=""
 luksDevice="/dev/disk/by-uuid/d52694cc-e7b0-4b7e-b638-8251d8609b9e"
@@ -8,33 +8,62 @@ nebulaDomain="nb.honermann.info"
 
 sshKeys() {
     mkdir -p secrets/$hostname
-    ssh-keygen -t ed25519 -N "" -f /tmp/ed25519
-    ssh-keygen -t rsa -N "" -f /tmp/rsa
-    ed25519key=$(</tmp/ed25519)
-    rsakey=$(</tmp/rsa)
-    echo \{\"ssh_host_ed25519_key\": \"$ed25519key\",\"ssh_host_rsa_key\": \"$rsakey\"\} | yq -p json > secrets/$hostname/sshd.yaml
+    
+    ed25519key=/tmp/ed25519
+    rsakey=/tmp/rsa
+
+    ssh-keygen -t ed25519 -N "" -f $ed25519key
+    ssh-keygen -t rsa -N "" -f $rsakey
+    printf "ssh_host_ed25519_key: |\n$(awk '{print "    " $0}' ${ed25519key}) \nssh_host_rsa_key: |\n$(awk '{print "    " $0}' $rsakey)" > ./secrets/$hostname/sshd.yaml
+    rm $ed25519key $rsakey
     sops -i -e secrets/$hostname/sshd.yaml
     git add secrets/$hostname/sshd.yaml
-    git commit -o secrets/ssl-proxy/sshd.yaml -m "$hostname: Added ssh hostkeys for $hostname"
+    git commit -o secrets/$hostname/sshd.yaml -m "$hostname: Added ssh hostkeys for $hostname"
     }
 
 updateNebula() {
     
-    sudo cryptsetup open $luksDevice luksUSBDeviceNebula
-    sudo mount /dev/mapper/luksUSBDeviceNebula /mnt
+    openLuks
 
     for path in secrets/*; do
         echo $path
         hostname="${path##*/}"
         if [ -f "/mnt/${luksNebulaPath}/${hostname}.${nebulaDomain}.crt" ]; then
-            crt=$(<"/mnt/${luksNebulaPath}/${hostname}.${nebulaDomain}.crt")
-            key=$(<"/mnt/${luksNebulaPath}/${hostname}.${nebulaDomain}.key")
-            echo $crt
-            echo \{\"nebula\": {\"${hostname}.key\": \"$key\",\"${hostname}.crt\": \"$crt\"\}} | yq -p json > secrets/$hostname/nebula.yaml
+            printNebulaYAML $hostname
             sops -i -e secrets/$hostname/nebula.yaml
         fi
     done
 
+    closeLuks
+
+    git add secrets
+    git commit -m "nebula: Updated all nebula certs"
+
+}
+
+addNebulaHost() {
+    openLuks
+    /mnt/${luksNebulaPath}/create.sh $hostname $nebulaIp $groups
+    printNebulaYAML $hostname
+    sops -i -e secrets/$hostname/nebula.yaml
+    closeLuks
+
+    git add ./secrets/$hostname/nebula.yaml
+    git commit -m "nebula: Add Host $hostname"
+}
+
+printNebulaYAML() {
+    #generate yaml file to store secrets
+    printf "nebula:\n    $1.key: |\n        $(sed ':a;N;$!ba;s/\n/\n        /g' /mnt/${luksNebulaPath}/${1}.${nebulaDomain}.key)\n    $1.crt: |\n        $(sed ':a;N;$!ba;s/\n/\n        /g' /mnt/${luksNebulaPath}/${1}.${nebulaDomain}.crt)" > "secrets/$1/nebula.yaml"
+}
+
+openLuks() {
+    sudo cryptsetup open $luksDevice luksUSBDeviceNebula
+    sudo mount /dev/mapper/luksUSBDeviceNebula /mnt
+
+}
+
+closeLuks() {
     #umount and lock usb stick (try again if still busy)
     until sudo umount /mnt; do
         sleep 1
@@ -42,9 +71,6 @@ updateNebula() {
     until sudo cryptsetup close /dev/mapper/luksUSBDeviceNebula; do
         sleep 1
     done
-
-    git add secrets
-    git commit -m "nebula: Updated all nebula certs"
 
 }
 
@@ -59,6 +85,13 @@ case $1 in
 updateNebula)
     updateNebula
     exit 0
+    ;;
+addNebula)
+    hostname=$2 
+    nebulaIp=$3
+    groups=$4
+    addNebulaHost 
+    exit 0 
     ;;
     *)
     echo Unknown Command
