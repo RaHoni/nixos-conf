@@ -38,6 +38,9 @@
     };
     networking.firewall.allowedTCPPorts = [ 9102 ];
 
-    environment.etc."bacula/shutdown.sh".source = lib.mkIf config.services.bacula-fd.shutdownOnFinish ./shutdown.sh;
+    environment.etc."bacula/shutdown.sh" = {
+      source = ./shutdown.sh;
+      enable = config.services.bacula-fd.shutdownOnFinish;
+    };
   };
 }
