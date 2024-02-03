@@ -6,6 +6,7 @@ keys:
   - &nebula-lighthouse age109w25c2fjtv2wslwy8hvsms4r6hjmrkfucq2mysskz6wg5jg5s7ql98tzn
   - &r-desktop age1pkwflrjlcf494fcc48rqmcnf0xq5as0ly6w95leq350r9tk4pg8qutw0sc
   - &ssl-proxy age1y3wylf37kmspatvwj4884r7pn87mlhvcpejudsyv0dkthvmqmurslukpu0
+  - &jasmine-laptop age1y3wylf37kmspatvwj4884r7pn87mlhvcpejudsyv0dkthvmqmurslukpu0
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -51,9 +52,15 @@ creation_rules:
       - *surface
       - *nebula-lighthouse
       - *packete
-      - *smb
       - *r-desktop
       - *ssl-proxy
-  - key_groups:
+  - path_regex: ^secrets/jasmine-laptop/.*$
+    key_groups:
+    - pgp:
+      - *admin
+      age:
+      - *jasmine-laptop
+  - path_regex: ^secrets/.*/.*
+    key_groups:
     - pgp:
       - *admin
