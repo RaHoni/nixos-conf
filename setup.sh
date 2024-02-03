@@ -53,7 +53,7 @@ addNebulaHost() {
 }
 
 printNebulaYAML() {
-    #generate yaml file to store secrets
+    mkdir -p ./secrets/$1
     printf "nebula:\n    $1.key: |\n        $(sed ':a;N;$!ba;s/\n/\n        /g' /mnt/${luksNebulaPath}/${1}.${nebulaDomain}.key)\n    $1.crt: |\n        $(sed ':a;N;$!ba;s/\n/\n        /g' /mnt/${luksNebulaPath}/${1}.${nebulaDomain}.crt)" > "secrets/$1/nebula.yaml"
 }
 
