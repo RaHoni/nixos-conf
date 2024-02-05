@@ -53,6 +53,8 @@
     xkbVariant = "deadacute";
   };
 
+  services.btrfs.autoScrub.enable = true;
+
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
