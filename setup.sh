@@ -14,7 +14,9 @@ sshKeys() {
 
     ssh-keygen -t ed25519 -N "" -f $ed25519key
     ssh-keygen -t rsa -N "" -f $rsakey
-    printf "ssh_host_ed25519_key: |\n$(awk '{print "    " $0}' ${ed25519key}) \nssh_host_rsa_key: |\n$(awk '{print "    " $0}' $rsakey)" > ./secrets/$hostname/sshd.yaml
+    echo $ed25519key
+    echo $rsakey
+    printf "ssh_host_ed25519_key: |+\n$(awk '{print "    " $0}' ${ed25519key})\nssh_host_rsa_key: |+\n$(awk '{print "    " $0}' $rsakey)\n" > ./secrets/$hostname/sshd.yaml
     rm $ed25519key $rsakey
     sops -i -e secrets/$hostname/sshd.yaml
     git add secrets/$hostname/sshd.yaml
@@ -54,7 +56,7 @@ addNebulaHost() {
 
 printNebulaYAML() {
     mkdir -p ./secrets/$1
-    printf "nebula:\n    $1.key: |\n        $(sed ':a;N;$!ba;s/\n/\n        /g' /mnt/${luksNebulaPath}/${1}.${nebulaDomain}.key)\n    $1.crt: |\n        $(sed ':a;N;$!ba;s/\n/\n        /g' /mnt/${luksNebulaPath}/${1}.${nebulaDomain}.crt)" > "secrets/$1/nebula.yaml"
+    printf "nebula:\n    $1.key: |\n$(awk '{print "        " $0}' /mnt/${luksNebulaPath}/${1}.${nebulaDomain}.key)\n    $1.crt: |\n$(awk '{print "        " $0}' /mnt/${luksNebulaPath}/${1}.${nebulaDomain}.crt)\n" > "secrets/$1/nebula.yaml"
 }
 
 openLuks() {
