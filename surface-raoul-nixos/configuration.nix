@@ -56,12 +56,6 @@
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "de";
-    xkbVariant = "deadacute";
-  };
-
   hardware.bluetooth.enable = true;
 
   # Configure console keymap

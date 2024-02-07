@@ -12,6 +12,16 @@
     optimise.automatic = true;
   };
 
+  services.xserver = {
+    layout = "de";
+    xkbVariant = "deadacute";
+  };
+
+  services.btrfs.autoScrub.enable = true;
+
+  # Enable CUPS for printing
+  services.printing.enable = true;
+
   environment.etc."channels/nixpkgs".source = nixpkgs-stable.outPath;
 
   users.defaultUserShell = pkgs.zsh;
