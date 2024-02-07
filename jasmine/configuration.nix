@@ -58,6 +58,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.teamviewer.enable = true;
 
   programs.kdeconnect.enable = true;
 
