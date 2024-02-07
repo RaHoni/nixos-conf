@@ -4,7 +4,7 @@
   users.users.jasmine = {
     isNormalUser = true;
     description = "Jasmine Weyck"; 
-    hashedPassword = "$y$j9T$yqw8MgUKrAPSaNh9eStRd1$c7ULqdfI4DBbI0pisoQJ1KmXAQiBASPjhZ9N3RX89UA";
+    hashedPassword = "$y$j9T$7Qx5qAFdu1Xkd4NfTU8rJ/$Kv3ZG84UfAtQnsBVSlyghLgMOZcU3A8VpaPl5C4yNW/";
     extraGroups = [ "networkmanager" "wheel" "i2c" ];
     packages = with pkgs; [
       keepassxc
