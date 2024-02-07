@@ -3,7 +3,7 @@
 {
   users.users.jasmine = {
     isNormalUser = true;
-    description = "Raoul Honermann";
+    description = "Jasmine Weyck"; 
     hashedPassword = "$y$j9T$yqw8MgUKrAPSaNh9eStRd1$c7ULqdfI4DBbI0pisoQJ1KmXAQiBASPjhZ9N3RX89UA";
     extraGroups = [ "networkmanager" "wheel" "i2c" ];
     packages = with pkgs; [
