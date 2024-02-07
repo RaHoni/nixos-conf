@@ -1,11 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [ ./../generic/users ];
   home.stateVersion = "23.11";
-  programs.thunderbird = {
-    enable = true;
-    profiles.jasmine = {
-      isDefault = true;
-    };
-  };
+  home.packages = with pkgs; [
+    thunderbird
+  ];
 }
