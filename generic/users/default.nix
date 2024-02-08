@@ -19,6 +19,12 @@ in
       enable = true;
       extraConfig = "user raoul";
       matchBlocks = {
+        jasmine = {
+          hostname = "jasmine-lapop.nb.honermann.info";
+          user = "jasmine";
+          identityFile = sshIdentity "support";
+          identitiesOnly = true;
+        };
         "github.com" = {
           #hostname = "ssh.github.com";
           user = "git";
