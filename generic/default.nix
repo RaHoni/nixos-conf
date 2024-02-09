@@ -17,7 +17,7 @@
     xkbVariant = "deadacute";
   };
 
-  services.btrfs.autoScrub.enable = true;
+  #services.btrfs.autoScrub.enable = true;
 
   # Enable CUPS for printing
   services.printing.enable = true;

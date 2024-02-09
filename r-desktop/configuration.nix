@@ -70,7 +70,7 @@
     nssmdns = true;
     openFirewall = true;
   };
-
+  services.gvfs.enable = true;
   programs.adb.enable = true;
 
   # Enable sound with pipewire.
