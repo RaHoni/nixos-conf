@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -21,7 +22,7 @@
   networking.hostName = "jasmine-laptop"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Enable X11
   services.xserver.enable = true;
@@ -40,7 +41,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     libreoffice
     wget
     git
@@ -49,7 +50,7 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:RaHoni/nixos-conf";
-  }
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
