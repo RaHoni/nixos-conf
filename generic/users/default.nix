@@ -20,7 +20,7 @@ in
       extraConfig = "user raoul";
       matchBlocks = {
         jasmine = {
-          hostname = "jasmine-lapop.nb.honermann.info";
+          hostname = "jasmine-laptop.nb.honermann.info";
           user = "jasmine";
           identityFile = sshIdentity "support";
           identitiesOnly = true;
