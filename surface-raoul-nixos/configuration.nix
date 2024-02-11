@@ -111,6 +111,7 @@
 
 
   programs = {
+    adb.enable = true;
     kdeconnect.enable = true;
     steam.enable = true;
   };
