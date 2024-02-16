@@ -1,4 +1,9 @@
-{ self, config, pkgs, nixpkgs-stable, ... }:
+{ self, config, pkgs, nixpkgs-stable, nixpkgs, ... }:
+let 
+base = "/etc/nixpkgs/channels";
+  nixpkgsPath = "${base}/nixpkgs";
+  nixpkgs-unstablePath = "${base}/nixpkgs-unstable";
+in
 {
   imports = [
     ./sops.nix
@@ -8,9 +13,22 @@
 
   nix = {
     settings.experimental-features = [ "nix-command" "flakes" ];
-    registry.nixpkgs.flake = nixpkgs-stable;
     optimise.automatic = true;
-  };
+    registry = {
+      nixpkgs.flake = nixpkgs-stable;
+      nixpkgs-unstable.flake = nixpkgs;
+    };
+    nixPath = [
+        "nixpkgs=${nixpkgsPath}"
+        "nixpkgs-unstable=${nixpkgs-unstablePath}"
+        "/nix/var/nix/profiles/per-user/root/channels"
+      ];
+    };
+
+    systemd.tmpfiles.rules = [
+      "L+ ${nixpkgsPath}     - - - - ${nixpkgs-stable}"
+      "L+ ${nixpkgs-unstablePath} - - - - ${nixpkgs}"
+    ];
 
   services.xserver = {
     layout = "de";
@@ -22,7 +40,8 @@
   # Enable CUPS for printing
   services.printing.enable = true;
 
-  environment.etc."channels/nixpkgs".source = nixpkgs-stable.outPath;
+  #environment.etc."channels/nixpkgs".source = nixpkgs-stable.outPath;
+
 
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
