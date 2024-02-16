@@ -5,7 +5,7 @@
     isNormalUser = true;
     description = "Raoul Honermann";
     hashedPassword = "$y$j9T$2qmWuo6/DJXoG.45LLjDX/$Y/NnNHfsQXULwubyI1lPavjfe3fYv/KTWMR4aPLhsSB";
-    extraGroups = [ "networkmanager" "wheel" "i2c" ];
+    extraGroups = [ "networkmanager" "wheel" "i2c" "adbuser"];
     packages = with pkgs; [
       keepassxc
       jetbrains.webstorm
