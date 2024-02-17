@@ -45,6 +45,7 @@
     libreoffice
     wget
     git
+    firefox
   ];
 
   system.autoUpgrade = {
