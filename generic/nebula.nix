@@ -25,6 +25,7 @@ in
   # nebula config
   services.nebula.networks."${netName}" = rec {
     enable = true;
+    listen.port = lib.mkDefault 0;
     ca = config.sops.secrets."nebula/ca.crt".path;
     key = config.sops.secrets."nebula/${hostName}.key".path;
     cert = config.sops.secrets."nebula/${hostName}.crt".path;
