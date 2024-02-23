@@ -41,6 +41,12 @@
       options = [ "subvol=nix" "compress=zstd" "noatime" ];
     };
 
+  fileSystems."/mnt/arch" = {
+    device = "/dev/disk/by-uuid/a5a903f2-9a3b-45b5-8c92-544107ae9bb2";
+    fsType = "btrfs";
+    options = [ "subvol=arch-root" "compress=zstd" "noatime" "noauto" "user" ];
+  };
+
   fileSystems."/boot" =
     {
       device = "/dev/disk/by-uuid/D0D5-FFD7";
