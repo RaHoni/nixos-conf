@@ -7,6 +7,7 @@ keys:
   - &r-desktop age1pkwflrjlcf494fcc48rqmcnf0xq5as0ly6w95leq350r9tk4pg8qutw0sc
   - &ssl-proxy age1y3wylf37kmspatvwj4884r7pn87mlhvcpejudsyv0dkthvmqmurslukpu0
   - &jasmine-laptop age124h0tx68mcsg9q4cfujl2yxd6vpvshrsvwf29u2x0yer0egt9exs5fmjhj
+  - &audiobooks age1lywvqnrhwlcnwhw34ry02thte2jatguz5wcq63gymphn9tn47uds0t9dr9
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -44,6 +45,12 @@ creation_rules:
       - *admin
       age:
       - *ssl-proxy
+  - path_regex: ^secrets/audiobooks/.*$
+    key_groups:
+    - pgp:
+      - *admin
+      age:
+      - *audiobooks
   - path_regex: ^secrets/[^/]*$
     key_groups:
     - pgp:
