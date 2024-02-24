@@ -54,6 +54,16 @@ in
         };
       };
 
+      "hoerbuecher.honermann.info" = {
+        enableACME = true;
+        forceSSL = true;
+        http2 = true;
+        locations."/" = {
+          proxyPass = "http://${subnet}209:8000";
+          proxyWebsockets = true;
+        };
+      };
+
       "packete.honermann.info" = {
         enableACME = true;
         forceSSL = true;
