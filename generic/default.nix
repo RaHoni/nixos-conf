@@ -1,6 +1,6 @@
 { self, config, pkgs, nixpkgs-stable, nixpkgs, ... }:
-let 
-base = "/etc/nixpkgs/channels";
+let
+  base = "/etc/nixpkgs/channels";
   nixpkgsPath = "${base}/nixpkgs";
   nixpkgs-unstablePath = "${base}/nixpkgs-unstable";
 in
@@ -19,16 +19,16 @@ in
       nixpkgs-unstable.flake = nixpkgs;
     };
     nixPath = [
-        "nixpkgs=${nixpkgsPath}"
-        "nixpkgs-unstable=${nixpkgs-unstablePath}"
-        "/nix/var/nix/profiles/per-user/root/channels"
-      ];
-    };
-
-    systemd.tmpfiles.rules = [
-      "L+ ${nixpkgsPath}     - - - - ${nixpkgs-stable}"
-      "L+ ${nixpkgs-unstablePath} - - - - ${nixpkgs}"
+      "nixpkgs=${nixpkgsPath}"
+      "nixpkgs-unstable=${nixpkgs-unstablePath}"
+      "/nix/var/nix/profiles/per-user/root/channels"
     ];
+  };
+
+  systemd.tmpfiles.rules = [
+    "L+ ${nixpkgsPath}     - - - - ${nixpkgs-stable}"
+    "L+ ${nixpkgs-unstablePath} - - - - ${nixpkgs}"
+  ];
 
   services.xserver = {
     layout = "de";
@@ -80,8 +80,8 @@ in
     #      oh-my-zsh = {
     ohMyZsh = {
       enable = true;
-      customPkgs = with pkgs; [ zsh-nix-shell zsh-powerlevel10k zsh-you-should-use ];
-      plugins = [ "git" "sudo" "nix-shell" "you-should-use" ];
+      customPkgs = with pkgs; [ zsh-nix-shell zsh-powerlevel10k zsh-you-should-use zsh-autosuggestions ];
+      plugins = [ "git" "sudo" "nix-shell" "you-should-use" "zsh-autosuggestions" ];
       theme = "powerlevel10k/powerlevel10k";
     };
     shellAliases = {

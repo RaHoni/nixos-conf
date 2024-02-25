@@ -15,4 +15,9 @@
       install -D scripts/* --target-directory=$out/share/zsh/plugins/nix-shell/scripts
     '';
   };
+  zsh-autosuggestions = prev.zsh-autosuggestions.overrideAttrs {
+    installPhase = ''
+      install -D zsh-autosuggestions* --target-directory $out/share/zsh/plugins/zsh-autosuggestions
+    '';
+  };
 })
