@@ -76,6 +76,13 @@ closeLuks() {
 
 }
 
+printHelp() {
+    echo Usage:
+    echo    ./setup.sh sshKeys \<hostname\>
+    echo    ./setup.sh updateNebula
+    echo    ./setup.sh addNebula \<hostname\> \<nebulaIp\> \<groups\>
+}
+
 cd $(dirname "$0")
 pwd
 case $1 in
@@ -97,6 +104,7 @@ addNebula)
     ;;
     *)
     echo Unknown Command
+    printHelp
     exit 1
     ;;
 esac
