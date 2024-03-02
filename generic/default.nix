@@ -1,14 +1,19 @@
-{ self, config, pkgs, nixpkgs-stable, nixpkgs, ... }:
-let
+{ self, config, pkgs, nixpkgs-stable, nixpkgs, lib, ... }:
+let 
   base = "/etc/nixpkgs/channels";
   nixpkgsPath = "${base}/nixpkgs";
   nixpkgs-unstablePath = "${base}/nixpkgs-unstable";
+  nixpkgs-stablePath ="${base}/nixpkgs-stable";
 in
 {
+  options.local.stable = lib.mkOption {
+    default = true;
+    type = lib.types.bool;
+  };
   imports = [
     ./sops.nix
   ];
-
+config = {
   system.configurationRevision = self.shortRev or self.dirtyShortRev;
 
   nix = {
@@ -19,16 +24,18 @@ in
       nixpkgs-unstable.flake = nixpkgs;
     };
     nixPath = [
-      "nixpkgs=${nixpkgsPath}"
-      "nixpkgs-unstable=${nixpkgs-unstablePath}"
-      "/nix/var/nix/profiles/per-user/root/channels"
-    ];
-  };
+        "nixpkgs=${nixpkgsPath}"
+        "nixpkgs-unstable=${nixpkgs-unstablePath}"
+        "nixpkgs-stable=${nixpkgs-stablePath}"
+        "/nix/var/nix/profiles/per-user/root/channels"
+      ];
+    };
 
-  systemd.tmpfiles.rules = [
-    "L+ ${nixpkgsPath}     - - - - ${nixpkgs-stable}"
-    "L+ ${nixpkgs-unstablePath} - - - - ${nixpkgs}"
-  ];
+    systemd.tmpfiles.rules = [
+      "L+ ${nixpkgsPath}     - - - - ${if config.local.stable then nixpkgs-stable else nixpkgs}"
+      "L+ ${nixpkgs-unstablePath} - - - - ${nixpkgs}"
+      "L+ ${nixpkgs-stablePath} - - - - ${nixpkgs-stable}"
+      ];
 
   services.xserver = {
     layout = "de";
@@ -39,7 +46,7 @@ in
 
   # Enable CUPS for printing
   services.printing.enable = true;
-
+  services.printing.drivers = [ pkgs.gutenprint ];
   #environment.etc."channels/nixpkgs".source = nixpkgs-stable.outPath;
 
 
@@ -105,4 +112,5 @@ in
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
+};
 }

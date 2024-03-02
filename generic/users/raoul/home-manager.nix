@@ -15,6 +15,10 @@ with lib;
 
   '';
 
+  home.packages = with pkgs; [
+  qalculate-gtk
+  ];
+
   services.gpg-agent = {
     enable = true;
     pinentryFlavor = "qt";

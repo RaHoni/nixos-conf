@@ -31,7 +31,7 @@
     nix-on-droid.inputs.nixpkgs.follows = "nixpkgs";
     nix-on-droid.inputs.home-manager.follows = "home-manager";
 
-    inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
   };
 
@@ -53,7 +53,7 @@
   outputs = { self, ... }@inputs:
     with inputs;
     let
-      stable-nixpkgs = system: import nixpkgs-stable {
+      pkgsConfig = pkgs: system: import pkgs {
         overlays = [
           (import ./generic/overlays)
         ];
@@ -62,17 +62,30 @@
           allowUnfree = true; #allow Unfree packages
         };
       };
+
+      stable-nixpkgs = system: pkgsConfig nixpkgs-stable system;
       overlays = system: final: prev: {
-        unstable = import nixpkgs {
-          overlays = [ (import ./generic/overlays) ];
-          inherit system;
-          config.allowUnfree = true;
-        };
+        stable = pkgsConfig nixpkgs-stable system;
+        unstable = pkgsConfig nixpkgs system;
         ffmpeg-vpl = import nixpkgs-ffmpeg {
           overlays = [ (import ./generic/overlays/ffmpeg.nix) ];
           inherit system;
           config.allowUnfree = true;
+          modules = [
+            ./generic
+          ];
         };
+      };
+
+      makeSystem = { systemModules, stable ? true, proxmox ? false, system ? "x86_64-linux", ... }: nixpkgs-stable.lib.nixosSystem rec {
+        pkgs = stable-nixpkgs system; #if stable then pkgsConfig nixpkgs-stable system else pkgsConfig nixpkgs system;
+        inherit system;
+        specialArgs = inputs; #{inputs, stable};
+        modules = [
+          #./generic/newDefault.nix
+        ]
+        ++ systemModules
+        ++ nixpkgs.lib.lists.optionals proxmox [ ./generic/proxmox.nix ];
       };
     in
     rec {
@@ -87,7 +100,7 @@
             ./generic/nebula.nix
             nixos-hardware.nixosModules.microsoft-surface-go
             ./generic/pim.nix
-             home-manager-stable.nixosModules.home-manager
+            home-manager-stable.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
