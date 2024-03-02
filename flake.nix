@@ -31,6 +31,8 @@
     nix-on-droid.inputs.nixpkgs.follows = "nixpkgs";
     nix-on-droid.inputs.home-manager.follows = "home-manager";
 
+    inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
   };
 
   nixConfig = {
@@ -83,8 +85,9 @@
             ./surface-raoul-nixos/configuration.nix
             ./generic
             ./generic/nebula.nix
+            nixos-hardware.nixosModules.microsoft-surface-go
             ./generic/pim.nix
-            home-manager-stable.nixosModules.home-manager
+             home-manager-stable.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
