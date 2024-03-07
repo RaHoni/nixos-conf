@@ -1,8 +1,8 @@
-{ config, pkgs, inputs, homeManagerModules, homeManagerExtraSpecialArgs, stable, ...}:
+{ config, pkgs, inputs, homeManagerModules, stable, nebula, ... }:
 
 {
   # import common.nix and home manager module depending on if system uses stable or unstable packages
-  imports = if stable then [ inputs.home-manager-stable.nixosModules.home-manager ./common.nix ] else [ inputs.home-manager.nixosModules.home-manager ./common.nix ];
+  imports = if stable then [ inputs.home-manager-stable.nixosModules.home-manager ./default.nix ] else [ inputs.home-manager.nixosModules.home-manager ./default.nix ];
 
   #set zsh as default shell
   environment.shells = with pkgs; [ zsh ];
