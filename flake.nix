@@ -24,7 +24,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    private-nixpkgs.url = "github:rahoni/nixpkgs";
+    private-nixpkgs.url = "github:rahoni/nixpkgs/baculaTls";
     #private-nixpkgs.url = "/home/raoul/Programmieren/nixos/nixpkgs";
 
     nix-on-droid.url = "github:nix-community/nix-on-droid/release-23.05";
