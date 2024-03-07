@@ -8,6 +8,7 @@
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
+  system.configurationRevision = inputs.self.shortRev or inputs.self.dirtyShortRev;
 
   #home manager setup
   programs.dconf.enable = true;
