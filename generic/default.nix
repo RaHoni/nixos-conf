@@ -1,9 +1,9 @@
-{ self, config, pkgs, nixpkgs-stable, nixpkgs, lib, ... }:
-let 
+{ config, pkgs, inputs, lib, ... }:
+let
   base = "/etc/nixpkgs/channels";
   nixpkgsPath = "${base}/nixpkgs";
   nixpkgs-unstablePath = "${base}/nixpkgs-unstable";
-  nixpkgs-stablePath ="${base}/nixpkgs-stable";
+  nixpkgs-stablePath = "${base}/nixpkgs-stable";
 in
 {
   options.local.stable = lib.mkOption {
@@ -14,14 +14,15 @@ in
     ./sops.nix
   ];
 config = {
-  system.configurationRevision = self.shortRev or self.dirtyShortRev;
+  #system.configurationRevision = self.shortRev or self.dirtyShortRev;
+
 
   nix = {
     settings.experimental-features = [ "nix-command" "flakes" ];
     optimise.automatic = true;
     registry = {
-      nixpkgs.flake = nixpkgs-stable;
-      nixpkgs-unstable.flake = nixpkgs;
+      nixpkgs.flake = inputs.nixpkgs-stable;
+      nixpkgs-unstable.flake = inputs.nixpkgs;
     };
     nixPath = [
         "nixpkgs=${nixpkgsPath}"
@@ -32,9 +33,9 @@ config = {
     };
 
     systemd.tmpfiles.rules = [
-      "L+ ${nixpkgsPath}     - - - - ${if config.local.stable then nixpkgs-stable else nixpkgs}"
-      "L+ ${nixpkgs-unstablePath} - - - - ${nixpkgs}"
-      "L+ ${nixpkgs-stablePath} - - - - ${nixpkgs-stable}"
+      "L+ ${nixpkgsPath}     - - - - ${if config.local.stable then inputs.nixpkgs-stable else inputs.nixpkgs}"
+      "L+ ${nixpkgs-unstablePath} - - - - ${inputs.nixpkgs}"
+      "L+ ${nixpkgs-stablePath} - - - - ${inputs.nixpkgs-stable}"
       ];
 
   services.xserver = {
