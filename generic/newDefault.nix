@@ -10,6 +10,7 @@
   users.defaultUserShell = pkgs.zsh;
   system.configurationRevision = inputs.self.shortRev or inputs.self.dirtyShortRev;
 
+  local.nebula.enable = nebula;
   #home manager setup
   programs.dconf.enable = true;
   home-manager = with inputs; {
