@@ -13,28 +13,33 @@
   local.nebula.enable = nebula;
   #home manager setup
   programs.dconf.enable = true;
-  home-manager = with inputs; {
+  home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {
+    backupFileExtension = "bak";
+    /*
+      homeextraSpecialArgs = {
       #pass nixneovim as additional Arg to home-manager config
       inherit nixvim;
-    } // homeManagerExtraSpecialArgs;
+      }
+    */
     /*
       homeManagerModules is a attribute set of users which are lists of paths to import into home manager
       the following will change the users to attribute sets with home manager config
     */
-    users = builtins.mapAttrs ( userName: modules:
-      {
-        imports = if stable then modules ++ [ inputs.nixvim-stable.homeManagerModules.nixvim ] else modules ++ [ inputs.nixvim.homeManagerModules.nixvim ];
+    users = builtins.mapAttrs
+      (userName: modules:
+        {
+          imports = if stable then modules ++ [ inputs.nixvim-stable.homeManagerModules.nixvim ] else modules ++ [ inputs.nixvim.homeManagerModules.nixvim ];
 
-        home.username = userName;
-        home.homeDirectory = if userName == "root" then "/root" else "/home/${userName}";
+          home.username = userName;
+          home.homeDirectory = if userName == "root" then "/root" else "/home/${userName}";
 
-        programs.home-manager.enable = true;
-        home.stateVersion = config.system.stateVersion;
-      }
-    ) homeManagerModules;
+          programs.home-manager.enable = true;
+          home.stateVersion = config.system.stateVersion;
+        }
+      )
+      homeManagerModules;
   };
 
 }
