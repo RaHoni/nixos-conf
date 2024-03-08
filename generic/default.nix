@@ -32,6 +32,8 @@ in
       ];
     };
 
+    security.sudo.extraConfig = "Defaults env_keep += SSH_AUTH_SOCK";
+
     systemd.tmpfiles.rules = [
       "L+ ${nixpkgsPath}     - - - - ${if config.local.stable then inputs.nixpkgs-stable else inputs.nixpkgs}"
       "L+ ${nixpkgs-unstablePath} - - - - ${inputs.nixpkgs}"
