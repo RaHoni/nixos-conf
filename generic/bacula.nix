@@ -1,4 +1,4 @@
-{ config, private-nixpkgs, lib, ... }:
+{ config, inputs, lib, ... }:
 {
   options = {
     services.bacula-fd.shutdownOnFinish = lib.mkOption {
@@ -8,7 +8,7 @@
     };
   };
   disabledModules = [ "services/backup/bacula.nix" ];
-  imports = [ "${private-nixpkgs}/nixos/modules/services/backup/bacula.nix" ];
+  imports = [ "${inputs.private-nixpkgs}/nixos/modules/services/backup/bacula.nix" ];
   config = {
     sops.secrets = {
       "bacula/cacert" = { };

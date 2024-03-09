@@ -2,7 +2,7 @@
 with lib;
 {
   imports = [ ./../default.nix ./plasma.nix ];
-  home.stateVersion = "23.05";
+  #  home.stateVersion = "23.05";
   home.file.".config/kate/lspclient/settings.json".text = ''
       {
         "servers": {
@@ -16,7 +16,7 @@ with lib;
   '';
 
   home.packages = with pkgs; [
-  qalculate-gtk
+    qalculate-gtk
   ];
 
   services.gpg-agent = {

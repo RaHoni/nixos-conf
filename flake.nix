@@ -24,7 +24,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    private-nixpkgs.url = "github:rahoni/nixpkgs";
+    private-nixpkgs.url = "github:rahoni/nixpkgs/baculaTls";
     #private-nixpkgs.url = "/home/raoul/Programmieren/nixos/nixpkgs";
 
     nix-on-droid.url = "github:nix-community/nix-on-droid/release-23.05";
@@ -39,14 +39,17 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.garnix.io"
+      "https://rahoni.cachix.org"
     ];
     extra-trusted-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.garnix.io"
+      "https://rahoni.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+      "rahoni.cachix.org-1:iCKI8r6HT5rToodXfecglGJnPTaOaGzNeAS5wawMuMM="
     ];
   };
 
@@ -77,12 +80,23 @@
         };
       };
 
-      makeSystem = { systemModules, stable ? true, proxmox ? false, system ? "x86_64-linux", ... }: nixpkgs-stable.lib.nixosSystem rec {
+      makeSystem = { systemModules, homeManagerModules ? [ ], stable ? true, proxmox ? false, system ? "x86_64-linux", nebula ? false, ... }: nixpkgs-stable.lib.nixosSystem rec {
         pkgs = stable-nixpkgs system; #if stable then pkgsConfig nixpkgs-stable system else pkgsConfig nixpkgs system;
         inherit system;
-        specialArgs = inputs; #{inputs, stable};
+        specialArgs = {
+          inherit inputs stable nebula; #ToDO: also make proxmox an option
+          homeManagerModules = nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc) [ ] [
+            {
+              root = [
+                ./generic/users/root/home-manager.nix
+              ];
+            }
+            homeManagerModules
+          ];
+        };
         modules = [
-          #./generic/newDefault.nix
+          ./generic/newDefault.nix
+          ./generic/nebula.nix
         ]
         ++ systemModules
         ++ nixpkgs.lib.lists.optionals proxmox [ ./generic/proxmox.nix ];
@@ -90,183 +104,79 @@
     in
     rec {
       nixosConfigurations = {
-        surface-raoul-nixos = nixpkgs-stable.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          pkgs = stable-nixpkgs system;
-          specialArgs = inputs;
-          modules = [
+        surface-raoul-nixos = makeSystem {
+          systemModules = [
             ./surface-raoul-nixos/configuration.nix
-            ./generic
-            ./generic/nebula.nix
-            nixos-hardware.nixosModules.microsoft-surface-go
             ./generic/pim.nix
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                backupFileExtension = "bak";
-                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager nixvim-stable.homeManagerModules.nixvim ];
-                users = {
-                  raoul = import ./surface-raoul-nixos/raoulHM.nix;
-                  root = import ./generic/users/root/home-manager.nix;
-                };
-              };
-            }
+            nixos-hardware.nixosModules.microsoft-surface-go
           ];
+          homeManagerModules = {
+            raoul = [
+              ./surface-raoul-nixos/raoulHM.nix
+              plasma-manager.homeManagerModules.plasma-manager
+            ];
+          };
+          nebula = true;
         };
 
-        r-desktop = nixpkgs-stable.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          pkgs = stable-nixpkgs system;
-          specialArgs = inputs;
-          modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ (overlays system) ]; })
+
+        r-desktop = makeSystem {
+          systemModules = [
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ (overlays "x86_64-linux") ]; })
             ./r-desktop/configuration.nix
             ./r-desktop/bacula.nix
             ./r-desktop/pio.nix
             ./r-desktop/incron.nix
-            ./generic
-            ./generic/nebula.nix
             ./generic/pim.nix
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                backupFileExtension = "bak";
-                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager nixvim-stable.homeManagerModules.nixvim ];
-                users = {
-                  raoul = import ./r-desktop/raoulHM.nix;
-                  root = import ./generic/users/root/home-manager.nix;
-                  ffmpeg = import ./r-desktop/ffmpeg-home.nix;
-                };
-              };
-            }
           ];
+          homeManagerModules = {
+            raoul = [ ./r-desktop/raoulHM.nix plasma-manager.homeManagerModules.plasma-manager ];
+            ffmpeg = [ ./generic/users ];
+          };
+          nebula = true;
         };
 
-        jasmine-laptop = nixpkgs-stable.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          pkgs = stable-nixpkgs system;
-          specialArgs = inputs;
-          modules = [
-            ./jasmine
-            ./generic/default.nix
-            ./generic/pim.nix
-            ./generic/nebula.nix
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                backupFileExtension = "bak";
-                sharedModules = [ ];
-                users = {
-                  jasmine = import ./jasmine/jasmineHM.nix;
-                  root = import ./generic/users/root/home-manager.nix;
-                };
-              };
-            }
+        jasmine-laptop = makeSystem {
+          systemModules = [
+            ./jasmine/default.nix
           ];
+          homeManagerModules = {
+            jasmine = [ ./jasmine/jasmineHM.nix ];
+          };
+          nebula = true;
         };
 
-        packete = nixpkgs-stable.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          pkgs = stable-nixpkgs system;
-          specialArgs = inputs;
-          modules = [
+        packete = makeSystem {
+          systemModules = [
             ./packete/configuration.nix
-            ./generic
-            ./generic/proxmox.nix
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                backupFileExtension = "bak";
-                useGlobalPkgs = true;
-                users = {
-                  root = import ./generic/users/root/home-manager.nix;
-                };
-              };
-            }
           ];
+          proxmox = true;
         };
-        smb = nixpkgs-stable.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          pkgs = stable-nixpkgs system;
-          specialArgs = inputs;
-          modules = [
-            ./smb
-            ./generic
-            ./generic/proxmox.nix
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                backupFileExtension = "bak";
-                useGlobalPkgs = true;
-                users.root = import ./generic/users/root/home-manager.nix;
-              };
-            }
+        smb = makeSystem {
+          systemModules = [
+            ./smb/default.nix
           ];
+          proxmox = true;
         };
-
-        audiobooks = nixpkgs-stable.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          pkgs = stable-nixpkgs system;
-          specialArgs = inputs;
-          modules = [
-            ./audiobooks
-            ./generic
-            ./generic/proxmox.nix
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                backupFileExtension = "bak";
-                useGlobalPkgs = true;
-                users.root = import ./generic/users/root/home-manager.nix;
-              };
-            }
+        audiobooks = makeSystem {
+          systemModules = [
+            ./audiobooks/default.nix
           ];
+          proxmox = true;
         };
-
-        ssl-proxy = nixpkgs-stable.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          pkgs = stable-nixpkgs system;
-          specialArgs = inputs;
-          modules = [
-            ./proxy
-            ./generic
-            ./generic/proxmox.nix
+        ssl-proxy = makeSystem {
+          systemModules = [
+            ./proxy/default.nix
             ./generic/proxy.nix
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                backupFileExtension = "bak";
-                useGlobalPkgs = true;
-                users.root = import ./generic/users/root/home-manager.nix;
-              };
-            }
           ];
+          proxmox = true;
         };
-
-
-        nebula-lighthouse = nixpkgs-stable.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          pkgs = stable-nixpkgs system;
-          specialArgs = inputs;
-          modules = [
+        nebula-lighthouse = makeSystem {
+          systemModules = [
             ./nebula-lighthouse/configuration.nix
-            ./generic
-            ./generic/proxmox.nix
-            ./generic/nebula.nix
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                backupFileExtension = "bak";
-                useGlobalPkgs = true;
-                users = {
-                  root = import ./generic/users/root/home-manager.nix;
-                };
-              };
-            }
           ];
+          nebula = true;
+          proxmox = true;
         };
 
         aarch64-image = nixpkgs-stable.lib.nixosSystem
