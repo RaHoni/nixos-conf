@@ -449,11 +449,11 @@
     },
     "private-nixpkgs": {
       "locked": {
-        "lastModified": 1709298717,
-        "narHash": "sha256-PlOSXjVVVRhxPAC3z4+Pcp206xw3B/AetawarOBc6O4=",
+        "lastModified": 1710185576,
+        "narHash": "sha256-dOPUoY0Fr5Z882oupQdSuB5UHbBFRzrE2ZJLzUzRbjU=",
         "owner": "rahoni",
         "repo": "nixpkgs",
-        "rev": "2af073f716056bbf0d1997edd002807cc4def83e",
+        "rev": "ee0bc95d48f9671fad4b7a2f394b2b1f7cb3b348",
         "type": "github"
       },
       "original": {
