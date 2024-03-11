@@ -80,7 +80,7 @@
         };
       };
 
-      makeSystem = { systemModules, homeManagerModules ? [ ], stable ? true, proxmox ? false, system ? "x86_64-linux", nebula ? false, ... }: nixpkgs-stable.lib.nixosSystem rec {
+      makeSystem = { systemModules, homeManagerModules ? { }, stable ? true, proxmox ? false, system ? "x86_64-linux", nebula ? false, ... }: nixpkgs-stable.lib.nixosSystem rec {
         pkgs = stable-nixpkgs system; #if stable then pkgsConfig nixpkgs-stable system else pkgsConfig nixpkgs system;
         inherit system;
         specialArgs = {
