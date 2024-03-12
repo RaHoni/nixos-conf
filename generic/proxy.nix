@@ -44,6 +44,13 @@ in
         };
       };
 
+      "nextcloud.honermann.info" = {
+        enableACME = true;
+        forceSSL = true;
+        http2 = true;
+
+      };
+
       "calibre.honermann.info" = {
         enableACME = true;
         forceSSL = true;

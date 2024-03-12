@@ -179,6 +179,13 @@
           proxmox = true;
         };
 
+        nextcloud = makeSystem {
+          systemModules = [
+            ./nextcloud/default.nix
+          ];
+          proxmox = true;
+        };
+
         aarch64-image = nixpkgs-stable.lib.nixosSystem
           {
             modules = [
