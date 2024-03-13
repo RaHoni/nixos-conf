@@ -5,8 +5,12 @@
   sops.secrets = {
     adminpass = {
       sopsFile = ../secrets/nextcloud/secrets.yaml;
+      owner = config.users.users.nextcloud.name;
     };
   };
+  systemd.tmpfiles.rules = [
+    "d /var/data 770 nextcloud nextcloud"
+  ];
 
   services.nextcloud = {
     enable = true;
@@ -26,7 +30,7 @@
 
 
     extraApps = with pkgs.nextcloud28Packages.apps; {
-      inherit mail calendar       contacts      end_to_end_encryption            forms      polls            groupfolders      impersonate                twofactor_nextcloud_notification      twofactor_webauthn;
+      inherit mail calendar contacts end_to_end_encryption forms polls groupfolders impersonate twofactor_nextcloud_notification twofactor_webauthn;
       #twofactor_totp
       #   # onlyoffice
     };

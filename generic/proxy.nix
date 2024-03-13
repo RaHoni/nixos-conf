@@ -48,7 +48,10 @@ in
         enableACME = true;
         forceSSL = true;
         http2 = true;
-
+        locations."/" = {
+          proxyPass = "http://${subnet}210";
+          proxyWebsockets = true;
+        };
       };
 
       "calibre.honermann.info" = {
