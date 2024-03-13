@@ -24,6 +24,7 @@
       dbtype = "pgsql";
       adminpassFile = config.sops.secrets.adminpass.path;
       defaultPhoneRegion = "DE";
+      extraTrustedDomains = [ "nextcloud.honermann.info" ];
     };
 
     maxUploadSize = "10G";

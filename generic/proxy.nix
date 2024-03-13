@@ -52,6 +52,7 @@ in
           proxyPass = "http://${subnet}210";
           proxyWebsockets = true;
         };
+        extraConfig = "client_max_body_size 8G;";
       };
 
       "calibre.honermann.info" = {
