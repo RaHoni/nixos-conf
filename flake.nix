@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
-    nixpkgs-ffmpeg.url = "github:evanrichter/nixpkgs/libvpl-for-intel-gpu-cp";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -70,7 +69,7 @@
       overlays = system: final: prev: {
         stable = pkgsConfig nixpkgs-stable system;
         unstable = pkgsConfig nixpkgs system;
-        ffmpeg-vpl = import nixpkgs-ffmpeg {
+        ffmpeg-vpl = import nixpkgs {
           overlays = [ (import ./generic/overlays/ffmpeg.nix) ];
           inherit system;
           config.allowUnfree = true;
