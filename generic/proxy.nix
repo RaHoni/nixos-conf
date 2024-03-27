@@ -73,6 +73,7 @@ in
           proxyPass = "http://${subnet}209:8000";
           proxyWebsockets = true;
         };
+        extraConfig = "client_max_body_size 8G;";
       };
 
       "packete.honermann.info" = {
