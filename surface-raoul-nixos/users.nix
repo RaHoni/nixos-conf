@@ -15,7 +15,7 @@
       kleopatra
       whatsapp-for-linux
       ddcutil
-      rnix-lsp
+      #rnix-lsp
       gh
       nixpkgs-fmt
       pre-commit

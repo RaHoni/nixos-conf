@@ -20,7 +20,7 @@
       nixos-generators
       kleopatra
       whatsapp-for-linux
-      rnix-lsp
+      #rnix-lsp
       gh
       tetex
       nixpkgs-fmt
