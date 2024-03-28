@@ -9,5 +9,7 @@
     akonadi-calendar-tools
     akonadi-contacts
     akonadi-search
+    korganizer
+    kaddressbook
   ];
 }
