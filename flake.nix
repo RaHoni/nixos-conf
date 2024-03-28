@@ -185,6 +185,12 @@
           proxmox = true;
         };
 
+        rescueIso = makeSystem {
+          systemModules = [
+            ./rescueIso/configuration.nix
+          ];
+        };
+
         aarch64-image = nixpkgs-stable.lib.nixosSystem
           {
             modules = [
