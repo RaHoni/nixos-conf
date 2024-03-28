@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "firewire_ohci" "xhci_pci" "usb_storage" "sd_mod" "sr_mod" "sdhci_pci" ];
@@ -13,26 +14,32 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  services.btrfs.autoScrub.enable = true;
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a1ab88cd-b980-455c-ad1e-ec756ff6f08a";
+    {
+      device = "/dev/disk/by-uuid/a1ab88cd-b980-455c-ad1e-ec756ff6f08a";
       fsType = "btrfs";
       options = [ "subvol=root" "compress=zstd" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/a1ab88cd-b980-455c-ad1e-ec756ff6f08a";
+    {
+      device = "/dev/disk/by-uuid/a1ab88cd-b980-455c-ad1e-ec756ff6f08a";
       fsType = "btrfs";
       options = [ "subvol=home" "compress=zstd" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/a1ab88cd-b980-455c-ad1e-ec756ff6f08a";
+    {
+      device = "/dev/disk/by-uuid/a1ab88cd-b980-455c-ad1e-ec756ff6f08a";
       fsType = "btrfs";
       options = [ "subvol=nix" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/1115-EFA1";
+    {
+      device = "/dev/disk/by-uuid/1115-EFA1";
       fsType = "vfat";
     };
 

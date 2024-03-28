@@ -20,6 +20,8 @@
     KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
   '';
 
+  services.btrfs.autoScrub.enable = true;
+
   fileSystems."/" =
     {
       device = "/dev/disk/by-uuid/a5a903f2-9a3b-45b5-8c92-544107ae9bb2";

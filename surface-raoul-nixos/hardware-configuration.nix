@@ -18,20 +18,25 @@
     KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
   '';
 
+  services.btrfs.autoScrub.enable = true;
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/45ff13ea-c576-4df6-8fd4-5d39bf28b83a";
+    {
+      device = "/dev/disk/by-uuid/45ff13ea-c576-4df6-8fd4-5d39bf28b83a";
       fsType = "btrfs";
       options = [ "subvol=root" "compress=zstd" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/45ff13ea-c576-4df6-8fd4-5d39bf28b83a";
+    {
+      device = "/dev/disk/by-uuid/45ff13ea-c576-4df6-8fd4-5d39bf28b83a";
       fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd"];
+      options = [ "subvol=home" "compress=zstd" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/45ff13ea-c576-4df6-8fd4-5d39bf28b83a";
+    {
+      device = "/dev/disk/by-uuid/45ff13ea-c576-4df6-8fd4-5d39bf28b83a";
       fsType = "btrfs";
       options = [ "subvol=nix" "compress=zstd" "noatime" ];
     };
