@@ -18,7 +18,7 @@ in
     ssh = {
       enable = true;
       extraConfig = "user raoul";
-      matchBlocks = {
+      matchBlocks = rec {
         jasmine = {
           hostname = "jasmine-laptop.nb.honermann.info";
           user = "jasmine";
@@ -45,7 +45,7 @@ in
           forwardAgent = true;
         };
         ffmpeg = {
-          hostname = "192.168.2.29";
+          hostname = r-desktop.hostname;
           user = "ffmpeg";
           identityFile = sshIdentity "id_ffmpeg";
           identitiesOnly = true;
