@@ -189,6 +189,11 @@
           systemModules = [
             ./rescueIso/configuration.nix
           ];
+          userModules = {
+            live = [
+              ./generic/users/default.nix
+            ];
+          };
         };
 
         aarch64-image = nixpkgs-stable.lib.nixosSystem

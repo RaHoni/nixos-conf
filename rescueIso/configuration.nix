@@ -18,6 +18,24 @@
     keyFile = lib.mkForce "/persitent/lib/sops/key.txt";
   };
 
+  i18n.defaultLocale = "de_DE.UTF-8";
+  
+  #Enable Plasma Desktop Manager
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+
+  # Configure console Keymap
+  console.keyMap = "de";
+
+  users.users.live.openssh.authorizedKeys.keyFiles = [
+    ../generic/sshPubkeys/support.pub
+  ];
+
+  networking.firewall.enable = false;
+
+  system.stateVersion = "23.11";
+
   fileSystems."/persitent" = {
     label = "Ventoy_BTRFS";
     fsType = "btrfs";

@@ -9,6 +9,7 @@ keys:
   - &jasmine-laptop age124h0tx68mcsg9q4cfujl2yxd6vpvshrsvwf29u2x0yer0egt9exs5fmjhj
   - &audiobooks age1lywvqnrhwlcnwhw34ry02thte2jatguz5wcq63gymphn9tn47uds0t9dr9
   - &nextcloud age1fk7kw7s2jng3v7dzm0vrq4ccsu9xwtssj2u2evjdsrz4jksngf4sp0knmp
+  - &rescueIso age1sr0p82j6yr7s0rs0zck20qau86w4rgd7enkcsg8ud20h9z5nyc8q8jpa4c
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -64,6 +65,7 @@ creation_rules:
       - *ssl-proxy
       - *jasmine-laptop
       - *nextcloud
+      - *rescueIso
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
     - pgp:
@@ -76,6 +78,12 @@ creation_rules:
       - *admin
       age:
       - *nextcloud
+  - path_regex: ^secrets/rescueIso/.*$
+    key_groups:
+    - pgp:
+      - *admin
+      age:
+      - *rescueIso
   - path_regex: ^secrets/.*/.*
     key_groups:
     - pgp:
