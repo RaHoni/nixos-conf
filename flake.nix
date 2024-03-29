@@ -188,9 +188,10 @@
         rescueIso = makeSystem {
           systemModules = [
             ./rescueIso/configuration.nix
+            "${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma5.nix"
           ];
           userModules = {
-            live = [
+            nixos = [
               ./generic/users/default.nix
             ];
           };
