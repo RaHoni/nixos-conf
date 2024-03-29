@@ -12,6 +12,12 @@
     wipefreespace
     memtest86plus
     memtest86-efi
+
+    # Calamares for graphical instalation
+    calamares-nixos
+    calamares-nixos-extensions
+    libsForQt5.kpmcore
+    glibcLocales
   ];
 
   sops.age = {
@@ -19,6 +25,7 @@
   };
 
   i18n.defaultLocale = "de_DE.UTF-8";
+  i18n.supportedLocales = [ "all" ];
   
   #Enable Plasma Desktop Manager
   services.xserver.enable = true;
@@ -28,7 +35,7 @@
   # Configure console Keymap
   console.keyMap = "de";
 
-  users.users.live.openssh.authorizedKeys.keyFiles = [
+  users.users.nixos.openssh.authorizedKeys.keyFiles = [
     ../generic/sshPubkeys/support.pub
   ];
 
