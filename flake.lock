@@ -220,6 +220,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-ffmpeg": {
+      "locked": {
+        "lastModified": 1711908064,
+        "narHash": "sha256-33CQQTqI7K1coTxlK/2+PFqiVmEDdijkXzPButHHYio=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "07f01fb40fc01a0e5f9d67400b35f75538d54c0b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "staging-next",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-for-bootstrap": {
       "locked": {
         "lastModified": 1686921029,
@@ -454,6 +470,7 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-ffmpeg": "nixpkgs-ffmpeg",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixvim-stable": "nixvim-stable",
         "plasma-manager": "plasma-manager",

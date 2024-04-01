@@ -5,18 +5,12 @@
     ./users.nix
   ];
 
-  environment.sessionVariables = {
-    INTEL_MEDIA_RUNTIME = "ONEVPL";
-    LIBVA_DRIVER_NAME = "iHD";
-    ONEVPL_SEARCH_PATH = lib.strings.makeLibraryPath (with pkgs.ffmpeg-vpl; [ oneVPL-intel-gpu ]);
-  };
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   #Kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "r-desktop"; # Define your hostname.
 
@@ -51,7 +45,8 @@
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      pkgs.ffmpeg-vpl.onevpl-intel-gpu
+      #intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl

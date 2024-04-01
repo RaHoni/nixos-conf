@@ -31,12 +31,11 @@
 
   system.stateVersion = "23.11";
 
-  fileSystems = lib.mkForce {
-    "/persitent" = {
-      label = "Ventoy_BTRFS";
-      fsType = "btrfs";
-      options = [ "subvol=nixos" "compress=zstd" ];
-    };
+  lib.isoFileSystems."/persitent" = {
+    label = "VentoyBTRFS";
+    fsType = "btrfs";
+    neededForBoot = true;
+    options = [ "subvol=nixos" "compress=zstd" ];
   };
 
 }
