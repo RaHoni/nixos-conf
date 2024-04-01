@@ -186,12 +186,20 @@
           proxmox = true;
         };
 
+        petronillaStreaming = makeSystem {
+          systemModules = [ ./petronillaStreaming/configuration.nix ];
+          homeManagerModules.streaming = [
+            ./generic/users/default.nix
+            ./generic/users/obs.nix
+          ];
+        };
+
         rescueIso = makeSystem {
           systemModules = [
             ./rescueIso/configuration.nix
             "${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma5.nix"
           ];
-          userModules = {
+          homeManagerModules = {
             nixos = [
               ./generic/users/default.nix
             ];
