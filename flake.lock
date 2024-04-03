@@ -395,16 +395,15 @@
     },
     "nixpkgs-ffmpeg": {
       "locked": {
-        "lastModified": 1712145681,
-        "narHash": "sha256-p40EpZDQXCuNy+qNFM5cWXRa8GAL2bVT+0svJdQ+elU=",
+        "lastModified": 1712149361,
+        "narHash": "sha256-JObm2za3OReRiA2wDXFdjPdf82YDCHH1ZE1s9s0HT5E=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e74231f370d6f5927533e8ba6b23767039c49c19",
+        "rev": "7cdc1197ed6e6e8427789725b8ea11fd0ebb2d46",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "staging-next",
         "repo": "nixpkgs",
         "type": "github"
       }
