@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
-    nixpkgs-ffmpeg.url = "github:NixOS/nixpkgs/staging-next";
+    nixpkgs-ffmpeg.url = "github:NixOS/nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,13 +11,22 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    plasma-manager-stable.url = "github:pjones/plasma-manager";
+    plasma-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
+    plasma-manager-stable.inputs.home-manager.follows = "home-manager-stable";
+
     plasma-manager.url = "github:pjones/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs-stable";
-    plasma-manager.inputs.home-manager.follows = "home-manager-stable";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
 
     nixvim-stable = {
       url = "github:nix-community/nixvim/nixos-23.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     sops-nix = {
@@ -113,7 +122,7 @@
           homeManagerModules = {
             raoul = [
               ./surface-raoul-nixos/raoulHM.nix
-              plasma-manager.homeManagerModules.plasma-manager
+              plasma-manager-stable.homeManagerModules.plasma-manager
             ];
           };
           nebula = true;
