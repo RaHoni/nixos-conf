@@ -204,6 +204,8 @@
           homeManagerModules.streaming = [
             ./generic/users/default.nix
             ./generic/users/obs.nix
+            plasma-manager-stable.homeManagerModules.plasma-manager
+            ./petronillaStreaming/hm-streaming.nix
           ];
         };
 
