@@ -200,7 +200,11 @@
         };
 
         petronillaStreaming = makeSystem {
-          systemModules = [ ./petronillaStreaming/configuration.nix ./petronillaStreaming/users.nix ];
+          systemModules = [
+            ./petronillaStreaming/configuration.nix
+            ./petronillaStreaming/users.nix
+            ./generic/nvidea.nix
+          ];
           homeManagerModules.streaming = [
             ./generic/users/default.nix
             ./generic/users/obs.nix
