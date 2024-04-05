@@ -10,6 +10,7 @@ keys:
   - &audiobooks age1lywvqnrhwlcnwhw34ry02thte2jatguz5wcq63gymphn9tn47uds0t9dr9
   - &nextcloud age1fk7kw7s2jng3v7dzm0vrq4ccsu9xwtssj2u2evjdsrz4jksngf4sp0knmp
   - &rescueIso age1sr0p82j6yr7s0rs0zck20qau86w4rgd7enkcsg8ud20h9z5nyc8q8jpa4c
+  - &petronillaStreaming age1psj4h28ulrglqe48qs3mhchlvvvpx9ew6qy7nve5j5uvvsy80a6shqr20a
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -66,6 +67,7 @@ creation_rules:
       - *jasmine-laptop
       - *nextcloud
       - *rescueIso
+      - *petronillaStreaming
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
     - pgp:
@@ -84,6 +86,12 @@ creation_rules:
       - *admin
       age:
       - *rescueIso
+  - path_regex: ^secrets/petronillaStreaming/.*$
+    key_groups:
+    - pgp:
+      - *admin
+      age:
+      - *petronillaStreaming
   - path_regex: ^secrets/.*/.*
     key_groups:
     - pgp:
