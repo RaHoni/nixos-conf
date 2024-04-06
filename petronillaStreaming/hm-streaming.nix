@@ -82,4 +82,5 @@
         "wmclassmatch".value = 1;
       };
     };
-  }
+  };
+}
