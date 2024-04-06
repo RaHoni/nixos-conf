@@ -710,7 +710,8 @@
         "plasma-manager": "plasma-manager",
         "plasma-manager-stable": "plasma-manager-stable",
         "private-nixpkgs": "private-nixpkgs",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "streamdeck-obs": "streamdeck-obs"
       }
     },
     "sops-nix": {
@@ -731,6 +732,26 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "streamdeck-obs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-stable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1712437646,
+        "narHash": "sha256-W8G/GseCKbltd5VNE98eiD0gBVkWW3fJAlVZ5weSRiA=",
+        "owner": "RaHoni",
+        "repo": "streamdeck",
+        "rev": "e1148dd43b904b36a164ee387183b91c6dfa83da",
+        "type": "github"
+      },
+      "original": {
+        "owner": "RaHoni",
+        "repo": "streamdeck",
         "type": "github"
       }
     },

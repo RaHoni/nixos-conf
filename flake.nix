@@ -42,6 +42,9 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    streamdeck-obs.url = "github:RaHoni/streamdeck";
+    streamdeck-obs.inputs.nixpkgs.follows = "nixpkgs-stable";
+
   };
 
   nixConfig = {
