@@ -211,6 +211,7 @@
             plasma-manager-stable.homeManagerModules.plasma-manager
             ./petronillaStreaming/hm-streaming.nix
           ];
+          nebula = true;
         };
 
         rescueIso = makeSystem {
