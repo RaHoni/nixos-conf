@@ -60,6 +60,7 @@
     git
     firefox
     okular
+    kate
   ];
 
 
