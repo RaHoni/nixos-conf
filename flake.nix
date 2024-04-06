@@ -141,12 +141,13 @@
           homeManagerModules = {
             raoul = [
               ./r-desktop/raoulHM.nix
-              plasma-manager.homeManagerModules.plasma-manager
+              plasma-manager-stable.homeManagerModules.plasma-manager
               ./generic/users/obs.nix
             ];
             ffmpeg = [ ./generic/users ];
           };
           nebula = true;
+          #stable = false;
         };
 
         jasmine-laptop = makeSystem {
