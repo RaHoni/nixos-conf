@@ -19,6 +19,12 @@ in
       enable = true;
       extraConfig = "user raoul";
       matchBlocks = rec {
+        streaming = {
+          hostname = "petronillastreaming.nb.honermann.info";
+          user = "streaming";
+          identityFile = sshIdentity "support";
+          identitiesOnly = true;
+        };
         jasmine = {
           hostname = "jasmine-laptop.nb.honermann.info";
           user = "jasmine";
