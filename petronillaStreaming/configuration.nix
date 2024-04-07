@@ -61,7 +61,7 @@
     firefox
     okular
     kate
-    inputs.streamdeck-obs
+    inputs.streamdeck-obs.streamdeck-obs
   ];
 
 
