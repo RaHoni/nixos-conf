@@ -30,7 +30,7 @@
 
   # Enable X11
   services.xserver.enable = true;
-
+  fonts.fontDir.enable = true;
   #Use KDE Plasma
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
@@ -61,7 +61,7 @@
     firefox
     okular
     kate
-    inputs.streamdeck-obs.streamdeck-obs
+    inputs.streamdeck-obs.packages.x86_64-linux.streamdeck-obs
   ];
 
 

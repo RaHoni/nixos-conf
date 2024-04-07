@@ -23,6 +23,7 @@ in
       registry = {
         nixpkgs.flake = inputs.nixpkgs-stable;
         nixpkgs-unstable.flake = inputs.nixpkgs;
+        streamdeck.flake = inputs.streamdeck-obs;
       };
       nixPath = [
         "nixpkgs=${nixpkgsPath}"
