@@ -36,6 +36,8 @@
       #   # onlyoffice
     };
 
+    extraAppsEnable = true;
+
     https = true;
     config.trustedProxies = [ "nextcloud.honermann.info" "honermann.info" ];
   };
