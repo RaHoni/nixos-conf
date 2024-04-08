@@ -93,7 +93,7 @@
       };
 
       makeSystem = { systemModules, homeManagerModules ? { }, stable ? true, proxmox ? false, system ? "x86_64-linux", nebula ? false, ... }: nixpkgs-stable.lib.nixosSystem rec {
-        pkgs = stable-nixpkgs system; #if stable then pkgsConfig nixpkgs-stable system else pkgsConfig nixpkgs system;
+        pkgs = if stable then pkgsConfig nixpkgs-stable system else pkgsConfig nixpkgs system;
         inherit system;
         specialArgs = {
           inherit inputs stable nebula; #ToDO: also make proxmox an option
@@ -201,6 +201,7 @@
             ./nextcloud/default.nix
           ];
           proxmox = true;
+          stable = false;
         };
 
         petronillaStreaming = makeSystem {
