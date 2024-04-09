@@ -13,7 +13,8 @@
       prefixLength = 23;
     }];
 
-
+    tempAddresses = "disabled";
+    
     defaultGateway = {
       address = "192.168.2.1";
       interface = "eth0";
@@ -22,7 +23,6 @@
   #   hardware.enableRedistributableFirmware = true;
   #   networking.wireless.enable = true;
   imports = [ ./nebula.nix ];
-
   # NixOS wants to enable GRUB by default
   #   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
