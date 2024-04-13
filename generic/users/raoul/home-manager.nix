@@ -17,6 +17,7 @@ with lib;
 
   home.packages = with pkgs; [
     qalculate-gtk
+    nextcloud-client
   ];
 
   services.gpg-agent = {
