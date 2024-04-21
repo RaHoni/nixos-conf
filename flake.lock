@@ -742,11 +742,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713687639,
-        "narHash": "sha256-PgdtHb/wvQtdFekhjT38G3B+6Kp//ebqbyaJS0Fabk8=",
+        "lastModified": 1713699710,
+        "narHash": "sha256-Zj/U+K3P1eB8WPositYGY2fwJUSCagoBIffogi9r0KE=",
         "owner": "RaHoni",
         "repo": "streamdeck",
-        "rev": "345ffa1710e6a2012826c3e1c10b30f0e4cd3a5c",
+        "rev": "a28f86a92b5bd5371102ac85ac5181d3fa8c17b5",
         "type": "github"
       },
       "original": {
