@@ -3,17 +3,12 @@ with lib;
 {
   imports = [ ./../default.nix ./plasma.nix ];
   #  home.stateVersion = "23.05";
-  home.file.".config/kate/lspclient/settings.json".text = ''
-      {
-        "servers": {
-            "nix": {
-                "command": ["rnix-lsp"],
-    "highlightingModeRegex": "^nix$"
-    }
-    }
-    }
-
-  '';
+  programs.kate.lsp.customServers = {
+    nix = {
+      command = [ "rnix-lsp" ];
+      highlightingModeRegex = "^nix$";
+    };
+  };
 
   home.packages = with pkgs; [
     qalculate-gtk
