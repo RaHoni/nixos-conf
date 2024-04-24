@@ -1,4 +1,4 @@
-{ pkgs, lib, nixpkgs-ffmpeg, ... }: {
+{ pkgs, lib, inputs, nixpkgs-ffmpeg, ... }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -113,8 +113,10 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
     unstable.wineWowPackages.stable
+    waypipe
     unstable.lutris
     unstable.winetricks
+    inputs.streamdeck-obs.packages.x86_64-linux.streamdeck-obs
   ];
 
   programs = {
