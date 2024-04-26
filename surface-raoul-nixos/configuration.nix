@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, options, ... }:
+{ config, pkgs, options, lib, ... }:
 {
   imports =
     [
@@ -100,7 +100,8 @@
     vlc
     ffmpeg
     nodePackages.bash-language-server
-
+    
+    mysql-workbench
     neovim
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
@@ -139,7 +140,21 @@
     daemonNiceLevel = 19;
   };
 
-  services.teamviewer.enable = true;
+  services = {
+    teamviewer.enable = true;
+    mysql.enable = true;
+    mysql.package = lib.mkDefault pkgs.mariadb;
+    postgresql = {
+      enable = true;
+      ensureUsers = [{
+        name = "root";
+        ensureClauses.superuser = true;
+      }];
+    };
+  };
+
+  environment.unixODBCDrivers = with pkgs.unixODBCDrivers; [ sqlite psql ];
+   
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

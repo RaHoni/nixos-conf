@@ -20,4 +20,7 @@
       install -D zsh-autosuggestions* --target-directory $out/share/zsh/plugins/zsh-autosuggestions
     '';
   };
+  mysql-workbench = prev.mysql-workbench.overrideAttrs {
+    patches = prev.mysql-workbench.patches ++ [./mysql-workbench.patch];
+  };
 })
