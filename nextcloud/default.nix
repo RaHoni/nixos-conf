@@ -21,7 +21,7 @@
     database.createLocally = true;
 
     config = {
-      dbtype = "pgsql";
+      dbtype = "mysql";
       adminpassFile = config.sops.secrets.adminpass.path;
       defaultPhoneRegion = "DE";
       extraTrustedDomains = [ "nextcloud.honermann.info" ];
