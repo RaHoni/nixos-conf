@@ -24,12 +24,14 @@ in
           user = "streaming";
           identityFile = sshIdentity "support";
           identitiesOnly = true;
+          forwardAgent = true;
         };
         jasmine = {
           hostname = "jasmine-laptop.nb.honermann.info";
           user = "jasmine";
           identityFile = sshIdentity "support";
           identitiesOnly = true;
+          forwardAgent = true;
         };
         "github.com" = {
           #hostname = "ssh.github.com";
