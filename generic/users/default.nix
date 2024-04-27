@@ -119,7 +119,7 @@ in
     text = ''
       [Desktop Entry]
       Name=Signal
-      Exec=${pkgs.signal-desktop}/bin/signal-desktop --no-sandbox --start-in-tray %U
+      Exec=LANGUAGE="de-DE:en-US" ${pkgs.signal-desktop}/bin/signal-desktop --no-sandbox --start-in-tray %U
       Terminal=false
       Type=Application
       Icon=signal-desktop
