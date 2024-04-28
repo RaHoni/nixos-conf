@@ -65,7 +65,7 @@
       };
       "kwinrulesrc"."eaa13f46-1681-44e9-abe8-36c663450f8a" = {
         "Description".value = "Window settings for obs";
-        "above".value = true;
+        "above".value = false;
         "aboverule".value = 3;
         "clientmachine".value = "localhost";
         "ignoregeometry".value = true;
