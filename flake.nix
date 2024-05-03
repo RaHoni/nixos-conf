@@ -163,12 +163,6 @@
           nebula = true;
         };
 
-        packete = makeSystem {
-          systemModules = [
-            ./packete/configuration.nix
-          ];
-          proxmox = true;
-        };
         smb = makeSystem {
           systemModules = [
             ./smb/default.nix
