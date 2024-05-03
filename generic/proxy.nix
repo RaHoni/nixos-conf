@@ -101,12 +101,12 @@ in
         http2 = true;
         locations."/".proxyPass = "https://${subnet}204";
       };
-     
+
       "server.honermann.info" = {
         enableACME = true;
         forceSSL = true;
         http2 = true;
-        locations."/".proxyPass = "https://${subnet}1";
+        locations."/".proxyPass = "https://${subnet}1:8006";
       };
 
       "honermann.info" = {
