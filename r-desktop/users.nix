@@ -9,7 +9,7 @@
     isNormalUser = true;
     description = "Raoul Honermann";
     hashedPassword = "$y$j9T$2qmWuo6/DJXoG.45LLjDX/$Y/NnNHfsQXULwubyI1lPavjfe3fYv/KTWMR4aPLhsSB";
-    extraGroups = [ "networkmanager" "wheel" "i2c" "render" "raoul" "dialout" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "i2c" "render" "raoul" "dialout" "adbusers" "video" ];
     packages = with pkgs; [
       keepassxc
       jetbrains.webstorm
@@ -45,7 +45,7 @@
   users.users.ffmpeg = {
     isSystemUser = true; # required if we want UID < 1000
     uid = 900; # Matches old setup and hides it from sddm
-    extraGroups = [ "render" ];
+    extraGroups = [ "render" "video" ];
 
     # things that isNormalUser would give us by default:
     group = "users";
