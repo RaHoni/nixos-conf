@@ -68,7 +68,13 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:RaHoni/nixos-conf";
-    flags = lib.mkAfter [ "; shutdown" ];
+  };
+
+  systemd.services.shutdown-after-upgrade = rec {
+    description = "Shutdown the computer after an auto Upgrade";
+    wantedBy = [ "nixos-upgrade.service" ];
+    after = wantedBy;
+    script = "shutdown +5 \"Cancel with sudo shutdown -c\"";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
