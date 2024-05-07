@@ -31,7 +31,7 @@
 
 
     extraApps = with pkgs.nextcloud28Packages.apps; {
-      inherit registration mail calendar contacts end_to_end_encryption forms polls groupfolders impersonate twofactor_nextcloud_notification twofactor_webauthn;
+      inherit registration calendar contacts end_to_end_encryption forms polls groupfolders twofactor_nextcloud_notification twofactor_webauthn cookbook;
       #twofactor_totp
       #   # onlyoffice
     };
