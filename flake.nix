@@ -193,6 +193,9 @@
         nextcloud = makeSystem {
           systemModules = [
             ./nextcloud/default.nix
+            #./server/smb.nix
+            ./server/calibre.nix
+            ./server/audiobookshelf.nix
           ];
           proxmox = true;
           stable = false;
