@@ -6,6 +6,6 @@
       enable = true;
       userDb = /statefull/calibre/users.sqlite;
     };
-    libraries = /srv/ebooks;
+    libraries = [ /srv/ebooks ];
   };
 }
