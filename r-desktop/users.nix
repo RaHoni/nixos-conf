@@ -31,6 +31,7 @@
       sops
       kaddressbook
       yubioath-flutter
+      spotify
       nebula
       platformio-core
       android-studio
