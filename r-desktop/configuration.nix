@@ -117,6 +117,7 @@
     unstable.lutris
     unstable.winetricks
     inputs.streamdeck-obs.packages.x86_64-linux.streamdeck-obs
+    libsForQt5.kdenlive
   ];
 
   programs = {
