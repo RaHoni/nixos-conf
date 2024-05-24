@@ -39,7 +39,7 @@
     extraAppsEnable = true;
 
     https = true;
-    config.trustedProxies = [ "nextcloud.honermann.info" "honermann.info" ];
+    config.trustedProxies = [ "192.168.3.207" ];
   };
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
