@@ -1,14 +1,14 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     #nixpkgs-ffmpeg.url = "github:NixOS/nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     plasma-manager-stable.url = "github:pjones/plasma-manager";
@@ -20,7 +20,7 @@
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
     nixvim-stable = {
-      url = "github:nix-community/nixvim/nixos-23.11";
+      url = "github:nix-community/nixvim"; #/nixos-23.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -150,7 +150,7 @@
             ffmpeg = [ ./generic/users ];
           };
           nebula = true;
-          #stable = false;
+          stable = true;
         };
 
         jasmine-laptop = makeSystem {

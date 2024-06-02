@@ -17,7 +17,6 @@ with lib;
 
   services.gpg-agent = {
     enable = true;
-    pinentryFlavor = "qt";
     grabKeyboardAndMouse = false;
     maxCacheTtl = 604800;
     defaultCacheTtl = 604800;

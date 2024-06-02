@@ -6,10 +6,12 @@
     #set colorscheme
     colorschemes.gruvbox = {
       enable = true;
-      contrastDark = "soft";
-      improvedStrings = true;
-      improvedWarnings = true;
-      trueColor = true;
+      settings = {
+        contrastDark = "soft";
+        improvedStrings = true;
+        improvedWarnings = true;
+        trueColor = true;
+      };
     };
 
     globals = {
@@ -220,9 +222,9 @@
             "l" = "select_default";
           };
         };
-        extensions.file_browser = {
+        extensions.file-browser = {
           enable = true;
-          mappings = {
+          settings.mappings = {
             "n" = {
               "h" = "goto_parent_dir";
             };
@@ -265,28 +267,19 @@
           java-language-server.enable = true; #lsp Server for Java
         };
       };
-      nvim-cmp = {
+      cmp = {
         enable = true;
-        snippet.expand = "luasnip";
-        sources = [
-          { name = "nvim_lsp"; }
-          { name = "luasnip"; } #For luasnip users.
-          { name = "path"; }
-          { name = "buffer"; }
-        ];
-        mapping = {
-          "<CR>" = "cmp.mapping.confirm({select = true})";
-          "<Tab>" = {
-            modes = [ "i" "s" ];
-            action = ''
-              function(fallback)
-                if cmp.visible() then
-                  cmp.select_next_item()
-                else
-                  fallback()
-                end
-              end
-            '';
+        settings = {
+          snippet.expand = "luasnip";
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "luasnip"; } #For luasnip users.
+            { name = "path"; }
+            { name = "buffer"; }
+          ];
+          mapping = {
+            "<CR>" = "cmp.mapping.confirm({select = true})";
+            "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
           };
         };
       };
