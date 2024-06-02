@@ -31,7 +31,12 @@
 
 
     extraApps = with pkgs.nextcloud28Packages.apps; {
-      inherit registration calendar contacts end_to_end_encryption forms polls groupfolders twofactor_nextcloud_notification twofactor_webauthn cookbook;
+      inherit registration calendar contacts end_to_end_encryption forms polls groupfolders twofactor_nextcloud_notification twofactor_webauthn cookbook notes gpoddersync;
+      files_retention = pkgs.fetchNextcloudApp {
+        sha256 = "sha256-a+0veb5J/9BhkG35SnKf2yBMKVSRmapo6LyEhc+io7k=";
+        url = "https://github.com/nextcloud-releases/files_retention/releases/download/v1.17.2/files_retention-v1.17.2.tar.gz";
+        license = "agpl3Only";
+      };
       #twofactor_totp
       #   # onlyoffice
     };
