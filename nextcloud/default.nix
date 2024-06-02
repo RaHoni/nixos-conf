@@ -37,6 +37,11 @@
         url = "https://github.com/nextcloud-releases/files_retention/releases/download/v1.17.2/files_retention-v1.17.2.tar.gz";
         license = "agpl3Only";
       };
+      files_automatedtagging = pkgs.fetchNextcloudApp {
+        sha256 = "sha256-bL9j8dnkyBBFU+7T1VhjGaQoexzN3AbK4+ykIbCLyRg=";
+        url = "https://github.com/nextcloud-releases/files_automatedtagging/releases/download/v1.18.0/files_automatedtagging-v1.18.0.tar.gz";
+        license = "agpl3Only";
+      };
       #twofactor_totp
       #   # onlyoffice
     };
