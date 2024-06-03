@@ -41,9 +41,9 @@ in
       "L+ ${nixpkgs-stablePath} - - - - ${inputs.nixpkgs-stable}"
     ];
 
-    services.xserver = {
+    services.xserver.xkb = {
       layout = "de";
-      xkbVariant = "deadacute";
+      variant = "deadacute";
     };
 
     #services.btrfs.autoScrub.enable = true;

@@ -33,7 +33,7 @@
       providers.wl-copy.enable = true;
     };
 
-    options = {
+    opts = {
       compatible = false; #disable compatibility to old-time vi
       showmatch = true; #show matching
       ignorecase = true; #case insensitive
@@ -216,7 +216,7 @@
       #file browser/switcher
       telescope = {
         enable = true;
-        defaults = {
+        settings.defaults = {
           initial_mode = "normal";
           mappings.n = {
             "l" = "select_default";

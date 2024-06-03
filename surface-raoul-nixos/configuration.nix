@@ -49,11 +49,11 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.displayManager.defaultSession = "plasmawayland";
 
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
   hardware.bluetooth.enable = true;
@@ -100,7 +100,7 @@
     vlc
     ffmpeg
     nodePackages.bash-language-server
-    
+
     libsForQt5.kdenlive
     neovim
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -154,7 +154,7 @@
   };
 
   environment.unixODBCDrivers = with pkgs.unixODBCDrivers; [ sqlite psql ];
-   
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

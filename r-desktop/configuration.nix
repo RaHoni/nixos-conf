@@ -37,10 +37,10 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.displayManager.defaultSession = "plasmawayland";
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
   hardware.opengl = {
@@ -70,7 +70,7 @@
   };
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
   services.gvfs.enable = true;
@@ -135,7 +135,7 @@
   networking.firewall.enable = false;
 
   services.foldingathome = {
-    enable = true;
+    enable = false;
     user = "Honi2002";
     team = 223518;
     extraArgs = [ "--password=Password" "--web-allow" "172.20.0.0/16" ];
