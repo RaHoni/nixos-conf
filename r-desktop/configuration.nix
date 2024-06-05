@@ -35,6 +35,8 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+  nix.settings.trusted-users = [ "root" "@wheel" ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.defaultSession = "plasmawayland";
