@@ -63,6 +63,8 @@ in
       cue = true;
     };
 
+    security.pam.sshAgentAuth.enable = true;
+
     environment.systemPackages = with pkgs; [
       git
     ];
