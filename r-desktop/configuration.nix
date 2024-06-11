@@ -45,6 +45,8 @@
   services.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
+  programs.neovim.defaultEditor = true;
+
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
