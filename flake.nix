@@ -20,7 +20,7 @@
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
     nixvim-stable = {
-      url = "github:nix-community/nixvim"; #/nixos-23.11";
+      url = "github:nix-community/nixvim/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
