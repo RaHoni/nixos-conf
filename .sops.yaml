@@ -84,7 +84,22 @@ creation_rules:
       - *admin
       age:
       - *petronillaStreaming
-  - path_regex: ^secrets/.*/.*
+  - path_regex: secrets/bacula/clients/r-desktop.yaml
     key_groups:
-    - pgp:
+    - age:
+      - *nextcloud
+      - *r-desktop
+      pgp:
       - *admin
+  - path_regex: secrets/bacula/clients/surface.yaml
+    key_groups:
+    - age:
+      - *surface
+      - *nextcloud
+      pgp:
+      - *admin
+  - path_regex: ^secrets/bacula/clients.*
+    age: *nextcloud
+    pgp: *admin
+  - path_regex: ^secrets/
+    pgp: *admin

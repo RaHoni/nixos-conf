@@ -196,6 +196,8 @@
             #./server/smb.nix
             ./server/calibre.nix
             ./server/audiobookshelf.nix
+            ./bacula/dir.nix
+            ./bacula/sd.nix
           ];
           proxmox = true;
           stable = false;
