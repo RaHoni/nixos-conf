@@ -23,8 +23,6 @@
     config = {
       dbtype = "mysql";
       adminpassFile = config.sops.secrets.adminpass.path;
-      defaultPhoneRegion = "DE";
-      extraTrustedDomains = [ "nextcloud.honermann.info" ];
     };
 
     maxUploadSize = "10G";
@@ -49,7 +47,11 @@
     extraAppsEnable = true;
 
     https = true;
-    config.trustedProxies = [ "192.168.3.207" ];
+    settings = {
+      trustedProxies = [ "192.168.3.207" ];
+      defaultPhoneRegion = "DE";
+      extraTrustedDomains = [ "nextcloud.honermann.info" ];
+    };
   };
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
