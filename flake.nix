@@ -194,8 +194,8 @@
           systemModules = [
             ./nextcloud/default.nix
             #./server/smb.nix
-            ./server/calibre.nix
-            ./server/audiobookshelf.nix
+            #./server/calibre.nix
+            #./server/audiobookshelf.nix
             ./bacula/dir.nix
             ./bacula/sd.nix
           ];
