@@ -51,7 +51,6 @@ in
     };
 
     extraMessagesConfig = ''
-      Name = Standard
       director = dir.bacula = all
     '';
   };
