@@ -20,4 +20,10 @@
       install -D zsh-autosuggestions* --target-directory $out/share/zsh/plugins/zsh-autosuggestions
     '';
   };
+  bacula = prev.bacula.overrideAttrs {
+    buildInputs = prev.bacula.buildInputs ++ [ final.libmysqlclient ];
+    configureFlags = prev.bacula.configureFlags ++ [
+      "--with-mysql=${final.libmysqlclient.dev}"
+    ];
+  };
 })
