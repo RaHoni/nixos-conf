@@ -98,7 +98,7 @@ creation_rules:
       - *nextcloud
       pgp:
       - *admin
-  - path_regex: ^secrets/bacula/clients.*
+  - path_regex: ^secrets/bacula/.*
     age: *nextcloud
     pgp: *admin
   - path_regex: ^secrets/
