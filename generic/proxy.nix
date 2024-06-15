@@ -45,6 +45,7 @@ in
       };
 
       "nextcloud.honermann.info" = {
+        serverAliases = [ "honermann.info" ];
         enableACME = true;
         forceSSL = true;
         http2 = true;
@@ -63,6 +64,7 @@ in
           proxyPass = "http://${subnet}103:8080";
           proxyWebsockets = true;
         };
+        extraConfig = "client_max_body_size 100M;";
       };
 
       "hoerbuecher.honermann.info" = {
@@ -109,12 +111,7 @@ in
         locations."/".proxyPass = "https://${subnet}1:8006";
       };
 
-      "honermann.info" = {
-        locations = {
-          "/.well-known/carddav".proxyPass = "http://${subnet}200/dav.php";
-          "/.well-known/caldav".proxyPass = "http://${subnet}200/dav.php";
-        };
-      };
     };
   };
+  security.acme.certs."nextcloud.honermann.info".extraDomainNames = [ "honermann.info" ];
 }
