@@ -1,0 +1,15 @@
+--- a/configure	2024-06-21 23:38:18.752367274 +0200
++++ b/configure	2024-06-21 23:48:59.354164546 +0200
+@@ -24810,8 +24810,11 @@
+            elif test -f $withval/lib/libmysqlclient_r.a \
+                 -o -f $withval/lib/libmysqlclient_r.so; then
+               MYSQL_LIBDIR=$withval/lib
+-           else
++           elif test -f $withval/lib/mysql/libmysqlclient_r.a \
++                -o -f $withval/lib/mysql/libmysqlclient_r.so; then
+               MYSQL_LIBDIR=$withval/lib/mysql
++           elif test "${with_mysql_lib+set}" = set; then
++              MYSQL_LIBDIR=$with_mysql_lib
+            fi
+            MYSQL_BINDIR=$withval/bin
+         elif test -f $withval/include/mysql.h; then

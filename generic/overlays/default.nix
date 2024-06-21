@@ -24,6 +24,13 @@
     buildInputs = prev.bacula.buildInputs ++ [ final.libmysqlclient ];
     configureFlags = prev.bacula.configureFlags ++ [
       "--with-mysql=${final.libmysqlclient.dev}"
+      "--with-mysql-lib=${final.libmysqlclient}/lib/mariadb"
+    ];
+    preBuild = ''
+      sed -i "/#define HAVE_ZSTD 1/d" src/config.h
+    '';
+    patches = [
+      ./bacula.patch
     ];
   };
 })
