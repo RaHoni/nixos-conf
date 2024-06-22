@@ -46,6 +46,7 @@
   services.desktopManager.plasma6.enable = true;
 
   programs.neovim.defaultEditor = true;
+  programs.noisetorch.enable = true;
 
   hardware.opengl = {
     enable = true;
