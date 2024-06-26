@@ -51,7 +51,7 @@
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
-      pkgs.ffmpeg-vpl.onevpl-intel-gpu
+      pkgs.ffmpeg-vpl.vpl-gpu-rt
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
@@ -62,7 +62,7 @@
   environment.sessionVariables = {
     INTEL_MEDIA_RUNTIME = "ONEVPL";
     LIBVA_DRIVER_NAME = "iHD";
-    ONEVPL_SEARCH_PATH = lib.strings.makeLibraryPath [ pkgs.ffmpeg-vpl.onevpl-intel-gpu ];
+    ONEVPL_SEARCH_PATH = lib.strings.makeLibraryPath [ pkgs.ffmpeg-vpl.vpl-gpu-rt ];
   };
 
   # Configure console keymap
