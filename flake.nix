@@ -201,7 +201,7 @@
             ./generic/smtp.nix
           ];
           proxmox = true;
-          stable = false;
+          stable = true;
         };
 
         petronillaStreaming = makeSystem {
