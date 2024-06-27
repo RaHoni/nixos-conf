@@ -19,4 +19,4 @@ jobs:
       - name: Install magic nix cache
         uses: DeterminateSystems/magic-nix-cache-action@v7
       - name: Run check
-        run: "nix -L flake check"
+        run: "nix -L flake check --accept-flake-config"
