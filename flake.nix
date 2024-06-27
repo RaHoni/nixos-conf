@@ -198,6 +198,7 @@
             #./server/audiobookshelf.nix
             ./bacula/dir.nix
             ./bacula/sd.nix
+            ./generic/smtp.nix
           ];
           proxmox = true;
           stable = false;

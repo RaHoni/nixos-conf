@@ -47,6 +47,12 @@ creation_rules:
       - *admin
       age:
       - *audiobooks
+  - path_regex: ^secrets/smtp.yaml$
+    key_groups:
+    - pgp:
+      - *admin
+      age:
+      - *nextcloud
   - path_regex: ^secrets/[^/]*$
     key_groups:
     - pgp:

@@ -33,8 +33,8 @@ in
     name = "dir.bacula";
     password = "6SqrCDjtrtKavlrEwqP49az5znQQl8a9vv5vXGlfkrTO"; #TODO encrypt and change
     extraMessagesConfig = ''
-      mailcommand = "/usr/bin/mail -r bacula@honermann.info -s \"Bacula: %t %e of %c %l\" %r"
-      operatorcommand = "/usr/bin/mail -r bacula@honermann.info -s \"Bacula: Intervention needed for %j\" %r"
+      mailcommand = "bsmtp -f bacula-dir -s \"Bacula: %t %e of %c %l\" %r"
+      operatorcommand = "bsmtp -f bacula-dir -s \"Bacula: Intervention needed for %j\" %r"
       mail on error = raoul.honermann@web.de,christoph.honermann@web.de = all, !skipped
       operator = raoul.honermann@web.de = mount
       console = all, !skipped, !saved
