@@ -7,15 +7,19 @@
     relayHost = "smtp.web.de";
     relayPort = 587;
     rootAlias = "raoul.honermann@web.de";
-    enableHeaderChecks = false;
+    enableHeaderChecks = true;
     canonical = ''
       /^(.*)<.*>$/     $1 <honermann.info@web.de>
       /^([^<>]+)$/     $1 <honermann.info@web.de>
     '';
     headerChecks = [
       {
-        pattern = "/^From:([\w\s]*)<?(\w*)@(\w)*/";
-        action = "REPLACE From: $1 $2 $3 <honermann.info@web.de>";
+        pattern = "/^From:(.*)<.*>/";
+        action = "REPLACE From: $1 <honermann.info@web.de>";
+      }
+      {
+        pattern = "/^From:([^<>@]+)/";
+        action = "REPLACE From: $1 <honermann.info@web.de>";
       }
     ];
     config = {
