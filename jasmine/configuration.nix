@@ -29,7 +29,7 @@
 
   #Use KDE Plasma
   services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -45,7 +45,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
