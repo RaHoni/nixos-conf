@@ -58,6 +58,7 @@ creation_rules:
     - pgp:
       - *admin
       age:
+      - *audiobooks
       - *surface
       - *nebula-lighthouse
       - *r-desktop
