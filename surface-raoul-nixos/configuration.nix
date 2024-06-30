@@ -101,7 +101,7 @@
     ffmpeg
     nodePackages.bash-language-server
     audacity
-    libsForQt5.kdenlive
+    kdePackages.kdenlive
     neovim
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
