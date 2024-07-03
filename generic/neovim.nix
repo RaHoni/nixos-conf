@@ -2,6 +2,7 @@
 {
   programs.nixvim = {
     enable = true;
+    defaultEditor = true;
 
     #set colorscheme
     colorschemes.gruvbox = {
