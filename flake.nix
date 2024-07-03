@@ -45,6 +45,11 @@
     streamdeck-obs.url = "github:RaHoni/streamdeck";
     streamdeck-obs.inputs.nixpkgs.follows = "nixpkgs-stable";
 
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   nixConfig = {
@@ -231,6 +236,7 @@
           };
         };
 
+
         aarch64-image = nixpkgs-stable.lib.nixosSystem
           {
             modules = [
@@ -245,6 +251,29 @@
               }
             ];
           };
+      };
+
+      packages.x86_64-linux = {
+        installer = nixos-generators.nixosGenerate rec {
+          pkgs = pkgsConfig nixpkgs-stable system;
+          format = "install-iso";
+          system = "x86_64-linux";
+          modules = [
+            ./generic/newDefault.nix
+            ./generic/nebula.nix
+            ./rescueIso/configuration.nix
+            #"${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
+          ];
+          specialArgs = {
+            inherit system inputs;
+            nebula = false;
+            stable = true;
+            homeManagerModules = {
+              root = [ ./generic/users/root/home-manager.nix ];
+              nixos = [ ./generic/users/default.nix ];
+            };
+          };
+        };
       };
 
       nixOnDroidConfigurations.fp4 = nix-on-droid.lib.nixOnDroidConfiguration {
