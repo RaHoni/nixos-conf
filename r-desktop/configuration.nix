@@ -19,21 +19,6 @@
   networking.networkmanager.enable = true;
   networking.interfaces.eth0.wakeOnLan.enable = true;
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-  i18n.supportedLocales = [ "de_DE.UTF-8/UTF-8" "en_GB.UTF-8/UTF-8" ];
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
 
   nix.settings.trusted-users = [ "root" "@wheel" ];
 
@@ -41,58 +26,13 @@
   services.xserver.enable = true;
   services.displayManager.defaultSession = "plasma";
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
   programs.neovim.defaultEditor = true;
   programs.noisetorch.enable = true;
 
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      pkgs.ffmpeg-vpl.vpl-gpu-rt
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
 
-  environment.sessionVariables = {
-    INTEL_MEDIA_RUNTIME = "ONEVPL";
-    LIBVA_DRIVER_NAME = "iHD";
-    ONEVPL_SEARCH_PATH = lib.strings.makeLibraryPath [ pkgs.ffmpeg-vpl.vpl-gpu-rt ];
-  };
-
-  # Configure console keymap
-  console.keyMap = "de";
-
-
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [ gutenprint gutenprintBin epson-escpr2 ];
-  };
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
   services.gvfs.enable = true;
   programs.adb.enable = true;
 
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-  };
 
   # Needed for yubikey ccid Functionality
   services.pcscd.enable = true;
@@ -138,21 +78,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
-
-  services.foldingathome = {
-    enable = false;
-    user = "Honi2002";
-    team = 223518;
-    extraArgs = [ "--password=Password" "--web-allow" "172.20.0.0/16" ];
-    daemonNiceLevel = 19;
-  };
-  #   services.nebula.networks.nebulaHonermann.settings.firewall = {
-  #     inbound = [{
-  #       port = "36330";
-  #       proto = "tcp";
-  #       host = "any";
-  #     }];
-  #   };
 
   security.pam.services = {
     login.u2fAuth = true;

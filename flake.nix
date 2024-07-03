@@ -124,7 +124,10 @@
         surface-raoul-nixos = makeSystem {
           systemModules = [
             ./surface-raoul-nixos/configuration.nix
-            ./generic/pim.nix
+            ./generic/localisation.nix
+            ./generic/pipewire.nix
+            ./generic/plasma.nix
+            ./generic/printer.nix
             nixos-hardware.nixosModules.microsoft-surface-go
           ];
           homeManagerModules = {
@@ -140,11 +143,15 @@
         r-desktop = makeSystem {
           systemModules = [
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ (overlays "x86_64-linux") ]; })
-            ./r-desktop/configuration.nix
             ./r-desktop/bacula.nix
-            ./r-desktop/pio.nix
+            ./r-desktop/configuration.nix
             ./r-desktop/incron.nix
-            ./generic/pim.nix
+            ./r-desktop/pio.nix
+            ./generic/intelgpu.nix
+            ./generic/localisation.nix
+            ./generic/pipewire.nix
+            ./generic/plasma.nix
+            ./generic/printer.nix
           ];
           homeManagerModules = {
             raoul = [
@@ -214,6 +221,8 @@
             ./petronillaStreaming/configuration.nix
             ./petronillaStreaming/users.nix
             ./generic/nvidea.nix
+            ./generic/pipewire.nix
+            ./generic/plasma.nix
           ];
           homeManagerModules.streaming = [
             ./generic/users/default.nix

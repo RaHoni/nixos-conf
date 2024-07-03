@@ -16,7 +16,6 @@
       jetbrains.idea-ultimate
       jetbrains.clion
       jetbrains.pycharm-professional
-      kmail
       nixos-generators
       kleopatra
       whatsapp-for-linux
@@ -28,7 +27,6 @@
       jq
       kdiff3
       sops
-      kaddressbook
       yubioath-flutter
       spotify
       nebula
