@@ -1,5 +1,10 @@
 {
   inputs = {
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     #nixpkgs-ffmpeg.url = "github:NixOS/nixpkgs";
@@ -139,6 +144,23 @@
           nebula = true;
         };
 
+        raoul-framework = makeSystem {
+          systemModules = [
+            ./raoul-framework/configuration.nix
+            ./raoul-framework/disko.nix
+            ./generic/localisation.nix
+            ./generic/pipewire.nix
+            ./generic/plasma.nix
+            ./generic/printer.nix
+            nixos-hardware.nixosModules.framework-16-7040-amd
+          ];
+          homeManagerModules = {
+            raoul = [
+              plasma-manager-stable.homeManagerModules.plasma-manager
+              ./generic/users/raoul/home-manager.nix
+            ];
+          };
+        };
 
         r-desktop = makeSystem {
           systemModules = [
