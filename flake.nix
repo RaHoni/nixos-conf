@@ -183,6 +183,8 @@
               ./generic/users/raoul/home-manager.nix
             ];
           };
+          nebula = true;
+          secureboot = false;
         };
 
         r-desktop = makeSystem {
