@@ -14,6 +14,11 @@ in
     grepcidr
   ];
 
+  programs.zsh = {
+    enable = true;
+    enableVteIntegration = true;
+    autosuggestion.enable = true;
+  };
   programs = {
     direnv = {
       enable = true;
