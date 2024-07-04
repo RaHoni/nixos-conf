@@ -12,7 +12,7 @@ in
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  system.configurationRevision = inputs.self.shortRev or inputs.self.dirtyShortRev;
+  system.configurationRevision = inputs.self.shortRev or inputs.self.dirtyShortRev or "null";
 
   boot.supportedFilesystems = [ "exfat" ];
 
