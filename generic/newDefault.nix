@@ -10,6 +10,8 @@
   users.defaultUserShell = pkgs.zsh;
   system.configurationRevision = inputs.self.shortRev or inputs.self.dirtyShortRev;
 
+  boot.supportedFilesystems = [ "exfat" ];
+
   local.nebula.enable = nebula;
   #home manager setup
   programs.dconf.enable = true;
