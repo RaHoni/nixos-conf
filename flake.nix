@@ -18,6 +18,16 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote-stable = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-23.05";
       inputs = {
@@ -115,11 +125,11 @@
         };
       };
 
-      makeSystem = { systemModules, homeManagerModules ? { }, stable ? true, proxmox ? false, system ? "x86_64-linux", nebula ? false, ... }: nixpkgs-stable.lib.nixosSystem rec {
+      makeSystem = { systemModules, homeManagerModules ? { }, stable ? true, proxmox ? false, system ? "x86_64-linux", nebula ? false, secureboot ? false, ... }: nixpkgs-stable.lib.nixosSystem rec {
         pkgs = if stable then pkgsConfig nixpkgs-stable system else pkgsConfig nixpkgs system;
         inherit system;
         specialArgs = {
-          inherit inputs stable nebula; #ToDO: also make proxmox an option
+          inherit inputs stable nebula secureboot; #ToDO: also make proxmox an option
           homeManagerModules = nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc) [ ] [
             {
               root = [
@@ -312,6 +322,7 @@
             inherit system inputs;
             nebula = false;
             stable = true;
+            secureboot = false;
             homeManagerModules = {
               root = [ ./generic/users/root/home-manager.nix ];
               nixos = [ ./generic/users/default.nix ];

@@ -1,8 +1,12 @@
-{ config, pkgs, inputs, homeManagerModules, stable, nebula, ... }:
-
+{ config, pkgs, inputs, homeManagerModules, stable, nebula, lib, ... }:
+let
+  inherit (lib) optionals;
+in
 {
   # import common.nix and home manager module depending on if system uses stable or unstable packages
-  imports = if stable then [ inputs.home-manager-stable.nixosModules.home-manager ./default.nix ] else [ inputs.home-manager.nixosModules.home-manager ./default.nix ];
+  imports = [ ./default.nix ./lanzaboote.nix ]
+    ++ (optionals stable [ inputs.home-manager-stable.nixosModules.home-manager ])
+    ++ (optionals (!stable) [ inputs.home-manager.nixosModules.home-manager ]);
 
   #set zsh as default shell
   environment.shells = with pkgs; [ zsh ];
