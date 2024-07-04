@@ -1,60 +1,73 @@
 {
   inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
-    #nixpkgs-ffmpeg.url = "github:NixOS/nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     home-manager-stable = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    plasma-manager-stable.url = "github:pjones/plasma-manager";
-    plasma-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
-    plasma-manager-stable.inputs.home-manager.follows = "home-manager-stable";
 
-    plasma-manager.url = "github:pjones/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.inputs.home-manager.follows = "home-manager";
-
-    nixvim-stable = {
-      url = "github:nix-community/nixvim/nixos-24.05";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-23.05";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    private-nixpkgs.url = "github:rahoni/nixpkgs/baculaTls";
-    #private-nixpkgs.url = "/home/raoul/Programmieren/nixos/nixpkgs";
-
-    nix-on-droid.url = "github:nix-community/nix-on-droid/release-23.05";
-    nix-on-droid.inputs.nixpkgs.follows = "nixpkgs";
-    nix-on-droid.inputs.home-manager.follows = "home-manager";
-
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    streamdeck-obs.url = "github:RaHoni/streamdeck";
-    streamdeck-obs.inputs.nixpkgs.follows = "nixpkgs-stable";
 
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim-stable = {
+      url = "github:nix-community/nixvim/nixos-24.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
+    plasma-manager-stable = {
+      url = "github:pjones/plasma-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-stable";
+        home-manager.follows = "home-manager-stable";
+      };
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    streamdeck-obs = {
+      url = "github:RaHoni/streamdeck";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
   nixConfig = {
