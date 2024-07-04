@@ -293,7 +293,7 @@
             ./generic/newDefault.nix
             ./generic/nebula.nix
             ./rescueIso/configuration.nix
-            #"${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
+            "${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
           ];
           specialArgs = {
             inherit system inputs;
