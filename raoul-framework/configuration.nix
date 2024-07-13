@@ -7,6 +7,10 @@
       systemd-boot.memtest86.enable = true;
     };
     tmp.useTmpfs = true;
+    initrd = {
+      systemd.enable = true;
+      luks.devices."crypted".crypttabExtraOpts = ["fido2-device=auto"];  # cryptenroll
+    };
   };
 
   environment.systemPackages = with pkgs; [
