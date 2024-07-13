@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  dev-disk = "/dev/sda";
+  dev-disk = "/dev/nvme0n1";
 in
 {
   imports = [ inputs.disko.nixosModules.disko ];
