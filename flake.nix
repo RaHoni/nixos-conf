@@ -185,7 +185,7 @@
             ];
           };
           nebula = true;
-          secureboot = false;
+          secureboot = true;
         };
 
         r-desktop = makeSystem {
