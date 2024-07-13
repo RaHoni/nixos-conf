@@ -10,7 +10,7 @@ keys:
   - &nextcloud age1fk7kw7s2jng3v7dzm0vrq4ccsu9xwtssj2u2evjdsrz4jksngf4sp0knmp
   - &rescueIso age1sr0p82j6yr7s0rs0zck20qau86w4rgd7enkcsg8ud20h9z5nyc8q8jpa4c
   - &petronillaStreaming age1psj4h28ulrglqe48qs3mhchlvvvpx9ew6qy7nve5j5uvvsy80a6shqr20a
-  - &raoul-framework age1pkwflrjlcf494fcc48rqmcnf0xq5as0ly6w95leq350r9tk4pg8qutw0sc
+  - &raoul-framework age1lzsz9p0r50zl2cf998kuu6z3jqeck8wlz96l70xnq7g0vy35xd9q5l5535
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -71,6 +71,7 @@ creation_rules:
       - *nextcloud
       - *rescueIso
       - *petronillaStreaming
+      - *raoul-framework
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
     - pgp:
