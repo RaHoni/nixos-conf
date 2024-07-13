@@ -30,7 +30,7 @@ in
               name = "crypted";
               # disable settings.keyFile if you want to use interactive password entry
               #passwordFile = "/tmp/secret.key"; # Interactive
-              settings.keyFile = "/tmp/setup-password.key";
+              passwordFile = "/tmp/setup-password.key";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
