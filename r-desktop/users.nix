@@ -24,6 +24,7 @@
       nixpkgs-fmt
       pre-commit
       maliit-keyboard
+      nixos-anywhere
       jq
       kdiff3
       sops
