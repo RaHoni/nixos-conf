@@ -26,6 +26,8 @@
     zsh-completions
   ];
 
+  hardware.bluetooth.enable = true;
+
   networking = {
     hostName = "raoul-framework";
     networkmanager.enable = true;
