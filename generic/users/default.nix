@@ -30,6 +30,12 @@ in
       enable = true;
       extraConfig = "user raoul";
       matchBlocks = rec {
+        rescueIso = {
+          user = "nixos";
+          identityFile = sshIdentity "support";
+          identitiesOnly = true;
+          forwardAgent = true;
+        };
         streaming = {
           hostname = "petronillastreaming.nb.honermann.info";
           user = "streaming";

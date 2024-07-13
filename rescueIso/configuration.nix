@@ -26,6 +26,9 @@
   users.users.nixos.openssh.authorizedKeys.keyFiles = [
     ../generic/sshPubkeys/support.pub
   ];
+  users.users.root.openssh.authorizedKeys.keyFiles = [
+    ../generic/sshPubkeys/support.pub
+  ];
 
   networking.firewall.enable = false;
 
