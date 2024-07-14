@@ -17,6 +17,7 @@
     kdepim-runtime
     kdeplasma-addons
     kmail
+    kmail-account-wizard
     korganizer
     libkdepim
     pimcommon
