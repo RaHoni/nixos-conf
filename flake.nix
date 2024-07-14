@@ -175,13 +175,14 @@
             ./generic/pipewire.nix
             ./generic/plasma.nix
             ./generic/printer.nix
+            ./raoul-framework/hardwareconfig.nix
             nixos-hardware.nixosModules.framework-16-7040-amd
           ];
           homeManagerModules = {
             raoul = [
               plasma-manager-stable.homeManagerModules.plasma-manager
               ./generic/users/raoul/home-manager.nix
-	      ./generic/neovim.nix
+              ./generic/neovim.nix
             ];
           };
           nebula = true;
