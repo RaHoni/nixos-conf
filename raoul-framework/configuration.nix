@@ -67,6 +67,7 @@
   };
 
   services = {
+    fwupd.enable = true;
     gvfs.enable = true; #Allow programs to directly acces remote shares
     pcscd.enable = true; # yubikey ccid
     teamviewer.enable = true;
