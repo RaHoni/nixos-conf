@@ -3,7 +3,6 @@
   home.packages = [ pkgs.libsForQt5.plasma-browser-integration ];
   programs.plasma = lib.mkIf osConfig.services.xserver.desktopManager.plasma5.enable {
     enable = true;
-    workspace.clickItemTo = "select";
     shortcuts = {
       "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Meta+Alt+K";
       "kaccess"."Toggle Screen Reader On and Off" = "Meta+Alt+S";
