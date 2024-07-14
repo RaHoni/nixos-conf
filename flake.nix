@@ -54,7 +54,7 @@
     };
 
     plasma-manager = {
-      url = "github:pjones/plasma-manager";
+      url = "github:nix-community/plasma-manager";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
@@ -62,7 +62,7 @@
     };
 
     plasma-manager-stable = {
-      url = "github:pjones/plasma-manager";
+      url = "github:nix-community/plasma-manager";
       inputs = {
         nixpkgs.follows = "nixpkgs-stable";
         home-manager.follows = "home-manager-stable";
