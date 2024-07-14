@@ -14,6 +14,16 @@
     };
   };
 
+
+  environment.etc = {
+    "libinput/local-overrides.quirks".text = ''
+      [Keyboard]
+      MatchUdevType=keyboard
+      MatchName=Framework Laptop 16 Keyboard Module - ANSI Keyboard
+      AttrKeyboardIntegration=internal
+    '';
+  };
+
   environment.systemPackages = with pkgs; [
     filelight
     firefox
