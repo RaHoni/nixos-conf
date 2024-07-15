@@ -15,7 +15,7 @@
   services.nextcloud = {
     enable = true;
     datadir = "/var/data";
-    package = pkgs.nextcloud28;
+    package = pkgs.nextcloud29;
     hostName = "nextcloud.honermann.info";
     configureRedis = true;
     database.createLocally = true;
@@ -28,16 +28,16 @@
     maxUploadSize = "10G";
 
 
-    extraApps = with pkgs.nextcloud28Packages.apps; {
+    extraApps = with pkgs.nextcloud29Packages.apps; {
       inherit registration calendar contacts end_to_end_encryption forms polls groupfolders twofactor_nextcloud_notification twofactor_webauthn cookbook notes gpoddersync;
       files_retention = pkgs.fetchNextcloudApp {
-        sha256 = "sha256-a+0veb5J/9BhkG35SnKf2yBMKVSRmapo6LyEhc+io7k=";
-        url = "https://github.com/nextcloud-releases/files_retention/releases/download/v1.17.2/files_retention-v1.17.2.tar.gz";
+        sha256 = "sha256-FazftNLLdxlnt7libXG4Ngyi6hyyxC2VhX/PXEard98=";
+        url = "https://github.com/nextcloud-releases/files_retention/releases/download/v1.18.0/files_retention-v1.18.0.tar.gz";
         license = "agpl3Only";
       };
       files_automatedtagging = pkgs.fetchNextcloudApp {
-        sha256 = "sha256-bL9j8dnkyBBFU+7T1VhjGaQoexzN3AbK4+ykIbCLyRg=";
-        url = "https://github.com/nextcloud-releases/files_automatedtagging/releases/download/v1.18.0/files_automatedtagging-v1.18.0.tar.gz";
+        sha256 = "sha256-NeOJd3A3dZD86brdvDFyuQ1hGOo98C4T57aVhiUSMGg=";
+        url = "https://github.com/nextcloud-releases/files_automatedtagging/releases/download/v1.19.0/files_automatedtagging-v1.19.0.tar.gz";
         license = "agpl3Only";
       };
       #twofactor_totp
