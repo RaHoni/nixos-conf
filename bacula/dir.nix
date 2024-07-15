@@ -20,12 +20,12 @@ in
 
 
   sops.templates = {
-    "dir.conf".file = ./bacula-dir.conf;
-    "dir-fd.conf".file = ./clients/dir-fd.conf;
-    "lenovo-linux.conf".file = ./clients/lenovo-linux.conf;
-    "r-desktop.conf".file = ./clients/r-desktop.conf;
-    "surface.conf".file = ./clients/surface.conf;
-    "sylvia-fujitsu.conf".file = ./clients/sylvia-fujitsu.conf;
+    "dir.conf".content = ( builtins.readFile ./bacula-dir.conf );
+    "dir-fd.conf".content = ( builtins.readFile ./clients/dir-fd.conf );
+    "lenovo-linux.conf".content = ( builtins.readFile ./clients/lenovo-linux.conf );
+    "r-desktop.conf".content = ( builtins.readFile ./clients/r-desktop.conf );
+    "surface.conf".content = ( builtins.readFile ./clients/surface.conf );
+    "sylvia-fujitsu.conf".content = ( builtins.readFile ./clients/sylvia-fujitsu.conf );
   };
 
   services.bacula-dir = {
