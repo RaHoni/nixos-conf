@@ -15,6 +15,7 @@ with lib;
     nextcloud-client
     (pkgs.makeAutostartItem {name = "signal-desktop"; package = pkgs.signal-desktop;})
     (pkgs.makeAutostartItem { name = "com.github.eneshecan.WhatsAppForLinux"; package = pkgs.whatsapp-for-linux;})
+    (pkgs.makeAutostartItem { name = "org.keepassxc.KeePassXC"; package = pkgs.keepassxc;})
   ];
 
   services.gpg-agent = {
