@@ -13,6 +13,8 @@ with lib;
   home.packages = with pkgs; [
     qalculate-gtk
     nextcloud-client
+    (pkgs.makeAutostartItem {name = "signal-desktop"; package = pkgs.signal-desktop;})
+    (pkgs.makeAutostartItem { name = "com.github.eneshecan.WhatsAppForLinux"; package = pkgs.whatsapp-for-linux;})
   ];
 
   services.gpg-agent = {
