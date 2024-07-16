@@ -188,7 +188,6 @@
             ];
           };
           nebula = true;
-          stable = false;
           secureboot = true;
         };
 
