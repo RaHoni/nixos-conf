@@ -141,6 +141,7 @@
           ];
         };
         modules = [
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ (overlays system) ]; })
           ./generic/newDefault.nix
           ./generic/nebula.nix
         ]
@@ -193,7 +194,6 @@
 
         r-desktop = makeSystem {
           systemModules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ (overlays "x86_64-linux") ]; })
             ./r-desktop/bacula.nix
             ./r-desktop/configuration.nix
             ./r-desktop/incron.nix
