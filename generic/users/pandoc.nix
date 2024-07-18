@@ -1,7 +1,7 @@
 {pkgs, ...}:
 {
   home.packages = with pkgs; [
-    pandoc
-    texliveFull #full latex support for pdf generation
+    pandoc-3-12
+    unstable.texliveFull #full latex support for pdf generation
   ];
 }

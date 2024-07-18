@@ -185,6 +185,7 @@
               plasma-manager-stable.homeManagerModules.plasma-manager
               ./generic/users/raoul/home-manager.nix
               ./generic/neovim.nix
+              ./generic/users/pandoc.nix
               ./generic/users/raoul/plasma6.nix
             ];
           };
