@@ -31,6 +31,7 @@
     gnupg
     kate
     libreoffice
+    miraclecast
     nmap
     signal-desktop
     vlc
