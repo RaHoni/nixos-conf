@@ -138,7 +138,7 @@ in
 
   # Signal start in tray fix
   home.file.".local/share/applications/signal-desktop.desktop" = {
-    enable = osConfig.services.xserver.desktopManager.plasma5.enable;
+    enable = osConfig.services.desktopManager.plasma6.enable;
     text = ''
       [Desktop Entry]
       Name=Signal
