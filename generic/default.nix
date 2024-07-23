@@ -93,8 +93,8 @@ in
       #      oh-my-zsh = {
       ohMyZsh = {
         enable = true;
-        customPkgs = with pkgs; [ zsh-nix-shell zsh-powerlevel10k zsh-you-should-use zsh-autosuggestions ];
-        plugins = [ "git" "sudo" "nix-shell" "you-should-use" "zsh-autosuggestions" ];
+        customPkgs = with pkgs; [ omz-nix-shell omz-powerlevel10k zsh-you-should-use ];
+        plugins = [ "git" "sudo" "nix-shell" "you-should-use" ];
         theme = "powerlevel10k/powerlevel10k";
       };
       shellAliases = {
