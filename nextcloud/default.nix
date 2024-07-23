@@ -40,6 +40,11 @@
         url = "https://github.com/nextcloud-releases/files_automatedtagging/releases/download/v1.19.0/files_automatedtagging-v1.19.0.tar.gz";
         license = "agpl3Only";
       };
+      phonetrack = pkgs.fetchNextcloudApp {
+        sha256 = "sha256-V92f+FiS5vZEkq15A51pHoDpUOBfUOEVIcsXdP/rSMQ=";
+        url = "https://github.com/julien-nc/phonetrack/releases/download/v0.8.1/phonetrack-0.8.1.tar.gz";
+        license = "agpl3Only";
+      };
       #twofactor_totp
       #   # onlyoffice
     };
