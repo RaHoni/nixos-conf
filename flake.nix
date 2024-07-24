@@ -29,6 +29,11 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    mprisRecord = {
+      url = "github:RaHoni/mprisRecord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-23.05";
       inputs = {
@@ -105,6 +110,7 @@
       pkgsConfig = pkgs: system: import pkgs {
         overlays = [
           (import ./generic/overlays)
+          mprisRecord.overlays.${system}.default
         ];
         inherit system;
         config = {
