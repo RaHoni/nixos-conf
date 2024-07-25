@@ -4,6 +4,8 @@ let
   templates = config.sops.templates;
   placeholders = config.sops.placeholder;
   libDir = "/var/lib/bacula";
+  group = config.users.users.bacula.group;
+  user = config.users.users.bacula.name;
 
   replaceTemplate = file: (
     pkgs.substituteAll {
@@ -21,11 +23,23 @@ in
   disabledModules = [ "services/backup/bacula.nix" ];
   imports = [ "${inputs.nixpkgs-bacula}/nixos/modules/services/backup/bacula.nix" ];
   sops.secrets = {
-    "bacula/cacert".path = "/etc/bacula/bacula-ca.cert";
-    dir-cert.sopsFile = ../secrets/bacula/dir.yaml;
-    dir-cert.path = "/etc/bacula/dir.cert";
-    dir-key.sopsFile = ../secrets/bacula/dir.yaml;
-    dir-key.path = "/etc/bacula/dir.key";
+    "bacula/cacert" = {
+      path = "/etc/bacula/bacula-ca.cert";
+      owner = user;
+      group = group;
+    };
+    dir-cert = {
+      sopsFile = ../secrets/bacula/dir.yaml;
+      path = "/etc/bacula/dir.cert";
+      owner = user;
+      group = group;
+    };
+    dir-key = {
+      sopsFile = ../secrets/bacula/dir.yaml;
+      path = "/etc/bacula/dir.key";
+      owner = user;
+      group = group;
+    };
     bacula-dbpass.sopsFile = ../secrets/bacula/dir.yaml;
     bacula-dir-password.sopsFile = ../secrets/bacula/clients/dir.yaml;
     bacula-lenovo-linux-password.sopsFile = ../secrets/bacula/clients/lenovo-linux.yaml;
