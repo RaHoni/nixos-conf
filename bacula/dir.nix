@@ -7,8 +7,8 @@ let
   group = config.users.users.bacula.group;
   user = config.users.users.bacula.name;
 
-  replaceTemplate = file: (
-    pkgs.substituteAll {
+  replaceTemplate = file: {
+    file = (pkgs.substituteAll {
       src = file;
       dbpass = placeholders.bacula-dbpass;
       dirPassword = placeholders.bacula-dir-password;
@@ -16,8 +16,10 @@ let
       rdesktopPassword = placeholders.bacula-r-desktop-password;
       surfacePassword = placeholders.bacula-surface-password;
       sylviaFujitsuPassword = placeholders.bacula-sylvia-fujitsu-password;
-    }
-  );
+    });
+    owner = user;
+    group = group;
+  };
 in
 {
   disabledModules = [ "services/backup/bacula.nix" ];
@@ -50,13 +52,17 @@ in
 
 
   sops.templates = {
-    "dir.conf".file = ( replaceTemplate ./bacula-dir.conf );
-    "dir-fd.conf".file = ( replaceTemplate ./clients/dir-fd.conf );
-    "lenovo-linux.conf".file = ( replaceTemplate ./clients/lenovo-linux.conf );
-    "r-desktop.conf".file = ( replaceTemplate ./clients/r-desktop.conf );
-    "surface.conf".file = ( replaceTemplate ./clients/surface.conf );
-    "sylvia-fujitsu.conf".file = ( replaceTemplate ./clients/sylvia-fujitsu.conf );
-    "catalog-db-pass.conf".content = ''password = "${placeholders.bacula-dbpass}"'';
+    "dir.conf" = ( replaceTemplate ./bacula-dir.conf );
+    "dir-fd.conf" = ( replaceTemplate ./clients/dir-fd.conf );
+    "lenovo-linux.conf" = ( replaceTemplate ./clients/lenovo-linux.conf );
+    "r-desktop.conf" = ( replaceTemplate ./clients/r-desktop.conf );
+    "surface.conf" = ( replaceTemplate ./clients/surface.conf );
+    "sylvia-fujitsu.conf" = ( replaceTemplate ./clients/sylvia-fujitsu.conf );
+    "catalog-db-pass.conf" = {
+      content = ''password = "${placeholders.bacula-dbpass}"'';
+      owner = user;
+      group = group;
+    };
   };
 
   services.bacula-dir = {
