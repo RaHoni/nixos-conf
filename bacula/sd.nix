@@ -44,7 +44,7 @@ in
 
     device.FileChgr1-Dev1 = {
       mediaType = "File1";
-      archiveDevice = "/var/data/bacula";
+      archiveDevice = "/var/bacula";
       extraDeviceConfig = ''
         LabelMedia = yes;                   # lets Bacula label unlabeled media
         Random Access = Yes;
@@ -57,6 +57,7 @@ in
     autochanger.FileChgr1 = {
       devices = [ "FileChgr1-Dev1" ];
       changerDevice = "/dev/null";
+      changerCommand = "";
     };
 
     extraMessagesConfig = ''
