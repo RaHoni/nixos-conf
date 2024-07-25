@@ -8,7 +8,7 @@
     };
   };
   disabledModules = [ "services/backup/bacula.nix" ];
-  imports = [ "${inputs.nixpkgs}/nixos/modules/services/backup/bacula.nix" ];
+  imports = [ "${inputs.nixpkgs-bacula}/nixos/modules/services/backup/bacula.nix" ];
   config = {
     sops.secrets = {
       "bacula/cacert" = { };

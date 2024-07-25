@@ -1,9 +1,25 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 let
   secrets = config.sops.secrets;
+  templates = config.sops.templates;
+  placeholders = config.sops.placeholder;
   libDir = "/var/lib/bacula";
+
+  replaceTemplate = file: (
+    pkgs.substituteAll {
+      src = file;
+      dbpass = placeholders.bacula-dbpass;
+      dirPassword = placeholders.bacula-dir-password;
+      lenovoPassword = placeholders.bacula-lenovo-linux-password;
+      rdesktopPassword = placeholders.bacula-r-desktop-password;
+      surfacePassword = placeholders.bacula-surface-password;
+      sylviaFujitsuPassword = placeholders.bacula-sylvia-fujitsu-password;
+    }
+  );
 in
 {
+  disabledModules = [ "services/backup/bacula.nix" ];
+  imports = [ "${inputs.nixpkgs-bacula}/nixos/modules/services/backup/bacula.nix" ];
   sops.secrets = {
     "bacula/cacert".path = "/etc/bacula/bacula-ca.cert";
     dir-cert.sopsFile = ../secrets/bacula/dir.yaml;
@@ -20,18 +36,24 @@ in
 
 
   sops.templates = {
-    "dir.conf".content = ( builtins.readFile ./bacula-dir.conf );
-    "dir-fd.conf".content = ( builtins.readFile ./clients/dir-fd.conf );
-    "lenovo-linux.conf".content = ( builtins.readFile ./clients/lenovo-linux.conf );
-    "r-desktop.conf".content = ( builtins.readFile ./clients/r-desktop.conf );
-    "surface.conf".content = ( builtins.readFile ./clients/surface.conf );
-    "sylvia-fujitsu.conf".content = ( builtins.readFile ./clients/sylvia-fujitsu.conf );
+    "dir.conf".file = ( replaceTemplate ./bacula-dir.conf );
+    "dir-fd.conf".file = ( replaceTemplate ./clients/dir-fd.conf );
+    "lenovo-linux.conf".file = ( replaceTemplate ./clients/lenovo-linux.conf );
+    "r-desktop.conf".file = ( replaceTemplate ./clients/r-desktop.conf );
+    "surface.conf".file = ( replaceTemplate ./clients/surface.conf );
+    "sylvia-fujitsu.conf".file = ( replaceTemplate ./clients/sylvia-fujitsu.conf );
+    "catalog-db-pass.conf".content = ''password = "${placeholders.bacula-dbpass}"'';
   };
 
   services.bacula-dir = {
     enable = true;
     name = "dir.bacula";
     password = "6SqrCDjtrtKavlrEwqP49az5znQQl8a9vv5vXGlfkrTO"; #TODO encrypt and change
+    catalogs.MyCatalog = {
+      dbSocket = "/run/mysqld/mysqld.sock";
+      password = null;
+      extraConfig = "@${templates."catalog-db-pass.conf".path}";
+    };
     extraMessagesConfig = ''
       mailcommand = "bsmtp -f bacula-dir -s \"Bacula: %t %e of %c %l\" %r"
       operatorcommand = "bsmtp -f bacula-dir -s \"Bacula: Intervention needed for %j\" %r"
@@ -40,7 +62,7 @@ in
       console = all, !skipped, !saved
       catalog = all
     '';
-    extraConfig = with config.sops; ''
+    extraConfig = ''
       # Definition of file Virtual Autochanger device
       Autochanger {
         Name = File1
@@ -53,11 +75,11 @@ in
         Maximum Concurrent Jobs = 10        # run up to 10 jobs a the same time
         Autochanger = File1                 # point to ourself
         TLS Require = yes
-        TLS CA Certificate File = ${config.sops.secrets."bacula/cacert".path}
+        TLS CA Certificate File = ${secrets."bacula/cacert".path}
         # This is a server certificate, used for incoming
         # console connections.
-        TLS Certificate = ${config.sops.secrets.dir-cert.path}
-        TLS Key = ${config.sops.secrets.dir-key.path}
+        TLS Certificate = ${secrets.dir-cert.path}
+        TLS Key = ${secrets.dir-key.path}
       }
 
       @${templates."dir.conf".path} # Additional Configs

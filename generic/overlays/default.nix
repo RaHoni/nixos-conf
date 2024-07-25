@@ -22,7 +22,11 @@
   };
   bacula = prev.bacula.overrideAttrs {
     buildInputs = prev.bacula.buildInputs ++ [ final.libmysqlclient ];
-    configureFlags = prev.bacula.configureFlags ++ [
+    configureFlags = [
+      "--with-logdir=/var/log/bacula"
+      "--with-working-dir=/var/lib/bacula"
+      "--mandir=\${out}/share/man"
+      "--with-sqlite3=${final.sqlite.dev}"
       "--with-mysql=${final.libmysqlclient.dev}"
       "--with-mysql-lib=${final.libmysqlclient}/lib/mariadb"
     ];
