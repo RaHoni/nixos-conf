@@ -1,13 +1,22 @@
 { config, ... }:
 let
   secrets = config.sops.secrets;
-
+  owner = config.users.users.bacula.name;
+  group = config.users.groups.bacula.name;
 in
 {
   sops.secrets = {
-    "bacula/cacert" = { };
-    sd-cert.sopsFile = ../secrets/bacula/sd.yaml;
-    sd-key.sopsFile = ../secrets/bacula/sd.yaml;
+    "bacula/cacert" = {
+      inherit owner group;
+    };
+    sd-cert = {
+			sopsFile = ../secrets/bacula/sd.yaml;
+			inherit owner group;
+		};
+    sd-key = {
+			sopsFile = ../secrets/bacula/sd.yaml;
+			inherit owner group;
+		};
   };
   services.bacula-sd = {
     enable = true;
