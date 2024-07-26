@@ -262,6 +262,7 @@
 
         nextcloud = makeSystem {
           systemModules = [
+            ./nextcloud/bacula.nix
             ./nextcloud/default.nix
             #./server/smb.nix
             #./server/calibre.nix
