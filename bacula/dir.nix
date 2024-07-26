@@ -125,7 +125,8 @@ in
     #    ${pkgs.bacula}/etc/update_bacula_tables mysql || true
     #fi
     #  '';
-    path = [ pkgs.bash pkgs.wakeonlan ];
+    path = [ pkgs.bash pkgs.wakeonlan pkgs.mysql pkgs.nix ];
+    environment = { NIX_PATH = "nixpkgs=/etc/nixpkgs/channels/nixpkgs"; };
   };
   networking.firewall.allowedTCPPorts = [ config.services.bacula-dir.port ];
 
