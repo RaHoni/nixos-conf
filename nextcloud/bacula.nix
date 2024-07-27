@@ -4,6 +4,7 @@
   environment.etc = {
     "bacula/backupMysql.sh"= {
       source = ../bacula/backupMysql.sh;
+      mode = "777";
     };
     "bacula/dumpCatalog.sh" = {
       text = ''

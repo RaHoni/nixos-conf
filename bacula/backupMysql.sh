@@ -18,8 +18,10 @@ databases=$(mysql -u "$MYSQL_USER" --socket="$MYSQL_SOCKET" -e "SHOW DATABASES;"
 
 # Loop through each database and export it to a separate file
 for db in $databases; do
-    echo "Exporting database: $db"
-    mysqldump -u "$MYSQL_USER" --socket="$MYSQL_SOCKET" --databases "$db" > "$BACKUP_DIR/$db.sql"
+    if [[ "$db" != "information_schema" ]] && [[ "$db" != "performance_schema" ]] && [[ "$db" != "mysql" ]] && [[ "$db" != "sys" ]]; then
+        echo "Exporting database: $db"
+        mysqldump -u "$MYSQL_USER" --socket="$MYSQL_SOCKET" --databases "$db" > "$BACKUP_DIR/$db.sql"
+    fi
 done
 
 # Export users and their permissions
