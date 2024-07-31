@@ -74,6 +74,9 @@ in
       password = null;
       extraConfig = "@${templates."catalog-db-pass.conf".path}";
     };
+    extraDirectorConfig = ''
+      Heartbeat Interval = 30
+    '';
     extraMessagesConfig = ''
       mailcommand = "bsmtp -f bacula-dir -s \"Bacula: %t %e of %c %l\" %r"
       operatorcommand = "bsmtp -f bacula-dir -s \"Bacula: Intervention needed for %j\" %r"
@@ -100,6 +103,7 @@ in
         # console connections.
         TLS Certificate = ${secrets.dir-cert.path}
         TLS Key = ${secrets.dir-key.path}
+        Heartbeat Interval = 30
       }
 
       @${templates."dir.conf".path} # Additional Configs
