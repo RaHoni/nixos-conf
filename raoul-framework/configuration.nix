@@ -50,6 +50,10 @@
 
   programs = {
     adb.enable = true;
+    ausweisapp = {
+      enable = true;
+      openFirewall = true;
+    };
     kdeconnect.enable = true;
     neovim.defaultEditor = true;
     nix-ld.enable = true;
