@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.nixvim = {
     enable = true;
@@ -236,7 +236,7 @@
       #theme for status bar at bottom
       lualine = {
         enable = true;
-        theme = "gruvbox";
+        theme = lib.mkDefault "gruvbox";
       };
 
       #snippet engine

@@ -80,6 +80,17 @@
     xserver.enable = true; #Used by sddm
   };
 
+  stylix = {
+    enable = true;
+    image = pkgs.fetchurl {
+      url = "https://nextcloud.honermann.info/s/G4ism5PGRjApS97/download/Hintergrund.jpg";
+      sha256 = "cff23312a75d25c0e3a7387c1c74658ba84ec1f8aa13f1a7ac96ff4bbfbb2169";
+    };
+    override = {
+      base01 = "#313727";
+    };
+    polarity = "dark";
+  };
   users = {
     groups.raoul.gid = 1000;
     users.raoul = {

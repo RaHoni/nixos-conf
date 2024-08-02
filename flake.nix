@@ -84,6 +84,11 @@
       url = "github:RaHoni/streamdeck";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
   nixConfig = {
@@ -185,6 +190,7 @@
             ./generic/printer.nix
             ./raoul-framework/hardwareconfig.nix
             nixos-hardware.nixosModules.framework-16-7040-amd
+            stylix.nixosModules.stylix
           ];
           homeManagerModules = {
             raoul = [
