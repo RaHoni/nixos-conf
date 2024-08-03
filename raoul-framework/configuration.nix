@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -90,6 +90,27 @@
       base01 = "#313727";
     };
     polarity = "dark";
+    fonts = {
+      serif = config.stylix.fonts.sansSerif;
+      monospace = {
+        package = pkgs.nerdfonts;
+        name = "DejaVuSansM Nerd Font Mono";
+      };
+      sizes = {
+        applications = 13;
+        desktop = 12;
+        popups = 14;
+      };
+    };
+    opacity = {
+      desktop = 0.6;
+      popups = 0.6;
+    };
+    cursor = {
+      package = pkgs.capitaine-cursors;
+      name = "capitaine-cursors";
+      size = 24;
+    };
   };
   users = {
     groups.raoul.gid = 1000;
