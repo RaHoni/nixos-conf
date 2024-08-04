@@ -34,6 +34,7 @@
     libreoffice
     miraclecast
     nmap
+    qpwgraph
     signal-desktop
     vlc
     zsh-completions
