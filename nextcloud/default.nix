@@ -53,9 +53,9 @@
 
     https = true;
     settings = {
-      trustedProxies = [ "192.168.3.207" ];
-      defaultPhoneRegion = "DE";
-      extraTrustedDomains = [ "nextcloud.honermann.info" ];
+      trusted_proxies = [ "192.168.3.207" ];
+      default_phone_region = "DE";
+      trusted_domains = [ "nextcloud.honermann.info" ];
     };
   };
 
