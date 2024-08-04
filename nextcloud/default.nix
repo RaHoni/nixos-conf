@@ -16,7 +16,7 @@
     enable = true;
     datadir = "/var/data";
     package = pkgs.nextcloud29;
-    hostName = "nextcloud.honermann.info";
+    hostName = "honermann.info";
     configureRedis = true;
     database.createLocally = true;
 
