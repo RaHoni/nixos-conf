@@ -28,6 +28,7 @@
     mprisRecord
     filelight
     firefox
+    ffmpeg
     git
     gnupg
     kate
