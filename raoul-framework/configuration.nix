@@ -45,6 +45,10 @@
   networking = {
     hostName = "raoul-framework";
     networkmanager.enable = true;
+    firewall.allowedUDPPorts = [
+      67 # DHCP For Hotspots
+      34197 # Factorio Gameserver
+    ];
   };
 
   nix.settings.trusted-users = [ "root" "@wheel" ];
