@@ -791,11 +791,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1724252668,
-        "narHash": "sha256-RKf0AdBtJ/vTvlUAzdziYuA9D2Wmzi7KMqf7UT5yBHo=",
+        "lastModified": 1724252796,
+        "narHash": "sha256-8X5O8KJhUyAPtkGrYlEwoHesMk5LAQzBFrl1hWeY3FU=",
         "owner": "RaHoni",
         "repo": "mprisRecord",
-        "rev": "d26ee4ccba30e902d32bea18b48a2bb5deb50f5a",
+        "rev": "70e15bb699da63e0942bf4a3e1e034570e691b3b",
         "type": "github"
       },
       "original": {
