@@ -39,21 +39,11 @@
     xournalpp
     firefox
     kate
-    libreoffice
-    jdk
-    android-tools
-    python3
     signal-desktop
     zsh-completions
     git
     nmap
     gnupg
-    filelight
-    vlc
-    ffmpeg
-    nodePackages.bash-language-server
-    audacity
-    kdePackages.kdenlive
     neovim
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
@@ -64,9 +54,7 @@
 
 
   programs = {
-    adb.enable = true;
     kdeconnect.enable = true;
-    steam.enable = true;
   };
 
 
@@ -86,12 +74,6 @@
     sudo.u2fAuth = true;
     polkit-1.u2fAuth = true;
   };
-
-
-  services = {
-    teamviewer.enable = true;
-  };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
