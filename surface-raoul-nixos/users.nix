@@ -10,6 +10,7 @@
       ddcutil
       #rnix-lsp
       gh
+      keepassxc
       maliit-keyboard
     ];
     openssh.authorizedKeys.keys = [
