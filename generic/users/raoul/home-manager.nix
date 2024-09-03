@@ -1,14 +1,8 @@
 { config, pkgs, lib, home-manager-stable, ... }:
 with lib;
 {
-  imports = [ ./../default.nix ./plasma.nix ];
+  imports = [ ./../default.nix ];
   #  home.stateVersion = "23.05";
-  programs.kate.lsp.customServers = {
-    nix = {
-      command = [ "rnix-lsp" ];
-      highlightingModeRegex = "^nix$";
-    };
-  };
 
   home.packages = with pkgs; [
     qalculate-gtk
