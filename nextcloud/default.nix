@@ -51,6 +51,10 @@
 
     extraAppsEnable = true;
 
+    phpOptions = {
+      "opcache.interned_strings_buffer" = "16";
+    };
+
     https = true;
     settings = {
       trusted_proxies = [ "192.168.3.207" ];
