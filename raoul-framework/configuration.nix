@@ -39,6 +39,7 @@
     signal-desktop
     vlc
     zsh-completions
+    fw-ectool
   ];
 
   hardware.bluetooth.enable = true;
