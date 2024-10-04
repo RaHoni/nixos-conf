@@ -188,6 +188,7 @@
             ./generic/plasma.nix
             ./generic/printer.nix
             ./raoul-framework/hardwareconfig.nix
+            ./server/pi-hole.nix
             nixos-hardware.nixosModules.framework-16-7040-amd
             stylix.nixosModules.stylix
           ];
@@ -254,6 +255,7 @@
           systemModules = [
             ./proxy/default.nix
             ./generic/proxy.nix
+            ./raoul-framework/factorio.nix
           ];
           proxmox = true;
         };
