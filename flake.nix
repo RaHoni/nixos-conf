@@ -188,7 +188,6 @@
             ./generic/plasma.nix
             ./generic/printer.nix
             ./raoul-framework/hardwareconfig.nix
-            ./server/pi-hole.nix
             nixos-hardware.nixosModules.framework-16-7040-amd
             stylix.nixosModules.stylix
           ];
@@ -277,6 +276,7 @@
             ./bacula/dir.nix
             ./bacula/sd.nix
             ./generic/smtp.nix
+            ./server/pi-hole.nix
           ];
           proxmox = true;
           stable = true;

@@ -1,0 +1,17 @@
+192.168.2.34 lenovo-linux
+fd00::2:1 r-desktop
+fd00::1:1 pi.hole
+fd00::1:2 pi.bacula
+fd00::7:1 lenovo-linux.bacula
+fd00::8:1 sylvia-fujitsu.bacula
+192.168.3.103 calibre
+192.168.3.200 baikal
+192.168.3.203 messdiener
+192.168.3.204 webdav
+192.168.3.1 server.honermann.info
+192.168.2.20 r-desktop
+192.168.2.38 surface.bacula
+192.168.3.207 ssl-proxy.otlqu2p5cvqqpnid.myfritz.net
+192.168.3.210 dir.bacula
+192.168.3.210 sd.bacula
+192.168.3.210 dir-fd.bacula
