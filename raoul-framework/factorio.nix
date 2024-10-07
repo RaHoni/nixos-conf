@@ -29,7 +29,7 @@ in
     description = "Private Gaming";
     #loadLatestSave = true;
     saveName = "Julian_and_Raoul";
-    extraSettingsFile = config.sops.templates.factorio.path;
+    extraSettingsFile = "/run/credentials/factorio.service/factorio.json";
     admins = [
       "brightphaeton"
       "honi2002"
@@ -55,5 +55,8 @@ in
         // { deps = []; };
     in
       builtins.map modToDrv modList;
+  };
+  systemd.services.factorio.serviceConfig = {
+    LoadCredential="factorio.json:${config.sops.templates.factorio.path}";
   };
 }
