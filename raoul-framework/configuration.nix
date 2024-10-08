@@ -40,6 +40,8 @@
     vlc
     zsh-completions
     fw-ectool
+    bacula
+    xournalpp
   ];
 
   hardware.bluetooth.enable = true;
@@ -144,7 +146,7 @@
         prismlauncher #Minecraft
         sops
         spotify
-        tetex #full latex
+        texliveFull #full latex
         whatsapp-for-linux
       ];
     };
