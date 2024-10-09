@@ -12,9 +12,18 @@ in
       }
       '';
     secrets = {
-      username.sopsFile = ../secrets/ssl-proxy/factorio.yaml;
-      game_password.sopsFile = ../secrets/ssl-proxy/factorio.yaml;
-      token.sopsFile = ../secrets/ssl-proxy/factorio.yaml;
+      username = {
+        sopsFile = ../secrets/ssl-proxy/factorio.yaml;
+        restartUnits = [ "factorio.service" ];
+      };
+      game_password = {
+        sopsFile = ../secrets/ssl-proxy/factorio.yaml;
+        restartUnits = [ "factorio.service" ];
+      };
+      token = {
+        sopsFile = ../secrets/ssl-proxy/factorio.yaml;
+        restartUnits = [ "factorio.service" ];
+      };
     };
   };
   services.factorio = {
