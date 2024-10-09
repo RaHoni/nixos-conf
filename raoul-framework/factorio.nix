@@ -7,13 +7,13 @@ in
     templates.factorio.content = ''
       {
         "username" : "${placeholder.username}",
-        "game-password":"${placeholder.game-password}",
+        "game_password":"${placeholder.game_password}",
         "token":"${placeholder.token}"
       }
       '';
     secrets = {
       username.sopsFile = ../secrets/ssl-proxy/factorio.yaml;
-      game-password.sopsFile = ../secrets/ssl-proxy/factorio.yaml;
+      game_password.sopsFile = ../secrets/ssl-proxy/factorio.yaml;
       token.sopsFile = ../secrets/ssl-proxy/factorio.yaml;
     };
   };
