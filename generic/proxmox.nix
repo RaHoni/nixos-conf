@@ -17,6 +17,12 @@
     enable = true;
   };
 
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 15d";
+    randomizedDelaySec = "30min";
+  };
+
   networking.firewall = {
     enable = true;
     # for NFSv3; view with `rpcinfo -p`
