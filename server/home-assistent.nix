@@ -33,8 +33,8 @@
         ];
         action = {
             type = "turn_on";
-            device_id= "b50219e4da1445c6808f3bda6a5fd394";
-            entity_id= "51d2db670767d555e38c84e91fab7f1e";
+            device_id= "a0d32ecbcbdbdeec6ebcc689b2c0d860";
+            entity_id= "0dc3ba1296a2c418839628ae898f9b6a";
             domain= "switch";
           };
       }
@@ -54,8 +54,8 @@
         ];
         action = {
             type = "turn_off";
-            device_id= "b50219e4da1445c6808f3bda6a5fd394";
-            entity_id= "51d2db670767d555e38c84e91fab7f1e";
+            device_id= "a0d32ecbcbdbdeec6ebcc689b2c0d860";
+            entity_id= "0dc3ba1296a2c418839628ae898f9b6a";
             domain= "switch";
           };
       }
