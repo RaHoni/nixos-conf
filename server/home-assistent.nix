@@ -8,12 +8,12 @@
       "default_config"
       "met"
       "esphome"
+      "mobile_app"
     ];
     config = {
       http = {
         use_x_forwarded_for = true;
         trusted_proxies = [
-          "192.168.3.0/23"
           "192.168.3.207"
         ];
       };
