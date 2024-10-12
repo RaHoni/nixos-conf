@@ -56,6 +56,16 @@ in
         extraConfig = "client_max_body_size 8G;";
       };
 
+      "home.honermann.info" = {
+        enableACME = true;
+        forceSSL = true;
+        http2 = true;
+        locations."/" = {
+          proxyPass = "http://${subnet}210:8123";
+          proxyWebsockets = true;
+        };
+      };
+
       "calibre.honermann.info" = {
         enableACME = true;
         forceSSL = true;
