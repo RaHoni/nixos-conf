@@ -10,6 +10,12 @@
       "esphome"
     ];
     config = {
+      http = {
+        use_x_forwarded_for = true;
+        trusted_proxies = [
+          "192.168.3.0/23"
+        ];
+      };
       homeassistant = {
       unit_system = "metric";
       longitude = 7.7;
