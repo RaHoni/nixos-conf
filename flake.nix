@@ -277,6 +277,7 @@
             ./bacula/sd.nix
             ./generic/smtp.nix
             ./server/pi-hole.nix
+            ./server/home-assistent.nix
           ];
           proxmox = true;
           stable = true;
