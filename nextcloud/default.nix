@@ -45,6 +45,11 @@
         url = "https://github.com/julien-nc/phonetrack/releases/download/v0.8.1/phonetrack-0.8.1.tar.gz";
         license = "agpl3Only";
       };
+      twofactor_admin = pkgs.fetchNextcloudApp {
+      url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.5.0/twofactor_admin.tar.gz";
+      sha256 = "sha256-dDZ1MInaWTcl0Fo4gVBcgO887gHjUdV2RtUT43LqXW8=";
+      license = "agpl3Only";
+      };
       #twofactor_totp
       #   # onlyoffice
     };
