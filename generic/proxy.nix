@@ -61,7 +61,7 @@ in
         forceSSL = true;
         http2 = true;
         locations."/" = {
-          proxyPass = "http://${subnet}210:8123";
+          proxyPass = "http://${subnet}211:8123";
           proxyWebsockets = true;
         };
       };
