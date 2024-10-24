@@ -37,7 +37,7 @@ in
     game-name = "JuRaMa";
     description = "Private Gaming";
     #loadLatestSave = true;
-    saveName = "Space_Race";
+    saveName = "Space_Age";
     extraSettingsFile = "/run/credentials/factorio.service/factorio.json";
     admins = [
       "brightphaeton"
