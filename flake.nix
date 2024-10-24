@@ -1,8 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-bacula.url = "github:RaHoni/nixpkgs/bacula";
+    nixpkgs-master.url = "github:NixOS/nixpkgs";
 
     disko = {
       url = "github:nix-community/disko";
@@ -125,6 +126,7 @@
 
       stable-nixpkgs = system: pkgsConfig nixpkgs-stable system;
       overlays = system: final: prev: {
+        master = pkgsConfig nixpkgs-master system;
         stable = pkgsConfig nixpkgs-stable system;
         unstable = pkgsConfig nixpkgs system;
         ffmpeg-vpl = import nixpkgs {

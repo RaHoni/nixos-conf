@@ -28,7 +28,7 @@ in
   };
   services.factorio = {
     enable = true;
-    package = pkgs.unstable.factorio-headless;
+    package = pkgs.master.factorio-headless;
     openFirewall = true;
     public = true;
     lan = true;
