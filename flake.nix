@@ -376,5 +376,10 @@
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
 
+      hydraJobs = {
+        inherit (self)
+          nixosConfigurations;
+      };
+
     };
 }
