@@ -195,6 +195,7 @@
             ./raoul-framework/hardwareconfig.nix
             nixos-hardware.nixosModules.framework-16-7040-amd
             stylix.nixosModules.stylix
+            ./server/hydra.nix
           ];
           homeManagerModules = {
             raoul = [
