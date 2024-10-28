@@ -20,6 +20,8 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    hydra.url = "github:NixOS/hydra";
+
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -144,6 +146,7 @@
         inherit system;
         specialArgs = {
           inherit inputs stable nebula secureboot; #ToDO: also make proxmox an option
+          inherit (hydra.packages.${system}) hydra;
           homeManagerModules = nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc) [ ] [
             {
               root = [
