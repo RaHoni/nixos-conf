@@ -222,6 +222,7 @@
             ./generic/plasma.nix
             ./generic/printer.nix
             ./server/home-assistant.nix
+            ./server/pi-hole.nix
           ];
           homeManagerModules = {
             raoul = [
