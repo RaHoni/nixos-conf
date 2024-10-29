@@ -221,6 +221,7 @@
             ./generic/pipewire.nix
             ./generic/plasma.nix
             ./generic/printer.nix
+            ./server/home-assistant.nix
           ];
           homeManagerModules = {
             raoul = [
