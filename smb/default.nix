@@ -11,6 +11,7 @@ let
 in
 {
   networking.hostName = "smb";
+  networking.nameservers = [ "192.168.3.102" "192.168.2.1" "1.1.1.1"];
 
   services.samba = {
     enable = true;

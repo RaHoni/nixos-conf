@@ -72,6 +72,7 @@ creation_rules:
       - *rescueIso
       - *petronillaStreaming
       - *raoul-framework
+      - *smb
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
     - pgp:
