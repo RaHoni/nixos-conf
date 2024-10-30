@@ -17,16 +17,30 @@
       cp /etc/pihole-custom /var/pihole/etc-pihole/custom.list
       cp /etc/dnsmasq-cnames /var/pihole/etc-dnsmasq.d/05-pihole-custom-cname.conf
     '';
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["podman-pi-hole.service"];
   };
 
-  virtualisation.oci-containers.containers.pi-hole = {
+  services.resolved.enable = false;
+  
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings = {
+        #dns_enabled = true;
+        ipv6_enabled = true;
+      };
+    };
+    oci-containers.containers.pi-hole = {
     image = "pihole/pihole:latest";
-    extraOptions = [ "--ip=10.88.0.2" ];
+    extraOptions = [
+      "--ip=10.88.0.2"
+      #"--ip6=fd00::6:1"
+    ];
     ports = [
-      "53:53/tcp"
-      "53:53/udp"
-      "8080:80/tcp"
+    "53:53/udp"
+    "53:53/tcp"
+    "8080:80/tcp"
     ];
     environment = {
       TZ = "Europe/Berlin";
@@ -36,5 +50,6 @@
       "/var/pihole/etc-pihole:/etc/pihole:copy"
       "/var/pihole/etc-dnsmasq.d:/etc/dnsmasq.d:copy"
     ];
+    };
   };
 }
