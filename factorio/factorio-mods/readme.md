@@ -1,0 +1,1 @@
+'''aai-loaders_0.2.4.zip''' is [from](https://mods.factorio.com/mod/aai-loaders) developed by Earendel bug reporting and discussions can be done on their [Discord](https://discord.gg/ymjUVMv) and you can support them on [Patreon](https://www.patreon.com/earendel)
