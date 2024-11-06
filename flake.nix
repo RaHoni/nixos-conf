@@ -284,7 +284,7 @@
             ./bacula/dir.nix
             ./bacula/sd.nix
             ./generic/smtp.nix
-            ./server/pi-hole.nix
+            #./server/pi-hole.nix
           ];
           proxmox = true;
           stable = true;
