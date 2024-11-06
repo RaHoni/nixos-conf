@@ -15,7 +15,7 @@
   services.nextcloud = {
     enable = true;
     datadir = "/var/data";
-    package = pkgs.nextcloud29;
+    package = pkgs.nextcloud30;
     hostName = "honermann.info";
     configureRedis = true;
     database.createLocally = true;
@@ -28,26 +28,21 @@
     maxUploadSize = "10G";
 
 
-    extraApps = with pkgs.nextcloud29Packages.apps; {
-      inherit registration calendar contacts end_to_end_encryption forms polls groupfolders twofactor_nextcloud_notification twofactor_webauthn cookbook notes gpoddersync;
+    extraApps = with pkgs.nextcloud30Packages.apps; {
+      inherit registration calendar contacts end_to_end_encryption forms polls groupfolders twofactor_webauthn cookbook notes gpoddersync phonetrack;
       files_retention = pkgs.fetchNextcloudApp {
-        sha256 = "sha256-FazftNLLdxlnt7libXG4Ngyi6hyyxC2VhX/PXEard98=";
-        url = "https://github.com/nextcloud-releases/files_retention/releases/download/v1.18.0/files_retention-v1.18.0.tar.gz";
+        sha256 = "sha256-mvfXavRtJPFqcnPZu375QrU8sp2dipbEuOTyD9Usr64=";
+        url = "https://github.com/nextcloud-releases/files_retention/releases/download/v1.19.0/files_retention-v1.19.0.tar.gz";
         license = "agpl3Only";
       };
       files_automatedtagging = pkgs.fetchNextcloudApp {
-        sha256 = "sha256-NeOJd3A3dZD86brdvDFyuQ1hGOo98C4T57aVhiUSMGg=";
-        url = "https://github.com/nextcloud-releases/files_automatedtagging/releases/download/v1.19.0/files_automatedtagging-v1.19.0.tar.gz";
-        license = "agpl3Only";
-      };
-      phonetrack = pkgs.fetchNextcloudApp {
-        sha256 = "sha256-V92f+FiS5vZEkq15A51pHoDpUOBfUOEVIcsXdP/rSMQ=";
-        url = "https://github.com/julien-nc/phonetrack/releases/download/v0.8.1/phonetrack-0.8.1.tar.gz";
+        sha256 = "sha256-Go46bhi/AzuIRkUK61s73y+jLsSLH6Ixobd6gAsSH2U=";
+        url = "https://github.com/nextcloud-releases/files_automatedtagging/releases/download/v1.20.0/files_automatedtagging-v1.20.0.tar.gz";
         license = "agpl3Only";
       };
       twofactor_admin = pkgs.fetchNextcloudApp {
-      url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.5.0/twofactor_admin.tar.gz";
-      sha256 = "sha256-dDZ1MInaWTcl0Fo4gVBcgO887gHjUdV2RtUT43LqXW8=";
+      url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.7.1/twofactor_admin.tar.gz";
+      sha256 = "sha256-PcdHV+A43neRioZmFfYuWj6A8XLkqjEzRld+sZgiiHg=";
       license = "agpl3Only";
       };
       #twofactor_totp
