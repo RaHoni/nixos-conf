@@ -1,5 +1,6 @@
 { pkgs, lib, ... }:
 {
+  home.packages = [ pkgs.nixfmt-rfc-style];
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
@@ -263,7 +264,13 @@
           bashls.enable = true; #lsp server for Bash
           clangd.enable = true; #lsp server for C/C++
           pyright.enable = true; #lsp server for Python
-          nil-ls.enable = true; #lsp server for Nix
+          nil-ls = {
+            enable = true; #lsp server for nix
+            settings = {
+              formatting.command = ["nixfmt"];
+              flake.autoEvalInputs = true;
+            };
+          };
           texlab.enable = true; #lsp Server for LaTeX
           java-language-server.enable = true; #lsp Server for Java
         };
