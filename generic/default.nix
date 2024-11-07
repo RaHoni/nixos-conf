@@ -19,6 +19,9 @@ in
 
     nix = {
       settings.experimental-features = [ "nix-command" "flakes" ];
+      extraOptions = ''
+        !include ${config.sops.secrets.nixAccessTokens.path}
+      '';
       optimise.automatic = true;
       registry = {
         nixpkgs.flake = inputs.nixpkgs-stable;
@@ -64,6 +67,11 @@ in
     };
 
     security.pam.sshAgentAuth.enable = true;
+
+    sops.secrets.nixAccessTokens = {
+      mode = "0440";
+      group = config.users.groups.keys.name;
+    };
 
     environment.systemPackages = with pkgs; [
       git

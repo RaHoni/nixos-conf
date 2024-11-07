@@ -128,7 +128,7 @@
       isNormalUser = true;
       description = "Raoul Honermann";
       hashedPassword = "$y$j9T$2qmWuo6/DJXoG.45LLjDX/$Y/NnNHfsQXULwubyI1lPavjfe3fYv/KTWMR4aPLhsSB";
-      extraGroups = [ "networkmanager" "wheel" "i2c" "render" "raoul" "dialout" "adbusers" "video" ];
+      extraGroups = [ "networkmanager" "wheel" "i2c" "render" "raoul" "dialout" "adbusers" "video" config.users.groups.keys.name ];
       openssh.authorizedKeys.keyFiles = [
         ../generic/sshPubkeys/Surface_id_ed25519.pub
       ];
