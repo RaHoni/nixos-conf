@@ -196,6 +196,7 @@
             nixos-hardware.nixosModules.framework-16-7040-amd
             stylix.nixosModules.stylix
             ./server/hydra.nix
+            ./server/esphome.nix
           ];
           homeManagerModules = {
             raoul = [
