@@ -1,4 +1,4 @@
-{ hydra, ... }:
+{ hydra, config, ... }:
 {
   nix.settings.allowed-uris = [
     "github:"
@@ -21,4 +21,16 @@
       maxJobs = 8;
     }
   ];
+
+  sops.secrets.binarySigKey = {
+    owner = "nix-serve";
+    group = "nix-serve";
+    sopsFile = ../secrets/r-desktop/hydra.yaml;
+  };
+
+  services.nix-serve = {
+    enable = true;
+    secretKeyFile = config.sops.secrets.binarySigKey.path;
+  };
+
 }
