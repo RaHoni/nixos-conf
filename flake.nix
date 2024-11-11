@@ -197,8 +197,6 @@
             ./raoul-framework/hardwareconfig.nix
             nixos-hardware.nixosModules.framework-16-7040-amd
             stylix.nixosModules.stylix
-            ./server/hydra.nix
-            ./server/esphome.nix
           ];
           homeManagerModules = {
             raoul = [
@@ -224,7 +222,9 @@
             ./generic/pipewire.nix
             ./generic/plasma.nix
             ./generic/printer.nix
+            ./server/esphome.nix
             ./server/home-assistant.nix
+            ./server/hydra.nix
             ./server/pi-hole.nix
           ];
           homeManagerModules = {
