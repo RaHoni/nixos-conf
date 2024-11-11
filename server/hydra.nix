@@ -30,7 +30,7 @@
 
   services.nix-serve = {
     enable = true;
+    openFirewall = true;
     secretKeyFile = config.sops.secrets.binarySigKey.path;
   };
-
 }

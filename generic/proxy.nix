@@ -56,6 +56,15 @@ in
         extraConfig = "client_max_body_size 8G;";
       };
 
+      "binarycache.honermann.info" = {
+        enableACME = true;
+        forceSSL = true;
+        http2 = true;
+        locations."/" = {
+          proxyPass = "http://192.168.2.20:5000";
+        };
+      };
+
       "home.honermann.info" = {
         enableACME = true;
         forceSSL = true;
