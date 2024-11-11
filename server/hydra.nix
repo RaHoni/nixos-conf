@@ -14,17 +14,16 @@
   };
 
   nix.buildMachines = [
-    { hostName = "localhost";
+    {
+      hostName = "localhost";
       protocol = null;
       system = "x86_64-linux";
-      supportedFeatures = ["kvm" "nixos-test" "big-parallel" "benchmark"];
+      supportedFeatures = [ "kvm" "nixos-test" "big-parallel" "benchmark" ];
       maxJobs = 8;
     }
   ];
 
   sops.secrets.binarySigKey = {
-    owner = "nix-serve";
-    group = "nix-serve";
     sopsFile = ../secrets/r-desktop/hydra.yaml;
   };
 
