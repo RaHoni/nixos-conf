@@ -115,6 +115,8 @@
   outputs = { self, ... }@inputs:
     with inputs;
     let
+      inherit (inputs.nixpkgs.lib) filterAttrs mapAttrs elem;
+      getCfg = _: cfg: cfg.config.system.build.toplevel;
       pkgsConfig = pkgs: system: import pkgs {
         overlays = [
           (import ./generic/overlays)
@@ -380,6 +382,14 @@
           }
         ];
       };
+
+            hydraJobs = {
+              # Include filtered configurations as Hydra jobs
+              hosts = mapAttrs getCfg nixosConfigurations;
+              #inherit (nixosConfigurations) r-desktop;
+              # Each filtered configuration is available as a job
+              inherit packages;
+            };
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
     };
