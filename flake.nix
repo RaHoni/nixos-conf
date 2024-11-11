@@ -97,16 +97,19 @@
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
+      "https://binarycache.honermann.info"
       "https://cache.garnix.io"
       "https://rahoni.cachix.org"
     ];
     extra-trusted-substituters = [
       "https://nix-community.cachix.org"
+      "https://binarycache.honermann.info"
       "https://cache.garnix.io"
       "https://rahoni.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "binarycache.honermann.info:ta4rxqLXx+RoTmZjybD96dm0fwcpTDQqFnF3HBRTeWg="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       "rahoni.cachix.org-1:iCKI8r6HT5rToodXfecglGJnPTaOaGzNeAS5wawMuMM="
     ];
