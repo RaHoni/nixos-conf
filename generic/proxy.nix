@@ -1,6 +1,17 @@
 { config, lib, ... }:
 let
   subnet = "192.168.3.";
+
+  proxyHost = {address, proxyWebsockets ? false, extraConfig ? "", serverAliases ? []}: {
+    inherit serverAliases extraConfig;
+    enableACME = true;
+    forceSSL = true;
+    http2 = true;
+    locations."/" = {
+      proxyPass = address;
+      inherit proxyWebsockets;
+    };
+  };
 in
 {
   security.acme = {
@@ -32,104 +43,35 @@ in
     '';
 
     virtualHosts = {
-      #messdiener proxy
-      "messdiener.honermann.info" = {
-        enableACME = true;
-        forceSSL = true;
-        http2 = true;
-        locations = {
-          "/".proxyPass = "https://${subnet}203";
-          "/.well-known/carddav".proxyPass = "http://${subnet}200/dav.php";
-          "/.well-known/caldav".proxyPass = "http://${subnet}200/dav.php";
-        };
-      };
+      "binarycache.honermann.info" = proxyHost { address = "http://192.168.2.20:5000"; };
 
-      "nextcloud.honermann.info" = {
-        serverAliases = [ "honermann.info" ];
-        enableACME = true;
-        forceSSL = true;
-        http2 = true;
-        locations."/" = {
-          proxyPass = "http://${subnet}210";
-          proxyWebsockets = true;
-        };
-        extraConfig = "client_max_body_size 8G;";
-      };
-
-      "binarycache.honermann.info" = {
-        enableACME = true;
-        forceSSL = true;
-        http2 = true;
-        locations."/" = {
-          proxyPass = "http://192.168.2.20:5000";
-        };
-      };
-
-      "home.honermann.info" = {
-        enableACME = true;
-        forceSSL = true;
-        http2 = true;
-        locations."/" = {
-          proxyPass = "http://${subnet}211:8123";
-          proxyWebsockets = true;
-        };
-      };
-
-      "calibre.honermann.info" = {
-        enableACME = true;
-        forceSSL = true;
-        http2 = true;
-        locations."/" = {
-          proxyPass = "http://${subnet}103:8080";
-          proxyWebsockets = true;
-        };
+      "calibre.honermann.info" = proxyHost {
+        address = "http://${subnet}103:8080";
+        proxyWebsockets = true;
         extraConfig = "client_max_body_size 100M;";
       };
 
-      "hoerbuecher.honermann.info" = {
-        enableACME = true;
-        forceSSL = true;
-        http2 = true;
-        locations."/" = {
-          proxyPass = "http://${subnet}209:8000";
-          proxyWebsockets = true;
-        };
+      "home.honermann.info" = proxyHost {
+        address = "http://${subnet}211:8123";
+        proxyWebsockets = true;
+      };
+
+      "hoerbuecher.honermann.info" = proxyHost {
+        address = "http://${subnet}209:8000";
+        proxyWebsockets = true;
         extraConfig = "client_max_body_size 8G;";
       };
 
-      "packete.honermann.info" = {
-        enableACME = true;
-        forceSSL = true;
-        http2 = true;
-        locations."/".proxyPass = "http://${subnet}205";
+      "hydra.honermann.info" = proxyHost { address = "http://192.168.2.20:300"; };
+
+      "nextcloud.honermann.info" = proxyHost {
+        serverAliases = [ "honermann.info" ];
+        address = "http://${subnet}210";
+        proxyWebsockets = true;
+        extraConfig = "client_max_body_size 8G;";
       };
 
-      "baikal.honermann.info" = {
-        enableACME = true;
-        forceSSL = true;
-        http2 = true;
-        locations = {
-          "/" = {
-            proxyPass = "https://${subnet}200";
-            proxyWebsockets = true;
-          };
-        };
-      };
-
-      "webdav.honermann.info" = {
-        enableACME = true;
-        forceSSL = true;
-        http2 = true;
-        locations."/".proxyPass = "https://${subnet}204";
-      };
-
-      "server.honermann.info" = {
-        enableACME = true;
-        forceSSL = true;
-        http2 = true;
-        locations."/".proxyPass = "https://${subnet}1:8006";
-      };
-
+      "server.honermann.info" = proxyHost { address = "https://${subnet}1:8006"; };
     };
   };
   security.acme.certs."nextcloud.honermann.info".extraDomainNames = [ "honermann.info" ];
