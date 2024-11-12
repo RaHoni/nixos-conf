@@ -56,7 +56,7 @@ in
         extraConfig = "client_max_body_size 8G;";
       };
 
-      "hydra.honermann.info" = proxyHost { address = "http://192.168.2.20:300"; };
+      "hydra.honermann.info" = proxyHost { address = "http://192.168.2.20:3000"; };
 
       "nextcloud.honermann.info" = proxyHost {
         serverAliases = [ "honermann.info" ];
