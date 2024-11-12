@@ -45,12 +45,6 @@ in
     virtualHosts = {
       "binarycache.honermann.info" = proxyHost { address = "http://192.168.2.20:5000"; };
 
-      "calibre.honermann.info" = proxyHost {
-        address = "http://${subnet}103:8080";
-        proxyWebsockets = true;
-        extraConfig = "client_max_body_size 100M;";
-      };
-
       "home.honermann.info" = proxyHost {
         address = "http://${subnet}211:8123";
         proxyWebsockets = true;
