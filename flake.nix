@@ -146,11 +146,21 @@
         };
       };
 
-      makeSystem = { systemModules, homeManagerModules ? { }, stable ? true, proxmox ? false, system ? "x86_64-linux", nebula ? false, secureboot ? false, ... }: nixpkgs-stable.lib.nixosSystem rec {
+      makeSystem = {
+        systemModules,
+        homeManagerModules ? { },
+        stable ? true,
+        proxmox ? false,
+        system ? "x86_64-linux",
+        nebula ? false,
+        secureboot ? false,
+        genericHomeManagerModules ? [],
+        ...
+      }: nixpkgs-stable.lib.nixosSystem rec {
         pkgs = if stable then pkgsConfig nixpkgs-stable system else pkgsConfig nixpkgs system;
         inherit system;
         specialArgs = {
-          inherit inputs stable nebula secureboot; #ToDO: also make proxmox an option
+          inherit inputs stable nebula secureboot genericHomeManagerModules; #ToDO: also make proxmox an option
           inherit (hydra.packages.${system}) hydra;
           homeManagerModules = nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc) [ ] [
             {
