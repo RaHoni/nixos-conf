@@ -1,12 +1,12 @@
-{ config, pkgs, inputs, homeManagerModules, stable, nebula, lib, ... }:
+{ config, pkgs, inputs, homeManagerModules, stable, nebula, lib, genericHomeManagerModules, ... }:
 let
   inherit (lib) optionals;
+  switchStable = stableModuls: unstableModuls: if stable then stableModuls else unstableModuls;
 in
 {
   # import common.nix and home manager module depending on if system uses stable or unstable packages
   imports = [ ./default.nix ./lanzaboote.nix ]
-    ++ (optionals stable [ inputs.home-manager-stable.nixosModules.home-manager ])
-    ++ (optionals (!stable) [ inputs.home-manager.nixosModules.home-manager ]);
+    ++ (switchStable [ inputs.home-manager-stable.nixosModules.home-manager ] [ inputs.home-manager.nixosModules.home-manager ]);
 
   #set zsh as default shell
   environment.shells = with pkgs; [ zsh ];
@@ -23,6 +23,9 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "bak";
+    sharedModules = [ ./neovim.nix ]
+      ++ genericHomeManagerModules
+      ++ (switchStable [ inputs.nixvim-stable.homeManagerModules.nixvim ] [ inputs.nixvim.homeManagerModules.nixvim ]);
     /*
       homeextraSpecialArgs = {
       #pass nixneovim as additional Arg to home-manager config
@@ -36,7 +39,7 @@ in
     users = builtins.mapAttrs
       (userName: modules:
         {
-          imports = if stable then modules ++ [ inputs.nixvim-stable.homeManagerModules.nixvim ] else modules ++ [ inputs.nixvim.homeManagerModules.nixvim ];
+          imports = modules;
 
           home.username = userName;
           home.homeDirectory = if userName == "root" then "/root" else "/home/${userName}";
