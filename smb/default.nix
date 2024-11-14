@@ -34,6 +34,13 @@ in
           "create mask" = "0775";
 
         };
+      homeassistant = {
+        path = "/mnt/data/homeassistant";
+        browseable = "yes";
+        "read only" = "no";
+        "directory mask" = "0755";
+        "create mask" = "0775";
+      };
 
     };
   };
