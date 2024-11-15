@@ -36,6 +36,11 @@ in
       enable = true;
       extraConfig = "user raoul";
       matchBlocks = rec {
+        homeassistant = {
+          user = "root";
+          identityFile = sshIdentity "id_ecdsa_proxmox";
+          identitiesOnly = true;
+        };
         rescueIso = {
           user = "nixos";
           identityFile = sshIdentity "support";
