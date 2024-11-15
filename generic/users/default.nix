@@ -38,6 +38,7 @@ in
       matchBlocks = rec {
         homeassistant = {
           user = "root";
+          hostname = "homeassistant.local";
           identityFile = sshIdentity "id_ecdsa_proxmox";
           identitiesOnly = true;
         };
