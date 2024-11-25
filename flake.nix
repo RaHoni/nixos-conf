@@ -96,21 +96,15 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://nix-community.cachix.org"
       "https://binarycache.honermann.info"
-      "https://cache.garnix.io"
       "https://rahoni.cachix.org"
     ];
     extra-trusted-substituters = [
-      "https://nix-community.cachix.org"
       "https://binarycache.honermann.info"
-      "https://cache.garnix.io"
       "https://rahoni.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "binarycache.honermann.info:ta4rxqLXx+RoTmZjybD96dm0fwcpTDQqFnF3HBRTeWg="
-      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       "rahoni.cachix.org-1:iCKI8r6HT5rToodXfecglGJnPTaOaGzNeAS5wawMuMM="
     ];
   };
@@ -146,39 +140,39 @@
         };
       };
 
-      makeSystem = {
-        systemModules,
-        homeManagerModules ? { },
-        stable ? true,
-        proxmox ? false,
-        system ? "x86_64-linux",
-        nebula ? false,
-        secureboot ? false,
-        genericHomeManagerModules ? [],
-        ...
-      }: nixpkgs-stable.lib.nixosSystem rec {
-        pkgs = if stable then pkgsConfig nixpkgs-stable system else pkgsConfig nixpkgs system;
-        inherit system;
-        specialArgs = {
-          inherit inputs stable nebula secureboot genericHomeManagerModules; #ToDO: also make proxmox an option
-          inherit (hydra.packages.${system}) hydra;
-          homeManagerModules = nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc) [ ] [
-            {
-              root = [
-                ./generic/users/root/home-manager.nix
-              ];
-            }
-            homeManagerModules
-          ];
+      makeSystem =
+        { systemModules
+        , homeManagerModules ? { }
+        , stable ? true
+        , proxmox ? false
+        , system ? "x86_64-linux"
+        , nebula ? false
+        , secureboot ? false
+        , genericHomeManagerModules ? [ ]
+        , ...
+        }: nixpkgs-stable.lib.nixosSystem rec {
+          pkgs = if stable then pkgsConfig nixpkgs-stable system else pkgsConfig nixpkgs system;
+          inherit system;
+          specialArgs = {
+            inherit inputs stable nebula secureboot genericHomeManagerModules; #ToDO: also make proxmox an option
+            inherit (hydra.packages.${system}) hydra;
+            homeManagerModules = nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc) [ ] [
+              {
+                root = [
+                  ./generic/users/root/home-manager.nix
+                ];
+              }
+              homeManagerModules
+            ];
+          };
+          modules = [
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ (overlays system) ]; })
+            ./generic/newDefault.nix
+            ./generic/nebula.nix
+          ]
+          ++ systemModules
+          ++ nixpkgs.lib.lists.optionals proxmox [ ./generic/proxmox.nix ];
         };
-        modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ (overlays system) ]; })
-          ./generic/newDefault.nix
-          ./generic/nebula.nix
-        ]
-        ++ systemModules
-        ++ nixpkgs.lib.lists.optionals proxmox [ ./generic/proxmox.nix ];
-      };
     in
     rec {
       nixosConfigurations = {
@@ -395,13 +389,13 @@
         ];
       };
 
-            hydraJobs = {
-              # Include filtered configurations as Hydra jobs
-              hosts = mapAttrs getCfg nixosConfigurations;
-              #inherit (nixosConfigurations) r-desktop;
-              # Each filtered configuration is available as a job
-              inherit packages;
-            };
+      hydraJobs = {
+        # Include filtered configurations as Hydra jobs
+        hosts = mapAttrs getCfg nixosConfigurations;
+        #inherit (nixosConfigurations) r-desktop;
+        # Each filtered configuration is available as a job
+        inherit packages;
+      };
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
     };
