@@ -6,10 +6,10 @@ with lib;
 
   home.packages = with pkgs; [
     qalculate-gtk
-    nextcloud-client
-    (pkgs.makeAutostartItem {name = "signal-desktop"; package = pkgs.signal-desktop;})
-    (pkgs.makeAutostartItem { name = "com.github.eneshecan.WhatsAppForLinux"; package = pkgs.whatsapp-for-linux;})
-    (pkgs.makeAutostartItem { name = "org.keepassxc.KeePassXC"; package = pkgs.keepassxc;})
+    (makeAutostartItem { name = "com.nextcloud.desktopclient.nextcloud"; package = nextcloud-client;})
+    (makeAutostartItem {name = "signal-desktop"; package = signal-desktop;})
+    (makeAutostartItem { name = "com.github.eneshecan.WhatsAppForLinux"; package = whatsapp-for-linux;})
+    (makeAutostartItem { name = "org.keepassxc.KeePassXC"; package = keepassxc;})
   ];
 
   services.gpg-agent = {
