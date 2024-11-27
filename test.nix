@@ -1,5 +1,5 @@
-{...}:
+{ ... }:
 {
   networking.hostName = "Test";
-  
+
 }
