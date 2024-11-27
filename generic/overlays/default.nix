@@ -51,7 +51,7 @@
   };
   signal-desktop = prev.signal-desktop.overrideAttrs (oldAttrs: {
     postPatch = ''
-      substituteInPlace share/applications/signal-desktop.desktop \
+      substituteInPlace usr/share/applications/signal-desktop.desktop \
         --replace "Exec=" 'Exec=LANGUAGE="de-DE:en-US" '
     '';
   });
