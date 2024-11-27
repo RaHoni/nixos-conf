@@ -369,7 +369,7 @@
           };
         };
 
-        aarch = nixos-generators.nixosGenerate rec {
+        aarch-installer = nixos-generators.nixosGenerate rec {
           pkgs = pkgsConfig nixpkgs-stable system;
           format = "sd-aarch64-installer";
           system = "aarch64-linux";
