@@ -14,6 +14,7 @@
   system.autoUpgrade = {
     flake = "github:RaHoni/nixos-conf";
     enable = true;
+    allowReboot = true;
   };
 
   nix.gc = {
