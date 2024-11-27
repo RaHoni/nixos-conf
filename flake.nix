@@ -180,7 +180,7 @@
           systemModules = [
             ./surface-raoul-nixos/configuration.nix
             ./generic/localisation.nix
-            ./generic/pipewire.nix
+            #./generic/pipewire.nix
             ./generic/printer.nix
             nixos-hardware.nixosModules.microsoft-surface-go
           ];
