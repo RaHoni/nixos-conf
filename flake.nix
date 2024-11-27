@@ -344,23 +344,9 @@
             ];
           };
         };
-
-        aarch64-image = nixpkgs-stable.lib.nixosSystem {
-          modules = [
-            ./iso/configuration.nix
-            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
-            {
-              nixpkgs.config.allowUnsupportedSystem = true;
-              nixpkgs.hostPlatform.system = "aarch64-linux";
-              nixpkgs.buildPlatform.system = "x86_64-linux"; # If you build on x86 other wise changes this.
-              # ... extra configs as above
-
-            }
-          ];
-        };
       };
 
-      packages.x86_64-linux = {
+      packages = {
         installer = nixos-generators.nixosGenerate rec {
           pkgs = pkgsConfig nixpkgs-stable system;
           format = "install-iso";
@@ -370,6 +356,26 @@
             ./generic/nebula.nix
             ./rescueIso/configuration.nix
             "${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
+          ];
+          specialArgs = {
+            inherit system inputs;
+            nebula = false;
+            stable = true;
+            secureboot = false;
+            homeManagerModules = {
+              root = [ ./generic/users/root/home-manager.nix ];
+              nixos = [ ./generic/users/default.nix ];
+            };
+          };
+        };
+
+        aarch = nixos-generators.nixosGenerate rec {
+          pkgs = pkgsConfig nixpkgs-stable system;
+          format = "sd-aarch64-installer";
+          system = "aarch64-linux";
+          modules = [
+            ./generic/newDefault.nix
+            ./generic/nebula.nix
           ];
           specialArgs = {
             inherit system inputs;
