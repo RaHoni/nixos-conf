@@ -31,6 +31,12 @@
     "@wheel"
   ];
 
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:RaHoni/nixos-conf";
+    allowReboot = true;
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.defaultSession = "plasma";
