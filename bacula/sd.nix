@@ -10,13 +10,13 @@ in
       inherit owner group;
     };
     sd-cert = {
-			sopsFile = ../secrets/bacula/sd.yaml;
-			inherit owner group;
-		};
+      sopsFile = ../secrets/bacula/sd.yaml;
+      inherit owner group;
+    };
     sd-key = {
-			sopsFile = ../secrets/bacula/sd.yaml;
-			inherit owner group;
-		};
+      sopsFile = ../secrets/bacula/sd.yaml;
+      inherit owner group;
+    };
   };
   services.bacula-sd = {
     enable = true;

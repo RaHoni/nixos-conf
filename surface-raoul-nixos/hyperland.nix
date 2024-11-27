@@ -10,7 +10,7 @@
     };
 
     settings = {
-      /* -- Monitor config -- */
+      # -- Monitor config --
       # Set lockscreen background
 
       monitor = [
@@ -20,7 +20,7 @@
         ",preferred,auto,auto"
       ];
 
-      /* -- Initialisation -- */
+      # -- Initialisation --
       exec-once = [
         # Execute your favorite apps at launch (waybar gets started automatically through systemd)
         "wl-paste --type text --watch cliphist store #clipboard manager: Stores only text data"
@@ -41,11 +41,11 @@
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "GDK_BACKEND,wayland,x11"
         "CLUTTER_BACKEND,wayland"
-        "_JAVA_AWT_WM_NONREPARENTING,1" #tiling wm fix for Java applications
+        "_JAVA_AWT_WM_NONREPARENTING,1" # tiling wm fix for Java applications
         "NIXOS_OZONE_WL,1"
       ];
 
-      /* -- Input & Bindings -- */
+      # -- Input & Bindings --
       input = {
         kb_layout = "de";
         follow_mouse = 1;
@@ -56,7 +56,7 @@
 
       gestures.workspace_swipe = true;
 
-      binds.allow_workspace_cycles = true; #previous now cycles between last two used workspaces (alt+tab behaviour)
+      binds.allow_workspace_cycles = true; # previous now cycles between last two used workspaces (alt+tab behaviour)
 
       "$mainMod" = "SUPER";
       "$screenshotDir" = "/home/julian/Pictures/Screenshots";
@@ -86,7 +86,7 @@
         "ALT, TAB, workspace, previous"
         "$mainMod, TAB, workspace, e+1"
         "$mainMod SHIFT, TAB, workspace, e-1"
-        
+
         # Move active window (with mainMod + SHIFT + vim keys)
         "$mainMod SHIFT, left, movewindow, l"
         "$mainMod SHIFT, right, movewindow, r"

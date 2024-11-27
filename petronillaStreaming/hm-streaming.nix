@@ -7,7 +7,10 @@
       colorScheme = "BreezeDark";
     };
     kwin = {
-      titlebarButtons.left = [ "on-all-desktops" "keep-above-windows" ];
+      titlebarButtons.left = [
+        "on-all-desktops"
+        "keep-above-windows"
+      ];
     };
     configFile = {
       "kwinrulesrc"."163954f6-f587-4a17-a257-2e25b144dda0" = {

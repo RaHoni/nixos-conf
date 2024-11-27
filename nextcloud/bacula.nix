@@ -1,8 +1,8 @@
-{pkgs, config, ...}:
+{ pkgs, config, ... }:
 {
   imports = [ ../generic/bacula.nix ];
   environment.etc = {
-    "bacula/backupMysql.sh"= {
+    "bacula/backupMysql.sh" = {
       source = ../bacula/backupMysql.sh;
       mode = "777";
     };

@@ -109,21 +109,24 @@
     ];
   };
 
-  outputs = { self, systems, ... }@inputs:
+  outputs =
+    { self, systems, ... }@inputs:
     with inputs;
     let
       inherit (inputs.nixpkgs.lib) filterAttrs mapAttrs elem;
       getCfg = _: cfg: cfg.config.system.build.toplevel;
-      pkgsConfig = pkgs: system: import pkgs {
-        overlays = [
-          (import ./generic/overlays)
-          mprisRecord.overlays.${system}.default
-        ];
-        inherit system;
-        config = {
-          allowUnfree = true; #allow Unfree packages
+      pkgsConfig =
+        pkgs: system:
+        import pkgs {
+          overlays = [
+            (import ./generic/overlays)
+            mprisRecord.overlays.${system}.default
+          ];
+          inherit system;
+          config = {
+            allowUnfree = true; # allow Unfree packages
+          };
         };
-      };
 
       stable-nixpkgs = system: pkgsConfig nixpkgs-stable system;
       overlays = system: final: prev: {
@@ -141,20 +144,28 @@
       };
 
       makeSystem =
-        { systemModules
-        , homeManagerModules ? { }
-        , stable ? true
-        , proxmox ? false
-        , system ? "x86_64-linux"
-        , nebula ? false
-        , secureboot ? false
-        , genericHomeManagerModules ? [ ]
-        , ...
-        }: nixpkgs-stable.lib.nixosSystem rec {
+        {
+          systemModules,
+          homeManagerModules ? { },
+          stable ? true,
+          proxmox ? false,
+          system ? "x86_64-linux",
+          nebula ? false,
+          secureboot ? false,
+          genericHomeManagerModules ? [ ],
+          ...
+        }:
+        nixpkgs-stable.lib.nixosSystem rec {
           pkgs = if stable then pkgsConfig nixpkgs-stable system else pkgsConfig nixpkgs system;
           inherit system;
           specialArgs = {
-            inherit inputs stable nebula secureboot genericHomeManagerModules; #ToDO: also make proxmox an option
+            inherit
+              inputs
+              stable
+              nebula
+              secureboot
+              genericHomeManagerModules
+              ; # ToDO: also make proxmox an option
             inherit (hydra.packages.${system}) hydra;
             homeManagerModules = nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc) [ ] [
               {
@@ -166,16 +177,19 @@
             ];
           };
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ (overlays system) ]; })
+            (
+              { config, pkgs, ... }:
+              {
+                nixpkgs.overlays = [ (overlays system) ];
+              }
+            )
             ./generic/newDefault.nix
             ./generic/nebula.nix
-          ]
-          ++ systemModules
-          ++ nixpkgs.lib.lists.optionals proxmox [ ./generic/proxmox.nix ];
+          ] ++ systemModules ++ nixpkgs.lib.lists.optionals proxmox [ ./generic/proxmox.nix ];
         };
 
-        # Small tool to iterate over each systems
-        eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+      # Small tool to iterate over each systems
+      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
     in
     rec {
       nixosConfigurations = {
@@ -331,21 +345,19 @@
           };
         };
 
+        aarch64-image = nixpkgs-stable.lib.nixosSystem {
+          modules = [
+            ./iso/configuration.nix
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+            {
+              nixpkgs.config.allowUnsupportedSystem = true;
+              nixpkgs.hostPlatform.system = "aarch64-linux";
+              nixpkgs.buildPlatform.system = "x86_64-linux"; # If you build on x86 other wise changes this.
+              # ... extra configs as above
 
-        aarch64-image = nixpkgs-stable.lib.nixosSystem
-          {
-            modules = [
-              ./iso/configuration.nix
-              "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
-              {
-                nixpkgs.config.allowUnsupportedSystem = true;
-                nixpkgs.hostPlatform.system = "aarch64-linux";
-                nixpkgs.buildPlatform.system = "x86_64-linux"; #If you build on x86 other wise changes this.
-                # ... extra configs as above
-
-              }
-            ];
-          };
+            }
+          ];
+        };
       };
 
       packages.x86_64-linux = {

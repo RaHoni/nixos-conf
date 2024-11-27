@@ -18,7 +18,12 @@
       hostName = "localhost";
       protocol = null;
       system = "x86_64-linux";
-      supportedFeatures = [ "kvm" "nixos-test" "big-parallel" "benchmark" ];
+      supportedFeatures = [
+        "kvm"
+        "nixos-test"
+        "big-parallel"
+        "benchmark"
+      ];
       maxJobs = 8;
     }
   ];

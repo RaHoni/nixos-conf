@@ -1,3 +1,6 @@
 (final: prev: {
-  ffmpeg-qsv = prev.ffmpeg.override { withVpl = true; withMfx = false; };
+  ffmpeg-qsv = prev.ffmpeg.override {
+    withVpl = true;
+    withMfx = false;
+  };
 })

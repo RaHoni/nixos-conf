@@ -22,5 +22,9 @@
       uri = "tcp://0.0.0.0:10200";
     };
   };
-  networking.firewall.allowedTCPPorts = [ 10200 10300 10400 ];
+  networking.firewall.allowedTCPPorts = [
+    10200
+    10300
+    10400
+  ];
 }

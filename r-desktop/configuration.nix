@@ -1,4 +1,11 @@
-{ pkgs, lib, inputs, nixpkgs-ffmpeg, ... }: {
+{
+  pkgs,
+  lib,
+  inputs,
+  nixpkgs-ffmpeg,
+  ...
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -19,8 +26,10 @@
   networking.networkmanager.enable = true;
   networking.interfaces.eth0.wakeOnLan.enable = true;
 
-
-  nix.settings.trusted-users = [ "root" "@wheel" ];
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -29,10 +38,8 @@
   programs.neovim.defaultEditor = true;
   programs.noisetorch.enable = true;
 
-
   services.gvfs.enable = true;
   programs.adb.enable = true;
-
 
   # Needed for yubikey ccid Functionality
   services.pcscd.enable = true;
@@ -85,8 +92,6 @@
     sudo.sshAgentAuth = true;
     polkit-1.u2fAuth = true;
   };
-
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

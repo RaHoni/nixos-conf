@@ -8,13 +8,15 @@
       "192.168.2.1"
       "1.1.1.1"
     ];
-    interfaces.eth0.ipv4.addresses = [{
-      address = "192.168.3.208";
-      prefixLength = 23;
-    }];
+    interfaces.eth0.ipv4.addresses = [
+      {
+        address = "192.168.3.208";
+        prefixLength = 23;
+      }
+    ];
 
     tempAddresses = "disabled";
-    
+
     defaultGateway = {
       address = "192.168.2.1";
       interface = "eth0";
@@ -27,7 +29,6 @@
   #   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
   #   boot.loader.generic-extlinux-compatible.enable = true;f
-
 
   users.users.root = {
     openssh.authorizedKeys.keys = [
@@ -52,10 +53,12 @@
   system.autoUpgrade.flake = "github:RaHoni/nixos-conf";
   system.autoUpgrade.enable = true;
 
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ 53 51821 ];
+  networking.firewall.allowedUDPPorts = [
+    53
+    51821
+  ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 

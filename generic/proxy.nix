@@ -2,16 +2,23 @@
 let
   subnet = "192.168.3.";
 
-  proxyHost = {address, proxyWebsockets ? false, extraConfig ? "", serverAliases ? []}: {
-    inherit serverAliases extraConfig;
-    enableACME = true;
-    forceSSL = true;
-    http2 = true;
-    locations."/" = {
-      proxyPass = address;
-      inherit proxyWebsockets;
+  proxyHost =
+    {
+      address,
+      proxyWebsockets ? false,
+      extraConfig ? "",
+      serverAliases ? [ ],
+    }:
+    {
+      inherit serverAliases extraConfig;
+      enableACME = true;
+      forceSSL = true;
+      http2 = true;
+      locations."/" = {
+        proxyPass = address;
+        inherit proxyWebsockets;
+      };
     };
-  };
 in
 {
   security.acme = {

@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, lib, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 let
   base = "/etc/nixpkgs/channels";
   nixpkgsPath = "${base}/nixpkgs";
@@ -16,9 +22,11 @@ in
   config = {
     #system.configurationRevision = self.shortRev or self.dirtyShortRev;
 
-
     nix = {
-      settings.experimental-features = [ "nix-command" "flakes" ];
+      settings.experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       extraOptions = ''
         !include ${config.sops.secrets.nixAccessTokens.path}
       '';
@@ -39,7 +47,9 @@ in
     security.sudo.extraConfig = "Defaults env_keep += SSH_AUTH_SOCK";
 
     systemd.tmpfiles.rules = [
-      "L+ ${nixpkgsPath}     - - - - ${if config.local.stable then inputs.nixpkgs-stable else inputs.nixpkgs}"
+      "L+ ${nixpkgsPath}     - - - - ${
+        if config.local.stable then inputs.nixpkgs-stable else inputs.nixpkgs
+      }"
       "L+ ${nixpkgs-unstablePath} - - - - ${inputs.nixpkgs}"
       "L+ ${nixpkgs-stablePath} - - - - ${inputs.nixpkgs-stable}"
     ];
@@ -55,7 +65,6 @@ in
     services.printing.enable = true;
     services.printing.drivers = [ pkgs.gutenprint ];
     #environment.etc."channels/nixpkgs".source = nixpkgs-stable.outPath;
-
 
     users.defaultUserShell = pkgs.zsh;
     environment.shells = with pkgs; [ zsh ];
@@ -97,12 +106,20 @@ in
     programs.zsh = {
       enable = true;
 
-
       #      oh-my-zsh = {
       ohMyZsh = {
         enable = true;
-        customPkgs = with pkgs; [ omz-nix-shell omz-powerlevel10k zsh-you-should-use ];
-        plugins = [ "git" "sudo" "nix-shell" "you-should-use" ];
+        customPkgs = with pkgs; [
+          omz-nix-shell
+          omz-powerlevel10k
+          zsh-you-should-use
+        ];
+        plugins = [
+          "git"
+          "sudo"
+          "nix-shell"
+          "you-should-use"
+        ];
         theme = "powerlevel10k/powerlevel10k";
       };
       shellAliases = {
@@ -112,7 +129,7 @@ in
         upgrade = "nix flake update --commit-lock-file /etc/nixos";
         nixos = "cd /etc/nixos";
         vi = "nvim ";
-        sudo = "sudo "; #This allows aliases to work with sudo
+        sudo = "sudo "; # This allows aliases to work with sudo
       };
     };
 

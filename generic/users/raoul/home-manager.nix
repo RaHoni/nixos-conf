@@ -1,4 +1,10 @@
-{ config, pkgs, lib, home-manager-stable, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  home-manager-stable,
+  ...
+}:
 with lib;
 {
   imports = [ ./../default.nix ];
@@ -6,10 +12,22 @@ with lib;
 
   home.packages = with pkgs; [
     qalculate-gtk
-    (makeAutostartItem { name = "com.nextcloud.desktopclient.nextcloud"; package = nextcloud-client;})
-    (makeAutostartItem {name = "signal-desktop"; package = signal-desktop;})
-    (makeAutostartItem { name = "com.github.eneshecan.WhatsAppForLinux"; package = whatsapp-for-linux;})
-    (makeAutostartItem { name = "org.keepassxc.KeePassXC"; package = keepassxc;})
+    (makeAutostartItem {
+      name = "com.nextcloud.desktopclient.nextcloud";
+      package = nextcloud-client;
+    })
+    (makeAutostartItem {
+      name = "signal-desktop";
+      package = signal-desktop;
+    })
+    (makeAutostartItem {
+      name = "com.github.eneshecan.WhatsAppForLinux";
+      package = whatsapp-for-linux;
+    })
+    (makeAutostartItem {
+      name = "org.keepassxc.KeePassXC";
+      package = keepassxc;
+    })
   ];
 
   services.gpg-agent = {

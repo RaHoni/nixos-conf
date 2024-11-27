@@ -6,13 +6,14 @@ let
 in
 {
 
-
-
   services.udev.extraRules = ''SUBSYSTEMS=="usb",ATTRS{idVendor}=="abcd", ATTRS{idProduct}=="1234", ACTION=="add", RUN+="${pkgs.bash}/bin/bash ${launcher}/bin/launcher $devnode"'';
 
   systemd.services."usbcheck@" = {
     enable = true;
-    path = [ pkgs.dosfstools pkgs.util-linux ];
+    path = [
+      pkgs.dosfstools
+      pkgs.util-linux
+    ];
     description = "Test the USB Sticks failed get ejected to blink indefintly";
     script = (builtins.readFile ./check_usb.sh);
     scriptArgs = "%i";

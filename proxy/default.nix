@@ -9,7 +9,10 @@
     useNetworkd = lib.mkForce false;
     firewall = {
       allowPing = true;
-      allowedTCPPorts = [ 80 443 ];
+      allowedTCPPorts = [
+        80
+        443
+      ];
       #enable = lib.mkForce false;
     };
   };

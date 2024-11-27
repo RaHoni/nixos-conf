@@ -10,10 +10,9 @@
     tmp.useTmpfs = true;
     initrd = {
       systemd.enable = true;
-      luks.devices."crypted".crypttabExtraOpts = ["fido2-device=auto"];  # cryptenroll
+      luks.devices."crypted".crypttabExtraOpts = [ "fido2-device=auto" ]; # cryptenroll
     };
   };
-
 
   environment.etc = {
     "libinput/local-overrides.quirks".text = ''
@@ -55,7 +54,10 @@
     ];
   };
 
-  nix.settings.trusted-users = [ "root" "@wheel" ];
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
   programs = {
     adb.enable = true;
@@ -83,10 +85,10 @@
 
   services = {
     fwupd.enable = true;
-    gvfs.enable = true; #Allow programs to directly acces remote shares
+    gvfs.enable = true; # Allow programs to directly acces remote shares
     pcscd.enable = true; # yubikey ccid
     teamviewer.enable = true;
-    xserver.enable = true; #Used by sddm
+    xserver.enable = true; # Used by sddm
   };
 
   stylix = {
@@ -128,7 +130,17 @@
       isNormalUser = true;
       description = "Raoul Honermann";
       hashedPassword = "$y$j9T$2qmWuo6/DJXoG.45LLjDX/$Y/NnNHfsQXULwubyI1lPavjfe3fYv/KTWMR4aPLhsSB";
-      extraGroups = [ "networkmanager" "wheel" "i2c" "render" "raoul" "dialout" "adbusers" "video" config.users.groups.keys.name ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "i2c"
+        "render"
+        "raoul"
+        "dialout"
+        "adbusers"
+        "video"
+        config.users.groups.keys.name
+      ];
       openssh.authorizedKeys.keyFiles = [
         ../generic/sshPubkeys/Surface_id_ed25519.pub
       ];
@@ -143,10 +155,10 @@
         kleopatra
         nebula
         nixpkgs-fmt
-        prismlauncher #Minecraft
+        prismlauncher # Minecraft
         sops
         spotify
-        texliveFull #full latex
+        texliveFull # full latex
         whatsapp-for-linux
       ];
     };

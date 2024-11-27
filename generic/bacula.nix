@@ -1,4 +1,10 @@
-{ config, inputs, lib, pkgs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options = {
     services.bacula-fd.shutdownOnFinish = lib.mkOption {
@@ -45,7 +51,9 @@
 
     systemd.services.bacula-fd = {
       path = [ pkgs.nix ];
-      environment = { NIX_PATH = "nixpkgs=/etc/nixpkgs/channels/nixpkgs"; };
+      environment = {
+        NIX_PATH = "nixpkgs=/etc/nixpkgs/channels/nixpkgs";
+      };
     };
   };
 }

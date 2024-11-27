@@ -11,7 +11,6 @@
   };
   networking.firewall.allowPing = true;
 
-
   system.autoUpgrade = {
     flake = "github:RaHoni/nixos-conf";
     enable = true;

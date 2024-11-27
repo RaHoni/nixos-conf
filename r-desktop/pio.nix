@@ -1,7 +1,7 @@
-{config,pkgs,...}:
+{ config, pkgs, ... }:
 {
 
-  services.udev.packages = [ 
+  services.udev.packages = [
     pkgs.platformio-core.udev
     pkgs.openocd
   ];

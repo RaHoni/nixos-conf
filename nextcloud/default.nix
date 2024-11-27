@@ -1,4 +1,9 @@
-{ pkgs, modulesPath, config, ... }:
+{
+  pkgs,
+  modulesPath,
+  config,
+  ...
+}:
 
 {
   networking.hostName = "nextcloud";
@@ -27,9 +32,21 @@
 
     maxUploadSize = "10G";
 
-
     extraApps = with pkgs.nextcloud30Packages.apps; {
-      inherit registration calendar contacts end_to_end_encryption forms polls groupfolders twofactor_webauthn cookbook notes gpoddersync phonetrack;
+      inherit
+        registration
+        calendar
+        contacts
+        end_to_end_encryption
+        forms
+        polls
+        groupfolders
+        twofactor_webauthn
+        cookbook
+        notes
+        gpoddersync
+        phonetrack
+        ;
       files_retention = pkgs.fetchNextcloudApp {
         sha256 = "sha256-mvfXavRtJPFqcnPZu375QrU8sp2dipbEuOTyD9Usr64=";
         url = "https://github.com/nextcloud-releases/files_retention/releases/download/v1.19.0/files_retention-v1.19.0.tar.gz";
@@ -41,9 +58,9 @@
         license = "agpl3Only";
       };
       twofactor_admin = pkgs.fetchNextcloudApp {
-      url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.7.1/twofactor_admin.tar.gz";
-      sha256 = "sha256-PcdHV+A43neRioZmFfYuWj6A8XLkqjEzRld+sZgiiHg=";
-      license = "agpl3Only";
+        url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.7.1/twofactor_admin.tar.gz";
+        sha256 = "sha256-PcdHV+A43neRioZmFfYuWj6A8XLkqjEzRld+sZgiiHg=";
+        license = "agpl3Only";
       };
       #twofactor_totp
       #   # onlyoffice
@@ -63,7 +80,9 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
   system.stateVersion = "23.11";
 }
-

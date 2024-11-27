@@ -1,4 +1,10 @@
-{ config, pkgs, lib, osConfig, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
 with lib;
 let
   sshIdentity = keyname: "~/.ssh/keys/${keyname}.pub";
@@ -20,8 +26,8 @@ in
     autosuggestion.enable = true;
     initExtra = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
     localVariables = {
-      YSU_HARDCORE=1;
-      YSU_IGNORED_ALIASES=["g"];
+      YSU_HARDCORE = 1;
+      YSU_IGNORED_ALIASES = [ "g" ];
     };
   };
 
@@ -132,12 +138,15 @@ in
       };
     };
 
-
     git = {
       enable = true;
       extraConfig = {
-        push = { autoSetupRemote = true; };
-        pull = { rebase = true; };
+        push = {
+          autoSetupRemote = true;
+        };
+        pull = {
+          rebase = true;
+        };
       };
     };
   };
@@ -159,4 +168,3 @@ in
     '';
   };
 }
-

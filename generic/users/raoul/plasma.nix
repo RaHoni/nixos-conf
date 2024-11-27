@@ -1,4 +1,9 @@
-{ lib, osConfig, pkgs, ... }:
+{
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
 {
   home.packages = [ pkgs.libsForQt5.plasma-browser-integration ];
   programs.plasma = lib.mkIf osConfig.services.xserver.desktopManager.plasma5.enable {
@@ -10,19 +15,31 @@
       "kcm_touchpad"."Enable Touchpad" = "Touchpad On";
       "kcm_touchpad"."Toggle Touchpad" = "Touchpad Toggle";
       "kded5"."Show System Activity" = "Ctrl+Esc";
-      "kded5"."display" = [ "Display" "Meta+P" ];
+      "kded5"."display" = [
+        "Display"
+        "Meta+P"
+      ];
       "kmix"."decrease_microphone_volume" = "Microphone Volume Down";
       "kmix"."decrease_volume" = "Volume Down";
       "kmix"."increase_microphone_volume" = "Microphone Volume Up";
       "kmix"."increase_volume" = "Volume Up";
-      "kmix"."mic_mute" = [ "Microphone Mute" "Meta+Volume Mute" ];
+      "kmix"."mic_mute" = [
+        "Microphone Mute"
+        "Meta+Volume Mute"
+      ];
       "kmix"."mute" = "Volume Mute";
-      "ksmserver"."Lock Session" = [ "Meta+L" "Screensaver" ];
+      "ksmserver"."Lock Session" = [
+        "Meta+L"
+        "Screensaver"
+      ];
       "ksmserver"."Log Out" = "Ctrl+Alt+Del";
       "kwin"."Activate Window Demanding Attention" = "Meta+Ctrl+A";
       "kwin"."Edit Tiles" = "Meta+T";
       "kwin"."Expose" = "Ctrl+F9";
-      "kwin"."ExposeAll" = [ "Ctrl+F10" "Launch (C)" ];
+      "kwin"."ExposeAll" = [
+        "Ctrl+F10"
+        "Launch (C)"
+      ];
       "kwin"."ExposeClass" = "Ctrl+F7";
       "kwin"."Invert" = "Meta+Ctrl+I";
       "kwin"."InvertWindow" = "Meta+Ctrl+U";
@@ -63,7 +80,10 @@
       "kwin"."Window to Next Screen" = "Meta+Shift+Right";
       "kwin"."Window to Previous Screen" = "Meta+Shift+Left";
       "kwin"."view_actual_size" = "Meta+0";
-      "kwin"."view_zoom_in" = [ "Meta++" "Meta+=" ];
+      "kwin"."view_zoom_in" = [
+        "Meta++"
+        "Meta+="
+      ];
       "kwin"."view_zoom_out" = "Meta+-";
       "mediacontrol"."nextmedia" = "Media Next";
       "mediacontrol"."pausemedia" = "Media Pause";
@@ -74,7 +94,11 @@
       "org.kde.kcalc.desktop"."_launch" = "Launch (1)";
       "org.kde.konsole.desktop"."_launch" = "Ctrl+Alt+T";
       "org.kde.krunner.desktop"."RunClipboard" = "Alt+Shift+F2";
-      "org.kde.krunner.desktop"."_launch" = [ "Alt+Space" "Alt+F2" "Search" ];
+      "org.kde.krunner.desktop"."_launch" = [
+        "Alt+Space"
+        "Alt+F2"
+        "Search"
+      ];
       "org.kde.plasma.emojier.desktop"."_launch" = "Meta+.";
       "org.kde.spectacle.desktop"."ActiveWindowScreenShot" = "Meta+Print";
       "org.kde.spectacle.desktop"."FullScreenScreenShot" = "Shift+Print";
@@ -129,7 +153,8 @@
       "dolphinrc"."PreviewSettings"."Plugins".value = "ebookthumbnail,jpegthumbnail,windowsimagethumbnail,imagethumbnail,appimagethumbnail,kraorathumbnail,windowsexethumbnail,svgthumbnail,comicbookthumbnail,cursorthumbnail,audiothumbnail,opendocumentthumbnail,djvuthumbnail,exrthumbnail,mobithumbnail,gsthumbnail,blenderthumbnail,directorythumbnail,ffmpegthumbs,fontthumbnail,rawthumbnail";
       "kactivitymanagerdrc"."activities"."6be81689-2eca-484f-b01d-87b761c6476e".value = "Standard";
       "kactivitymanagerdrc"."main"."currentActivity".value = "6be81689-2eca-484f-b01d-87b761c6476e";
-      "kcminputrc"."Libinput.1133.49298.Logitech G203 LIGHTSYNC Gaming Mouse"."PointerAccelerationProfile".value = 1;
+      "kcminputrc"."Libinput.1133.49298.Logitech G203 LIGHTSYNC Gaming Mouse"."PointerAccelerationProfile".value =
+        1;
       "kcminputrc"."Libinput.1256.28705.inateck KB02009 Mouse"."MiddleButtonEmulation".value = true;
       "kcminputrc"."Libinput.1256.28705.inateck KB02009 Mouse"."PointerAccelerationProfile".value = 1;
       "kcminputrc"."Mouse"."X11LibInputXAccelProfileFlat".value = false;

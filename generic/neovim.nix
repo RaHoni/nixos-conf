@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-  home.packages = [ pkgs.nixfmt-rfc-style];
+  home.packages = [ pkgs.nixfmt-rfc-style ];
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
@@ -36,23 +36,23 @@
     };
 
     opts = {
-      compatible = false; #disable compatibility to old-time vi
-      showmatch = true; #show matching
-      ignorecase = true; #case insensitive
-      mouse = "a"; #enable mouse for all modes
-      hlsearch = true; #highlight search
-      incsearch = true; #incremental search
-      tabstop = 4; #how wide tab character should be displayed
-      softtabstop = 0; #how wide pressing tab should span (replicate tabstop)
-      shiftwidth = 0; #how wide shift commands should be (replicate tabstop)
-      expandtab = true; #converts tabs to white space
-      shiftround = true; #round indentation to multiples shiftwidth
-      autoindent = true; #indent a new line the same amount as the line just typed
-      smartindent = true; #make smart indentation (after { and so on)
-      number = true; #add line numbers
-      cursorline = true; #highlight current cursorline
-      ttyfast = true; #Speed up scrolling in Vim
-      ve = "onemore"; #allow cursor to be at first empty space after line
+      compatible = false; # disable compatibility to old-time vi
+      showmatch = true; # show matching
+      ignorecase = true; # case insensitive
+      mouse = "a"; # enable mouse for all modes
+      hlsearch = true; # highlight search
+      incsearch = true; # incremental search
+      tabstop = 4; # how wide tab character should be displayed
+      softtabstop = 0; # how wide pressing tab should span (replicate tabstop)
+      shiftwidth = 0; # how wide shift commands should be (replicate tabstop)
+      expandtab = true; # converts tabs to white space
+      shiftround = true; # round indentation to multiples shiftwidth
+      autoindent = true; # indent a new line the same amount as the line just typed
+      smartindent = true; # make smart indentation (after { and so on)
+      number = true; # add line numbers
+      cursorline = true; # highlight current cursorline
+      ttyfast = true; # Speed up scrolling in Vim
+      ve = "onemore"; # allow cursor to be at first empty space after line
       encoding = "utf8";
     };
     autoCmd = [
@@ -62,7 +62,7 @@
           "BufEnter"
           "BufWinEnter"
         ];
-        pattern = "*.nix"; #set tabstop of 2 for nix files
+        pattern = "*.nix"; # set tabstop of 2 for nix files
         # Or use `vimCallback` with a vimscript function name
         # Or use `command` if you want to run a normal vimscript command
         command = "setlocal tabstop=2";
@@ -261,18 +261,18 @@
       lsp = {
         enable = true;
         servers = {
-          bashls.enable = true; #lsp server for Bash
-          clangd.enable = true; #lsp server for C/C++
-          pyright.enable = true; #lsp server for Python
+          bashls.enable = true; # lsp server for Bash
+          clangd.enable = true; # lsp server for C/C++
+          pyright.enable = true; # lsp server for Python
           nil-ls = {
-            enable = true; #lsp server for nix
+            enable = true; # lsp server for nix
             settings = {
-              formatting.command = ["nixfmt"];
+              formatting.command = [ "nixfmt" ];
               flake.autoEvalInputs = true;
             };
           };
-          texlab.enable = true; #lsp Server for LaTeX
-          java-language-server.enable = true; #lsp Server for Java
+          texlab.enable = true; # lsp Server for LaTeX
+          java-language-server.enable = true; # lsp Server for Java
         };
       };
       cmp = {
@@ -281,7 +281,7 @@
           snippet.expand = "luasnip";
           sources = [
             { name = "nvim_lsp"; }
-            { name = "luasnip"; } #For luasnip users.
+            { name = "luasnip"; } # For luasnip users.
             { name = "path"; }
             { name = "buffer"; }
           ];
@@ -299,5 +299,3 @@
 
   };
 }
-
-

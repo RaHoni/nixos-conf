@@ -2,7 +2,11 @@
 {
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ gutenprint gutenprintBin epson-escpr2 ];
+    drivers = with pkgs; [
+      gutenprint
+      gutenprintBin
+      epson-escpr2
+    ];
   };
   services.avahi = {
     enable = true;

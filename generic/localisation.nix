@@ -2,7 +2,10 @@
 {
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
-  i18n.supportedLocales = [ "de_DE.UTF-8/UTF-8" "en_GB.UTF-8/UTF-8" ];
+  i18n.supportedLocales = [
+    "de_DE.UTF-8/UTF-8"
+    "en_GB.UTF-8/UTF-8"
+  ];
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";

@@ -2,16 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, options, lib, ... }:
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./users.nix
-      ./secrets.nix
-      ./bacula.nix
-    ];
+  config,
+  pkgs,
+  options,
+  lib,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./users.nix
+    ./secrets.nix
+    ./bacula.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -57,11 +62,9 @@
   # started in user sessions.
   # programs.mtr.enable = true;
 
-
   programs = {
     kdeconnect.enable = true;
   };
-
 
   services.xserver.wacom.enable = true;
   system.autoUpgrade.enable = true;

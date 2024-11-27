@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
   secrets = config.sops.secrets;
   templates = config.sops.templates;
@@ -8,15 +14,17 @@ let
   user = config.users.users.bacula.name;
 
   replaceTemplate = file: {
-    file = (pkgs.substituteAll {
-      src = file;
-      dbpass = placeholders.bacula-dbpass;
-      dirPassword = placeholders.bacula-dir-password;
-      lenovoPassword = placeholders.bacula-lenovo-linux-password;
-      rdesktopPassword = placeholders.bacula-r-desktop-password;
-      surfacePassword = placeholders.bacula-surface-password;
-      sylviaFujitsuPassword = placeholders.bacula-sylvia-fujitsu-password;
-    });
+    file = (
+      pkgs.substituteAll {
+        src = file;
+        dbpass = placeholders.bacula-dbpass;
+        dirPassword = placeholders.bacula-dir-password;
+        lenovoPassword = placeholders.bacula-lenovo-linux-password;
+        rdesktopPassword = placeholders.bacula-r-desktop-password;
+        surfacePassword = placeholders.bacula-surface-password;
+        sylviaFujitsuPassword = placeholders.bacula-sylvia-fujitsu-password;
+      }
+    );
     owner = user;
     group = group;
   };
@@ -50,14 +58,13 @@ in
     bacula-sylvia-fujitsu-password.sopsFile = ../secrets/bacula/clients/sylvia-fujitsu.yaml;
   };
 
-
   sops.templates = {
-    "dir.conf" = ( replaceTemplate ./bacula-dir.conf );
-    "dir-fd.conf" = ( replaceTemplate ./clients/dir-fd.conf );
-    "lenovo-linux.conf" = ( replaceTemplate ./clients/lenovo-linux.conf );
-    "r-desktop.conf" = ( replaceTemplate ./clients/r-desktop.conf );
-    "surface.conf" = ( replaceTemplate ./clients/surface.conf );
-    "sylvia-fujitsu.conf" = ( replaceTemplate ./clients/sylvia-fujitsu.conf );
+    "dir.conf" = (replaceTemplate ./bacula-dir.conf);
+    "dir-fd.conf" = (replaceTemplate ./clients/dir-fd.conf);
+    "lenovo-linux.conf" = (replaceTemplate ./clients/lenovo-linux.conf);
+    "r-desktop.conf" = (replaceTemplate ./clients/r-desktop.conf);
+    "surface.conf" = (replaceTemplate ./clients/surface.conf);
+    "sylvia-fujitsu.conf" = (replaceTemplate ./clients/sylvia-fujitsu.conf);
     "catalog-db-pass.conf" = {
       content = ''password = "${placeholders.bacula-dbpass}"'';
       owner = user;
@@ -68,7 +75,7 @@ in
   services.bacula-dir = {
     enable = true;
     name = "dir.bacula";
-    password = "6SqrCDjtrtKavlrEwqP49az5znQQl8a9vv5vXGlfkrTO"; #TODO encrypt and change
+    password = "6SqrCDjtrtKavlrEwqP49az5znQQl8a9vv5vXGlfkrTO"; # TODO encrypt and change
     catalogs.MyCatalog = {
       dbSocket = "/run/mysqld/mysqld.sock";
       password = null;
@@ -117,7 +124,7 @@ in
   };
 
   systemd.services.bacula-dir = {
-    preStart = lib.mkForce ''''; #''
+    preStart = lib.mkForce ''''; # ''
     #if ! test -e "${libDir}/db-created"; then
     #
     #   # populate DB
@@ -129,8 +136,15 @@ in
     #    ${pkgs.bacula}/etc/update_bacula_tables mysql || true
     #fi
     #  '';
-    path = [ pkgs.bash pkgs.wakeonlan pkgs.mysql pkgs.nix ];
-    environment = { NIX_PATH = "nixpkgs=/etc/nixpkgs/channels/nixpkgs"; };
+    path = [
+      pkgs.bash
+      pkgs.wakeonlan
+      pkgs.mysql
+      pkgs.nix
+    ];
+    environment = {
+      NIX_PATH = "nixpkgs=/etc/nixpkgs/channels/nixpkgs";
+    };
   };
   networking.firewall.allowedTCPPorts = [ config.services.bacula-dir.port ];
 

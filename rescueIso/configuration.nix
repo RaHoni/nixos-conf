@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   networking.hostName = "rescueIso";
   environment.systemPackages = with pkgs; [
@@ -38,7 +43,10 @@
     label = "VentoyBTRFS";
     fsType = "btrfs";
     neededForBoot = true;
-    options = [ "subvol=nixos" "compress=zstd" ];
+    options = [
+      "subvol=nixos"
+      "compress=zstd"
+    ];
   };
 
 }
