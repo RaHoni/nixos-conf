@@ -109,7 +109,7 @@
     ];
   };
 
-  outputs = { self, ... }@inputs:
+  outputs = { self, systems, ... }@inputs:
     with inputs;
     let
       inherit (inputs.nixpkgs.lib) filterAttrs mapAttrs elem;
@@ -173,6 +173,9 @@
           ++ systemModules
           ++ nixpkgs.lib.lists.optionals proxmox [ ./generic/proxmox.nix ];
         };
+
+        # Small tool to iterate over each systems
+        eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
     in
     rec {
       nixosConfigurations = {
@@ -388,6 +391,8 @@
           }
         ];
       };
+
+      formatter = eachSystem (pkgs: pkgs.nixfmt-rfc-style);
 
       hydraJobs = {
         # Include filtered configurations as Hydra jobs
