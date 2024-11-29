@@ -12,6 +12,8 @@ with lib;
 
   home.packages = with pkgs; [
     qalculate-gtk
+    nextcloud-client
+    signal-desktop
     (makeAutostartItem {
       name = "com.nextcloud.desktopclient.nextcloud";
       package = nextcloud-client;

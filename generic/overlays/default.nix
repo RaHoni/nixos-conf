@@ -52,7 +52,7 @@
   signal-desktop = prev.signal-desktop.overrideAttrs (oldAttrs: {
     postPatch = ''
       substituteInPlace usr/share/applications/signal-desktop.desktop \
-        --replace "Exec=" 'Exec=LANGUAGE="de-DE:en-US" '
+        --replace "Exec=" 'Exec=LANGUAGE="de-DE:en-US" ' --replace "--no-sandbox" '--no-sandbox --start-in-tray'
     '';
   });
 })
