@@ -78,6 +78,8 @@
       };
     };
 
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -410,6 +412,22 @@
         ];
       };
 
+      checks = nixpkgs.lib.genAttrs (import systems) (system: {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixpkgs-fmt.enable = true;
+          };
+        };
+        });
+
+      devShells = nixpkgs.lib.genAttrs (import systems) (system: {
+        default = nixpkgs.legacyPackages.${system}.mkShell {
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+        };
+        });
+
       formatter = eachSystem (pkgs: pkgs.nixfmt-rfc-style);
 
       hydraJobs = {
@@ -417,7 +435,7 @@
         hosts = mapAttrs getCfg nixosConfigurations;
         #inherit (nixosConfigurations) r-desktop;
         # Each filtered configuration is available as a job
-        inherit packages;
+        inherit devShells packages;
       };
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
