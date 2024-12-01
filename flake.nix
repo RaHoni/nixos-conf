@@ -352,52 +352,52 @@
         x86_64-linux = rec {
           default = installer;
           installer = nixos-generators.nixosGenerate rec {
-          pkgs = pkgsConfig nixpkgs-stable system;
-          format = "install-iso";
-          system = "x86_64-linux";
-          modules = [
-            ./generic/newDefault.nix
-            ./generic/nebula.nix
-            ./rescueIso/configuration.nix
-            "${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
-          ];
-          specialArgs = {
-            inherit system inputs;
-            nebula = false;
-            stable = true;
-            secureboot = false;
-            genericHomeManagerModules = [];
-            homeManagerModules = {
-              root = [ ./generic/users/root/home-manager.nix ];
-              nixos = [ ./generic/users/default.nix ];
+            pkgs = pkgsConfig nixpkgs-stable system;
+            format = "install-iso";
+            system = "x86_64-linux";
+            modules = [
+              ./generic/newDefault.nix
+              ./generic/nebula.nix
+              ./rescueIso/configuration.nix
+              "${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
+            ];
+            specialArgs = {
+              inherit system inputs;
+              nebula = false;
+              stable = true;
+              secureboot = false;
+              genericHomeManagerModules = [ ];
+              homeManagerModules = {
+                root = [ ./generic/users/root/home-manager.nix ];
+                nixos = [ ./generic/users/default.nix ];
+              };
             };
-          };
           };
         };
 
         aarch64-linux = rec {
-        default = installer;
-        installer = nixos-generators.nixosGenerate rec {
-          pkgs = pkgsConfig nixpkgs-stable system;
-          format = "sd-aarch64-installer";
-          system = "aarch64-linux";
-          modules = [
-            ./generic/newDefault.nix
-            ./generic/nebula.nix
-            {networking.hostName = "rescueIso";}
-          ];
-          specialArgs = {
-            inherit system inputs;
-            nebula = false;
-            stable = true;
-            secureboot = false;
-            genericHomeManagerModules = [];
-            homeManagerModules = {
-              root = [ ./generic/users/root/home-manager.nix ];
-              nixos = [ ./generic/users/default.nix ];
+          default = installer;
+          installer = nixos-generators.nixosGenerate rec {
+            pkgs = pkgsConfig nixpkgs-stable system;
+            format = "sd-aarch64-installer";
+            system = "aarch64-linux";
+            modules = [
+              ./generic/newDefault.nix
+              ./generic/nebula.nix
+              { networking.hostName = "rescueIso"; }
+            ];
+            specialArgs = {
+              inherit system inputs;
+              nebula = false;
+              stable = true;
+              secureboot = false;
+              genericHomeManagerModules = [ ];
+              homeManagerModules = {
+                root = [ ./generic/users/root/home-manager.nix ];
+                nixos = [ ./generic/users/default.nix ];
+              };
             };
           };
-        };
         };
       };
 
@@ -428,14 +428,14 @@
             nixfmt-rfc-style.enable = true;
           };
         };
-        });
+      });
 
       devShells = nixpkgs.lib.genAttrs (import systems) (system: {
         default = nixpkgs.legacyPackages.${system}.mkShell {
           inherit (self.checks.${system}.pre-commit-check) shellHook;
           buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
         };
-        });
+      });
 
       formatter = eachSystem (pkgs: pkgs.nixfmt-rfc-style);
 
