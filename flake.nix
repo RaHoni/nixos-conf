@@ -91,7 +91,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix/release-24.05";
+      url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
@@ -384,6 +384,7 @@
           modules = [
             ./generic/newDefault.nix
             ./generic/nebula.nix
+            {networking.hostName = "rescueIso";}
           ];
           specialArgs = {
             inherit system inputs;
@@ -438,13 +439,13 @@
 
       formatter = eachSystem (pkgs: pkgs.nixfmt-rfc-style);
 
-#      hydraJobs = {
-#        # Include filtered configurations as Hydra jobs
-#        hosts = mapAttrs getCfg nixosConfigurations;
-#        #inherit (nixosConfigurations) r-desktop;
-#        # Each filtered configuration is available as a job
-#        inherit devShells packages;
-#      };
+      hydraJobs = {
+        # Include filtered configurations as Hydra jobs
+        hosts = mapAttrs getCfg nixosConfigurations;
+        #inherit (nixosConfigurations) r-desktop;
+        # Each filtered configuration is available as a job
+        inherit devShells packages;
+      };
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
     };

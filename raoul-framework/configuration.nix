@@ -93,13 +93,8 @@
 
   stylix = {
     enable = true;
-    image = pkgs.fetchurl {
-      url = "https://nextcloud.honermann.info/s/G4ism5PGRjApS97/download/Hintergrund.jpg";
-      sha256 = "cff23312a75d25c0e3a7387c1c74658ba84ec1f8aa13f1a7ac96ff4bbfbb2169";
-    };
-    override = {
-      base01 = "#313727";
-    };
+    image = ./backround-image.png;
+    base16Scheme = ./palette.yaml;
     polarity = "dark";
     fonts = {
       serif = config.stylix.fonts.sansSerif;
