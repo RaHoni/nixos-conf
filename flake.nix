@@ -135,7 +135,7 @@
         master = pkgsConfig nixpkgs-master system;
         stable = pkgsConfig nixpkgs-stable system;
         unstable = pkgsConfig nixpkgs system;
-        ffmpeg-vpl = import nixpkgs {
+        ffmpeg-vpl = import nixpkgs-stable {
           overlays = [ (import ./generic/overlays/ffmpeg.nix) ];
           inherit system;
           config.allowUnfree = true;
@@ -349,7 +349,9 @@
       };
 
       packages = {
-        installer = nixos-generators.nixosGenerate rec {
+        x86_64-linux = rec {
+          default = installer;
+          installer = nixos-generators.nixosGenerate rec {
           pkgs = pkgsConfig nixpkgs-stable system;
           format = "install-iso";
           system = "x86_64-linux";
@@ -364,14 +366,18 @@
             nebula = false;
             stable = true;
             secureboot = false;
+            genericHomeManagerModules = [];
             homeManagerModules = {
               root = [ ./generic/users/root/home-manager.nix ];
               nixos = [ ./generic/users/default.nix ];
             };
           };
+          };
         };
 
-        aarch-installer = nixos-generators.nixosGenerate rec {
+        aarch64-linux = rec {
+        default = installer;
+        installer = nixos-generators.nixosGenerate rec {
           pkgs = pkgsConfig nixpkgs-stable system;
           format = "sd-aarch64-installer";
           system = "aarch64-linux";
@@ -384,11 +390,13 @@
             nebula = false;
             stable = true;
             secureboot = false;
+            genericHomeManagerModules = [];
             homeManagerModules = {
               root = [ ./generic/users/root/home-manager.nix ];
               nixos = [ ./generic/users/default.nix ];
             };
           };
+        };
         };
       };
 
@@ -430,13 +438,13 @@
 
       formatter = eachSystem (pkgs: pkgs.nixfmt-rfc-style);
 
-      hydraJobs = {
-        # Include filtered configurations as Hydra jobs
-        hosts = mapAttrs getCfg nixosConfigurations;
-        #inherit (nixosConfigurations) r-desktop;
-        # Each filtered configuration is available as a job
-        inherit devShells packages;
-      };
+#      hydraJobs = {
+#        # Include filtered configurations as Hydra jobs
+#        hosts = mapAttrs getCfg nixosConfigurations;
+#        #inherit (nixosConfigurations) r-desktop;
+#        # Each filtered configuration is available as a job
+#        inherit devShells packages;
+#      };
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
     };

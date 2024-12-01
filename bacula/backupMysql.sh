@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -i bash -p mysql
+#! nix-shell -i bash -p mariadb
 
 # MySQL user credentials
 MYSQL_USER="root" # Using the root user for MySQL

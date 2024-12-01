@@ -24,10 +24,10 @@
     ];
     packages = with pkgs; [
       keepassxc
-      jetbrains.webstorm
-      jetbrains.idea-ultimate
-      jetbrains.clion
-      jetbrains.pycharm-professional
+#      jetbrains.webstorm
+#      jetbrains.idea-ultimate
+#      jetbrains.clion
+#      jetbrains.pycharm-professional
       nixos-generators
       kleopatra
       whatsapp-for-linux
