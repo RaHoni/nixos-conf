@@ -139,7 +139,7 @@ in
     path = [
       pkgs.bash
       pkgs.wakeonlan
-      pkgs.mysql
+      pkgs.mariadb
       pkgs.nix
     ];
     environment = {

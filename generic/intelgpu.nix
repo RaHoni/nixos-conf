@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       pkgs.ffmpeg-vpl.vpl-gpu-rt

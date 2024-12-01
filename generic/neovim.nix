@@ -203,7 +203,7 @@
       #improved highlighting
       treesitter = {
         enable = true;
-        disabledLanguages = [ "latex" ];
+        settings.disabledLanguages = [ "latex" ];
       };
 
       #shows indentation levels and variable scopes (treesitter)
@@ -237,7 +237,7 @@
       #theme for status bar at bottom
       lualine = {
         enable = true;
-        theme = lib.mkDefault "gruvbox";
+        settings.theme = lib.mkDefault "gruvbox";
       };
 
       #snippet engine
@@ -257,6 +257,9 @@
         ];
       };
 
+      # Originaly auto enable by telescope
+      web-devicons.enable = true;
+
       #error highlighting and autocomplete (different language servers + luasnip config)
       lsp = {
         enable = true;
@@ -264,7 +267,7 @@
           bashls.enable = true; # lsp server for Bash
           clangd.enable = true; # lsp server for C/C++
           pyright.enable = true; # lsp server for Python
-          nil-ls = {
+          nil_ls = {
             enable = true; # lsp server for nix
             settings = {
               formatting.command = [ "nixfmt" ];
@@ -272,7 +275,7 @@
             };
           };
           texlab.enable = true; # lsp Server for LaTeX
-          java-language-server.enable = true; # lsp Server for Java
+          java_language_server.enable = true; # lsp Server for Java
         };
       };
       cmp = {

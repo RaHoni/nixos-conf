@@ -69,7 +69,7 @@ in
     users.defaultUserShell = pkgs.zsh;
     environment.shells = with pkgs; [ zsh ];
 
-    security.pam.u2f = {
+    security.pam.u2f.settings = {
       authFile = config.sops.secrets.yubikey-auths.path;
       origin = "pam://rahoni";
       cue = true;

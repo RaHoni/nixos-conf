@@ -29,7 +29,7 @@ in
   services.samba = {
     enable = true;
     openFirewall = true;
-    shares = {
+    settings = {
       bilder = {
         path = "/mnt/data/bilder";
         browseable = "yes";
