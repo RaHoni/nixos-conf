@@ -424,7 +424,7 @@
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
-            nixpkgs-fmt.enable = true;
+            nixfmt-rfc-style.enable = true;
           };
         };
         });
