@@ -48,18 +48,18 @@
         phonetrack
         ;
       files_retention = pkgs.fetchNextcloudApp {
-        sha256 = "sha256-mvfXavRtJPFqcnPZu375QrU8sp2dipbEuOTyD9Usr64=";
+        sha256 = "sha256-krJOb925AjmnwmkFYg00eC4KmICr4Tf3jUANYWTRJdA=";
         url = "https://github.com/nextcloud-releases/files_retention/releases/download/v1.19.0/files_retention-v1.19.0.tar.gz";
         license = "agpl3Only";
       };
       files_automatedtagging = pkgs.fetchNextcloudApp {
-        sha256 = "sha256-Go46bhi/AzuIRkUK61s73y+jLsSLH6Ixobd6gAsSH2U=";
+        sha256 = "sha256-eXLTCtdIW/D0nigyYKnHj9iFQNAxWs8F46vivCUgVYs=";
         url = "https://github.com/nextcloud-releases/files_automatedtagging/releases/download/v1.20.0/files_automatedtagging-v1.20.0.tar.gz";
         license = "agpl3Only";
       };
       twofactor_admin = pkgs.fetchNextcloudApp {
         url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.7.1/twofactor_admin.tar.gz";
-        sha256 = "sha256-PcdHV+A43neRioZmFfYuWj6A8XLkqjEzRld+sZgiiHg=";
+        sha256 = "sha256-BJur/SKKXFTGsk5bALrdw+xOyr9lzT572Qpe1sMusfg=";
         license = "agpl3Only";
       };
       #twofactor_totp
