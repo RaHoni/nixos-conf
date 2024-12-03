@@ -373,11 +373,7 @@
               };
             };
           };
-        };
-
-        aarch64-linux = rec {
-          default = installer;
-          installer = nixos-generators.nixosGenerate rec {
+          arch-installer = nixos-generators.nixosGenerate rec {
             pkgs = pkgsConfig nixpkgs-stable system;
             format = "sd-aarch64-installer";
             system = "aarch64-linux";
@@ -423,6 +419,7 @@
 
       checks = nixpkgs.lib.genAttrs (import systems) (system: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          addGcRoot = true;
           src = ./.;
           hooks = {
             nixfmt-rfc-style.enable = true;
