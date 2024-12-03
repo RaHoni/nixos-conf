@@ -126,7 +126,7 @@ in
         ll = "ls -l";
         update = "sudo nixos-rebuild switch";
         update-server = "nixos-rebuild switch --flake github:RaHoni/nixos-conf --refresh";
-        upgrade = "nix flake update --commit-lock-file /etc/nixos";
+        upgrade = "nix flake update --commit-lock-file --flake /etc/nixos";
         nixos = "cd /etc/nixos";
         vi = "nvim ";
         sudo = "sudo "; # This allows aliases to work with sudo
