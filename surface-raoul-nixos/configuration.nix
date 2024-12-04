@@ -37,6 +37,8 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  services.pipewire.enable = false;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
