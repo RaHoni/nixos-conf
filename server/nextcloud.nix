@@ -6,7 +6,6 @@
 }:
 
 {
-  networking.hostName = "nextcloud";
   sops.secrets = {
     adminpass = {
       sopsFile = ../secrets/nextcloud/secrets.yaml;

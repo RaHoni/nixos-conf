@@ -302,6 +302,14 @@
           proxmox = true;
         };
 
+        server = makeSystem {
+          systemModules = [
+            ./server/bacula.nix
+            ./server/nextcloud.nix
+            ./server/zfs.nix # Mounts the ZFS pools
+          ];
+        };
+
         nextcloud = makeSystem {
           systemModules = [
             ./nextcloud/bacula.nix
