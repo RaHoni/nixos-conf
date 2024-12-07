@@ -22,6 +22,16 @@
       uri = "tcp://0.0.0.0:10200";
     };
   };
+
+  virtualisation.oci-containers.containers.homeassistant = {
+    volumes = [ "home-assistant:/config" ];
+    environment.TZ = "Europe/Berlin";
+    image = "ghcr.io/home-assistant/home-assistant:stable"; # Warning: if the tag does not change, the image will not be updated
+    extraOptions = [
+      "--network=host"
+      "--device=/dev/ttyACM0:/dev/ttyACM0" # ZigBee stick
+    ];
+  };
   networking.firewall.allowedTCPPorts = [
     10200
     10300

@@ -310,6 +310,7 @@
             ./bacula/sd.nix
             ./server
             ./server/bacula.nix
+            ./server/home-assistant.nix
             ./server/nextcloud.nix
           ];
         };
