@@ -1,11 +1,11 @@
 { config, ... }:
 {
   fileSystems = {
-    "/var/lib/audiobookshelf/audiobooks" = {
+    "/var/lib/${config.services.audiobookshelf.dataDir}/audiobooks" = {
       device = "MainZFS:subvol-209-disk-1";
       fsType = "zfs";
     };
-    "/var/lib/audiobookshelf/ebooks" = {
+    "/var/lib/${config.services.audiobookshelf.dataDir}/ebooks" = {
       device = "MainZFS:subvol-209-disk-2";
       fsType = "zfs";
     };
