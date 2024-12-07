@@ -308,7 +308,9 @@
             inputs.impermanence.nixosModules.impermanence
             ./bacula/dir.nix
             ./bacula/sd.nix
+            ./generic/smtp.nix
             ./server
+            ./server/audiobookshelf.nix
             ./server/bacula.nix
             ./server/home-assistant.nix
             ./server/nextcloud.nix
