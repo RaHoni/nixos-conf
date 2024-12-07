@@ -43,6 +43,10 @@ in
             prefixLength = 23;
           }
           {
+            address = ips.audiobookshelf.ipv4;
+            prefixLength = 23;
+          }
+          {
             address = "192.168.3.207";
             prefixLength = 23;
           }
@@ -50,6 +54,10 @@ in
         ipv6.addresses = [
           {
             address = ips.server.ipv6;
+            prefixLength = 48;
+          }
+          {
+            address = ips.audiobookshelf.ipv6;
             prefixLength = 48;
           }
         ];
