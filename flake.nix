@@ -305,8 +305,13 @@
 
         server = makeSystem {
           systemModules = [
+            ./bacula/dir.nix
+            ./bacula/sd.nix
+            ./generic/smtp.nix
+            ./server/audiobookshelf.nix
             ./server/bacula.nix
             ./server/nextcloud.nix
+            ./server/pi-hole.nix
             ./server/zfs.nix # Mounts the ZFS pools
           ];
         };
