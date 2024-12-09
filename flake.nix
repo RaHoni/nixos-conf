@@ -248,6 +248,7 @@
             ./generic/plasma.nix
             ./generic/printer.nix
             ./server/esphome.nix
+            ./server/github-runner.nix
             ./server/home-assistant.nix
             ./server/hydra.nix
             ./server/pi-hole.nix
