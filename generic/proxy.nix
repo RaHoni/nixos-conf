@@ -2,6 +2,8 @@
 let
   subnet = "192.168.3.";
 
+  ips = config.local.ips;
+
   proxyHost =
     {
       address,
@@ -21,6 +23,8 @@ let
     };
 in
 {
+  imports = [ ./ips.nix ];
+
   security.acme = {
     acceptTerms = true;
     defaults.email = "webmaster@honermann.info";
@@ -50,7 +54,7 @@ in
     '';
 
     virtualHosts = {
-      "binarycache.honermann.info" = proxyHost { address = "http://192.168.2.20:5000"; };
+      "binarycache.honermann.info" = proxyHost { address = "http://${ips.binarycache.ipv4}:5000"; };
 
       "home.honermann.info" = proxyHost {
         address = "http://${subnet}211:8123";
@@ -58,22 +62,19 @@ in
       };
 
       "hoerbuecher.honermann.info" = proxyHost {
-        address = "http://${subnet}209:8000";
+        address = "http://${ips.audiobookshelf.ipv4}:8000";
         proxyWebsockets = true;
         extraConfig = "client_max_body_size 8G;";
       };
 
-      "hydra.honermann.info" = proxyHost { address = "http://192.168.2.20:3000"; };
+      "hydra.honermann.info" = proxyHost { address = "http://${ips.hydra.ipv4}:3000"; };
 
-      "nextcloud.honermann.info" = proxyHost {
-        serverAliases = [ "honermann.info" ];
-        address = "http://${subnet}210";
-        proxyWebsockets = true;
-        extraConfig = "client_max_body_size 8G;";
+      "honermann.info" = {
+        serverAliases = [ "nextcloud.honermann.info" ];
+        enableACME = true;
       };
-
-      "server.honermann.info" = proxyHost { address = "https://${subnet}1:8006"; };
+      #"server.honermann.info" = proxyHost { address = "https://${subnet}1:8006"; };
     };
   };
-  security.acme.certs."nextcloud.honermann.info".extraDomainNames = [ "honermann.info" ];
+  #security.acme.certs."nextcloud.honermann.info".extraDomainNames = [ "honermann.info" ];
 }
