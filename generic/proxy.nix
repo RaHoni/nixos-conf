@@ -23,6 +23,8 @@ let
     };
 in
 {
+  imports = [ ./ips.nix ];
+
   security.acme = {
     acceptTerms = true;
     defaults.email = "webmaster@honermann.info";
@@ -67,9 +69,12 @@ in
 
       "hydra.honermann.info" = proxyHost { address = "http://${ips.hydra.ipv4}:3000"; };
 
-      "honermann.info".serverAliases = [ "nextcloud.honermann.info" ];
+      "honermann.info" = {
+        serverAliases = [ "nextcloud.honermann.info" ];
+        enableACME = true;
+      };
       #"server.honermann.info" = proxyHost { address = "https://${subnet}1:8006"; };
     };
   };
-  security.acme.certs."nextcloud.honermann.info".extraDomainNames = [ "honermann.info" ];
+  #security.acme.certs."nextcloud.honermann.info".extraDomainNames = [ "honermann.info" ];
 }

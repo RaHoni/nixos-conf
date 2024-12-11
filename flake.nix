@@ -308,6 +308,7 @@
             ./bacula/dir.nix
             ./bacula/sd.nix
             ./generic/smtp.nix
+            ./generic/proxy.nix
             ./server/audiobookshelf.nix
             ./server/bacula.nix
             ./server/nextcloud.nix
