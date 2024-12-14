@@ -45,6 +45,14 @@ with lib;
       scdaemonSettings.disable-ccid = true;
     };
 
+    thunderbird = {
+      enable = true;
+      profiles.main = {
+        withExternalGnupg = true;
+        isDefault = true;
+      };
+    };
+
     git = {
       userName = "RaHoni";
       userEmail = "honisuess@gmail.com";
