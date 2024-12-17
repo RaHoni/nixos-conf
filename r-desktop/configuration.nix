@@ -74,11 +74,9 @@
     nodePackages.bash-language-server
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    unstable.wineWowPackages.stable
     waypipe
-    unstable.lutris
-    unstable.winetricks
     inputs.streamdeck-obs.packages.x86_64-linux.streamdeck-obs
+    mprisRecord
     kdePackages.kdenlive
   ];
 
