@@ -316,6 +316,7 @@
             ./server/bacula.nix
             ./server/home-assistant.nix
             ./server/nextcloud.nix
+            ./server/pi-hole.nix
           ];
         };
 

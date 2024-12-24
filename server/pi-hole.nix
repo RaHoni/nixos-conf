@@ -1,5 +1,11 @@
-{ ... }:
+{ config, ... }:
+let
+  ips = config.local.ips;
+  ipv4 = ips."pi.hole".ipv4;
+  ipv6 = ips."pi.hole".ipv6;
+in
 {
+  imports = [ ../generic/ips.nix ];
   environment.etc = {
     "pihole-adlists".source = ./adlists.list;
     "pihole-custom".source = ./custom.list;
@@ -22,25 +28,26 @@
 
   services.resolved.enable = false;
 
+  networking.firewall.allowedTCPPorts = [ 53 ];
+  networking.firewall.allowedUDPPorts = [ 53 ];
+
   virtualisation = {
     podman = {
       enable = true;
       dockerCompat = true;
       defaultNetwork.settings = {
-        #dns_enabled = true;
+        dns_enabled = true;
         ipv6_enabled = true;
       };
     };
     oci-containers.containers.pi-hole = {
       image = "pihole/pihole:latest";
-      extraOptions = [
-        "--ip=10.88.0.2"
-        #"--ip6=fd00::6:1"
-      ];
       ports = [
-        "53:53/udp"
-        "53:53/tcp"
-        "8080:80/tcp"
+        "${ipv4}:53:53/udp"
+        "${ipv4}:53:53/tcp"
+        "${ipv4}:80:80/tcp"
+        "[${ipv6}]:53:53/udp"
+        "[${ipv6}]:53:53/tcp"
       ];
       environment = {
         TZ = "Europe/Berlin";
