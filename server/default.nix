@@ -43,6 +43,10 @@ in
             prefixLength = 23;
           }
           {
+            address = ips."pi.hole".ipv4;
+            prefixLength = 23;
+          }
+          {
             address = ips.audiobookshelf.ipv4;
             prefixLength = 23;
           }
@@ -58,6 +62,10 @@ in
         ipv6.addresses = [
           {
             address = ips.server.ipv6;
+            prefixLength = 48;
+          }
+          {
+            address = ips."pi.hole".ipv6;
             prefixLength = 48;
           }
           {
