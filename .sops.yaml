@@ -11,6 +11,7 @@ keys:
   - &rescueIso age1q6hp5wn8p08ms6n9g6h6w2tk7hn67yjxkaakwz8fvd6j7c6lhepqv9cq5x
   - &petronillaStreaming age1psj4h28ulrglqe48qs3mhchlvvvpx9ew6qy7nve5j5uvvsy80a6shqr20a
   - &raoul-framework age1lzsz9p0r50zl2cf998kuu6z3jqeck8wlz96l70xnq7g0vy35xd9q5l5535
+  - &server age1dg3pflxlmka90msy8jmfghcaeclx3ykqnkh5rez39k200cxc2guq0ahmg9
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -24,6 +25,7 @@ creation_rules:
       - *admin
       age:
       - *nebula-lighthouse
+      - *server
   - path_regex: ^secrets/r-desktop/.*$
     key_groups:
       - pgp:
@@ -39,24 +41,28 @@ creation_rules:
       - *admin
       age:
       - *smb
+      - *server
   - path_regex: ^secrets/ssl-proxy/.*$
     key_groups:
     - pgp:
       - *admin
       age:
       - *ssl-proxy
+      - *server
   - path_regex: ^secrets/audiobooks/.*$
     key_groups:
     - pgp:
       - *admin
       age:
       - *audiobooks
+      - *server
   - path_regex: ^secrets/smtp.yaml$
     key_groups:
     - pgp:
       - *admin
       age:
       - *nextcloud
+      - *server
   - path_regex: ^secrets/[^/]*$
     key_groups:
     - pgp:
@@ -73,6 +79,7 @@ creation_rules:
       - *petronillaStreaming
       - *raoul-framework
       - *smb
+      - *server
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
     - pgp:
@@ -85,6 +92,7 @@ creation_rules:
       - *admin
       age:
       - *nextcloud
+      - *server
   - path_regex: ^secrets/rescueIso/.*$
     key_groups:
     - pgp:
@@ -97,11 +105,18 @@ creation_rules:
       - *admin
       age:
       - *petronillaStreaming
+  - path_regex: ^secrets/server/.*$
+    key_groups:
+    - pgp:
+      - *admin
+      age:
+      - *server
   - path_regex: secrets/bacula/clients/r-desktop.yaml
     key_groups:
     - age:
       - *nextcloud
       - *r-desktop
+      - *server
       pgp:
       - *admin
   - path_regex: secrets/bacula/clients/surface.yaml
@@ -109,10 +124,15 @@ creation_rules:
     - age:
       - *surface
       - *nextcloud
+      - *server
       pgp:
       - *admin
   - path_regex: ^secrets/bacula/.*
-    age: *nextcloud
-    pgp: *admin
+    key_groups:
+    - age:
+      - *nextcloud
+      - *server
+      pgp:
+      - *admin
   - path_regex: ^secrets/
     pgp: *admin
