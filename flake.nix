@@ -314,6 +314,7 @@
             ./server
             ./server/audiobookshelf.nix
             ./server/bacula.nix
+            ./server/disko.nix
             ./server/home-assistant.nix
             ./server/nextcloud.nix
             ./server/pi-hole.nix
