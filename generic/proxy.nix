@@ -50,7 +50,7 @@ in
     '';
 
     virtualHosts = {
-      "binarycache.honermann.info" = proxyHost { address = "http://192.168.2.20:5000"; };
+      "binarycache.honermann.info" = proxyHost { address = "http://192.168.2.40:5000"; };
 
       "home.honermann.info" = proxyHost {
         address = "http://${subnet}211:8123";
@@ -63,7 +63,7 @@ in
         extraConfig = "client_max_body_size 8G;";
       };
 
-      "hydra.honermann.info" = proxyHost { address = "http://192.168.2.20:3000"; };
+      "hydra.honermann.info" = proxyHost { address = "http://192.168.2.40:3000"; };
 
       "nextcloud.honermann.info" = proxyHost {
         serverAliases = [ "honermann.info" ];
