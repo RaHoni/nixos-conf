@@ -14,6 +14,34 @@ in
     "lvm"
   ];
 
+  environment.persistence."/permament" = {
+    hideMounts = true;
+    directories = [
+      "/etc/nixos/"
+      "/var/lib/nixos/"
+      "/var/lib/containers"
+      {
+        directory = "/var/lib/audiobookshelf";
+        user = "audiobookshelf";
+        group = "audiobookshelf";
+      }
+      {
+        directory = "/var/lib/mysql";
+        user = "mysql";
+        group = "mysql";
+      }
+      {
+        directory = "/var/lib/acme";
+        user = "acme";
+        group = "acme";
+      }
+    ];
+    files = [
+      "/root/.zsh_history"
+      "/root/.ssh/known_hosts"
+    ];
+  };
+
   fileSystems."/" = {
     device = "none";
     fsType = "tmpfs";
@@ -52,10 +80,6 @@ in
           }
           {
             address = ips.nebula-lighthouse.ipv4;
-            prefixLength = 23;
-          }
-          {
-            address = "192.168.3.207";
             prefixLength = 23;
           }
         ];
