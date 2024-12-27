@@ -293,7 +293,7 @@
           systemModules = [
             ./proxy/default.nix
             ./generic/proxy.nix
-            ./raoul-framework/factorio.nix
+            ./server/factorio.nix
           ];
           proxmox = true;
         };
@@ -317,6 +317,7 @@
             ./server/audiobookshelf.nix
             ./server/bacula.nix
             ./server/disko.nix
+            ./server/factorio.nix
             ./server/home-assistant.nix
             ./server/nextcloud.nix
             ./server/pi-hole.nix
