@@ -32,6 +32,15 @@
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.firewall.allowedUDPPorts = [ 67 ];
+  services.create_ap = {
+    enable = true;
+    settings = {
+      INTERNET_IFACE = "enp37s0";
+      SSID = "StreamingHotspot";
+      WIFI_IFACE = "wlp3s0f0u3";
+    };
+  };
 
   # Enable X11
   services.xserver.enable = true;
