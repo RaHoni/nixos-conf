@@ -1,5 +1,6 @@
 { config, lib, ... }:
 {
+  imports = [ ../generic/ips.nix ];
   systemd.services."nebula@nebulaHonermann".serviceConfig = {
     AmbientCapabilities = lib.mkForce [
       "CAP_NET_BIND_SERVICE"
@@ -18,7 +19,7 @@
       lighthouse = {
         serve_dns = true;
         dns = {
-          host = "0.0.0.0";
+          host = "192.168.3.208";
           port = 53;
         };
       };

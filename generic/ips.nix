@@ -49,6 +49,10 @@ in
         ipv4 = "192.168.3.102";
         ipv6 = "fd00::4:102";
       };
+      nebula-lighthouse = {
+        ipv4 = "192.168.3.208";
+        ipv6 = "fd00::4:208";
+      };
       audiobookshelf = {
         ipv4 = "192.168.3.209";
         ipv6 = "fd00::4:209";
