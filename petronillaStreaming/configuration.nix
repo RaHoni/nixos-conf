@@ -58,7 +58,7 @@
   nix.gc = {
     automatic = true;
     persistent = true;
-    options = "--delet-older-than 20d";
+    options = "--delete-older-than 20d";
   };
 
   systemd.services.shutdown-after-upgrade = rec {
