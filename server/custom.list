@@ -12,6 +12,6 @@ fd00::8:1 sylvia-fujitsu.bacula
 192.168.2.20 r-desktop
 192.168.2.38 surface.bacula
 192.168.3.207 ssl-proxy.otlqu2p5cvqqpnid.myfritz.net
-192.168.3.210 dir.bacula
-192.168.3.210 sd.bacula
-192.168.3.210 dir-fd.bacula
+192.168.3.1 dir.bacula
+192.168.3.1 sd.bacula
+192.168.3.1 dir-fd.bacula

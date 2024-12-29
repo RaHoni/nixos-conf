@@ -305,14 +305,18 @@
 
         server = makeSystem {
           systemModules = [
+            inputs.impermanence.nixosModules.impermanence
+            ./bacula/dir.nix
+            ./bacula/sd.nix
             ./server
+            ./server/bacula.nix
             ./server/nextcloud.nix
           ];
         };
 
         nextcloud = makeSystem {
           systemModules = [
-            ./nextcloud/bacula.nix
+            ./server/bacula.nix
             ./server/nextcloud.nix
             ./nextcloud/default.nix
             #./server/smb.nix
