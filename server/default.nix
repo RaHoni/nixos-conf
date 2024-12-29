@@ -47,6 +47,10 @@ in
             prefixLength = 23;
           }
           {
+            address = ips.nebula-lighthouse.ipv4;
+            prefixLength = 23;
+          }
+          {
             address = "192.168.3.207";
             prefixLength = 23;
           }
@@ -58,6 +62,10 @@ in
           }
           {
             address = ips.audiobookshelf.ipv6;
+            prefixLength = 48;
+          }
+          {
+            address = ips.nebula-lighthouse.ipv6;
             prefixLength = 48;
           }
         ];

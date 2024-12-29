@@ -304,11 +304,13 @@
         };
 
         server = makeSystem {
+          nebula = true;
           systemModules = [
             inputs.impermanence.nixosModules.impermanence
             ./bacula/dir.nix
             ./bacula/sd.nix
             ./generic/smtp.nix
+            ./nebula-lighthouse/nebula.nix
             ./server
             ./server/audiobookshelf.nix
             ./server/bacula.nix
