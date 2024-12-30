@@ -75,5 +75,4 @@ in
       "server.honermann.info" = proxyHost { address = "https://${subnet}1:8006"; };
     };
   };
-  security.acme.certs."nextcloud.honermann.info".extraDomainNames = [ "honermann.info" ];
 }
