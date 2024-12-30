@@ -79,6 +79,8 @@
     };
   };
 
+  services.nginx.defaultListenAddresses = [ "192.168.3.1" ];
+
   networking.firewall.allowedTCPPorts = [
     80
     443

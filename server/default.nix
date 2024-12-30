@@ -14,6 +14,12 @@ in
     "lvm"
   ];
 
+  containers.proxy = {
+    autoStart = true;
+    config = (import ../proxy/default.nix);
+    bindMounts."/var/lib/acme" = { };
+  };
+
   environment.persistence."/permament" = {
     hideMounts = true;
     directories = [
@@ -80,6 +86,10 @@ in
           }
           {
             address = ips.nebula-lighthouse.ipv4;
+            prefixLength = 23;
+          }
+          {
+            address = "192.168.3.207";
             prefixLength = 23;
           }
         ];
