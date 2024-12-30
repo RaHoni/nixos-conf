@@ -1,6 +1,8 @@
 { lib, ... }:
 {
-  proxmoxLXC.manageNetwork = lib.mkForce true;
+  #proxmoxLXC.manageNetwork = lib.mkForce true;
+  services.nginx.defaultListenAddresses = [ "192.168.3.207" ];
+  imports = [ ../generic/proxy.nix ];
 
   networking = {
     hostName = "ssl-proxy";

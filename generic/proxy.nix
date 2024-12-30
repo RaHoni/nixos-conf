@@ -69,11 +69,11 @@ in
 
       "hydra.honermann.info" = proxyHost { address = "http://${ips.hydra.ipv4}:3000"; };
 
-      "nextcloud.honermann.info" = proxyHost {
-        serverAliases = [ "honermann.info" ];
-        address = "http://${subnet}210";
+      "honermann.info" = proxyHost {
+        serverAliases = [ "nextcloud.honermann.info" ];
+        address = "http://192.168.3.1";
         proxyWebsockets = true;
-        extraConfig = "client_max_body_size 8G;";
+        extraConfig = "client_max_body_size 10G;";
       };
     };
   };
