@@ -75,8 +75,6 @@ in
         proxyWebsockets = true;
         extraConfig = "client_max_body_size 8G;";
       };
-
-      "server.honermann.info" = proxyHost { address = "https://${subnet}1:8006"; };
     };
   };
 }
