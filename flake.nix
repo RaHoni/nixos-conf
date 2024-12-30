@@ -303,9 +303,17 @@
           proxmox = true;
         };
 
+        server = makeSystem {
+          systemModules = [
+            ./server
+            ./server/nextcloud.nix
+          ];
+        };
+
         nextcloud = makeSystem {
           systemModules = [
             ./nextcloud/bacula.nix
+            ./server/nextcloud.nix
             ./nextcloud/default.nix
             #./server/smb.nix
             #./server/calibre.nix
