@@ -23,6 +23,8 @@ in
     ]; # mode=755 so only root can write to those files
   };
 
+  boot.zfs.extraPools = [ "MainZFS" ];
+
   networking = {
     hostName = "server";
     hostId = "abb92398";
