@@ -32,6 +32,8 @@
       "--device=/dev/ttyACM0:/dev/ttyACM0" # ZigBee stick
     ];
   };
+
+  networking.firewall.allowedUDPPorts = [ 1900 ]; # SSDP
   networking.firewall.allowedTCPPorts = [
     10200
     10300
