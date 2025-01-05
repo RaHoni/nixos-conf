@@ -101,15 +101,12 @@
   nixConfig = {
     extra-substituters = [
       "https://binarycache.honermann.info"
-      "https://rahoni.cachix.org"
     ];
     extra-trusted-substituters = [
       "https://binarycache.honermann.info"
-      "https://rahoni.cachix.org"
     ];
     extra-trusted-public-keys = [
       "binarycache.honermann.info:ta4rxqLXx+RoTmZjybD96dm0fwcpTDQqFnF3HBRTeWg="
-      "rahoni.cachix.org-1:iCKI8r6HT5rToodXfecglGJnPTaOaGzNeAS5wawMuMM="
     ];
   };
 
