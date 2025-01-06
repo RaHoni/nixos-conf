@@ -22,6 +22,7 @@ in
     ]
     ++ (switchStable [ inputs.home-manager-stable.nixosModules.home-manager ] [
       inputs.home-manager.nixosModules.home-manager
+      ./wireguard.nix # module
     ]);
 
   #set zsh as default shell
