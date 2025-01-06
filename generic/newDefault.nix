@@ -31,6 +31,7 @@ in
   system.configurationRevision = inputs.self.shortRev or inputs.self.dirtyShortRev or "null";
 
   nix.settings = {
+    auto-optimise-store = true;
     substituters = [
       "https://nix-community.cachix.org"
       "https://binarycache.honermann.info"
