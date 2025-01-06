@@ -216,6 +216,7 @@
             ./raoul-framework/configuration.nix
             ./raoul-framework/disko.nix
             ./generic/localisation.nix
+            ./generic/networking.nix
             ./generic/pipewire.nix
             ./generic/plasma.nix
             ./generic/printer.nix
@@ -324,6 +325,7 @@
         vps = makeSystem {
           systemModules = [
             ./vps
+            ./generic/networking.nix
           ];
           stable = true;
         };
