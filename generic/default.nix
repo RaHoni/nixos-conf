@@ -93,7 +93,7 @@ in
       enableDefaultPackages = true;
 
       packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "Meslo" ]; })
+        meslo-lgs-nf
       ];
 
       fontconfig.defaultFonts = {
