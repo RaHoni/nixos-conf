@@ -321,6 +321,13 @@
           ];
         };
 
+        vps = makeSystem {
+          systemModules = [
+            ./vps
+          ];
+          stable = true;
+        };
+
         nextcloud = makeSystem {
           systemModules = [
             ./server/bacula.nix

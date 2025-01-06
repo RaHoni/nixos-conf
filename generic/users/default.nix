@@ -42,6 +42,12 @@ in
       enable = true;
       extraConfig = "user raoul";
       matchBlocks = rec {
+        vps = {
+          user = "root";
+          hostname = "212.227.135.200";
+          identityFile = sshIdentity "id_strato";
+          identitiesOnly = true;
+        };
         homeassistant = {
           user = "root";
           hostname = "homeassistant.local";
