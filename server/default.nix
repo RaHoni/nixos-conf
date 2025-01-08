@@ -28,7 +28,7 @@ in
     proxy = {
       autoStart = true;
       config = (import ../proxy/default.nix);
-      bindMounts."/var/lib/acme" = { };
+      bindMounts."/var/lib/acme".isReadOnly = false;
     };
     mailserver = {
       autoStart = true;
