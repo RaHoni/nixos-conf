@@ -4,6 +4,25 @@
   services.nginx.defaultListenAddresses = [ "192.168.3.207" ];
   imports = [ ../generic/proxy.nix ];
 
+  services.automx2 = {
+    enable = true;
+    domain = "honermann.info";
+    settings = {
+      provider = "Fam. Honermann";
+      domains = [ "honermann.info" ];
+      servers = [
+        {
+          type = "imap";
+          name = "mail.honermann.info";
+        }
+        {
+          type = "smtp";
+          name = "mail.honermann.info";
+        }
+      ];
+    };
+  };
+
   networking = {
     hostName = "ssl-proxy";
     enableIPv6 = true;
