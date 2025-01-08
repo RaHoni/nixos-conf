@@ -10,11 +10,19 @@ let
   nixpkgsPath = "${base}/nixpkgs";
   nixpkgs-unstablePath = "${base}/nixpkgs-unstable";
   nixpkgs-stablePath = "${base}/nixpkgs-stable";
+  full = config.local.full;
 in
 {
-  options.local.stable = lib.mkOption {
-    default = true;
-    type = lib.types.bool;
+  options.local = {
+    stable = lib.mkOption {
+      default = true;
+      type = lib.types.bool;
+    };
+    full = lib.mkOption {
+      description = "Enable non neccesary options set to false if you have storage limits";
+      default = true;
+      type = lib.types.bool;
+    };
   };
   imports = [
     ./sops.nix
@@ -62,7 +70,7 @@ in
     #services.btrfs.autoScrub.enable = true;
 
     # Enable CUPS for printing
-    services.printing.enable = true;
+    services.printing.enable = full;
     services.printing.drivers = [ pkgs.gutenprint ];
     #environment.etc."channels/nixpkgs".source = nixpkgs-stable.outPath;
 

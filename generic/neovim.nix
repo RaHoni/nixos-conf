@@ -1,4 +1,13 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  osConfig,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  full = osConfig.local.full;
+in
 {
   home.packages = [ pkgs.nixfmt-rfc-style ];
   programs.nixvim = {
@@ -32,7 +41,7 @@
     #clipboard support
     clipboard = {
       register = "unnamedplus";
-      providers.wl-copy.enable = true;
+      providers.wl-copy.enable = full;
     };
 
     opts = {
@@ -213,7 +222,7 @@
       nvim-autopairs.enable = true;
 
       #LaTeX support
-      vimtex.enable = true;
+      vimtex.enable = full;
 
       #file browser/switcher
       telescope = {
@@ -265,8 +274,8 @@
         enable = true;
         servers = {
           bashls.enable = true; # lsp server for Bash
-          clangd.enable = true; # lsp server for C/C++
-          pyright.enable = true; # lsp server for Python
+          clangd.enable = full; # lsp server for C/C++
+          pyright.enable = full; # lsp server for Python
           nil_ls = {
             enable = true; # lsp server for nix
             settings = {
@@ -274,8 +283,8 @@
               flake.autoEvalInputs = true;
             };
           };
-          texlab.enable = true; # lsp Server for LaTeX
-          java_language_server.enable = true; # lsp Server for Java
+          texlab.enable = full; # lsp Server for LaTeX
+          java_language_server.enable = full; # lsp Server for Java
         };
       };
       cmp = {
