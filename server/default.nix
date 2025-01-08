@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 let
   ips = config.local.ips;
 in
@@ -6,18 +11,43 @@ in
   imports = [
     ./hardware-config.nix
     ../generic/ips.nix
+    ../generic/networking.nix
   ];
   sops.age.keyFile = lib.mkForce "/permament/sops-nix/key.txt";
+  sops.secrets."wireguard/wireguard-priv-key" = {
+    key = "wireguard-priv-key";
+    sopsFile = ../secrets/server/wireguard.yaml;
+  };
 
   boot.supportedFilesystems = [
     "zfs"
     "lvm"
   ];
 
-  containers.proxy = {
-    autoStart = true;
-    config = (import ../proxy/default.nix);
-    bindMounts."/var/lib/acme" = { };
+  containers = {
+    proxy = {
+      autoStart = true;
+      config = (import ../proxy/default.nix);
+      bindMounts."/var/lib/acme" = { };
+    };
+    mailserver = {
+      autoStart = true;
+      config = (import ./mailserver.nix);
+      specialArgs = {
+        sms = inputs.simple-mail-server.nixosModules.mailserver;
+      };
+      bindMounts."/var/lib/acme" = {
+        hostPath = "/var/lib/acme/mail";
+        isReadOnly = false;
+      };
+      bindMounts."/wireguard".hostPath = "/run/secrets/wireguard";
+      privateNetwork = true;
+      hostAddress = "169.254.26.129";
+      localAddress = "169.254.26.130";
+      hostAddress6 = "fc00::1";
+      localAddress6 = "fc00::2";
+      enableTun = true;
+    };
   };
 
   environment.persistence."/permament" = {
@@ -27,6 +57,7 @@ in
       "/var/pihole" # This is a Volume for te pihole container so that we can set the adlists
       "/var/lib/nixos/"
       "/var/lib/containers"
+      "/var/lib/nixos-containers/mailserver"
       {
         directory = "/var/lib/audiobookshelf";
         user = "audiobookshelf";
@@ -70,6 +101,15 @@ in
       "192.168.2.1"
       "1.1.1.1"
     ];
+    nat = {
+      enable = true;
+      internalInterfaces = [
+        "ve-+"
+        "veth0"
+      ];
+      externalInterface = "eth0";
+      enableIPv6 = true;
+    };
     interfaces = {
       eth0 = {
         ipv4.addresses = [
@@ -113,6 +153,7 @@ in
           }
         ];
       };
+      br0.useDHCP = true;
     };
     defaultGateway = {
       address = "192.168.2.1";
