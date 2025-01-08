@@ -3,10 +3,14 @@
   imports = [
     ./hardware-configuration.nix
     ../generic/wireguard.nix
+    ./mailproxy.nix
   ];
   networking = {
     hostName = "vps";
+    firewall.allowPing = true;
   };
+
+  local.full = false;
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;
 
@@ -20,6 +24,7 @@
     externalInterface = "ens6";
     publicKeys = [
       "OPHqnp925fRAsBSEeSIZsuXiH7bgko/X3sEVnPOjTk4=" # raoul-framework
+      "Fn5injYhXWcz4JMhla6TMBwAwqRqHtja92z9+tu8iEQ=" # Mailserver
     ];
   };
 
