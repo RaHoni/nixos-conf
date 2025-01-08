@@ -64,10 +64,30 @@
     fqdn = "mail.honermann.info";
     domains = [ "honermann.info" ];
 
+    extraVirtualAliases = {
+      "abuse@honermann.info" = [ "raoul@honermann.info" ];
+      "postmaster@honermann.info" = "raoul@honermann.info";
+    };
+
+    # Generate password with 'mkpasswd -m bcrypt'
     loginAccounts = {
       "raoul@honermann.info" = {
-        hashedPassword = "$2b$05$9HtR5GhDntgUrvDUBpJepuo5G8JSH7U8BSi44TJ13vVUj1PdpulCC";
-        aliases = [ "webmaster@honermann.info" ];
+        hashedPassword = "$2b$05$XpvYiA47SAxYaFu8OVp7NOGOgpWUxEhis7czLSCE2ZgtVMk4pg9gu";
+      };
+      "server@honermann.info" = {
+        hashedPassword = "$2b$05$HGJhaMaoCB8vYT9h1xyXwOGUoBd366bYzpgY9vse0ppMY2Hon7Imq";
+        aliases = [
+          "nextcloud@honermann.info"
+          "noreply@honermann.info"
+          "bacula@honermann.info"
+        ];
+        sendOnly = true;
+      };
+      "christoph@honermann.info" = {
+        hashedPassword = "$2b$05$Z5kw8mS2yCIrjBEW76mqH.SIZI2IATzbzOD9IiSWKXQ8LnuzNK4xS";
+      };
+      "sylvia@honermann.info" = {
+        hashedPassword = "$2b$05$yP9Xnl3MrE.ucFyk4zaO2OEyraAbkhfOkjQOmLQzg1FUtnVDg6t4S";
       };
     };
 
