@@ -85,10 +85,10 @@ in
       Heartbeat Interval = 30
     '';
     extraMessagesConfig = ''
-      mailcommand = "bsmtp -f bacula-dir -s \"Bacula: %t %e of %c %l\" %r"
-      operatorcommand = "bsmtp -f bacula-dir -s \"Bacula: Intervention needed for %j\" %r"
-      mail on error = raoul.honermann@web.de,christoph.honermann@web.de = all, !skipped
-      operator = raoul.honermann@web.de = mount
+      mailcommand = "bsmtp -f bacula-dir@honermann.info -s \"Bacula: %t %e of %c %l\" %r"
+      operatorcommand = "bsmtp -f bacula-dir@honermann.info -s \"Bacula: Intervention needed for %j\" %r"
+      mail on error = raoul@honermann.info,christoph@honermann.info = all, !skipped
+      operator = raoul@honermann.info = mount
       console = all, !skipped, !saved
       catalog = all
     '';
