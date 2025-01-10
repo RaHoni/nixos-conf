@@ -2,6 +2,7 @@
 {
   nix.settings.allowed-uris = [
     "github:"
+    "gitlab:"
     "git+https://github.com/"
     "git+ssh://github.com/"
   ];
