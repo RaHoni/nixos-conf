@@ -155,7 +155,6 @@
           systemModules,
           homeManagerModules ? { },
           stable ? true,
-          proxmox ? false,
           system ? "x86_64-linux",
           nebula ? false,
           secureboot ? false,
@@ -192,7 +191,7 @@
             )
             ./generic/newDefault.nix
             ./generic/nebula.nix
-          ] ++ systemModules ++ nixpkgs.lib.lists.optionals proxmox [ ./generic/proxmox.nix ];
+          ] ++ systemModules;
         };
 
       # Small tool to iterate over each systems
