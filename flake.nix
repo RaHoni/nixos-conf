@@ -281,34 +281,6 @@
           nebula = true;
         };
 
-        smb = makeSystem {
-          systemModules = [
-            ./smb/default.nix
-          ];
-          proxmox = true;
-        };
-        audiobooks = makeSystem {
-          systemModules = [
-            ./audiobooks/default.nix
-          ];
-          proxmox = true;
-        };
-        ssl-proxy = makeSystem {
-          systemModules = [
-            ./proxy/default.nix
-            ./generic/proxy.nix
-            ./server/factorio.nix
-          ];
-          proxmox = true;
-        };
-        nebula-lighthouse = makeSystem {
-          systemModules = [
-            ./nebula-lighthouse/configuration.nix
-          ];
-          nebula = true;
-          proxmox = true;
-        };
-
         server = makeSystem {
           nebula = true;
           systemModules = [
@@ -333,23 +305,6 @@
             ./vps
             ./generic/networking.nix
           ];
-          stable = true;
-        };
-
-        nextcloud = makeSystem {
-          systemModules = [
-            ./server/bacula.nix
-            ./server/nextcloud.nix
-            ./nextcloud/default.nix
-            #./server/smb.nix
-            #./server/calibre.nix
-            #./server/audiobookshelf.nix
-            ./bacula/dir.nix
-            ./bacula/sd.nix
-            ./generic/smtp.nix
-            #./server/pi-hole.nix
-          ];
-          proxmox = true;
           stable = true;
         };
 
