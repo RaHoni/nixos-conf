@@ -11,6 +11,7 @@ with lib;
   #  home.stateVersion = "23.05";
 
   home.packages = with pkgs; [
+    anki
     qalculate-gtk
     nextcloud-client
     signal-desktop
