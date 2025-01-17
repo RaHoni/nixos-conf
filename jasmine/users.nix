@@ -19,6 +19,7 @@
       kaddressbook
       yubioath-flutter
       korganizer
+      nextcloud-client
     ];
     openssh.authorizedKeys.keyFiles = [
       ../generic/sshPubkeys/support.pub
