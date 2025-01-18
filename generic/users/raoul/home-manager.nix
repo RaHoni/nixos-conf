@@ -15,6 +15,8 @@ with lib;
     qalculate-gtk
     nextcloud-client
     signal-desktop
+    wl-clipboard-x11
+    wl-clipboard
     (makeAutostartItem {
       name = "com.nextcloud.desktopclient.nextcloud";
       package = nextcloud-client;
