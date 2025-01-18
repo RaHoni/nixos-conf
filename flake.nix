@@ -285,7 +285,6 @@
             ./bacula/dir.nix
             ./bacula/sd.nix
             ./generic/smtp.nix
-            ./nebula-lighthouse/nebula.nix
             ./server
             ./server/audiobookshelf.nix
             ./server/bacula.nix
@@ -301,8 +300,10 @@
           systemModules = [
             ./vps
             ./generic/networking.nix
+            ./nebula-lighthouse/nebula.nix
           ];
           stable = true;
+          nebula = true;
         };
 
         petronillaStreaming = makeSystem {
