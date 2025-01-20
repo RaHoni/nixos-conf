@@ -53,6 +53,7 @@ in
           punch = true;
           respond = true;
         };
+        relay.relays = [ "172.20.0.1" ];
       };
       firewall = {
         outbound = [

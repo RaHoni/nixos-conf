@@ -23,6 +23,7 @@
           port = 53;
         };
       };
+      relay.am_relay = true;
     };
   };
 }
