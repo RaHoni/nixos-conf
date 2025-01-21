@@ -59,16 +59,7 @@
     inputs.streamdeck-obs.packages.x86_64-linux.streamdeck-obs
   ];
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = "github:RaHoni/nixos-conf";
-  };
-
-  nix.gc = {
-    automatic = true;
-    persistent = true;
-    options = "--delete-older-than 20d";
-  };
+  myModules.autoUpgrade.enable = true;
 
   systemd.services.shutdown-after-upgrade = rec {
     description = "Shutdown the computer after an auto Upgrade";

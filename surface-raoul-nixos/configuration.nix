@@ -69,7 +69,7 @@
   };
 
   services.xserver.wacom.enable = true;
-  system.autoUpgrade.enable = true;
+  myModules.autoUpgrade.enable = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];

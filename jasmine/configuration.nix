@@ -61,22 +61,9 @@
     gimp
   ];
 
-  system.autoUpgrade = {
+  myModules.autoUpgrade = {
     enable = true;
-    flake = "github:RaHoni/nixos-conf";
-  };
-
-  # Allow nixos-upgrade to restart on failure (e.g. when laptop wakes up before network connection is set)
-  systemd.services.nixos-upgrade = {
-    preStart = "${pkgs.host}/bin/host google.com"; # Check network connectivity
-    serviceConfig = {
-      Restart = "on-failure";
-      RestartSec = "120";
-    };
-    unitConfig = {
-      StartLimitIntervalSec = 600;
-      StartLimitBurst = 2;
-    };
+    delayForInternet = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
