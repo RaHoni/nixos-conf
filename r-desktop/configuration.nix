@@ -31,15 +31,7 @@
     "@wheel"
   ];
 
-  nix.gc = {
-    automatic = true;
-    options = "--delete-older-than 15d";
-  };
-  system.autoUpgrade = {
-    enable = true;
-    flake = "github:RaHoni/nixos-conf";
-    allowReboot = true;
-  };
+  myModules.autoUpgrade.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
