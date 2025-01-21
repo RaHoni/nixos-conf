@@ -2,7 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../generic/wireguard.nix
     ./mailproxy.nix
   ];
   networking = {
