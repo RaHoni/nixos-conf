@@ -75,6 +75,10 @@ in
         proxyWebsockets = true;
         extraConfig = "client_max_body_size 10G;";
       };
+
+      "karaoke.honermann.info" = proxyHost {
+        address = "http://10.88.0.5:5555";
+      };
     };
   };
 }
