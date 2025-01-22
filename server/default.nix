@@ -94,6 +94,8 @@ in
 
   boot.zfs.extraPools = [ "MainZFS" ];
 
+  myModules.autoUpgrade.enable = true;
+
   networking = {
     hostName = "server";
     hostId = "abb92398";
