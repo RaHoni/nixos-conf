@@ -41,7 +41,10 @@ in
       };
     };
     oci-containers.containers.pi-hole = {
-      image = "pihole/pihole:latest";
+      image = "docker.io/pihole/pihole:latest";
+      labels = {
+        "io.containers.autoupdate" = "registry";
+      };
       ports = [
         "${ipv4}:53:53/udp"
         "${ipv4}:53:53/tcp"

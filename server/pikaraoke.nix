@@ -1,7 +1,10 @@
 { ... }:
 {
   virtualisation.oci-containers.containers.pikaraoke = {
-    image = "vicwomg/pikaraoke:latest";
+    image = "docker.io/vicwomg/pikaraoke:latest";
+    labels = {
+      "io.containers.autoupdate" = "registry";
+    };
     extraOptions = [ "--ip=10.88.0.5" ];
     cmd = [
       "-u https://karaoke.honermann.info"

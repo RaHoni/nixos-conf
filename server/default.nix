@@ -19,6 +19,8 @@ in
     sopsFile = ../secrets/server/wireguard.yaml;
   };
 
+  systemd.timers.podman-auto-update.enable = true;
+
   boot.supportedFilesystems = [
     "zfs"
     "lvm"
