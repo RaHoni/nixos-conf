@@ -70,6 +70,7 @@
 
   services.xserver.wacom.enable = true;
   myModules.autoUpgrade.enable = true;
+  myModules.autoUpgrade.delayForInternet = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
