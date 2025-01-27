@@ -22,6 +22,12 @@
           sink.props = {
             node.name = "Echo Cancellation Sink";
           };
+          capture.props = {
+            node.name = "Echo Cancellation Capture";
+          };
+          playback.props = {
+            node.name = "Echo Cancellation Playback";
+          };
         };
       }
     ];
