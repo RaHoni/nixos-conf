@@ -48,7 +48,7 @@ in
         "nixpkgs=${nixpkgsPath}"
         "nixpkgs-unstable=${nixpkgs-unstablePath}"
         "nixpkgs-stable=${nixpkgs-stablePath}"
-        "/nix/var/nix/profiles/per-user/root/channels"
+        #"/nix/var/nix/profiles/per-user/root/channels"
       ];
     };
 
