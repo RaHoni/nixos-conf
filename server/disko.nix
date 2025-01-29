@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  disk = "/dev/disk/by-id/ata-Hitachi_HTS723232A7A364_E3834263GENLTD";
+  disk = "/dev/disk/by-id/ata-Samsung_SSD_860_EVO_M.2_500GB_S5GCNJ0N718624R";
 in
 {
   imports = [ inputs.disko.nixosModules.disko ];
