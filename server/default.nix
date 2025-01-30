@@ -97,6 +97,7 @@ in
   myModules.autoUpgrade.enable = true;
 
   networking = {
+    dhcpcd.IPv6rs = true;
     hostName = "server";
     hostId = "abb92398";
     useNetworkd = false;
@@ -117,6 +118,9 @@ in
     };
     interfaces = {
       eth0 = {
+        macAddress = "86:2E:6C:D4:F6:1E";
+        useDHCP = true;
+        tempAddress = "disabled";
         ipv4.addresses = [
           {
             address = ips.server.ipv4;
