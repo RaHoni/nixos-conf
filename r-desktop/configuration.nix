@@ -23,8 +23,18 @@
   networking.hostName = "r-desktop"; # Define your hostname.
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  networking.interfaces.eth0.wakeOnLan.enable = true;
+  networking.interfaces.eth0 = {
+    wakeOnLan.enable = true;
+    useDHCP = true;
+    tempAddress = "disabled";
+    ipv6.addresses = [
+      {
+        address = "fd00::2:1";
+        prefixLength = 64;
+      }
+    ];
+
+  };
 
   nix.settings.trusted-users = [
     "root"
