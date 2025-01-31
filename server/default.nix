@@ -80,6 +80,7 @@ in
     files = [
       "/root/.zsh_history"
       "/root/.ssh/known_hosts"
+      "/root/.local/share/nix/trusted-settings.json"
     ];
   };
 
