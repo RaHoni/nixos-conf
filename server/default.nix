@@ -162,7 +162,6 @@ in
           }
         ];
       };
-      br0.useDHCP = true;
     };
     defaultGateway = {
       address = "192.168.2.1";
