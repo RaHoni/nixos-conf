@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs,
   ...
 }:
 let
@@ -25,6 +26,8 @@ in
     "zfs"
     "lvm"
   ];
+
+  boot.zfs.package = pkgs.zfs_2_3;
 
   containers = {
     proxy = {
