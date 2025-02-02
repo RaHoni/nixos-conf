@@ -294,6 +294,7 @@
             ./server/nextcloud.nix
             ./server/pi-hole.nix
             ./server/pikaraoke.nix
+            ./server/unifi.nix
           ];
         };
 
