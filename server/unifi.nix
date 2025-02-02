@@ -6,4 +6,6 @@
     unifiPackage = pkgs.unifi8;
     mongodbPackage = pkgs.mongodb-7_0;
   };
+
+  networking.firewall.allowedTCPPorts = [ 8443 ];
 }
