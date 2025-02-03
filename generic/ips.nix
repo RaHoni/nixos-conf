@@ -64,6 +64,9 @@ in
       hydra = {
         inherit (binarycache) ipv4 ipv6;
       };
+      ssl-proxy = {
+        ipv4 = "192.168.3.207";
+      };
     };
   };
 }

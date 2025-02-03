@@ -143,7 +143,7 @@ in
             prefixLength = 23;
           }
           {
-            address = "192.168.3.207";
+            address = ips.ssl-proxy.ipv4;
             prefixLength = 23;
           }
         ];
