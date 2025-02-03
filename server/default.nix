@@ -7,6 +7,7 @@
 }:
 let
   ips = config.local.ips;
+  defaultPrefix = 23;
 in
 {
   imports = [
@@ -128,23 +129,23 @@ in
         ipv4.addresses = [
           {
             address = ips.server.ipv4;
-            prefixLength = 23;
+            prefixLength = defaultPrefix;
           }
           {
             address = ips."pi.hole".ipv4;
-            prefixLength = 23;
+            prefixLength = defaultPrefix;
           }
           {
             address = ips.audiobookshelf.ipv4;
-            prefixLength = 23;
+            prefixLength = defaultPrefix;
           }
           {
             address = ips.nebula-lighthouse.ipv4;
-            prefixLength = 23;
+            prefixLength = defaultPrefix;
           }
           {
             address = ips.ssl-proxy.ipv4;
-            prefixLength = 23;
+            prefixLength = defaultPrefix;
           }
         ];
         ipv6.addresses = [
