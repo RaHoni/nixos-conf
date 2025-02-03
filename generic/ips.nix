@@ -39,22 +39,22 @@ in
   config = {
     local.ips = rec {
       server = {
-        ipv4 = "192.168.3.1";
+        ipv4 = "192.168.7.10";
         ipv6 = "fd00::4:1";
         bacula = {
           inherit (server) ipv4 ipv6;
         };
       };
       "pi.hole" = {
-        ipv4 = "192.168.3.102";
+        ipv4 = "192.168.7.102";
         ipv6 = "fd00::4:102";
       };
       nebula-lighthouse = {
-        ipv4 = "192.168.3.208";
+        ipv4 = "192.168.7.208";
         ipv6 = "fd00::4:208";
       };
       audiobookshelf = {
-        ipv4 = "192.168.3.209";
+        ipv4 = "192.168.7.209";
         ipv6 = "fd00::4:209";
       };
       binarycache = {
@@ -65,7 +65,7 @@ in
         inherit (binarycache) ipv4 ipv6;
       };
       ssl-proxy = {
-        ipv4 = "192.168.3.207";
+        ipv4 = "192.168.7.207";
       };
     };
   };
