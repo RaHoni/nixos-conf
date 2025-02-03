@@ -18,7 +18,10 @@
     {
       hostName = "localhost";
       protocol = null;
-      system = "x86_64-linux";
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
       supportedFeatures = [
         "kvm"
         "nixos-test"
@@ -28,6 +31,8 @@
       maxJobs = 8;
     }
   ];
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   sops.secrets.binarySigKey = {
     sopsFile = ../secrets/r-desktop/hydra.yaml;
