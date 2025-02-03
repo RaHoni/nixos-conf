@@ -58,8 +58,8 @@ in
         ipv6 = "fd00::4:209";
       };
       binarycache = {
-        ipv4 = "192.168.2.40";
-        ipv6 = "fe80::fb19:47d3:6a1b:d1f";
+        ipv4 = "192.168.1.17";
+        ipv6 = "fe80::946e:8793:2804:17e9";
       };
       hydra = {
         inherit (binarycache) ipv4 ipv6;
