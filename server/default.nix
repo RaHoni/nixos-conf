@@ -112,12 +112,6 @@ in
       "192.168.2.1"
       "1.1.1.1"
     ];
-    vlans = {
-      vlan-default = {
-        id = 1;
-        interface = "eth0";
-      };
-    };
     nat = {
       enable = true;
       internalInterfaces = [
@@ -128,19 +122,16 @@ in
       enableIPv6 = true;
     };
     interfaces = {
-      vlan-default = {
-        ipv4.addresses = [
-          {
-            address = "192.168.1.14";
-            prefixLength = 24;
-          }
-        ];
-      };
       eth0 = {
         macAddress = "86:2E:6C:D4:F6:1E";
         useDHCP = true;
         tempAddress = "disabled";
         ipv4.addresses = [
+          {
+            address = "192.168.1.14";
+            prefixLength = 24;
+          }
+
           {
             address = ips.server.ipv4;
             prefixLength = defaultPrefix;
