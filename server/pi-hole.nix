@@ -57,8 +57,8 @@ in
         WEBPASSWORD = "";
         DNSSEC = "true";
         REV_SERVER = "true";
-        REV_SERVER_CIDR = "192.168.2.0/23";
-        REV_SERVER_TARGET = "192.168.2.1";
+        REV_SERVER_CIDR = "192.168.1.0/23";
+        REV_SERVER_TARGET = "192.168.1.1";
         PIHOLE_DNS_ = "208.67.222.222;2620:119:35::35;1.0.0.1;2606:4700:4700::1001";
         FTLCONF_LOCAL_IPV4 = ipv4;
       };
