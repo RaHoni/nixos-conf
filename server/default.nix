@@ -197,5 +197,6 @@ in
   };
   boot.loader.efi.canTouchEfiVariables = true;
   users.users.root.openssh.authorizedKeys.keyFiles = [ ../generic/sshPubkeys/id_ecdsa_proxmox.pub ];
+  users.users.root.hashedPassword = "$y$j9T$ZTqYxyyZel0q5Dh15IvQE1$3XEMusqPqP3Qq2fi7ZRgS95RejTbvyKiRhluqTJ7tCD";
 
 }
