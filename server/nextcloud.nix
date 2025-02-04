@@ -4,7 +4,9 @@
   config,
   ...
 }:
-
+let
+  ips = config.local.ips;
+in
 {
   sops.secrets = {
     adminpass = {
@@ -73,13 +75,13 @@
 
     https = true;
     settings = {
-      trusted_proxies = [ "192.168.3.207" ];
+      trusted_proxies = [ ips.ssl-proxy.ipv4 ];
       default_phone_region = "DE";
       trusted_domains = [ "nextcloud.honermann.info" ];
     };
   };
 
-  services.nginx.defaultListenAddresses = [ "192.168.3.1" ];
+  services.nginx.defaultListenAddresses = [ ips.server.ipv4 ];
 
   networking.firewall.allowedTCPPorts = [
     80
