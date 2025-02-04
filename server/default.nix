@@ -23,6 +23,8 @@ in
 
   systemd.timers.podman-auto-update.enable = true;
 
+  services.avahi.enable = true;
+
   boot.supportedFilesystems = [
     "zfs"
     "lvm"
