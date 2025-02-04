@@ -173,14 +173,6 @@ in
         ];
       };
     };
-    defaultGateway = {
-      address = "192.168.2.1";
-      interface = "eth0";
-    };
-    defaultGateway6 = {
-      address = "fd00::e228:6dff:fe3f:ccc9";
-      interface = "eth0";
-    };
   };
   boot.loader.systemd-boot = {
     enable = true;
