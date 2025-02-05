@@ -108,7 +108,7 @@ in
         };
 
         lenovo-linux = {
-          hostname = "lenovo-linux.fritz.box";
+          hostname = "lenovo-linux.localdomain";
           identityFile = sshIdentity "id_rsa_lenovo-linux";
           identitiesOnly = true;
           forwardAgent = true;
@@ -121,7 +121,7 @@ in
           forwardAgent = true;
         };
         sylvia-fujitsu = {
-          hostname = "sylvia-fujitsu.fritz.box";
+          hostname = "sylvia-fujitsu.localdomain";
           user = "sylvia";
           identityFile = sshIdentity "id_rsa_sylvia";
           identitiesOnly = true;
