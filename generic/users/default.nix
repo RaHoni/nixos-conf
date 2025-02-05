@@ -101,7 +101,7 @@ in
           forwardAgent = true;
         };
         honermannmedia = {
-          hostname = "192.168.2.37";
+          hostname = "honermannmedia.localdomain";
           user = "root";
           identityFile = sshIdentity "id_ed25519_kodi";
           identitiesOnly = true;
