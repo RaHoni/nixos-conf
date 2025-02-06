@@ -102,6 +102,7 @@ in
   boot.zfs.extraPools = [ "MainZFS" ];
 
   myModules.autoUpgrade.enable = true;
+  myModules.autoUpgrade.allowReboot = true;
 
   networking = {
     dhcpcd.IPv6rs = true;

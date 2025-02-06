@@ -45,6 +45,11 @@
 
   hardware.bluetooth.enable = true;
 
+  myModules.autoUpgrade = {
+    enable = true;
+    delayForInternet = true;
+  };
+
   networking = {
     hostName = "raoul-framework";
     networkmanager.enable = true;

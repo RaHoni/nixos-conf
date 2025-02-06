@@ -27,6 +27,11 @@ in
       description = "An Optional branch to use for the updates";
       example = "dev";
     };
+    allowReboot = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Allow to reboot the computer";
+    };
   };
 
   config = lib.mkIf cfg.enable {
