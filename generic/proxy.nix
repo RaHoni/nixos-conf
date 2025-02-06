@@ -79,6 +79,12 @@ in
       "karaoke.honermann.info" = proxyHost {
         address = "http://10.88.0.5:5555";
       };
+
+      "media.honermann.info" = proxyHost {
+        address = "http://127.0.0.1:8096";
+        proxyWebsockets = true;
+        extraConfig = "proxy_buffering off;"; # Disable buffering when the nginx proxy gets very resource heavy upon streaming
+      };
     };
   };
 }

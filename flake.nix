@@ -291,6 +291,7 @@
             ./server/disko.nix
             ./server/factorio.nix
             ./server/home-assistant.nix
+            ./server/jellyfin.nix
             ./server/nextcloud.nix
             ./server/pi-hole.nix
             ./server/pikaraoke.nix
