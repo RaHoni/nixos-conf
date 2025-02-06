@@ -289,8 +289,11 @@
             ./server/audiobookshelf.nix
             ./server/bacula.nix
             ./server/disko.nix
+            ./server/esphome.nix
             ./server/factorio.nix
+            ./server/github-runner.nix
             ./server/home-assistant.nix
+            ./server/hydra.nix
             ./server/jellyfin.nix
             ./server/nextcloud.nix
             ./server/pi-hole.nix
