@@ -34,6 +34,7 @@ creation_rules:
         - *admin
         age:
         - *r-desktop
+        - *server
   - path_regex: ^secrets/raoul-framework/.*$
     pgp: *admin
     age: *raoul-framework
