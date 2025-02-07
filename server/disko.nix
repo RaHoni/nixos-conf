@@ -36,6 +36,9 @@ in
                     "noatime"
                   ];
                 };
+                "/tmp" = {
+                  mountpoint = "/tmp";
+                };
                 "/permament" = {
                   mountpoint = "/permament";
                   mountOptions = [

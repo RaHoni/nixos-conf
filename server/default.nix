@@ -30,6 +30,8 @@ in
     "lvm"
   ];
 
+  boot.tmp.cleanOnBoot = true;
+
   boot.zfs.package = pkgs.zfs_2_3;
 
   containers = {
