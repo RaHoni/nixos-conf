@@ -57,7 +57,7 @@ in
       "binarycache.honermann.info" = proxyHost { address = "http://${ips.binarycache.ipv4}:5000"; };
 
       "home.honermann.info" = proxyHost {
-        address = "http://${ips.server.ipv4}:8123";
+        address = "http://127.0.0.1:8123";
         proxyWebsockets = true;
       };
 
