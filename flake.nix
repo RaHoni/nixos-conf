@@ -252,9 +252,9 @@
             ./generic/pipewire.nix
             ./generic/plasma.nix
             ./generic/printer.nix
-            ./server/esphome.nix
-            ./server/github-runner.nix
-            ./server/hydra.nix
+            #./server/esphome.nix
+            #./server/github-runner.nix
+            #./server/hydra.nix
           ];
           homeManagerModules = {
             raoul = [
