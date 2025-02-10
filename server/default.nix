@@ -60,6 +60,8 @@ in
     };
   };
 
+  systemd.tmpfiles.rules = [ "d /var/lib/private/ 0700" ];
+
   environment.persistence."/permament" = {
     hideMounts = true;
     directories = [
@@ -67,7 +69,11 @@ in
       "/var/pihole" # This is a Volume for te pihole container so that we can set the adlists
       "/var/lib/nixos/"
       "/var/lib/containers"
-      "/var/lib/private/factorio"
+      {
+        directory = "/var/lib/private/factorio";
+        user = "factorio";
+        group = "factorio";
+      }
       "/var/lib/nixos-containers/mailserver"
       {
         directory = "/var/lib/audiobookshelf";

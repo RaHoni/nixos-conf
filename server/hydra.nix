@@ -43,4 +43,6 @@
     openFirewall = true;
     secretKeyFile = config.sops.secrets.binarySigKey.path;
   };
+
+  environment.persistence."/permament".directories = [ "/var/lib/postgresql" ];
 }

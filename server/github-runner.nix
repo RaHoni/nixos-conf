@@ -7,4 +7,6 @@
     tokenFile = config.sops.secrets.github-runner-key.path;
     url = "https://github.com/RaHoni/nixos-conf";
   };
+
+  environment.persistence."/permament".directories = [ "/var/lib/private/github-runner" ];
 }
