@@ -25,6 +25,8 @@ in
 
   services.avahi.enable = true;
 
+  console.keyMap = "de";
+
   boot.supportedFilesystems = [
     "zfs"
     "lvm"
