@@ -20,7 +20,7 @@
       address = "169.254.26.129";
       interface = "eth0";
     };
-    nameservers = [ "192.168.3.102" ];
+    nameservers = [ "1.1.1.1" ];
     interfaces."eth0" = {
       ipv4.addresses = [
         {
