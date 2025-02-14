@@ -193,6 +193,9 @@ in
   };
   boot.loader.efi.canTouchEfiVariables = true;
   users.users.root.openssh.authorizedKeys.keyFiles = [ ../generic/sshPubkeys/id_ecdsa_proxmox.pub ];
+  users.users.root.openssh.authorizedKeys.keys = [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwmfcED8/DU0g9LdU3r2+KR6TbfzixXKH7tM7keNwd1rEzq2SX8EbU9sD089C6mPrmoLPVtcWeraKWaEn5vTJ2mUXUpYw2u71V0qIr0q43DB2r9fxCoykuijT+r2HrrDhrnr4C1nezvFWncdYxJPXPPROTGiWpyDqd3/BA60/Ho5ag8YnfeIkpI+I6YadbRFggYnJhE7sIbljHtlMAextHZZMy9q/B0/Fmd9VAOhZrFH2SgO7IHI1owuc28d/ISivZBZw0SmjFC+YlksbJG+0QCwB2zk3IOOb2QF8VOSsbY9GFmUOwnSiU1dZdm2f0pZ46IqcRWoDSvOJZV+ilsjjkFFbIiXBBHOLifbZ0cPWpvTozUtdHLbODwc9U4UuqdFEaUeUs/XqMp1pecx3BMHtwUZ2ssjqjlnhv4SN/bLQfanM7E74BJgnVC9n66sEdWDGFcSBCLjTiUd5tKcb0xumAY7I3BtK1vUBhZvLK2S2yBhzUtTNGZDRbwfFOzjbj8G8= Kodi"
+  ];
   users.users.root.hashedPassword = "$y$j9T$0Th6cYXM36/0IxGbj.hm7.$vErijiMepuPpDq.vVBspXefNq/U/ccQx50V3Eo6BDc2";
 
 }
