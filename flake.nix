@@ -199,6 +199,14 @@
     in
     rec {
       nixosConfigurations = {
+        cat-laptop = makeSystem {
+          systemModules = [
+            ./cat-laptop
+            ./generic/localisation.nix
+            ./generic/printer.nix
+          ];
+        };
+
         surface-raoul-nixos = makeSystem {
           systemModules = [
             ./surface-raoul-nixos/configuration.nix
