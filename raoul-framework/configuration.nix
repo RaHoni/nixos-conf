@@ -31,6 +31,7 @@
     git
     gnupg
     kate
+    libimobiledevice
     libreoffice
     miraclecast
     nmap
@@ -93,6 +94,7 @@
     gvfs.enable = true; # Allow programs to directly acces remote shares
     pcscd.enable = true; # yubikey ccid
     teamviewer.enable = true;
+    usbmuxd.enable = true;
     xserver.enable = true; # Used by sddm
   };
 
