@@ -42,7 +42,7 @@ in
     system.autoUpgrade = {
       enable = true;
       flake = "github:RaHoni/nixos-conf" + lib.optionalString (cfg.branch != null) "/${cfg.branch}";
-      allowReboot = lib.mkDefault true;
+      allowReboot = lib.mkDefault cfg.allowReboot;
     };
     # Allow nixos-upgrade to restart on failure (e.g. when laptop wakes up before network connection is set)
     systemd.services.nixos-upgrade = lib.mkIf cfg.delayForInternet {
