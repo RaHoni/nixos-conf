@@ -45,6 +45,10 @@ in
         identitiesOnly yes
       '';
       matchBlocks = rec {
+        cat-laptop = {
+          user = "cathach";
+          identityFile = sshIdentity "support";
+        };
         vps = {
           user = "root";
           hostname = "212.227.135.200";
