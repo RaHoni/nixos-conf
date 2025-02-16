@@ -50,12 +50,6 @@ in
           hostname = "212.227.135.200";
           identityFile = sshIdentity "id_strato";
         };
-        homeassistant = {
-          user = "root";
-          hostname = "homeassistant.local";
-          identityFile = sshIdentity "id_ecdsa_proxmox";
-          identitiesOnly = true;
-        };
         rescueIso = {
           user = "nixos";
           identityFile = sshIdentity "support";
@@ -106,24 +100,10 @@ in
           identityFile = sshIdentity "id_rsa_lenovo-linux";
           forwardAgent = true;
         };
-        "keys.inckmann.de" = {
-          hostname = "212.227.215.39";
-          user = "root";
-          identityFile = sshIdentity "id_ed25519_keys_inkmann";
-          identitiesOnly = true;
-          forwardAgent = true;
-        };
         sylvia-fujitsu = {
           hostname = "sylvia-fujitsu.localdomain";
           user = "sylvia";
           identityFile = sshIdentity "id_rsa_sylvia";
-          forwardAgent = true;
-        };
-        raspberry = {
-          hostname = "192.168.2.80";
-          user = "root";
-          identityFile = sshIdentity "id_ed25519_raspberry";
-          identitiesOnly = true;
           forwardAgent = true;
         };
         server = {
