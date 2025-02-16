@@ -11,9 +11,6 @@ on:
       - main
       - dev
   workflow_dispatch:
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
 
 
 jobs:
@@ -38,6 +35,16 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.base.ref }}
+
+      - name: Ensure latest commit
+        run: |
+          LATEST_COMMIT=$(gh pr view ${{ github.event.pull_request.number }} --json headRefOid -q .headRefOid)
+          if [[ "$LATEST_COMMIT" != "${{ github.event.pull_request.head.sha }}" ]]; then
+            echo "Not the latest commit in PR. Skipping merge."
+            exit 0
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Auto Merge
         run: |
