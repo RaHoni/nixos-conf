@@ -40,13 +40,15 @@ in
 
     ssh = {
       enable = true;
-      extraConfig = "user raoul";
+      extraConfig = ''
+        user raoul
+        identitiesOnly yes
+      '';
       matchBlocks = rec {
         vps = {
           user = "root";
           hostname = "212.227.135.200";
           identityFile = sshIdentity "id_strato";
-          identitiesOnly = true;
         };
         homeassistant = {
           user = "root";
@@ -57,21 +59,18 @@ in
         rescueIso = {
           user = "nixos";
           identityFile = sshIdentity "support";
-          identitiesOnly = true;
           forwardAgent = true;
         };
         streaming = {
           hostname = "petronillastreaming.nb.honermann.info";
           user = "streaming";
           identityFile = sshIdentity "support";
-          identitiesOnly = true;
           forwardAgent = true;
         };
         jasmine = {
           hostname = "jasmine-laptop.nb.honermann.info";
           user = "jasmine";
           identityFile = sshIdentity "support";
-          identitiesOnly = true;
           forwardAgent = true;
         };
         "github.com" = {
@@ -79,38 +78,32 @@ in
           user = "git";
           port = 22;
           identityFile = sshIdentity "github";
-          identitiesOnly = true;
         };
         r-desktop = {
           hostname = "r-desktop.nb.honermann.info";
           identityFile = sshIdentity "r-desktop-ed25519";
-          identitiesOnly = true;
           forwardAgent = true;
         };
         surface = {
           hostname = "surface-raoul-nixos.nb.honermann.info";
           identityFile = sshIdentity "Surface_id_ed25519";
-          identitiesOnly = true;
           forwardAgent = true;
         };
         ffmpeg = {
           hostname = r-desktop.hostname;
           user = "ffmpeg";
           identityFile = sshIdentity "id_ffmpeg";
-          identitiesOnly = true;
           forwardAgent = true;
         };
         honermannmedia = {
           hostname = "honermannmedia.localdomain";
           user = "root";
           identityFile = sshIdentity "id_ed25519_kodi";
-          identitiesOnly = true;
         };
 
         lenovo-linux = {
           hostname = "lenovo-linux.localdomain";
           identityFile = sshIdentity "id_rsa_lenovo-linux";
-          identitiesOnly = true;
           forwardAgent = true;
         };
         "keys.inckmann.de" = {
@@ -124,7 +117,6 @@ in
           hostname = "sylvia-fujitsu.localdomain";
           user = "sylvia";
           identityFile = sshIdentity "id_rsa_sylvia";
-          identitiesOnly = true;
           forwardAgent = true;
         };
         raspberry = {
@@ -139,7 +131,6 @@ in
           hostname = "192.168.1.14";
           identityFile = sshIdentity "id_ecdsa_proxmox";
           user = "root";
-          identitiesOnly = true;
           forwardAgent = true;
         };
       };
