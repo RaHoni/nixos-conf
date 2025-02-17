@@ -10,8 +10,8 @@
     enable = true;
     package = hydra;
     useSubstitutes = true;
-    hydraURL = "localhost";
-    notificationSender = "honermann.info@web.de";
+    hydraURL = "https://hydra.honermann.info";
+    notificationSender = "hydra@honermann.info";
   };
 
   nix.buildMachines = [
