@@ -34,11 +34,6 @@
           prefixLength = 32;
           via = "169.254.26.129";
         }
-        {
-          address = "192.168.2.0";
-          prefixLength = 23;
-          via = "169.254.26.129";
-        }
       ];
     };
   };
@@ -47,13 +42,19 @@
 
   #networking.wireguard.enable = true;
   networking.wg-quick.interfaces.wg0 = {
-    address = [ "10.100.0.3/24" ];
+    address = [
+      "10.100.0.3/24"
+      "2a01:239:2b9:9600::cafe:2/112"
+    ];
     privateKeyFile = "/wireguard/wireguard-priv-key";
     peers = [
       {
         publicKey = "B/9Q2XAEEMsPlW60jdVMCiihJt85qzgWT3iN6ct7GiQ=";
-        allowedIPs = [ "0.0.0.0/0" ];
-        endpoint = "212.227.135.200:51820";
+        allowedIPs = [
+          "0.0.0.0/0"
+          "::/0"
+        ];
+        endpoint = "mail.honermann.info:51820";
         persistentKeepalive = 25;
       }
     ];
