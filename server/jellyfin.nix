@@ -7,6 +7,8 @@ in
     enable = true;
   };
 
+  users.users.jellyfin.extraGroups = [ "render" ];
+
   environment.persistence."/permament".directories = with jellyfin; [
     dataDir
     configDir

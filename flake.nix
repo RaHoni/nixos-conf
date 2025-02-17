@@ -292,6 +292,7 @@
             inputs.impermanence.nixosModules.impermanence
             ./bacula/dir.nix
             ./bacula/sd.nix
+            ./generic/intelgpu.nix
             ./generic/smtp.nix
             ./server
             ./server/audiobookshelf.nix
