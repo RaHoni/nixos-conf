@@ -100,5 +100,20 @@
     defaults.email = "raoul.honermann@web.de";
   };
 
+  services.nginx.virtualHosts.rspamd = {
+    listen = [
+      {
+        addr = "169.254.26.130";
+        port = 80;
+      }
+    ];
+    serverName = "rspamd.honermann.info";
+    locations = {
+      "/" = {
+        proxyPass = "http://unix:/run/rspamd/worker-controller.sock:/";
+      };
+    };
+  };
+
   system.stateVersion = "24.11";
 }
