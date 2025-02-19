@@ -83,7 +83,7 @@
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
     simple-mail-server = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-24_11.follows = "nixpkgs-stable";
     };
