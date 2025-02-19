@@ -10,7 +10,7 @@ let
   cfg = config.myModules.servers.wireguard;
   clientIPs = builtins.genList (i: [
     "10.100.0.${builtins.toString (2 + i)}/32"
-    "${cfg.ipv6Base}:${builtins.toString (2 + i)}/112"
+    "${cfg.ipv6Base}:${builtins.toString (2 + i)}/128"
   ]) (builtins.length cfg.publicKeys);
   hostName = config.networking.hostName;
 in
@@ -40,6 +40,7 @@ in
     # enable NAT
     networking.nat = {
       enable = true;
+      enableIPv6 = true;
       externalInterface = cfg.externalInterface;
       internalInterfaces = [ "wg0" ];
     };

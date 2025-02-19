@@ -44,7 +44,7 @@
   networking.wg-quick.interfaces.wg0 = {
     address = [
       "10.100.0.3/24"
-      "2a01:239:2b9:9600::cafe:2/112"
+      "2a01:239:2b9:9600::cafe:3/112"
     ];
     privateKeyFile = "/wireguard/wireguard-priv-key";
     peers = [
@@ -54,7 +54,7 @@
           "0.0.0.0/0"
           "::/0"
         ];
-        endpoint = "mail.honermann.info:51820";
+        endpoint = "212.227.135.200:51820";
         persistentKeepalive = 25;
       }
     ];
