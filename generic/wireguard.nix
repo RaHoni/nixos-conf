@@ -52,7 +52,10 @@ in
     services.ndppd = {
       enable = true;
       proxies = {
-        ${cfg.externalInterface}.rules."${cfg.ipv6Base}:0/112" = { };
+        ${cfg.externalInterface}.rules."${cfg.ipv6Base}:0/112" = {
+          method = "iface";
+          interface = "wg0";
+        };
       };
     };
 
