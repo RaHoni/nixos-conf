@@ -13,7 +13,7 @@ keys:
   - &raoul-framework age1lzsz9p0r50zl2cf998kuu6z3jqeck8wlz96l70xnq7g0vy35xd9q5l5535
   - &server age1dg3pflxlmka90msy8jmfghcaeclx3ykqnkh5rez39k200cxc2guq0ahmg9
   - &vps age1x83nmn5rmf6g8n5y6m2zmu97ep3a5ngvgj5t2uwkrdmnz5fmfyks2wtn39
-  - &cat age1qtdufk8qj3kvq674d2j0qjhh46fjz6s5r4gadympu9zqelu2ncpscpkfrp
+  - &cat age12frf3tmd35dyy5mq0cx0ruwwrxhkyzz5ga9kqd0anf4z2apuqpcspaqvsl
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
