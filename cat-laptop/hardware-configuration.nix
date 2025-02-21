@@ -27,8 +27,13 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/722f2156-5f7b-4d88-9e3b-78486f4c2cde";
+    device = "/dev/disk/by-label/NIXROOT";
     fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/NIXBOOT";
+    fsType = "vfat";
   };
 
   swapDevices = [ ];
