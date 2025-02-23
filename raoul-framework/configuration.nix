@@ -141,6 +141,8 @@
         "dialout"
         "adbusers"
         "video"
+        "ld"
+        "scanner"
         config.users.groups.keys.name
       ];
       openssh.authorizedKeys.keyFiles = [

@@ -9,6 +9,8 @@
       "networkmanager"
       "wheel"
       "i2c"
+      "lp"
+      "scanner"
     ];
     packages = with pkgs; [
       keepassxc

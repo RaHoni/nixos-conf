@@ -53,7 +53,11 @@
   users.users.cathach = {
     isNormalUser = true;
     description = "Cathach";
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "wheel"
+      "lp"
+      "scanner"
+    ];
     hashedPassword = "$y$j9T$WRFw5PAbeN71qkFQ7XO3//$X5ZY3bnserHXd4CvXnI11N/0MejTp.ZFJDEiQokDz45";
     openssh.authorizedKeys.keyFiles = [
       ../generic/sshPubkeys/support.pub
