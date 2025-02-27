@@ -36,18 +36,24 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.base.ref }}
 
-      - name: Ensure latest commit
+      - name: Merge if current and checks passed
         run: |
           LATEST_COMMIT=$(gh pr view ${{ github.event.pull_request.number }} --json headRefOid -q .headRefOid)
           if [[ "$LATEST_COMMIT" != "${{ github.event.pull_request.head.sha }}" ]]; then
             echo "Not the latest commit in PR. Skipping merge."
             exit 0
           fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Auto Merge
-        run: |
+          # Get the status of required checks
+          CHECKS_STATUS=$(gh pr view ${{ github.event.pull_request.number }} --json mergeStateStatus -q .mergeStateStatus)
+          if [[ "$CHECKS_STATUS" != "CLEAN" ]]; then
+            echo "Not all required checks have passed. Skipping merge."
+            exit 0
+          fi
+
           git branch -vv
           git merge --ff-only origin/${{ github.event.pull_request.head.ref }}
           git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
