@@ -47,6 +47,7 @@ jobs:
           # Get the status of required checks
           CHECKS_STATUS=$(gh pr view ${{ github.event.pull_request.number }} --json mergeStateStatus -q .mergeStateStatus)
           if [[ "$CHECKS_STATUS" != "CLEAN" ]]; then
+            echo $CHECKS_STATUS
             echo "Not all required checks have passed. Skipping merge."
             exit 0
           fi
