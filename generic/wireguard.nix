@@ -40,7 +40,7 @@ in
     # enable NAT
     networking.nat = {
       enable = true;
-      enableIPv6 = true;
+      #enableIPv6 = true;
       externalInterface = cfg.externalInterface;
       internalInterfaces = [ "wg0" ];
     };
