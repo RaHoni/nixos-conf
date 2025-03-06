@@ -218,6 +218,7 @@
       kblocks
 
       # Sonstiges
+      gh
       mc
       gocr
       ocrfeeder
