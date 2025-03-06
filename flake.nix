@@ -207,6 +207,20 @@
           ];
         };
 
+        lenovo-linux = makeSystem {
+          systemModules = [
+            ./generic/localisation.nix
+            ./generic/printer.nix
+            ./generic/plasma.nix
+            ./lenovo-linux/configuration.nix
+          ];
+
+          homeManagerModules = {
+            christoph = [ ];
+          };
+
+        };
+
         surface-raoul-nixos = makeSystem {
           systemModules = [
             ./surface-raoul-nixos/configuration.nix

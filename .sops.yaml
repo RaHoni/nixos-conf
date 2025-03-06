@@ -1,5 +1,6 @@
 keys:
   - &admin B054287D42FC91AD36137D9F03ECA132FD38CD59
+  - &christop 281D3C9674822F7C035EFAB979204D9635A954B2
   - &smb age1n8ukjh0krslvv3v5cqy6v5t5utgspek2g3kx3j0gxjszvszllaasllc3hk
   - &surface age1k7dljw9mthfr8y6c99hrkn2ncs0f4dfsm5e42fvfat70wvd7e48qhz0dzl
   - &nebula-lighthouse age109w25c2fjtv2wslwy8hvsms4r6hjmrkfucq2mysskz6wg5jg5s7ql98tzn
@@ -14,6 +15,7 @@ keys:
   - &server age1dg3pflxlmka90msy8jmfghcaeclx3ykqnkh5rez39k200cxc2guq0ahmg9
   - &vps age1x83nmn5rmf6g8n5y6m2zmu97ep3a5ngvgj5t2uwkrdmnz5fmfyks2wtn39
   - &cat age12frf3tmd35dyy5mq0cx0ruwwrxhkyzz5ga9kqd0anf4z2apuqpcspaqvsl
+  - &lenovo-linux age1tzvmm6j2cvqjzk0ehqzgnd3sl3qvencq42zx6r08rr85vwuce4us94q6hn
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -21,6 +23,13 @@ creation_rules:
       - *admin
       age:
       - *surface
+  - path_regex: ^secrets/lenovo-linux/.*$
+    key_groups:
+    - pgp:
+      - *admin
+      - *christop
+      age:
+      - *lenovo-linux
   - path_regex: ^secrets/nebula-lighthouse/.*$
     key_groups:
     - pgp:
@@ -71,6 +80,7 @@ creation_rules:
     key_groups:
     - pgp:
       - *admin
+      - *christop
       age:
       - *audiobooks
       - *surface
@@ -86,6 +96,7 @@ creation_rules:
       - *server
       - *vps
       - *cat
+      - *lenovo-linux
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
     - pgp:
