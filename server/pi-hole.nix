@@ -54,7 +54,7 @@ in
       ];
       environment = {
         TZ = "Europe/Berlin";
-        WEBPASSWORD = "";
+        FTLCONF_webserver_api_password = "";
         DNSSEC = "true";
         REV_SERVER = "true";
         REV_SERVER_CIDR = "192.168.1.0/23";
