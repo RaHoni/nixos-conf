@@ -24,7 +24,10 @@
   };
 
   virtualisation.oci-containers.containers.homeassistant = {
-    volumes = [ "home-assistant:/config" ];
+    volumes = [
+      "home-assistant:/config"
+      "home-assistant-media:/media"
+    ];
     environment.TZ = "Europe/Berlin";
     labels = {
       "io.containers.autoupdate" = "registry";
