@@ -52,7 +52,7 @@ in
         FTLCONF_webserver_api_password = "";
         FTLCONF_dns_upstreams = "208.67.222.222;2620:119:35::35;1.0.0.1;2606:4700:4700::1001";
         #FTLCONF_dns_hosts = ''192.168.1.207 honermann.info;192.168.1.207 ssl-proxy''; # simple record
-        FTLCONF_dns_hostRecord = ''honermann.info,ssl-proxy,192.168.1.207''; # add ipv4, ipv6 and ptr record
+        FTLCONF_dns_hostRecord = ''honermann.info,ssl-proxy,server.otlqu2p5cvqqpnid.myfritz.net,192.168.1.207''; # add ipv4, ipv6 and ptr record
         FTLCONF_dns_listeningMode = "ALL";
         FTLCONF_dns_revServers = "true,192.168.0.0/16,192.168.1.1,localdomain";
         FTLCONF_dns_reply_host_force4 = "true"; # Use specified IP
