@@ -29,6 +29,9 @@ in
               type = "btrfs";
               extraArgs = [ "-f" ];
               subvolumes = {
+                "/" = {
+                  mountpoint = "/btrfs";
+                };
                 "/nix" = {
                   mountpoint = "/nix";
                   mountOptions = [
@@ -38,6 +41,9 @@ in
                 };
                 "/tmp" = {
                   mountpoint = "/tmp";
+                };
+                "/cache" = {
+                  mountpoint = "/var/cache";
                 };
                 "/permament" = {
                   mountpoint = "/permament";
