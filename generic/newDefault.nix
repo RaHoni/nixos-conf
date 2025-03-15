@@ -78,7 +78,7 @@ in
       the following will change the users to attribute sets with home manager config
     */
     users = builtins.mapAttrs (userName: modules: {
-      imports = modules;
+      imports = modules ++ [ ./users/default.nix ];
 
       home.username = userName;
       home.homeDirectory = if userName == "root" then "/root" else "/home/${userName}";

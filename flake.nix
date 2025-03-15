@@ -176,7 +176,7 @@
             homeManagerModules = nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc) [ ] [
               {
                 root = [
-                  ./generic/users/root/home-manager.nix
+                  ./generic/users/raoul.nix
                 ];
               }
               homeManagerModules
@@ -385,8 +385,8 @@
               secureboot = false;
               genericHomeManagerModules = [ ];
               homeManagerModules = {
-                root = [ ./generic/users/root/home-manager.nix ];
-                nixos = [ ./generic/users/default.nix ];
+                root = [ ./generic/users/raoul.nix ];
+                nixos = [ ];
               };
             };
           };
@@ -406,8 +406,8 @@
               secureboot = false;
               genericHomeManagerModules = [ ];
               homeManagerModules = {
-                root = [ ./generic/users/root/home-manager.nix ];
-                nixos = [ ./generic/users/default.nix ];
+                root = [ ./generic/users/raoul.nix ];
+                nixos = [ ];
               };
             };
           };

@@ -12,13 +12,8 @@ in
 {
   home.file = {
     ".ssh/keys".source = ../sshPubkeys;
-    ".p10k.zsh".source = ./p10k.zsh;
     #".zshrc".source = ./zshrc;
   };
-
-  home.packages = with pkgs; [
-    grepcidr
-  ];
 
   programs.zsh = {
     enable = true;
@@ -26,7 +21,6 @@ in
     autosuggestion.enable = true;
     initExtra = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
     localVariables = {
-      YSU_HARDCORE = 1;
       YSU_IGNORED_ALIASES = [ "g" ];
     };
   };
@@ -41,7 +35,6 @@ in
     ssh = {
       enable = true;
       extraConfig = ''
-        user raoul
         identitiesOnly yes
       '';
       matchBlocks = rec {
@@ -133,20 +126,4 @@ in
     };
   };
 
-  # Signal start in tray fix
-  home.file.".local/share/applications/signal-desktop.desktop" = {
-    enable = osConfig.services.desktopManager.plasma6.enable;
-    text = ''
-      [Desktop Entry]
-      Name=Signal
-      Exec=LANGUAGE="de-DE:en-US" ${pkgs.signal-desktop}/bin/signal-desktop --no-sandbox --start-in-tray %U
-      Terminal=false
-      Type=Application
-      Icon=signal-desktop
-      StartupWMClass=Signal
-      Comment=Private messaging from your desktop
-      MimeType=x-scheme-handler/sgnl;x-scheme-handler/signalcaptcha;
-      Categories=Network;InstantMessaging;Chat;
-    '';
-  };
 }

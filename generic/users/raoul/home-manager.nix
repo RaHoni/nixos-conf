@@ -7,7 +7,10 @@
 }:
 with lib;
 {
-  imports = [ ./../default.nix ];
+  imports = [
+    ./../default.nix
+    ../raoul.nix
+  ];
   #  home.stateVersion = "23.05";
 
   home.packages = with pkgs; [
