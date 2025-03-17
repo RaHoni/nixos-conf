@@ -7,6 +7,7 @@
   networking = {
     hostName = "vps";
     firewall.allowPing = true;
+    firewall.allowedUDPPorts = [ 53 ];
   };
 
   local.full = false;
