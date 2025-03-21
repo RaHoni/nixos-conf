@@ -42,7 +42,7 @@
   ];
 
   myModules.autoUpgrade.enable = true;
-  myModules.autoUpgrade.allowReboot = true;
+  myModules.autoUpgrade.allowReboot = false;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
