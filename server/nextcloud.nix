@@ -55,8 +55,8 @@ in
       inherit (pkgs.unstable.nextcloud31Packages.apps) recognize;
 
       twofactor_admin = pkgs.fetchNextcloudApp {
-        url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.7.1/twofactor_admin.tar.gz";
-        sha256 = "sha256-BJur/SKKXFTGsk5bALrdw+xOyr9lzT572Qpe1sMusfg=";
+        url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.8.0/twofactor_admin.tar.gz";
+        sha256 = "sha256-zZvH7xfSooKBG4CKvSuf8D/6KnKEunLa+DRLAkWGoow=";
         license = "agpl3Only";
       };
       #twofactor_totp
