@@ -21,7 +21,7 @@ in
   services.nextcloud = {
     enable = true;
     datadir = "/var/data";
-    package = pkgs.nextcloud30;
+    package = pkgs.nextcloud31;
     hostName = "honermann.info";
     configureRedis = true;
     database.createLocally = true;
@@ -33,7 +33,7 @@ in
 
     maxUploadSize = "10G";
 
-    extraApps = with pkgs.nextcloud30Packages.apps; {
+    extraApps = with pkgs.nextcloud31Packages.apps; {
       inherit
         registration
         calendar
@@ -47,17 +47,13 @@ in
         notes
         gpoddersync
         phonetrack
+        files_retention
+        files_automatedtagging
+        previewgenerator
+        memories
         ;
-      files_retention = pkgs.fetchNextcloudApp {
-        sha256 = "sha256-krJOb925AjmnwmkFYg00eC4KmICr4Tf3jUANYWTRJdA=";
-        url = "https://github.com/nextcloud-releases/files_retention/releases/download/v1.19.0/files_retention-v1.19.0.tar.gz";
-        license = "agpl3Only";
-      };
-      files_automatedtagging = pkgs.fetchNextcloudApp {
-        sha256 = "sha256-eXLTCtdIW/D0nigyYKnHj9iFQNAxWs8F46vivCUgVYs=";
-        url = "https://github.com/nextcloud-releases/files_automatedtagging/releases/download/v1.20.0/files_automatedtagging-v1.20.0.tar.gz";
-        license = "agpl3Only";
-      };
+      inherit (pkgs.unstable.nextcloud31Packages.apps) recognize;
+
       twofactor_admin = pkgs.fetchNextcloudApp {
         url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.7.1/twofactor_admin.tar.gz";
         sha256 = "sha256-BJur/SKKXFTGsk5bALrdw+xOyr9lzT572Qpe1sMusfg=";
