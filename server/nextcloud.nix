@@ -74,6 +74,7 @@ in
       trusted_proxies = [ ips.ssl-proxy.ipv4 ];
       default_phone_region = "DE";
       trusted_domains = [ "nextcloud.honermann.info" ];
+      trashbin_retention_obligation = "auto, 30";
     };
   };
 
