@@ -120,6 +120,9 @@
   services.displayManager.autoLogin.user = "christoph";
   services.displayManager.sddm.autoNumlock = true;
 
+  # Konfiguration zum AUTO-Update über GitHub
+  myModules.autoUpgrade.enable = true;
+
   # Install firefox.
   # Programme mit Optionen
   programs.firefox.enable = true;
