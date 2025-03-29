@@ -73,7 +73,7 @@ in
   };
 
   services.bacula-dir = {
-    enable = true;
+    enable = false; # Fixme: Reenable when configured
     name = "dir.bacula";
     password = "6SqrCDjtrtKavlrEwqP49az5znQQl8a9vv5vXGlfkrTO"; # TODO encrypt and change
     catalogs.MyCatalog = {
