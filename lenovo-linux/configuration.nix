@@ -149,6 +149,7 @@
       avidemux # Aufruf bei Wayland mit der option --platform 'xcb'
       tvbrowser
       rosegarden
+      lilypond
       qsynth
       fluidsynth
       soundfont-fluid # Zielpfad: /run/current-system/sw/share/soundfonts/
