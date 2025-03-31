@@ -49,6 +49,7 @@ in
       };
       settings = {
         cipher = "aes";
+        logging.disable_timestamp = true; # Systemd does this
         punchy = {
           punch = true;
           respond = true;
