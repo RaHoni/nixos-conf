@@ -74,6 +74,16 @@
     variant = lib.mkForce "";
   };
 
+  stylix = {
+    enable = true;
+    image = ./NGC3324_JWST.jpg;
+    cursor = {
+      package = pkgs.capitaine-cursors;
+      name = "capitaine-cursors";
+      size = 24;
+    };
+  };
+
   # Configure console keymap
   console.keyMap = "de";
 

@@ -213,6 +213,7 @@
             ./generic/printer.nix
             ./generic/plasma.nix
             ./lenovo-linux/configuration.nix
+            stylix.nixosModules.stylix
           ];
 
           homeManagerModules = {
