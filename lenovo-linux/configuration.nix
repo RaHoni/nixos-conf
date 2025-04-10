@@ -76,7 +76,7 @@
 
   stylix = {
     enable = true;
-    image = ./Hubble_Jubilaeumsbild.jpg;
+    image = ./NGC3324_JWST.jpg;
     cursor = {
       package = pkgs.capitaine-cursors;
       name = "capitaine-cursors";
