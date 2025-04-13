@@ -77,6 +77,7 @@
   stylix = {
     enable = true;
     image = ./NGC3324_JWST.jpg;
+    base16Scheme = ./base16-stylix.yaml;
     cursor = {
       package = pkgs.capitaine-cursors;
       name = "capitaine-cursors";
