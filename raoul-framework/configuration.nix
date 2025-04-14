@@ -163,6 +163,7 @@
         sops
         spotify
         texliveFull # full latex
+        vmware-horizon-client # FH VDI
         whatsapp-for-linux
       ];
     };
