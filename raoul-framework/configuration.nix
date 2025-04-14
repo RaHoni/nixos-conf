@@ -24,24 +24,24 @@
   };
 
   environment.systemPackages = with pkgs; [
-    mprisRecord
+    bacula
+    ffmpeg
     filelight
     firefox
-    ffmpeg
+    fw-ectool
     git
     gnupg
     kate
     libimobiledevice
     libreoffice
     miraclecast
+    mprisRecord
     nmap
     qpwgraph
     signal-desktop
     vlc
-    zsh-completions
-    fw-ectool
-    bacula
     xournalpp
+    zsh-completions
   ];
 
   hardware.bluetooth.enable = true;
