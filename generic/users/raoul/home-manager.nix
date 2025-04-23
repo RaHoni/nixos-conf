@@ -51,6 +51,15 @@ with lib;
       scdaemonSettings.disable-ccid = true;
     };
 
+    firefox = {
+      enable = true;
+      nativeMessagingHosts = with pkgs; [
+        vdhcoapp
+        keepassxc
+        kdePackages.plasma-browser-integration
+      ];
+    };
+
     thunderbird = {
       enable = true;
       profiles.main = {
