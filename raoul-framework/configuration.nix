@@ -42,6 +42,7 @@
     vlc
     xournalpp
     zsh-completions
+    vdhcoapp
   ];
 
   hardware.bluetooth.enable = true;
