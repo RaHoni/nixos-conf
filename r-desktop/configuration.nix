@@ -60,18 +60,18 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    firefox
-    kate
-    libreoffice
-    signal-desktop
-    git
-    nmap
-    gnupg
     filelight
+    firefox
+    git
+    gnupg
+    kate
+    kdePackages.kdenlive
+    libreoffice
+    mprisRecord
+    nmap
+    signal-desktop
     vlc
     waypipe
-    mprisRecord
-    kdePackages.kdenlive
   ];
 
   programs = {
