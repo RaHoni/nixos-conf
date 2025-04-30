@@ -63,22 +63,13 @@
     firefox
     kate
     libreoffice
-    jdk
-    android-tools
-    python3
     signal-desktop
-    zsh-completions
     git
     nmap
     gnupg
     filelight
     vlc
-    ffmpeg-vpl.ffmpeg-qsv
-    nodePackages.bash-language-server
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
     waypipe
-    inputs.streamdeck-obs.packages.x86_64-linux.streamdeck-obs
     mprisRecord
     kdePackages.kdenlive
   ];
