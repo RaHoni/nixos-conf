@@ -68,6 +68,16 @@
       '';
     });
 
+    snapcast = prev.snapcast.overrideAttrs (oldAttrs: rec {
+      version = "0.31.0";
+      src = final.fetchFromGitHub {
+        owner = "";
+        repo = "";
+        rev = "v${version}";
+        hash = "sha256-LxmYsuwFCQpeoiDK4QOREIWcMIfZABT5AdKzh9reQWI=";
+      };
+    });
+
     factorio-headless =
       if factorioIsNewer then
         prev.factorio-headless.overrideAttrs (old: {
