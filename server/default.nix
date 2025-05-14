@@ -70,6 +70,7 @@ in
       "/etc/nixos/"
       "/var/pihole" # This is a Volume for te pihole container so that we can set the adlists
       "/var/lib/nixos/"
+      "/var/lib/nebula/"
       "/var/lib/containers"
       {
         directory = "/var/lib/private/factorio";
