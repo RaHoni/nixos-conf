@@ -50,6 +50,11 @@
   };
   systemd.services.music-assistant.path = [ pkgs.snapcast ];
 
+  environment.persistence."/permament".directories = [
+    "/var/lib/private/snapserver"
+    "/var/lib/private/music-assistant"
+  ];
+
   networking.firewall.allowedTCPPorts = [
     50000 # librespot
     50001 # librespot2
