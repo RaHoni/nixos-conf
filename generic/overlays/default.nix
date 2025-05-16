@@ -83,6 +83,7 @@
         prev.factorio-headless.overrideAttrs (old: {
           version = local.version;
           src = prev.fetchurl {
+            name = local.name;
             url = local.url;
             sha256 = local.sha256;
           };
