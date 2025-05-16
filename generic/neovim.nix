@@ -18,12 +18,14 @@ in
     colorschemes.gruvbox = {
       enable = true;
       settings = {
-        contrastDark = "soft";
+        contrasrDark = "soft";
         improvedStrings = true;
         improvedWarnings = true;
         trueColor = true;
       };
     };
+
+    diagnostics.update_in_insert = true;
 
     globals = {
       mapleader = ",";
@@ -63,6 +65,7 @@ in
       ttyfast = true; # Speed up scrolling in Vim
       ve = "onemore"; # allow cursor to be at first empty space after line
       encoding = "utf8";
+      updatetime = 200;
     };
     autoCmd = [
       {
@@ -76,6 +79,7 @@ in
         # Or use `command` if you want to run a normal vimscript command
         command = "setlocal tabstop=2";
       }
+
     ];
 
     keymaps = [
@@ -139,65 +143,6 @@ in
         key = "<c-n>";
         action = "luasnip#choice_active() ? '<Plug>luasnip-next-choice'";
         options.silent = true;
-      }
-
-      #for custom build and run
-      {
-        mode = "n";
-        key = "<Leader>bc";
-        action = ":CreateCMakeFile<CR>";
-      }
-      {
-        mode = "n";
-        key = "<Leader>bd";
-        action = ":BuildDebug<CR>";
-      }
-      {
-        mode = "n";
-        key = "<Leader>br";
-        action = ":BuildRelease<CR>";
-      }
-      {
-        mode = "n";
-        key = "<Leader>rd";
-        action = ":RunDebug<CR>";
-      }
-      {
-        mode = "n";
-        key = "<Leader>rr";
-        action = ":RunRelease<CR>";
-      }
-
-      #for dap (debugging)
-      {
-        mode = "n";
-        key = "<LocalLeader>c";
-        action = ":DapContinue<CR>";
-      }
-      {
-        mode = "n";
-        key = "<LocalLeader>n";
-        action = ":DapStepOver<CR>";
-      }
-      {
-        mode = "n";
-        key = "<LocalLeader>s";
-        action = ":DapStepInto<CR>";
-      }
-      {
-        mode = "n";
-        key = "<LocalLeader>f";
-        action = ":DapStepOut<CR>";
-      }
-      {
-        mode = "n";
-        key = "<LocalLeader>b";
-        action = ":DapToggleBreakpoint<CR>";
-      }
-      {
-        mode = "n";
-        key = "<LocalLeader>q";
-        action = ":DapTerminate<CR>";
       }
 
       #telescope
@@ -323,12 +268,35 @@ in
             enable = true; # lsp server for nix
             settings = {
               formatting.command = [ "nixfmt" ];
-              flake.autoEvalInputs = true;
+              nix = {
+                flake.autoEvalInputs = true;
+                maxMemoryMB = 6144;
+              };
             };
           };
           texlab.enable = full; # lsp Server for LaTeX
           java_language_server.enable = full; # lsp Server for Java
         };
+
+        keymaps.lspBuf = {
+          "gd" = "definition";
+          "gD" = "references";
+          "gt" = "type_definition";
+          "gi" = "implementation";
+          "K" = "hover";
+          "<c-s>" = "signature_help";
+        };
+        #       keymaps = [
+        #         {
+        #           key = "<c-s>";
+        #           lspBufAction = "signature_help";
+        #         }
+        #         {
+        #           mode = "n";
+        #           key = "gO";
+        #           lspBufAction = "document_symbol";
+        #         }
+        #       ];
       };
       cmp = {
         enable = true;
