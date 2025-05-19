@@ -62,13 +62,12 @@
     anlage = {
       isNormalUser = true;
       openssh.authorizedKeys.keyFiles = root.openssh.authorizedKeys.keyFiles;
-      password = "test";
-      extraGroups = [ "wheel" ];
     };
   };
 
   services = {
     openssh.enable = true;
+    getty.autologinUser = "anlage";
     wyoming = rec {
       satellite = {
         enable = true;
