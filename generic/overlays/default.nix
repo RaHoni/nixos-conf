@@ -71,8 +71,8 @@
     snapcast = prev.snapcast.overrideAttrs (oldAttrs: rec {
       version = "0.31.0";
       src = final.fetchFromGitHub {
-        owner = "";
-        repo = "";
+        owner = "badaix";
+        repo = "snapcast";
         rev = "v${version}";
         hash = "sha256-LxmYsuwFCQpeoiDK4QOREIWcMIfZABT5AdKzh9reQWI=";
       };
