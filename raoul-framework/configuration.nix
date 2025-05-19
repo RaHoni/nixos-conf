@@ -12,6 +12,7 @@
       systemd.enable = true;
       luks.devices."crypted".crypttabExtraOpts = [ "fido2-device=auto" ]; # cryptenroll
     };
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
   environment.etc = {
