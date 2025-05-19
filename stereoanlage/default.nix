@@ -28,12 +28,21 @@
     enableAllFirmware = true;
   };
 
+  sops.secrets.wifi = {
+    format = "binary";
+    sopsFile = ../secrets/stereoanlage/wifi.conf;
+  };
+
   networking = {
     hostName = "stereoanlage";
     firewall.allowedTCPPorts = [
       10700
     ];
-    wireless.enable = true;
+    wireless = {
+      enable = true;
+      secretsFile = config.sops.secrets.wifi.path;
+      networks."Commander DATA".psk = "ext:psk_home";
+    };
   };
 
   systemd.user.services.snap-client = {
