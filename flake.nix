@@ -327,6 +327,14 @@
           ];
         };
 
+        stereoanlage = makeSystem {
+          systemModules = [
+            ./stereoanlage
+          ];
+          system = "aarch64-linux";
+          stable = true;
+        };
+
         vps = makeSystem {
           systemModules = [
             ./vps
