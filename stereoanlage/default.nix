@@ -52,6 +52,8 @@
     root.openssh.authorizedKeys.keyFiles = [ ../generic/sshPubkeys/id_ed25519_kodi.pub ];
     anlage = {
       openssh.authorizedKeys.keyFiles = root.openssh.authorizedKeys.keyFiles;
+      password = "test";
+      extraGroups = [ "wheel" ];
     };
   };
 
