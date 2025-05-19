@@ -42,6 +42,10 @@ in
           user = "cathach";
           identityFile = sshIdentity "support";
         };
+        stereoanlage = {
+          user = "root";
+          identityFile = sshIdentity "id_ed25519_kodi";
+        };
         vps = {
           user = "root";
           hostname = "212.227.135.200";
