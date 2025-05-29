@@ -25,7 +25,7 @@ with lib;
       package = nextcloud-client;
     })
     (makeAutostartItem {
-      name = "signal-desktop";
+      name = "signal";
       package = signal-desktop;
     })
     (makeAutostartItem {

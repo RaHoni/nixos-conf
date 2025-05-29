@@ -61,12 +61,12 @@
         cp -a * $out
       '';
     };
-    #    signal-desktop = prev.signal-desktop.overrideAttrs (oldAttrs: {
-    #      postPatch = ''
-    #        substituteInPlace usr/share/applications/signal-desktop.desktop \
-    #          --replace "Exec=" 'Exec=LANGUAGE="de-DE:en-US" ' --replace "--no-sandbox" '--no-sandbox --start-in-tray'
-    #      '';
-    #    });
+    signal-desktop = prev.signal-desktop.overrideAttrs (oldAttrs: {
+      postPatch = ''
+        substituteInPlace usr/share/applications/signal.desktop \
+          --replace "Exec=" 'Exec=LANGUAGE="de-DE:en-US" ' --replace "--no-sandbox" '--no-sandbox --start-in-tray'
+      '';
+    });
 
     snapcast = prev.snapcast.overrideAttrs (oldAttrs: rec {
       version = "0.31.0";
