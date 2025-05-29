@@ -170,7 +170,6 @@
       ffmpeg
       kdePackages.filelight
       kfind
-      ventoy
       k3b
       kid3
       obs-studio

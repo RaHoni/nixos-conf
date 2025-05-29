@@ -167,7 +167,6 @@
         texliveFull # full latex
         vmware-horizon-client # FH VDI
         whatsapp-for-linux
-        yubikey-manager-qt
         yubioath-flutter
       ];
     };
