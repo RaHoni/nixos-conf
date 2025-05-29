@@ -13,6 +13,9 @@ in
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
+    vimdiffAlias = true;
+    vimAlias = true;
+    viAlias = true;
 
     #set colorscheme
     colorschemes.gruvbox = {
