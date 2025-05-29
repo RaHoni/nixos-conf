@@ -356,67 +356,67 @@
           nebula = true;
         };
 
-        rescueIso = makeSystem {
-          systemModules = [
-            ./rescueIso/configuration.nix
-            "${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma5.nix"
-          ];
-          homeManagerModules = {
-            nixos = [
-              ./generic/users/default.nix
-            ];
-          };
-        };
+        #        rescueIso = makeSystem {
+        #          systemModules = [
+        #            ./rescueIso/configuration.nix
+        #            "${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
+        #          ];
+        #          homeManagerModules = {
+        #            nixos = [
+        #              ./generic/users/default.nix
+        #            ];
+        #          };
+        #        };
       };
 
-      packages = {
-        x86_64-linux = rec {
-          default = installer;
-          installer = nixos-generators.nixosGenerate rec {
-            pkgs = pkgsConfig nixpkgs-stable system;
-            format = "install-iso";
-            system = "x86_64-linux";
-            modules = [
-              ./generic/newDefault.nix
-              ./generic/nebula.nix
-              ./rescueIso/configuration.nix
-              "${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
-            ];
-            specialArgs = {
-              inherit system inputs;
-              nebula = false;
-              stable = true;
-              secureboot = false;
-              genericHomeManagerModules = [ ];
-              homeManagerModules = {
-                root = [ ./generic/users/raoul.nix ];
-                nixos = [ ];
-              };
-            };
-          };
-          arch-installer = nixos-generators.nixosGenerate rec {
-            pkgs = pkgsConfig nixpkgs-stable system;
-            format = "sd-aarch64-installer";
-            system = "aarch64-linux";
-            modules = [
-              ./generic/newDefault.nix
-              ./generic/nebula.nix
-              { networking.hostName = "rescueIso"; }
-            ];
-            specialArgs = {
-              inherit system inputs;
-              nebula = false;
-              stable = true;
-              secureboot = false;
-              genericHomeManagerModules = [ ];
-              homeManagerModules = {
-                root = [ ./generic/users/raoul.nix ];
-                nixos = [ ];
-              };
-            };
-          };
-        };
-      };
+      #      packages = {
+      #        x86_64-linux = rec {
+      #          default = installer;
+      #          installer = nixos-generators.nixosGenerate rec {
+      #            pkgs = pkgsConfig nixpkgs-stable system;
+      #            format = "install-iso";
+      #            system = "x86_64-linux";
+      #            modules = [
+      #              ./generic/newDefault.nix
+      #              ./generic/nebula.nix
+      #              ./rescueIso/configuration.nix
+      #              #"${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
+      #            ];
+      #            specialArgs = {
+      #              inherit system inputs;
+      #              nebula = false;
+      #              stable = true;
+      #              secureboot = false;
+      #              genericHomeManagerModules = [ ];
+      #              homeManagerModules = {
+      #                root = [ ./generic/users/raoul.nix ];
+      #                nixos = [ ];
+      #              };
+      #            };
+      #          };
+      #          arch-installer = nixos-generators.nixosGenerate rec {
+      #            pkgs = pkgsConfig nixpkgs-stable system;
+      #            format = "sd-aarch64-installer";
+      #            system = "aarch64-linux";
+      #            modules = [
+      #              ./generic/newDefault.nix
+      #              ./generic/nebula.nix
+      #              { networking.hostName = "rescueIso"; }
+      #            ];
+      #            specialArgs = {
+      #              inherit system inputs;
+      #              nebula = false;
+      #              stable = true;
+      #              secureboot = false;
+      #              genericHomeManagerModules = [ ];
+      #              homeManagerModules = {
+      #                root = [ ./generic/users/raoul.nix ];
+      #                nixos = [ ];
+      #              };
+      #            };
+      #          };
+      #        };
+      #      };
 
       nixOnDroidConfigurations.fp4 = nix-on-droid.lib.nixOnDroidConfiguration {
         system = "aarch64-linux";
@@ -463,7 +463,7 @@
         hosts = mapAttrs getCfg nixosConfigurations;
         #inherit (nixosConfigurations) r-desktop;
         # Each filtered configuration is available as a job
-        inherit devShells packages;
+        inherit devShells; # packages;
       };
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
