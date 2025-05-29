@@ -15,8 +15,7 @@ let
 
   replaceTemplate = file: {
     file = (
-      pkgs.substituteAll {
-        src = file;
+      pkgs.replaceVars file {
         dbpass = placeholders.bacula-dbpass;
         dirPassword = placeholders.bacula-dir-password;
         lenovoPassword = placeholders.bacula-lenovo-linux-password;
