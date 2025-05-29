@@ -28,7 +28,7 @@ in
       };
     };
 
-    diagnostics.update_in_insert = true;
+    diagnostic.settings.update_in_insert = true;
 
     globals = {
       mapleader = ",";

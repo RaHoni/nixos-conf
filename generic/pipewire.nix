@@ -1,7 +1,7 @@
 { ... }:
 {
   # enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false; # used to warn conflicting config
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

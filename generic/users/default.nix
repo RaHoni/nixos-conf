@@ -19,7 +19,7 @@ in
     enable = true;
     enableVteIntegration = true;
     autosuggestion.enable = true;
-    initExtra = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
+    initContent = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
     localVariables = {
       YSU_IGNORED_ALIASES = [ "g" ];
     };
