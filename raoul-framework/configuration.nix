@@ -108,7 +108,7 @@
     fonts = {
       serif = config.stylix.fonts.sansSerif;
       monospace = {
-        package = pkgs.nerdfonts;
+        package = pkgs.nerd-fonts.dejavu-sans-mono;
         name = "DejaVuSansM Nerd Font Mono";
       };
       sizes = {
