@@ -329,17 +329,6 @@
           ];
         };
 
-        stereoanlage = makeSystem {
-          systemModules = [
-            ./stereoanlage
-          ];
-          system = "aarch64-linux";
-          stable = true;
-          homeManagerModules.anlage = [
-            ./generic/users/raoul.nix
-          ];
-        };
-
         vps = makeSystem {
           systemModules = [
             ./vps
