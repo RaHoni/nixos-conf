@@ -213,6 +213,7 @@
             ./generic/printer.nix
             ./generic/plasma.nix
             ./lenovo-linux/configuration.nix
+            ./generic/pipewire.nix
             stylix.nixosModules.stylix
           ];
 
@@ -294,6 +295,7 @@
         jasmine-laptop = makeSystem {
           systemModules = [
             ./jasmine/default.nix
+            ./generic/pipewire.nix
           ];
           homeManagerModules = {
             jasmine = [ ./jasmine/jasmineHM.nix ];
