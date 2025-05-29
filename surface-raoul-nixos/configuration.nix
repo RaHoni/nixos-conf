@@ -50,7 +50,7 @@
     wl-clipboard
     xournalpp
     firefox
-    kate
+    kdePackages.kate
     signal-desktop
     zsh-completions
     git

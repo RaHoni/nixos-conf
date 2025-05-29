@@ -16,7 +16,7 @@
       keepassxc
       ddcutil
       yubioath-flutter
-      korganizer
+      kdePackages.korganizer
     ];
     openssh.authorizedKeys.keyFiles = [
       ../generic/sshPubkeys/support.pub

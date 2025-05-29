@@ -168,7 +168,7 @@
       pciutils
       toybox
       ffmpeg
-      filelight
+      kdePackages.filelight
       kfind
       ventoy
       k3b
@@ -193,8 +193,8 @@
       akonadi-calendar-tools
       akonadi-contacts
       akonadi-search
-      kaddressbook
-      kmail
+      kdePackages.kaddressbook
+      kdePackages.kmail
       pimcommon
       libkdepim
       kdepim-addons
@@ -203,13 +203,13 @@
       kdePackages.kmail-account-wizard
       kdePackages.calendarsupport
       kcalendarcore
-      korganizer
+      kdePackages.korganizer
       # -------------------------
       kdePackages.pim-data-exporter # Import und Export von DATEN aus KMail
       kdePackages.akonadi-import-wizard
       kcalc
       ksystemlog
-      kleopatra
+      kdePackages.kleopatra
       # SPIELE:
       kshisen
       kpat

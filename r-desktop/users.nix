@@ -29,7 +29,7 @@
       #      jetbrains.clion
       #      jetbrains.pycharm-professional
       nixos-generators
-      kleopatra
+      kdePackages.kleopatra
       whatsapp-for-linux
       gh
       tetex

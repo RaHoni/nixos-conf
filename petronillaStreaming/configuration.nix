@@ -54,8 +54,8 @@
     wget
     git
     firefox
-    okular
-    kate
+    kdePackages.okular
+    kdePackages.kate
     inputs.streamdeck-obs.packages.x86_64-linux.streamdeck-obs
   ];
 

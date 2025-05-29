@@ -14,13 +14,13 @@
     ];
     packages = with pkgs; [
       keepassxc
-      kmail
-      kleopatra
+      kdePackages.kmail
+      kdePackages.kleopatra
       whatsapp-for-linux
       ddcutil
-      kaddressbook
+      kdePackages.kaddressbook
       yubioath-flutter
-      korganizer
+      kdePackages.korganizer
       nextcloud-client
     ];
     openssh.authorizedKeys.keyFiles = [

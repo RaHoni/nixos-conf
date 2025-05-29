@@ -27,12 +27,12 @@
   environment.systemPackages = with pkgs; [
     bacula
     ffmpeg
-    filelight
+    kdePackages.filelight
     firefox
     fw-ectool
     git
     gnupg
-    kate
+    kdePackages.kate
     libimobiledevice
     libreoffice
     miraclecast
@@ -158,7 +158,7 @@
         gh
         jameica
         keepassxc
-        kleopatra
+        kdePackages.kleopatra
         nebula
         nixpkgs-fmt
         prismlauncher # Minecraft
