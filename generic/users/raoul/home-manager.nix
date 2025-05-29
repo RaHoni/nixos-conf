@@ -29,7 +29,7 @@ with lib;
       package = signal-desktop;
     })
     (makeAutostartItem {
-      name = "com.github.eneshecan.WhatsAppForLinux";
+      name = "com.github.xeco23.WasIstLos";
       package = whatsapp-for-linux;
     })
     (makeAutostartItem {
