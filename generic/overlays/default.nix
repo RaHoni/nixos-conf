@@ -72,6 +72,10 @@
       };
     });
 
+    librespot = prev.librespot.override {
+      withAvahi = true;
+    };
+
     factorio-headless =
       if factorioIsNewer then
         prev.factorio-headless.overrideAttrs (old: {
