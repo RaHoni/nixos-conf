@@ -72,6 +72,7 @@ in
       "/var/lib/nixos/"
       "/var/lib/nebula/"
       "/var/lib/containers"
+      "/var/lib/private" # because of too much errors
       {
         directory = "/var/lib/private/factorio";
         user = "factorio";
