@@ -39,14 +39,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-23.05";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
-
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -417,26 +409,6 @@
       #          };
       #        };
       #      };
-
-      nixOnDroidConfigurations.fp4 = nix-on-droid.lib.nixOnDroidConfiguration {
-        system = "aarch64-linux";
-        pkgs = stable-nixpkgs "aarch64-linux";
-        modules = [
-          ./fp4
-          ./generic
-          home-manager-stable.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              backupFileExtension = "bak";
-              sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-              imports = [
-                ../generic/users/raoul/home-manager.nix
-              ];
-            };
-          }
-        ];
-      };
 
       checks = nixpkgs.lib.genAttrs (import systems) (system: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
