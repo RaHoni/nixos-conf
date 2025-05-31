@@ -51,8 +51,8 @@ in
         files_automatedtagging
         previewgenerator
         memories
-        recognize
         ;
+      inherit (pkgs.unstable.nextcloud31Packages.apps) recognize;
 
       twofactor_admin = pkgs.fetchNextcloudApp {
         url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.8.0/twofactor_admin.tar.gz";
