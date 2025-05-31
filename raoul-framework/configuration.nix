@@ -36,7 +36,6 @@
     libimobiledevice
     libreoffice
     miraclecast
-    mprisRecord
     nmap
     qpwgraph
     signal-desktop

@@ -67,7 +67,6 @@
     kdePackages.kate
     kdePackages.kdenlive
     libreoffice
-    mprisRecord
     nmap
     signal-desktop
     vlc
