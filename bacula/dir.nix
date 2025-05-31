@@ -12,16 +12,45 @@ let
   libDir = "/var/lib/bacula";
   group = config.users.users.bacula.group;
   user = config.users.users.bacula.name;
+  kebabToCamel =
+    s:
+    (
+      let
+        parts = lib.splitString "-" s;
+        head = lib.head parts;
+        tail = lib.tail parts;
+        capitalize =
+          str:
+          if str == "" then
+            ""
+          else
+            "${lib.toUpper (lib.substring 0 1 str)}${lib.substring 1 (lib.stringLength str - 1) str}";
+      in
+      head + lib.concatStrings (map capitalize tail)
+    );
+
+  substitute = name: [
+    "--subst-var-by"
+    (lib.escapeShellArg "@${(kebabToCamel name)}@")
+    (lib.escapeShellArg (placeholders."bacula-${name}"))
+  ];
 
   replaceTemplate = file: {
     file = (
-      pkgs.replaceVars file {
-        dbpass = placeholders.bacula-dbpass;
-        dirPassword = placeholders.bacula-dir-password;
-        lenovoPassword = placeholders.bacula-lenovo-linux-password;
-        rdesktopPassword = placeholders.bacula-r-desktop-password;
-        surfacePassword = placeholders.bacula-surface-password;
-        sylviaFujitsuPassword = placeholders.bacula-sylvia-fujitsu-password;
+      pkgs.substitute {
+        src = file;
+        substitutions = (
+          lib.concatLists (
+            lib.forEach [
+              "dbpass"
+              "dir-password"
+              "lenovo-linux-password"
+              "r-desktop-password"
+              "surface-password"
+              "sylvia-fujitsu-password"
+            ] substitute
+          )
+        );
       }
     );
     owner = user;
