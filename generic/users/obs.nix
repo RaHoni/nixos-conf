@@ -6,6 +6,7 @@
       obs-move-transition
       waveform
       obs-pipewire-audio-capture
+      advanced-scene-switcher
     ];
   };
 }
