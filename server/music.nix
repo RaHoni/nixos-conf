@@ -55,14 +55,22 @@
     "/var/lib/private/music-assistant"
   ];
 
-  networking.firewall.allowedTCPPorts = [
-    50000 # librespot
-    50001 # librespot2
-    5000 # airplay
-    4444
+  networking.firewall = {
+    allowedUDPPorts = [
+      6001 # airplay
+      6002
+      6003
+    ];
+    allowedTCPPorts = [
+      50000 # librespot
+      50001 # librespot2
+      5000 # airplay
+      4444
 
-    # music-assistant
-    8095
-    8097
-  ];
+      # music-assistant
+      8095
+      8097
+    ];
+  };
+
 }
