@@ -10,6 +10,7 @@ let
   sshIdentity = keyname: "~/.ssh/keys/${keyname}.pub";
 in
 {
+  imports = [ ./stylix_fix.nix ];
   home.file = {
     ".ssh/keys".source = ../sshPubkeys;
     #".zshrc".source = ./zshrc;
