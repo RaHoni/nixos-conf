@@ -156,7 +156,7 @@
         discord
         gh
         jameica
-        keepassxc
+        keepassxc-autotype
         kdePackages.kleopatra
         nebula
         nixpkgs-fmt

@@ -34,7 +34,7 @@ with lib;
     })
     (makeAutostartItem {
       name = "org.keepassxc.KeePassXC";
-      package = keepassxc;
+      package = keepassxc-autotype;
     })
   ];
 
@@ -55,7 +55,7 @@ with lib;
       enable = true;
       nativeMessagingHosts = with pkgs; [
         vdhcoapp
-        keepassxc
+        keepassxc-autotype
         kdePackages.plasma-browser-integration
       ];
     };

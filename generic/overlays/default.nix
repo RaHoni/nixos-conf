@@ -62,6 +62,16 @@
       '';
     };
 
+    keepassxc-autotype = prev.keepassxc.overrideAttrs (oldAttrs: {
+      buildInputs = oldAttrs.buildInputs ++ [ final.keyutils ];
+      src = final.fetchFromGitHub {
+        owner = "rsudev";
+        repo = "keepassxc";
+        rev = "47bc1aa";
+        hash = "sha256-rQw/rS/pBh4KSXaoHDrPFK6KwNm4d1oLnp0ETmF/QmM=";
+      };
+    });
+
     snapcast = prev.snapcast.overrideAttrs (oldAttrs: rec {
       version = "0.31.0";
       src = final.fetchFromGitHub {
