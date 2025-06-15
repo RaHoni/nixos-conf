@@ -38,6 +38,8 @@
     };
   };
 
+  systemd.services."acme-mail.honermann.info".serviceConfig.ExecStartPre = [ "sleep 120" ];
+
   services.resolved.enable = true;
 
   #networking.wireguard.enable = true;
