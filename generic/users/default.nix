@@ -121,6 +121,9 @@ in
           user = "root";
           forwardAgent = true;
         };
+        server-extern = server // {
+          hostname = "honermann.info";
+        };
       };
     };
 
