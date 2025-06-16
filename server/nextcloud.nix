@@ -50,17 +50,11 @@ in
         files_retention
         files_automatedtagging
         previewgenerator
+        twofactor_admin
         memories
         ;
       inherit (pkgs.unstable.nextcloud31Packages.apps) recognize;
 
-      twofactor_admin = pkgs.fetchNextcloudApp {
-        url = "https://github.com/nextcloud-releases/twofactor_admin/releases/download/v4.8.0/twofactor_admin.tar.gz";
-        sha256 = "sha256-zZvH7xfSooKBG4CKvSuf8D/6KnKEunLa+DRLAkWGoow=";
-        license = "agpl3Only";
-      };
-      #twofactor_totp
-      #   # onlyoffice
     };
 
     extraAppsEnable = true;
