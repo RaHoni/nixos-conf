@@ -55,6 +55,12 @@ in
         ;
       inherit (pkgs.unstable.nextcloud31Packages.apps) recognize;
 
+      workflow_script = pkgs.fetchNextcloudApp {
+        url = "https://github.com/nextcloud-releases/workflow_script/releases/download/v2.0.0/workflow_script-v2.0.0.tar.gz";
+        sha256 = "sha256-x6PoQsesQzhoOeTTbIG6FiL6pmpfAXScFF9SMtwIXsQ=";
+        license = "agpl3Only";
+      };
+
     };
 
     extraAppsEnable = true;
