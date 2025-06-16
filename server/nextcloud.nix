@@ -49,11 +49,11 @@ in
         phonetrack
         polls
         previewgenerator
+        recognize
         registration
         twofactor_admin
         twofactor_webauthn
         ;
-      inherit (pkgs.unstable.nextcloud31Packages.apps) recognize;
 
       workflow_script = pkgs.fetchNextcloudApp {
         url = "https://github.com/nextcloud-releases/workflow_script/releases/download/v2.0.0/workflow_script-v2.0.0.tar.gz";
