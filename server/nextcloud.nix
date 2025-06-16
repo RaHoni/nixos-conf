@@ -35,23 +35,23 @@ in
 
     extraApps = with pkgs.nextcloud31Packages.apps; {
       inherit
-        registration
         calendar
         contacts
-        end_to_end_encryption
-        forms
-        polls
-        groupfolders
-        twofactor_webauthn
         cookbook
-        notes
-        gpoddersync
-        phonetrack
-        files_retention
+        end_to_end_encryption
         files_automatedtagging
-        previewgenerator
-        twofactor_admin
+        files_retention
+        forms
+        gpoddersync
+        groupfolders
         memories
+        notes
+        phonetrack
+        polls
+        previewgenerator
+        registration
+        twofactor_admin
+        twofactor_webauthn
         ;
       inherit (pkgs.unstable.nextcloud31Packages.apps) recognize;
 
