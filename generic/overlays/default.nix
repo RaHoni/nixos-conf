@@ -64,6 +64,9 @@
 
     keepassxc-autotype = prev.keepassxc.overrideAttrs (oldAttrs: {
       buildInputs = oldAttrs.buildInputs ++ [ final.keyutils ];
+      postInstall = ''
+        install -D share/linux/org.keepassxc.KeePassXC.policy --target-directory $out/share/polkit-1/actions
+      '';
       src = final.fetchFromGitHub {
         owner = "rsudev";
         repo = "keepassxc";

@@ -27,22 +27,23 @@
   environment.systemPackages = with pkgs; [
     bacula
     ffmpeg
-    kdePackages.filelight
     firefox
     fw-ectool
     git
     gnupg
+    kdePackages.filelight
     kdePackages.kate
+    keepassxc-autotype
     libimobiledevice
     libreoffice
     miraclecast
     nmap
     qpwgraph
     signal-desktop
+    vdhcoapp
     vlc
     xournalpp
     zsh-completions
-    vdhcoapp
   ];
 
   hardware.bluetooth.enable = true;
@@ -156,7 +157,6 @@
         discord
         gh
         jameica
-        keepassxc-autotype
         kdePackages.kleopatra
         nebula
         nixpkgs-fmt
