@@ -29,10 +29,8 @@
       "home-assistant-media:/media"
     ];
     environment.TZ = "Europe/Berlin";
-    labels = {
-      "io.containers.autoupdate" = "registry";
-    };
-    image = "ghcr.io/home-assistant/home-assistant:stable"; # Warning: if the tag does not change, the image will not be updated
+    pull = "newer";
+    image = "ghcr.io/home-assistant/home-assistant:stable";
     extraOptions = [
       "--network=host"
       "--device=/dev/ttyACM0:/dev/ttyACM0" # ZigBee stick
