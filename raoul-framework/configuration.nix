@@ -158,6 +158,7 @@
         gh
         jameica
         kdePackages.kleopatra
+        libation # Audible downloader
         nebula
         nixpkgs-fmt
         prismlauncher # Minecraft
