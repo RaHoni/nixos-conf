@@ -311,6 +311,7 @@ in
             { name = "path"; }
             { name = "buffer"; }
           ];
+          completion.keyword_pattern = "[[\k\+]]";
           mapping = {
             "<CR>" = "cmp.mapping.confirm({select = true})";
             "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
