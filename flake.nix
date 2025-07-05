@@ -318,6 +318,7 @@
             ./server/pi-hole.nix
             ./server/pikaraoke.nix
             ./server/unifi.nix
+            ./server/warrior.nix
           ];
         };
 
