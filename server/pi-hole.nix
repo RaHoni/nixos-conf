@@ -42,8 +42,9 @@ in
         "${ipv4}:53:53/udp"
         "${ipv4}:53:53/tcp"
         "${ipv4}:80:80/tcp"
-        "[${ipv6}]:53:53/udp"
-        "[${ipv6}]:53:53/tcp"
+        "[::]:53:53/udp"
+        "[::]:53:53/tcp"
+        "[::]:80:80/tcp"
       ];
       environment = {
         TZ = "Europe/Berlin";
