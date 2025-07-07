@@ -178,7 +178,6 @@ let
         "https://raw.githubusercontent.com/SoftCreatR/fakerando-domains/main/all.txt"
         "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/multi.txt"
         "https://raw.githubusercontent.com/elliotwutingfeng/Inversion-DNSBL-Blocklists/main/Google_hostnames_ABP.txt"
-        "https://raw.githubusercontent.com/autinerd/anti-axelspringer-hosts/master/axelspringer-hosts"
       ];
       comment = "Diverses (Setup)";
     }
