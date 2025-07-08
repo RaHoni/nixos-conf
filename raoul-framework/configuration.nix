@@ -38,6 +38,7 @@
     libreoffice
     miraclecast
     nmap
+    platformio
     qpwgraph
     signal-desktop
     vdhcoapp
