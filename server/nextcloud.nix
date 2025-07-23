@@ -71,7 +71,7 @@ in
 
     https = true;
     settings = {
-      trusted_proxies = [ ips.ssl-proxy.ipv4 ];
+      trusted_proxies = (map (addr: addr.address) config.networking.interfaces.eth0.ipv4.addresses);
       default_phone_region = "DE";
       trusted_domains = [ "nextcloud.honermann.info" ];
     };
