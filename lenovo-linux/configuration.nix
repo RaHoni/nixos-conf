@@ -61,18 +61,18 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
+  # Grafiktrieber mit der freien Software "nouveau" nutzen über
+  hardware.nvidia.open = true; # Auskommentieren bei Nutzung der nvidia original Treiber.hardware
+  #
   # Für richtigen nvidia Support
   # Bei Problemen die folgenden Zeilen wieder auskommentieren.
   # Optional mehrere Wert bei "nvidea" in Klammern setzen [ "nvidea" ]
-  # Parallel das nutzen von unfreier Software "unFree" erlauben in der Datei:
-  # nixos/modules/services/x11/xserver.nix
-  # mit [ "nvidia" ]
+  # Parallel das nutzen von unfreier Software "unFree" erlauben über den folgenden Befehl:
   #
+  # services.xserver.videoDrivers = [ "nvidia" ];
+  # Dazu noch folgendes konfigurieren:
   # hardware.graphics.enable = true;
   # services.xserver.videoDrivers = "nvidia";
-  # hardware.nvidia.open = true;
-  # { config, ... } # ← Required to get the packages used by the currently configured kernel, including drivers
-  # { 
   # Letzte Version für die Grafikkarte "QUADRO 2000"
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
   # }
@@ -159,7 +159,7 @@
       audacity
       kaffeine # libVLC Optionen: Default: --no-video-title-show  Optionale Ergänzungen: -V xcb_xv  oder  -V xcb_glx:w
       vlc # Zielpfad: /run/current-system/sw/share/soundfonts/
-      vdr # Alternative TV-Software zu KAFFEINE
+      wrapVdr # Alternative TV-Software zu KAFFEINE (und SERVICE)
       aribb24 # Für m2t Video-Stream (TV-Karte)
       aribb25 # Für m2t Video-Stream (TV-Karte)
       avidemux # Aufruf bei Wayland mit der option --platform 'xcb'
@@ -182,7 +182,7 @@
       usbutils
       pciutils
       toybox
-      at # Befehl für zeigesteuerte VLC Aufnahmen
+      at # Befehl für zeigesteuerte VLC Aufnahmen (und SERVICE)
       sqlite # Bearbeiten von KAFFEINE Datenbanken
       ffmpeg
       kdePackages.filelight
@@ -291,6 +291,13 @@
 
   # Bluetooth Funktion aktivieren
   hardware.bluetooth.enable = true;
+
+  # VideoDiskRecorder videoDrivers
+  services.vdr.enable = true;
+  services.vdr.videoDir = "/home/christoph/Videos/Arbeit/";
+
+  # Service für Befehl "at"
+  services.atd.enable = true;
 
   # Nächster Eintrag
   # 
