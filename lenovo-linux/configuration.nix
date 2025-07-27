@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+# Edit this configuration file to define what shou:wqld be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
@@ -62,8 +62,22 @@
   services.xserver.enable = true;
 
   # Für richtigen nvidia Support
-  #hardware.graphics.enable = true;
-  #services.xserver.videoDrivers = [ "nvidia" ];
+  # Bei Problemen die folgenden Zeilen wieder auskommentieren.
+  # Optional mehrere Wert bei "nvidea" in Klammern setzen [ "nvidea" ]
+  # Parallel das nutzen von unfreier Software "unFree" erlauben in der Datei:
+  # nixos/modules/services/x11/xserver.nix
+  # mit [ "nvidia" ]
+  #
+  # hardware.graphics.enable = true;
+  # services.xserver.videoDrivers = "nvidia";
+  # hardware.nvidia.open = true;
+  # { config, ... } # ← Required to get the packages used by the currently configured kernel, including drivers
+  # { 
+  # Letzte Version für die Grafikkarte "QUADRO 2000"
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
+  # }
+  #
+  # ENDE von nvidia Einstellungen
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -145,6 +159,7 @@
       audacity
       kaffeine # libVLC Optionen: Default: --no-video-title-show  Optionale Ergänzungen: -V xcb_xv  oder  -V xcb_glx:w
       vlc # Zielpfad: /run/current-system/sw/share/soundfonts/
+      vdr # Alternative TV-Software zu KAFFEINE
       aribb24 # Für m2t Video-Stream (TV-Karte)
       aribb25 # Für m2t Video-Stream (TV-Karte)
       avidemux # Aufruf bei Wayland mit der option --platform 'xcb'
@@ -167,6 +182,8 @@
       usbutils
       pciutils
       toybox
+      at # Befehl für zeigesteuerte VLC Aufnahmen
+      sqlite # Bearbeiten von KAFFEINE Datenbanken
       ffmpeg
       kdePackages.filelight
       kfind
