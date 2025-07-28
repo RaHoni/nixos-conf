@@ -294,7 +294,8 @@
 
   # VideoDiskRecorder videoDrivers
   services.vdr.enable = true;
-  services.vdr.videoDir = "/home/christoph/Videos/Arbeit/";
+  services.vdr.videoDir = "/home/vdr-Videos/";
+  services.vdr.group = "users";
 
   # Service für Befehl "at"
   services.atd.enable = true;
