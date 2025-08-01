@@ -294,10 +294,18 @@
 
   # VideoDiskRecorder videoDrivers
   services.vdr.enable = true;
+  services.vdr.package = pkgs.wrapVdr.override {
+    plugins = with pkgs.vdrPlugins; [
+      streamdev
+      femon
+      epgsearch
+      text2skin
+    ];
+  };
   services.vdr.videoDir = "/home/vdr-Videos/";
   services.vdr.group = "users";
 
-  # Service für Befehl "at"
+  # Service für Befehl "at" (Zeitgesteuerte Aktionen)
   services.atd.enable = true;
 
   # Nächster Eintrag
