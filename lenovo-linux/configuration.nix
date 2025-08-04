@@ -159,7 +159,13 @@
       audacity
       kaffeine # libVLC Optionen: Default: --no-video-title-show  Optionale Ergänzungen: -V xcb_xv  oder  -V xcb_glx:w
       vlc # Zielpfad: /run/current-system/sw/share/soundfonts/
+      # Bereich vdr
       wrapVdr # Alternative TV-Software zu KAFFEINE (und SERVICE)
+      vdrPlugins.femon
+      vdrPlugins.text2skin
+      vdrPlugins.streamdev
+      vdrPlugins.epgsearch
+      # ENDE Bereich vdr
       aribb24 # Für m2t Video-Stream (TV-Karte)
       aribb25 # Für m2t Video-Stream (TV-Karte)
       avidemux # Aufruf bei Wayland mit der option --platform 'xcb'
