@@ -59,6 +59,7 @@ in
       hostAddress6 = "fc00::1";
       localAddress6 = "fc00::2";
       enableTun = true;
+      timeoutStartSec = "4min";
     };
   };
 
