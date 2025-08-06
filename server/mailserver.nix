@@ -38,7 +38,10 @@
     };
   };
 
-  systemd.services."acme-mail.honermann.info".serviceConfig.ExecStartPre = [ "sleep 120" ];
+  systemd.services."acme-mail.honermann.info" = {
+    serviceConfig.ExecStartPre = [ "sleep 120" ];
+    path = [ pkgs.coreutils ];
+  };
 
   services.resolved.enable = true;
 
