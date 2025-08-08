@@ -315,7 +315,7 @@
   services.atd.enable = true;
 
   # Nächster Eintrag
-  # 
+  #
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -15,16 +15,18 @@ let
 in
 {
   # import common.nix and home manager module depending on if system uses stable or unstable packages
-  imports =
+  imports = [
+    ./default.nix
+    ./lanzaboote.nix
+    ./wireguard.nix # module
+    ./autoupgrade.nix # module
+  ]
+  ++ (switchStable
+    [ inputs.home-manager-stable.nixosModules.home-manager ]
     [
-      ./default.nix
-      ./lanzaboote.nix
-      ./wireguard.nix # module
-      ./autoupgrade.nix # module
-    ]
-    ++ (switchStable [ inputs.home-manager-stable.nixosModules.home-manager ] [
       inputs.home-manager.nixosModules.home-manager
-    ]);
+    ]
+  );
 
   #set zsh as default shell
   environment.shells = with pkgs; [ zsh ];
@@ -61,12 +63,16 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "bak";
-    sharedModules =
-      [ ./neovim.nix ]
-      ++ genericHomeManagerModules
-      ++ (switchStable [ inputs.nixvim-stable.homeManagerModules.nixvim ] [
+    sharedModules = [
+      ./neovim.nix
+    ]
+    ++ genericHomeManagerModules
+    ++ (switchStable
+      [ inputs.nixvim-stable.homeManagerModules.nixvim ]
+      [
         inputs.nixvim.homeManagerModules.nixvim
-      ]);
+      ]
+    );
     /*
       homeextraSpecialArgs = {
       #pass nixneovim as additional Arg to home-manager config

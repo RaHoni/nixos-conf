@@ -195,11 +195,9 @@ in
   systemd.services.pi-hole-adlists = {
     wants = [ "podman-pi-hole.service" ];
     wantedBy = [ "multi-user.target" ];
-    script =
-      add_all_adlists
-      + ''
-        podman exec -it pi-hole /usr/local/bin/pihole -g
-      '';
+    script = add_all_adlists + ''
+      podman exec -it pi-hole /usr/local/bin/pihole -g
+    '';
     path = with pkgs; [
       curl
       podman

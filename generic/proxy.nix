@@ -30,7 +30,7 @@ in
     defaults.email = "webmaster@honermann.info";
   };
 
-  #reverse proxy 
+  #reverse proxy
   services.nginx = {
     enable = true;
     recommendedGzipSettings = true;

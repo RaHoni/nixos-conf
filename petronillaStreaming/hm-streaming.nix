@@ -38,7 +38,8 @@
         "wmclass".value = "firefox";
         "wmclassmatch".value = 1;
         "count".value = 5;
-        "rules".value = "eaa13f46-1681-44e9-abe8-36c663450f8a,327ae093-3801-4d67-ba60-fd7d9d8898d1,163954f6-f587-4a17-a257-2e25b144dda0,ae9ffa18-b807-404e-9ca1-872efc0bd3ef,b794f030-c10d-42e9-a95b-71ae6250ea11";
+        "rules".value =
+          "eaa13f46-1681-44e9-abe8-36c663450f8a,327ae093-3801-4d67-ba60-fd7d9d8898d1,163954f6-f587-4a17-a257-2e25b144dda0,ae9ffa18-b807-404e-9ca1-872efc0bd3ef,b794f030-c10d-42e9-a95b-71ae6250ea11";
       };
       "kwinrulesrc"."ae9ffa18-b807-404e-9ca1-872efc0bd3ef" = {
         "Description".value = "Copy of Window settings for Windowed Projector (Source) - SecondaryCam";

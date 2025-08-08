@@ -143,14 +143,16 @@
     };
     configFile = {
       "baloofilerc"."General"."dbVersion".value = 2;
-      "baloofilerc"."General"."exclude filters".value = "*~,*.part,*.o,*.la,*.lo,*.loT,*.moc,moc_*.cpp,qrc_*.cpp,ui_*.h,cmake_install.cmake,CMakeCache.txt,CTestTestfile.cmake,libtool,config.status,confdefs.h,autom4te,conftest,confstat,Makefile.am,*.gcode,.ninja_deps,.ninja_log,build.ninja,*.csproj,*.m4,*.rej,*.gmo,*.pc,*.omf,*.aux,*.tmp,*.po,*.vm*,*.nvram,*.rcore,*.swp,*.swap,lzo,litmain.sh,*.orig,.histfile.*,.xsession-errors*,*.map,*.so,*.a,*.db,*.qrc,*.ini,*.init,*.img,*.vdi,*.vbox*,vbox.log,*.qcow2,*.vmdk,*.vhd,*.vhdx,*.sql,*.sql.gz,*.ytdl,*.class,*.pyc,*.pyo,*.elc,*.qmlc,*.jsc,*.fastq,*.fq,*.gb,*.fasta,*.fna,*.gbff,*.faa,po,CVS,.svn,.git,_darcs,.bzr,.hg,CMakeFiles,CMakeTmp,CMakeTmpQmake,.moc,.obj,.pch,.uic,.npm,.yarn,.yarn-cache,__pycache__,node_modules,node_packages,nbproject,core-dumps,lost+found";
+      "baloofilerc"."General"."exclude filters".value =
+        "*~,*.part,*.o,*.la,*.lo,*.loT,*.moc,moc_*.cpp,qrc_*.cpp,ui_*.h,cmake_install.cmake,CMakeCache.txt,CTestTestfile.cmake,libtool,config.status,confdefs.h,autom4te,conftest,confstat,Makefile.am,*.gcode,.ninja_deps,.ninja_log,build.ninja,*.csproj,*.m4,*.rej,*.gmo,*.pc,*.omf,*.aux,*.tmp,*.po,*.vm*,*.nvram,*.rcore,*.swp,*.swap,lzo,litmain.sh,*.orig,.histfile.*,.xsession-errors*,*.map,*.so,*.a,*.db,*.qrc,*.ini,*.init,*.img,*.vdi,*.vbox*,vbox.log,*.qcow2,*.vmdk,*.vhd,*.vhdx,*.sql,*.sql.gz,*.ytdl,*.class,*.pyc,*.pyo,*.elc,*.qmlc,*.jsc,*.fastq,*.fq,*.gb,*.fasta,*.fna,*.gbff,*.faa,po,CVS,.svn,.git,_darcs,.bzr,.hg,CMakeFiles,CMakeTmp,CMakeTmpQmake,.moc,.obj,.pch,.uic,.npm,.yarn,.yarn-cache,__pycache__,node_modules,node_packages,nbproject,core-dumps,lost+found";
       "baloofilerc"."General"."exclude filters version".value = 8;
       "dolphinrc"."DetailsMode"."PreviewSize".value = 16;
       "dolphinrc"."DetailsMode"."SidePadding".value = 0;
       "dolphinrc"."General"."RememberOpenedTabs".value = false;
       "dolphinrc"."KFileDialog Settings"."Places Icons Auto-resize".value = false;
       "dolphinrc"."KFileDialog Settings"."Places Icons Static Size".value = 22;
-      "dolphinrc"."PreviewSettings"."Plugins".value = "ebookthumbnail,jpegthumbnail,windowsimagethumbnail,imagethumbnail,appimagethumbnail,kraorathumbnail,windowsexethumbnail,svgthumbnail,comicbookthumbnail,cursorthumbnail,audiothumbnail,opendocumentthumbnail,djvuthumbnail,exrthumbnail,mobithumbnail,gsthumbnail,blenderthumbnail,directorythumbnail,ffmpegthumbs,fontthumbnail,rawthumbnail";
+      "dolphinrc"."PreviewSettings"."Plugins".value =
+        "ebookthumbnail,jpegthumbnail,windowsimagethumbnail,imagethumbnail,appimagethumbnail,kraorathumbnail,windowsexethumbnail,svgthumbnail,comicbookthumbnail,cursorthumbnail,audiothumbnail,opendocumentthumbnail,djvuthumbnail,exrthumbnail,mobithumbnail,gsthumbnail,blenderthumbnail,directorythumbnail,ffmpegthumbs,fontthumbnail,rawthumbnail";
       "kactivitymanagerdrc"."activities"."6be81689-2eca-484f-b01d-87b761c6476e".value = "Standard";
       "kactivitymanagerdrc"."main"."currentActivity".value = "6be81689-2eca-484f-b01d-87b761c6476e";
       "kcminputrc"."Libinput.1133.49298.Logitech G203 LIGHTSYNC Gaming Mouse"."PointerAccelerationProfile".value =
@@ -158,7 +160,8 @@
       "kcminputrc"."Libinput.1256.28705.inateck KB02009 Mouse"."MiddleButtonEmulation".value = true;
       "kcminputrc"."Libinput.1256.28705.inateck KB02009 Mouse"."PointerAccelerationProfile".value = 1;
       "kcminputrc"."Mouse"."X11LibInputXAccelProfileFlat".value = false;
-      "kcminputrc"."Tmp"."update_info".value = "delete_cursor_old_default_size.upd:DeleteCursorOldDefaultSize";
+      "kcminputrc"."Tmp"."update_info".value =
+        "delete_cursor_old_default_size.upd:DeleteCursorOldDefaultSize";
       "kded5rc"."Module-browserintegrationreminder"."autoload".value = false;
       "kded5rc"."Module-device_automounter"."autoload".value = false;
       "kdeglobals"."DirSelect Dialog"."DirSelectDialog Size".value = "850,582";
@@ -190,7 +193,8 @@
       "kdeglobals"."KFileDialog Settings"."Speedbar Width".value = 133;
       "kdeglobals"."KFileDialog Settings"."View Style".value = "DetailTree";
       "kdeglobals"."KScreen"."ScaleFactor".value = 1.5;
-      "kdeglobals"."KScreen"."ScreenScaleFactors".value = "eDP1=1.5;DP1=1.5;DP2=1.5;HDMI1=1.5;HDMI2=1.5;VIRTUAL1=1.5;";
+      "kdeglobals"."KScreen"."ScreenScaleFactors".value =
+        "eDP1=1.5;DP1=1.5;DP2=1.5;HDMI1=1.5;HDMI2=1.5;VIRTUAL1=1.5;";
       "kdeglobals"."KShortcutsDialog Settings"."Dialog Size".value = "600,440";
       "kdeglobals"."PreviewSettings"."MaximumRemoteSize".value = 0;
       "kdeglobals"."WM"."activeBackground".value = "49,54,59";
@@ -202,7 +206,8 @@
       "kdeglobals"."WM"."inactiveForeground".value = "161,169,177";
       "kgammarc"."ConfigFile"."use".value = "kgammarc";
       "kglobalshortcutsrc"."ActivityManager"."_k_friendly_name".value = "Activity Manager";
-      "kglobalshortcutsrc"."KDE Keyboard Layout Switcher"."_k_friendly_name".value = "Keyboard Layout Switcher";
+      "kglobalshortcutsrc"."KDE Keyboard Layout Switcher"."_k_friendly_name".value =
+        "Keyboard Layout Switcher";
       "kglobalshortcutsrc"."kaccess"."_k_friendly_name".value = "Accessibility";
       "kglobalshortcutsrc"."kcm_touchpad"."_k_friendly_name".value = "Touchpad";
       "kglobalshortcutsrc"."kded5"."_k_friendly_name".value = "KDE Daemon";
@@ -264,26 +269,46 @@
       "kwinrc"."Input"."TabletMode".value = "on";
       "kwinrc"."Plugins"."kwin4_effect_dimscreenEnabled".value = true;
       "kwinrc"."Tiling"."padding".value = 4;
-      "kwinrc"."Tiling.01384739-a9fc-5394-9987-bc6c2f3154dc"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.043b170e-62df-5bf6-877e-d8ba8334d3ee"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.1d6229da-190f-5342-84e0-4acebdecbc4f"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.42a4c0cd-fcd6-5c1f-88d9-704f2e3699c1"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.520bd3f1-ca8c-50df-8746-88deccf192e6"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.5b7a5ba4-43cc-5910-8e98-f358f9d54b43"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.6ebe3b1d-7cab-5ef1-897a-437791835b5e"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.7c350d51-0c4a-57b8-8754-d5cbeb97f422"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.82697465-77ad-5d28-9abc-61d67edb2d50"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.9d9b594f-58df-5f40-bfea-d140ce6d86e6"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.a9240c98-c9b0-5704-a4ec-b7559c209275"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.b273a341-4b0b-5a4b-81ae-fa987f7cfb5d"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.c975e56c-354b-5a94-add4-7cfa3d2a53a4"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.d74861ba-881b-57b9-b477-7f7568c4b9e2"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.e0308fcd-5570-5487-8988-f41b81bd266e"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.ec09b179-a7d1-5efb-a54c-48eb1554a955"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.f04ff9c0-cceb-5da9-b08b-ab297c761716"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.f3ce52ea-7291-5d09-9530-33850b1a4e5f"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Tiling.f8817028-f64c-532d-ba24-69b827ab1429"."tiles".value = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
-      "kwinrc"."Wayland"."InputMethod[$e]".value = "/usr/share/applications/com.github.maliit.keyboard.desktop";
+      "kwinrc"."Tiling.01384739-a9fc-5394-9987-bc6c2f3154dc"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.043b170e-62df-5bf6-877e-d8ba8334d3ee"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.1d6229da-190f-5342-84e0-4acebdecbc4f"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.42a4c0cd-fcd6-5c1f-88d9-704f2e3699c1"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.520bd3f1-ca8c-50df-8746-88deccf192e6"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.5b7a5ba4-43cc-5910-8e98-f358f9d54b43"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.6ebe3b1d-7cab-5ef1-897a-437791835b5e"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.7c350d51-0c4a-57b8-8754-d5cbeb97f422"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.82697465-77ad-5d28-9abc-61d67edb2d50"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.9d9b594f-58df-5f40-bfea-d140ce6d86e6"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.a9240c98-c9b0-5704-a4ec-b7559c209275"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.b273a341-4b0b-5a4b-81ae-fa987f7cfb5d"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.c975e56c-354b-5a94-add4-7cfa3d2a53a4"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.d74861ba-881b-57b9-b477-7f7568c4b9e2"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.e0308fcd-5570-5487-8988-f41b81bd266e"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.ec09b179-a7d1-5efb-a54c-48eb1554a955"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.f04ff9c0-cceb-5da9-b08b-ab297c761716"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.f3ce52ea-7291-5d09-9530-33850b1a4e5f"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Tiling.f8817028-f64c-532d-ba24-69b827ab1429"."tiles".value =
+        "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+      "kwinrc"."Wayland"."InputMethod[$e]".value =
+        "/usr/share/applications/com.github.maliit.keyboard.desktop";
       "kwinrc"."Wayland"."VirtualKeyboardEnabled".value = false;
       "kwinrc"."Windows"."RollOverDesktops".value = true;
       "kwinrc"."Xwayland"."Scale".value = 1;

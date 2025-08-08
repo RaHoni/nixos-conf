@@ -1,4 +1,4 @@
-# Copyright 2024 JulianFP 
+# Copyright 2024 JulianFP
 {
   lib,
   pkgs,

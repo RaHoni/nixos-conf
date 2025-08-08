@@ -165,14 +165,17 @@
               genericHomeManagerModules
               ; # ToDO: also make proxmox an option
             inherit (hydra.packages.${system}) hydra;
-            homeManagerModules = nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc) [ ] [
-              {
-                root = [
-                  ./generic/users/raoul.nix
+            homeManagerModules =
+              nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc)
+                [ ]
+                [
+                  {
+                    root = [
+                      ./generic/users/raoul.nix
+                    ];
+                  }
+                  homeManagerModules
                 ];
-              }
-              homeManagerModules
-            ];
           };
           modules = [
             (
@@ -183,7 +186,8 @@
             )
             ./generic/newDefault.nix
             ./generic/nebula.nix
-          ] ++ systemModules;
+          ]
+          ++ systemModules;
         };
 
       # Small tool to iterate over each systems
