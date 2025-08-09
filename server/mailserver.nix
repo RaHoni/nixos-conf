@@ -39,7 +39,7 @@
   };
 
   systemd.services."acme-mail.honermann.info" = {
-    serviceConfig.ExecStartPre = [ "${pkgs.coreutils}/bin/sleep 120" ];
+    serviceConfig.ExecStartPre = [ "${pkgs.coreutils}/bin/sleep 10" ];
     path = [ pkgs.coreutils ];
   };
 
