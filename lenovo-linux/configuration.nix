@@ -160,11 +160,11 @@
       kaffeine # libVLC Optionen: Default: --no-video-title-show  Optionale Ergänzungen: -V xcb_xv  oder  -V xcb_glx:w
       vlc # Zielpfad: /run/current-system/sw/share/soundfonts/
       # Bereich vdr
-      wrapVdr # Alternative TV-Software zu KAFFEINE (und SERVICE)
-      vdrPlugins.femon
-      vdrPlugins.text2skin
-      vdrPlugins.streamdev
-      vdrPlugins.epgsearch
+      # rapVdr # Alternative TV-Software zu KAFFEINE (und SERVICE)
+      # vdrPlugins.femon
+      # vdrPlugins.text2skin
+      # vdrPlugins.streamdev
+      # vdrPlugins.epgsearch
       # ENDE Bereich vdr
       aribb24 # Für m2t Video-Stream (TV-Karte)
       aribb25 # Für m2t Video-Stream (TV-Karte)
@@ -299,17 +299,17 @@
   hardware.bluetooth.enable = true;
 
   # VideoDiskRecorder videoDrivers
-  services.vdr.enable = true;
-  services.vdr.package = pkgs.wrapVdr.override {
-    plugins = with pkgs.vdrPlugins; [
-      streamdev
-      femon
-      epgsearch
-      text2skin
-    ];
-  };
-  services.vdr.videoDir = "/home/vdr-Videos/";
-  services.vdr.group = "users";
+  # services.vdr.enable = true;
+  # services.vdr.package = pkgs.wrapVdr.override {
+  #   plugins = with pkgs.vdrPlugins; [
+  #     streamdev
+  #     femon
+  #     epgsearch
+  #     text2skin
+  #   ];
+  # };
+  # services.vdr.videoDir = "/home/vdr-Videos/";
+  # services.vdr.group = "users";
 
   # Service für Befehl "at" (Zeitgesteuerte Aktionen)
   services.atd.enable = true;
