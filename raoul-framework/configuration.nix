@@ -136,17 +136,18 @@
       description = "Raoul Honermann";
       hashedPassword = "$y$j9T$2qmWuo6/DJXoG.45LLjDX/$Y/NnNHfsQXULwubyI1lPavjfe3fYv/KTWMR4aPLhsSB";
       extraGroups = [
-        "networkmanager"
-        "wheel"
-        "i2c"
-        "render"
-        "raoul"
-        "dialout"
         "adbusers"
-        "video"
+        "dialout"
+        "i2c"
         "ld"
+        "networkmanager"
+        "raoul"
+        "render"
         "scanner"
+        "video"
+        "wheel"
         config.users.groups.keys.name
+        config.users.groups.vboxusers.name
       ];
       openssh.authorizedKeys.keyFiles = [
         ../generic/sshPubkeys/Surface_id_ed25519.pub
@@ -173,7 +174,10 @@
     };
   };
 
-  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
