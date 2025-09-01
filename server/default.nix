@@ -113,6 +113,7 @@ in
   };
 
   boot.zfs.extraPools = [ "MainZFS" ];
+  services.zfs.autoScrub.enable = true;
 
   myModules.autoUpgrade.enable = true;
   myModules.autoUpgrade.allowReboot = true;
