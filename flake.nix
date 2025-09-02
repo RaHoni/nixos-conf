@@ -236,6 +236,19 @@
           nebula = true;
         };
 
+        sylvia-fujitsu = makeSystem {
+          systemModules = [
+            ./sylvia-fujitsu/configuration.nix
+            ./sylvia-fujitsu/disko.nix
+            ./generic/pipewire.nix
+            ./generic/plasma.nix
+            ./generic/printer.nix
+          ];
+          homeManagerModules = {
+            sylvia = [ ];
+          };
+        };
+
         raoul-framework = makeSystem {
           systemModules = [
             ./raoul-framework/configuration.nix
