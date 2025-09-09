@@ -10,4 +10,5 @@
     useRoutingFeatures = "server";
     extraSetFlags = [ "--advertise-exit-node" ];
   };
+  environment.persistence."/permament".directories = [ "/var/lib/tailscale" ];
 }
