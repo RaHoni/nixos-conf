@@ -41,6 +41,7 @@
     platformio
     qpwgraph
     signal-desktop
+    tailscale-systray
     vdhcoapp
     vlc
     xournalpp
