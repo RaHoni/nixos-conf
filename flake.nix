@@ -186,6 +186,7 @@
             )
             ./generic/newDefault.nix
             ./generic/nebula.nix
+            ./generic/kernelpatch.nix
           ]
           ++ systemModules;
         };
