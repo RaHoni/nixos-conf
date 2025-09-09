@@ -1,6 +1,11 @@
-{ pkgs, ... }:
 {
-  boot.kernelPatches = [
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+{
+  boot.kernelPatches = lib.mkIf config.services.tailscale.enable [
     # Fix the /proc/net/tcp seek issue
     # Impacts tailscale: https://github.com/tailscale/tailscale/issues/16966
     {
