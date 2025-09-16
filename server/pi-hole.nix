@@ -5,7 +5,10 @@
   ...
 }:
 let
+  inherit (lib.lists) forEach flatten;
   ips = config.local.ips;
+  ipv4ts = "100.91.218.48";
+  ipv6ts = "fd7a:115c:a1e0::8001:da3c";
   ipv4 = ips."pi.hole".ipv4;
   ipv6 = ips."pi.hole".ipv6;
   default_data = {
@@ -183,6 +186,15 @@ let
     }
   ];
   add_all_adlists = lib.strings.concatMapStrings add_adlists adLists;
+  ports_for_ips =
+    ips:
+    flatten (
+      forEach ips (ip: [
+        "${ip}:53:53/udp"
+        "${ip}:53:53/tcp"
+        "${ip}:80:80/tcp"
+      ])
+    );
 in
 {
   imports = [ ../generic/ips.nix ];
@@ -217,13 +229,12 @@ in
     oci-containers.containers.pi-hole = {
       image = "docker.io/pihole/pihole:latest";
       pull = "newer";
-      ports = [
-        "${ipv4}:53:53/udp"
-        "${ipv4}:53:53/tcp"
-        "${ipv4}:80:80/tcp"
-        "[::]:53:53/udp"
-        "[::]:53:53/tcp"
-        "[::]:80:80/tcp"
+      ports = ports_for_ips [
+        ipv4
+        #"[${ipv6}]"
+        "[::]"
+        ipv4ts
+        #"[${ipv6ts}]"
       ];
       environment = {
         TZ = "Europe/Berlin";
