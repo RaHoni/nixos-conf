@@ -231,7 +231,7 @@
           homeManagerModules = {
             raoul = [
               ./surface-raoul-nixos/raoulHM.nix
-              plasma-manager-stable.homeManagerModules.plasma-manager
+              plasma-manager-stable.homeModules.plasma-manager
             ];
           };
           nebula = true;
@@ -265,7 +265,7 @@
           ];
           homeManagerModules = {
             raoul = [
-              plasma-manager-stable.homeManagerModules.plasma-manager
+              plasma-manager-stable.homeModules.plasma-manager
               ./generic/users/raoul/home-manager.nix
               ./generic/users/pandoc.nix
               ./generic/users/raoul/plasma6.nix
@@ -293,7 +293,7 @@
           homeManagerModules = {
             raoul = [
               ./r-desktop/raoulHM.nix
-              plasma-manager-stable.homeManagerModules.plasma-manager
+              plasma-manager-stable.homeModules.plasma-manager
               ./generic/users/obs.nix
             ];
             ffmpeg = [ ./generic/users ];
@@ -363,7 +363,7 @@
             ./generic/users/default.nix
             ./generic/users/raoul.nix
             ./generic/users/obs.nix
-            plasma-manager-stable.homeManagerModules.plasma-manager
+            plasma-manager-stable.homeModules.plasma-manager
             ./petronillaStreaming/hm-streaming.nix
           ];
           nebula = true;
