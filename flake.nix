@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    github-nix-ci.url = "github:juspay/github-nix-ci";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -186,6 +188,7 @@
             )
             ./generic/newDefault.nix
             ./generic/nebula.nix
+            ./generic/kernelpatch.nix
           ]
           ++ systemModules;
         };
@@ -230,10 +233,23 @@
           homeManagerModules = {
             raoul = [
               ./surface-raoul-nixos/raoulHM.nix
-              plasma-manager-stable.homeManagerModules.plasma-manager
+              plasma-manager-stable.homeModules.plasma-manager
             ];
           };
           nebula = true;
+        };
+
+        sylvia-fujitsu = makeSystem {
+          systemModules = [
+            ./sylvia-fujitsu/configuration.nix
+            ./sylvia-fujitsu/disko.nix
+            ./generic/pipewire.nix
+            ./generic/plasma.nix
+            ./generic/printer.nix
+          ];
+          homeManagerModules = {
+            sylvia = [ ];
+          };
         };
 
         raoul-framework = makeSystem {
@@ -251,7 +267,7 @@
           ];
           homeManagerModules = {
             raoul = [
-              plasma-manager-stable.homeManagerModules.plasma-manager
+              plasma-manager-stable.homeModules.plasma-manager
               ./generic/users/raoul/home-manager.nix
               ./generic/users/pandoc.nix
               ./generic/users/raoul/plasma6.nix
@@ -279,7 +295,7 @@
           homeManagerModules = {
             raoul = [
               ./r-desktop/raoulHM.nix
-              plasma-manager-stable.homeManagerModules.plasma-manager
+              plasma-manager-stable.homeModules.plasma-manager
               ./generic/users/obs.nix
             ];
             ffmpeg = [ ./generic/users ];
@@ -321,6 +337,7 @@
             ./server/nextcloud.nix
             ./server/pi-hole.nix
             ./server/pikaraoke.nix
+            ./server/tailscale.nix
             ./server/unifi.nix
             ./server/warrior.nix
           ];
@@ -348,7 +365,7 @@
             ./generic/users/default.nix
             ./generic/users/raoul.nix
             ./generic/users/obs.nix
-            plasma-manager-stable.homeManagerModules.plasma-manager
+            plasma-manager-stable.homeModules.plasma-manager
             ./petronillaStreaming/hm-streaming.nix
           ];
           nebula = true;

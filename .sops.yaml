@@ -16,6 +16,7 @@ keys:
   - &vps age1x83nmn5rmf6g8n5y6m2zmu97ep3a5ngvgj5t2uwkrdmnz5fmfyks2wtn39
   - &cat age12frf3tmd35dyy5mq0cx0ruwwrxhkyzz5ga9kqd0anf4z2apuqpcspaqvsl
   - &lenovo-linux age1tzvmm6j2cvqjzk0ehqzgnd3sl3qvencq42zx6r08rr85vwuce4us94q6hn
+  - &sylvia-fujitsu age1pfgy86c6sc4wv3wuy24yz44fkew7355pj24rsc5sha0gx0xqefdq32039d
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -23,6 +24,13 @@ creation_rules:
       - *admin
       age:
       - *surface
+  - path_regex: ^secrets/sylvia-fujitsu/.*$
+    key_groups:
+    - pgp:
+      - *admin
+      - *christop
+      age:
+      - *sylvia-fujitsu
   - path_regex: ^secrets/lenovo-linux/.*$
     key_groups:
     - pgp:
@@ -83,20 +91,21 @@ creation_rules:
       - *christop
       age:
       - *audiobooks
-      - *surface
-      - *nebula-lighthouse
-      - *r-desktop
-      - *ssl-proxy
-      - *jasmine-laptop
-      - *nextcloud
-      - *rescueIso
-      - *petronillaStreaming
-      - *raoul-framework
-      - *smb
-      - *server
-      - *vps
       - *cat
+      - *jasmine-laptop
       - *lenovo-linux
+      - *nebula-lighthouse
+      - *nextcloud
+      - *petronillaStreaming
+      - *r-desktop
+      - *raoul-framework
+      - *rescueIso
+      - *server
+      - *smb
+      - *ssl-proxy
+      - *surface
+      - *sylvia-fujitsu
+      - *vps
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
     - pgp:

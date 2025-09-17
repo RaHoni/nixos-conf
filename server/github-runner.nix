@@ -1,12 +1,31 @@
-{ config, ... }:
 {
-  sops.secrets.github-runner-key.sopsFile = ../secrets/r-desktop/github.yaml;
-  services.github-runners.nixos-runner = {
-    enable = true;
-    extraLabels = [ "x86_64-linux" ];
-    tokenFile = config.sops.secrets.github-runner-key.path;
-    url = "https://github.com/RaHoni/nixos-conf";
+  config,
+  inputs,
+  lib,
+  ...
+}:
+let
+  inherit (lib) types;
+in
+{
+  options.age.secrets = lib.mkOption {
+    type = types.nullOr types.str;
+    default = null;
+    description = "Just a dummy for the module";
   };
+  imports = [ inputs.github-nix-ci.nixosModules.default ];
+  config = {
+    sops.secrets.github-runner-key.sopsFile = ../secrets/r-desktop/github.yaml;
+    services.github-nix-ci = {
+      age.secretsDir = null;
+      personalRunners = {
+        "RaHoni/nixos-conf" = {
+          num = 3;
+          tokenFile = config.sops.secrets.github-runner-key.path;
+        };
+      };
+    };
 
-  environment.persistence."/permament".directories = [ "/var/lib/private/github-runner" ];
+    environment.persistence."/permament".directories = [ "/var/lib/private/github-runner" ];
+  };
 }
