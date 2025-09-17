@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    github-nix-ci.url = "github:juspay/github-nix-ci";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
