@@ -17,6 +17,7 @@ keys:
   - &cat age12frf3tmd35dyy5mq0cx0ruwwrxhkyzz5ga9kqd0anf4z2apuqpcspaqvsl
   - &lenovo-linux age1tzvmm6j2cvqjzk0ehqzgnd3sl3qvencq42zx6r08rr85vwuce4us94q6hn
   - &sylvia-fujitsu age1pfgy86c6sc4wv3wuy24yz44fkew7355pj24rsc5sha0gx0xqefdq32039d
+  - &kanidm age1efke664655y2vvhzn9asrw4wdn9j3qh2js4cm9am0g47q69s99dq4vhzmy
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -149,6 +150,7 @@ creation_rules:
       - *admin
       age:
       - *server
+      - *kanidm
   - path_regex: secrets/bacula/clients/r-desktop.yaml
     key_groups:
     - age:
