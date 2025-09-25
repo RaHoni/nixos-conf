@@ -61,6 +61,16 @@ in
       enableTun = true;
       timeoutStartSec = "4min";
     };
+    kanidm = {
+      autoStart = true;
+      config = (import ./kanidm.nix);
+      hostAddress = "169.253.26.100";
+      localAddress = "169.253.26.1";
+      specialArgs = {
+        sops = inputs.sops-nix.nixosModules.sops;
+      };
+      privateNetwork = true;
+    };
   };
 
   systemd.tmpfiles.rules = [ "d /var/lib/private/ 0700" ];
@@ -81,6 +91,7 @@ in
         group = "factorio";
       }
       "/var/lib/nixos-containers/mailserver"
+      "/var/lib/nixos-containers/kanidm"
       {
         directory = "/var/lib/audiobookshelf";
         user = "audiobookshelf";

@@ -5,10 +5,16 @@
   ...
 }:
 let
+  cfg = config.services.nextcloud;
+  occ = config.services.nextcloud.occ;
+  oidc_client_id = "nextcloud_service";
   ips = config.local.ips;
 in
 {
   sops.secrets = {
+    nextcloud_service = {
+      sopsFile = ../secrets/server/kanidm.yaml;
+    };
     adminpass = {
       sopsFile = ../secrets/nextcloud/secrets.yaml;
       owner = config.users.users.nextcloud.name;
@@ -33,7 +39,7 @@ in
 
     maxUploadSize = "10G";
 
-    extraApps = with pkgs.nextcloud31Packages.apps; {
+    extraApps = with cfg.package.packages.apps; {
       inherit
         calendar
         contacts
@@ -45,6 +51,7 @@ in
         gpoddersync
         groupfolders
         memories
+        user_oidc
         notes
         phonetrack
         polls
@@ -74,6 +81,38 @@ in
       trusted_proxies = (map (addr: addr.address) config.networking.interfaces.eth0.ipv4.addresses);
       default_phone_region = "DE";
       trusted_domains = [ "nextcloud.honermann.info" ];
+
+      #OIDC related
+      allow_local_remote_servers = true;
+      allow_user_to_change_display_name = false;
+      lost_password_link = "disabled";
+      user_oidc = {
+        login_label = "Login with Honermann Account";
+        single_logout = false; # not supported by Kanidm yet, see https://github.com/kanidm/kanidm/issues/1997
+      };
+
+    };
+  };
+
+  #OIDC provider automatic provisioning
+  #from https://github.com/JulianFP/NixOSConfig/blob/main/mainserver/nextcloud/configuration.nix
+  sops.templates."nextcloud-oidc-setup-script" = {
+    mode = "0500";
+    content = ''
+      nextcloud-occ user_oidc:provider "Honermann Account" --clientid="${oidc_client_id}" --clientsecret="${
+        config.sops.placeholder."${oidc_client_id}"
+      }" --discoveryuri="https://account.honermann.info/oauth2/openid/${oidc_client_id}/.well-known/openid-configuration" --mapping-uid="name" --unique-uid=0 --group-provisioning=1 --check-bearer=1 --bearer-provisioning=1
+    '';
+  };
+  systemd.services.nextcloud-custom-setup = {
+    after = [ "nextcloud-setup.service" ];
+    wantedBy = [ "multi-user.target" ];
+    path = [
+      occ
+      pkgs.bash
+    ];
+    serviceConfig = {
+      ExecStart = "${pkgs.bash}/bin/sh ${config.sops.templates."nextcloud-oidc-setup-script".path}";
     };
   };
 

@@ -54,6 +54,10 @@ in
     '';
 
     virtualHosts = {
+      "account.honermann.info" = proxyHost {
+        address = "https://169.253.26.1";
+      };
+
       "binarycache.honermann.info" = proxyHost { address = "http://${ips.binarycache.ipv4}:5000"; };
 
       "home.honermann.info" = proxyHost {
