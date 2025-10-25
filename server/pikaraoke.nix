@@ -9,6 +9,7 @@
       "--high-quality"
       "--disable-score"
       "--admin-password=abc"
+      "--complete-transcode-before-play" # Better compability with firefox
     ];
     volumes = [ "pikaraoke-songs:/app/pikaraoke-songs" ];
   };
