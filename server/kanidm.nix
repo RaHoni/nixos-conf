@@ -139,6 +139,20 @@ in
           groups = [
             "family"
             "nextcloud"
+            "audiobookshelf"
+          ];
+        };
+        sylvia = {
+          displayName = "Sylvia";
+          legalName = "Sylvia Honermann";
+          mailAddresses = [
+            "sylvia@honermann.info"
+            "sylvia.honermann@web.de"
+          ];
+          groups = [
+            "family"
+            "nextcloud"
+            "audiobookshelf"
           ];
         };
       };
