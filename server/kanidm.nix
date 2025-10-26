@@ -90,7 +90,7 @@
       persons = {
         "raoul" = {
           displayName = "Raoul";
-          legalName = "Raoul honermann";
+          legalName = "Raoul Honermann";
           mailAddresses = [ "raoul@honermann.info" ];
           groups = [
             "family"
@@ -104,6 +104,18 @@
             "messdiener"
             "streaming"
             "ferienfreizeit"
+          ];
+        };
+        christoph = {
+          displayName = "C.Honi";
+          legalName = "Christoph Honermann";
+          mailAddresses = [
+            "christoph@honermann.info"
+            "christoph.honermann@web.de"
+          ];
+          groups = [
+            "family"
+            "nextcloud"
           ];
         };
       };
