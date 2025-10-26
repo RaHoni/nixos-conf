@@ -67,6 +67,10 @@
         hass-admin = { };
         hass = { };
         family = { };
+        messdiener = { };
+        streaming = { };
+        ferienfreizeit = { };
+        nextcloud_admin = { };
       };
 
       systems.oauth2."nextcloud_service" = {
@@ -79,6 +83,14 @@
           "profile"
           "email"
         ];
+        claimMaps."groups".valuesByGroup = {
+          "family" = [ "Familie" ];
+          "messdiener" = [ "Messdiener" ];
+          "ferienfreizeit" = [ "Ferienfreizeit" ];
+          "streaming" = [ "Streaming" ];
+          "nextcloud_admin" = [ "admin" ];
+        };
+
       };
 
       persons = {
@@ -89,8 +101,13 @@
           groups = [
             "family"
             "nextcloud"
+            "nextcloud_admin"
             "jellyfin"
             "jellyfin-admin"
+
+            "messdiener"
+            "streaming"
+            "ferienfreizeit"
           ];
         };
       };
