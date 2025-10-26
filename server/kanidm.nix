@@ -98,6 +98,8 @@
             "nextcloud_admin"
             "jellyfin"
             "jellyfin-admin"
+            "hass"
+            "hass-admin"
 
             "messdiener"
             "streaming"
