@@ -162,6 +162,7 @@
         gh
         jameica
         kdePackages.kleopatra
+        kanidm_1_7
         libation # Audible downloader
         nebula
         nixpkgs-fmt
