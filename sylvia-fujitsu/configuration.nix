@@ -147,7 +147,7 @@
       signal-desktop
       whatsapp-for-linux
       zoom
-      mediathekview
+      qmediathekview
       tvbrowser
       skanlite
       simplescreenrecorder
