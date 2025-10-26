@@ -4,7 +4,9 @@
   sops,
   ...
 }:
-
+let
+  secrets = config.sops.secrets;
+in
 {
   imports = [ sops ];
   networking.hostName = "kanidm";
@@ -26,6 +28,7 @@
       admin_password.owner = "kanidm";
       idm_admin_password.owner = "kanidm";
       "nextcloud_service".owner = "kanidm";
+      "audiobookshelf_service".owner = "kanidm";
     };
   };
 
@@ -50,8 +53,8 @@
     };
     provision = {
       enable = true;
-      adminPasswordFile = config.sops.secrets."admin_password".path;
-      idmAdminPasswordFile = config.sops.secrets."idm_admin_password".path;
+      adminPasswordFile = secrets."admin_password".path;
+      idmAdminPasswordFile = secrets."idm_admin_password".path;
 
       groups = {
         mail-server = { };
@@ -65,26 +68,44 @@
         streaming = { };
         ferienfreizeit = { };
         nextcloud_admin = { };
+        audiobookshelf = { };
+        audiobookshelf_admin = { };
       };
 
-      systems.oauth2."nextcloud_service" = {
-        displayName = "Nextcloud main instance";
-        originLanding = "https://honermann.info/apps/user_oidc/login/1";
-        originUrl = "https://honermann.info/apps/user_oidc/code";
-        basicSecretFile = config.sops.secrets."nextcloud_service".path;
-        scopeMaps."nextcloud" = [
-          "openid"
-          "profile"
-          "email"
-        ];
-        claimMaps."groups".valuesByGroup = {
-          "family" = [ "Familie" ];
-          "messdiener" = [ "Messdiener" ];
-          "ferienfreizeit" = [ "Ferienfreizeit" ];
-          "streaming" = [ "Streaming" ];
-          "nextcloud_admin" = [ "admin" ];
+      systems.oauth2 = {
+        "audiobookshelf_service" = {
+          displayName = "Audiobookshelf";
+          originLanding = "https://hoerbuecher.honermann.info/audiobookshelf/auth/openid/callback";
+          originUrl = [
+            "https://hoerbuecher.honermann.info/auth/openid/callback"
+            "https://hoerbuecher.honermann.info/auth/openid/mobile-redirect"
+          ];
+          basicSecretFile = secrets.audiobookshelf_service.path;
+          scopeMaps."audiobookshelf" = [
+            "openid"
+            "profile"
+            "email"
+          ];
         };
+        "nextcloud_service" = {
+          displayName = "Nextcloud main instance";
+          originLanding = "https://honermann.info/apps/user_oidc/login/1";
+          originUrl = "https://honermann.info/apps/user_oidc/code";
+          basicSecretFile = config.sops.secrets."nextcloud_service".path;
+          scopeMaps."nextcloud" = [
+            "openid"
+            "profile"
+            "email"
+          ];
+          claimMaps."groups".valuesByGroup = {
+            "family" = [ "Familie" ];
+            "messdiener" = [ "Messdiener" ];
+            "ferienfreizeit" = [ "Ferienfreizeit" ];
+            "streaming" = [ "Streaming" ];
+            "nextcloud_admin" = [ "admin" ];
+          };
 
+        };
       };
 
       persons = {
@@ -104,6 +125,8 @@
             "messdiener"
             "streaming"
             "ferienfreizeit"
+            "audiobookshelf"
+            "audiobookshelf_admin"
           ];
         };
         christoph = {
