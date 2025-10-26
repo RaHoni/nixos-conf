@@ -23,20 +23,14 @@
       sshKeyPaths = [ ];
     };
     secrets = {
-      cloudflare = { };
       admin_password.owner = "kanidm";
       idm_admin_password.owner = "kanidm";
       "nextcloud_service".owner = "kanidm";
     };
   };
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "admin@honermann.info";
-    certs."account.honermann.info" = {
-      group = "kanidm";
-      dnsProvider = "cloudflare";
-      environmentFile = config.sops.secrets.cloudflare.path;
-    };
+
+  users.users.kanidm = {
+    uid = 999;
   };
 
   services.kanidm = {

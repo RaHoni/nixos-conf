@@ -5,6 +5,9 @@
   sms,
   ...
 }:
+let
+  certPath = "/var/lib/acme/${config.mailserver.fqdn}";
+in
 {
   imports = [
     sms
@@ -98,11 +101,9 @@
       };
     };
 
-    certificateScheme = "acme-nginx";
-  };
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "raoul.honermann@web.de";
+    certificateScheme = "manual";
+    certificateFile = "${certPath}/fullchain.pem";
+    keyFile = "${certPath}/key.pem";
   };
 
   services.nginx.virtualHosts.rspamd = {

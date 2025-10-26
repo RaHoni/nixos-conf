@@ -325,6 +325,7 @@
             ./generic/intelgpu.nix
             ./generic/smtp.nix
             ./server
+            ./server/acme.nix
             ./server/audiobookshelf.nix
             ./server/bacula.nix
             ./server/disko.nix

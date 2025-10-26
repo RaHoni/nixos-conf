@@ -48,9 +48,7 @@ in
       specialArgs = {
         sms = inputs.simple-mail-server.nixosModules.mailserver;
       };
-      bindMounts."/var/lib/acme" = {
-        hostPath = "/var/lib/acme/mail";
-        isReadOnly = false;
+      bindMounts."/var/lib/acme/mail.honermann.info" = {
       };
       bindMounts."/wireguard".hostPath = "/run/secrets/wireguard";
       privateNetwork = true;
@@ -70,6 +68,7 @@ in
         sops = inputs.sops-nix.nixosModules.sops;
       };
       privateNetwork = true;
+      bindMounts."/var/lib/acme/account.honermann.info" = { };
     };
   };
 
