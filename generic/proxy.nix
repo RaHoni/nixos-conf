@@ -60,6 +60,11 @@ in
 
       "binarycache.honermann.info" = proxyHost { address = "http://${ips.binarycache.ipv4}:5000"; };
 
+      "headscale.honermann.info" = proxyHost {
+        address = "http://localhost:8081";
+        proxyWebsockets = true;
+      };
+
       "home.honermann.info" = proxyHost {
         address = "http://127.0.0.1:8123";
         proxyWebsockets = true;

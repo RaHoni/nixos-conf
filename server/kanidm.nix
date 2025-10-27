@@ -29,6 +29,10 @@ in
       idm_admin_password.owner = "kanidm";
       "nextcloud_service".owner = "kanidm";
       "audiobookshelf_service".owner = "kanidm";
+      "headscale" = {
+        owner = "kanidm";
+        sopsFile = ../secrets/server/headscale.yaml;
+      };
     };
   };
 
@@ -63,6 +67,7 @@ in
         nextcloud = { };
         hass-admin = { };
         hass = { };
+        headscale = { };
         family = { };
         messdiener = { };
         streaming = { };
@@ -82,6 +87,17 @@ in
           ];
           basicSecretFile = secrets.audiobookshelf_service.path;
           scopeMaps."audiobookshelf" = [
+            "openid"
+            "profile"
+            "email"
+          ];
+        };
+        headscale_service = {
+          displayName = "Headscale";
+          originLanding = "https://headscale.honermann.info/oidc/callback";
+          originUrl = [ "https://headscale.honermann.info/oidc/callback" ];
+          basicSecretFile = secrets.headscale.path;
+          scopeMaps."headscale" = [
             "openid"
             "profile"
             "email"
@@ -121,6 +137,7 @@ in
             "jellyfin-admin"
             "hass"
             "hass-admin"
+            "headscale"
 
             "messdiener"
             "streaming"
@@ -140,6 +157,7 @@ in
             "family"
             "nextcloud"
             "audiobookshelf"
+            "headscale"
           ];
         };
         sylvia = {
@@ -153,6 +171,7 @@ in
             "family"
             "nextcloud"
             "audiobookshelf"
+            "headscale"
           ];
         };
       };
