@@ -80,7 +80,7 @@ in
       systems.oauth2 = {
         "audiobookshelf_service" = {
           displayName = "Audiobookshelf";
-          originLanding = "https://hoerbuecher.honermann.info/audiobookshelf/auth/openid/callback";
+          originLanding = "https://hoerbuecher.honermann.info/audiobookshelf/auth/openid?callback=https://hoerbuecher.honermann.info/audiobookshelf/login/";
           originUrl = [
             "https://hoerbuecher.honermann.info/auth/openid/callback"
             "https://hoerbuecher.honermann.info/auth/openid/mobile-redirect"
