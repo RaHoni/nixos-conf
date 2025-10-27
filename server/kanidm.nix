@@ -174,6 +174,19 @@ in
             "headscale"
           ];
         };
+        stella = {
+          displayName = "Stella";
+          legalName = "Stella Honermann";
+          mailAddresses = [ "stella.honermann@web.de" ];
+          groups = [
+            "family"
+            "nextcloud"
+            "audiobookshelf"
+            "headscale"
+
+            "messdiener"
+          ];
+        };
       };
     };
   };
