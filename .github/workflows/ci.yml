@@ -18,7 +18,7 @@ jobs:
     runs-on: x86_64-linux
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Run check
         run: "nix -L flake check --accept-flake-config"
   merge:
@@ -31,7 +31,7 @@ jobs:
       !github.event.pull_request.draft
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.base.ref }}
