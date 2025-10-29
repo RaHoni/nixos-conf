@@ -17,9 +17,6 @@ in
   # import common.nix and home manager module depending on if system uses stable or unstable packages
   imports = [
     ./default.nix
-    ./lanzaboote.nix
-    ./wireguard.nix # module
-    ./autoupgrade.nix # module
   ]
   ++ (switchStable
     [ inputs.home-manager-stable.nixosModules.home-manager ]
