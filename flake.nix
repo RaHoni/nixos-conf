@@ -261,7 +261,6 @@
             ./generic/pipewire.nix
             ./generic/plasma.nix
             ./generic/printer.nix
-            ./server/pikaraoke.nix
             ./raoul-framework/hardwareconfig.nix
             nixos-hardware.nixosModules.framework-16-7040-amd
             stylix.nixosModules.stylix
