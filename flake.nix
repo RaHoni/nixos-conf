@@ -329,7 +329,7 @@
             ./server/audiobookshelf.nix
             ./server/bacula.nix
             ./server/disko.nix
-            ./server/esphome.nix
+            #./server/esphome.nix
             ./server/factorio.nix
             ./server/github-runner.nix
             ./server/headscale.nix
