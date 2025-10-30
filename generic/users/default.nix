@@ -22,6 +22,7 @@ in
     autosuggestion.enable = true;
     initContent = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
     localVariables = {
+      SOPS_AGE_KEY_FILE = osConfig.sops.age.keyFile;
       YSU_IGNORED_ALIASES = [ "g" ];
     };
   };
