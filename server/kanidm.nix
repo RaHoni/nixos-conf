@@ -106,7 +106,10 @@ in
         "nextcloud_service" = {
           displayName = "Nextcloud main instance";
           originLanding = "https://honermann.info/apps/user_oidc/login/1";
-          originUrl = "https://honermann.info/apps/user_oidc/code";
+          originUrl = [
+            "https://honermann.info/apps/user_oidc/code"
+            "https://nextcloud.honermann.info/apps/user_oidc/code"
+          ];
           basicSecretFile = config.sops.secrets."nextcloud_service".path;
           scopeMaps."nextcloud" = [
             "openid"
