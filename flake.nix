@@ -447,7 +447,12 @@
 
       devShells = nixpkgs.lib.genAttrs (import systems) (system: {
         default = nixpkgs.legacyPackages.${system}.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          shellHook = ''
+            ${self.checks.${system}.pre-commit-check.shellHook}
+
+            # --- your additions below ---
+            git config diff.sopsdiffer.textconv "sops decrypt"
+          '';
           buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
           packages = with (stable-nixpkgs system); [
             meld
