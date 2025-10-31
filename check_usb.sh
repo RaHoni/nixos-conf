@@ -2,7 +2,7 @@ devicepath=$(systemd-escape -up -- "$1")
 start=$(date +%s)
 whoami
 [[ "$devicepath" =~ ^/dev/sd[a-z]1$ ]] || exit 0
-    #Close standard output file descriptor
+#Close standard output file descriptor
 #    echo "This line will appear in $LOG_FILE, not 'on screen'"
 echo "Starting with $devicepath"
 mkdir -p "/mnt/$devicepath"

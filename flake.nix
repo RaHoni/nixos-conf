@@ -440,7 +440,15 @@
           addGcRoot = true;
           src = ./.;
           hooks = {
+            action-validator.enable = true;
+            beautysh.enable = true;
+            beautysh.excludes = [ "p10k.zsh" ];
+            check-merge-conflicts.enable = true;
+            markdownlint.enable = true;
+            mdformat.enable = true;
             nixfmt-rfc-style.enable = true;
+            pre-commit-hook-ensure-sops.enable = true;
+            pretty-format-json.enable = true;
           };
         };
       });
@@ -461,7 +469,7 @@
         };
       });
 
-      formatter = eachSystem (pkgs: pkgs.nixfmt-rfc-style);
+      formatter = eachSystem (pkgs: pkgs.nixfmt-tree);
 
       hydraJobs = {
         # Include filtered configurations as Hydra jobs
