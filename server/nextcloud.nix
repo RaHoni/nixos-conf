@@ -85,7 +85,6 @@ in
       #OIDC related
       allow_local_remote_servers = true;
       allow_user_to_change_display_name = false;
-      lost_password_link = "disabled";
       user_oidc = {
         login_label = "Login with Honermann Account";
         single_logout = false; # not supported by Kanidm yet, see https://github.com/kanidm/kanidm/issues/1997
