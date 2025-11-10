@@ -25,6 +25,7 @@
           "192.168.1.202"
         ];
       };
+      policy.path = ./headscale_acl.hujson;
     };
   };
   environment.persistence."/permament".directories = [

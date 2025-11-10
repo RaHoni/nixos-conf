@@ -1,0 +1,29 @@
+{
+  // groups are collections of users having a common scope. A user can be in multiple groups
+  // groups cannot be composed of groups
+  "groups": {
+    "group:supporter": [ "raoul@account.honermann.info"],
+    "group:admin": [ "raoul@account.honermann.info"],
+  },
+  // tagOwners in tailscale is an association between a TAG and the people allowed to set this TAG on a server.
+  // This is documented [here](https://tailscale.com/kb/1068/acl-tags#defining-a-tag)
+  // and explained [here](https://tailscale.com/blog/rbac-like-it-was-meant-to-be/)
+  "tagOwners": {
+    "tag:server": [ "group:admin" ],
+    "tag:extern": [ "group:admin"],
+  },
+  "acls": [
+  {
+    "action": "accept",
+    "src": [ "group:supporter" ],
+    "dest": [ "tag:extern:22" ],
+  },
+  // Allow users to access their own devices using autogroup:self (see below for more details about performance impact)
+  // autogroups are only from 0.27.0 supported works only above nixos 25.11
+//    {
+//      "action": "accept",
+//      "src": ["autogroup:member"],
+//      "dst": ["autogroup:self:*"]
+//    }
+  ]
+}
