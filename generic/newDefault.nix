@@ -1,12 +1,12 @@
 {
   config,
-  pkgs,
-  inputs,
-  homeManagerModules,
-  stable,
-  nebula,
-  lib,
   genericHomeManagerModules,
+  homeManagerModules,
+  inputs,
+  lib,
+  nebula,
+  pkgs,
+  stable,
   ...
 }:
 let
@@ -17,9 +17,6 @@ in
   # import common.nix and home manager module depending on if system uses stable or unstable packages
   imports = [
     ./default.nix
-    ./lanzaboote.nix
-    ./wireguard.nix # module
-    ./autoupgrade.nix # module
   ]
   ++ (switchStable
     [ inputs.home-manager-stable.nixosModules.home-manager ]
