@@ -15,6 +15,8 @@
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
+  local.tailscale.enable = true;
+
   environment.etc = {
     "libinput/local-overrides.quirks".text = ''
       [Keyboard]
@@ -159,7 +161,6 @@
     fwupd.enable = true;
     gvfs.enable = true; # Allow programs to directly acces remote shares
     pcscd.enable = true; # yubikey ccid
-    tailscale.enable = true;
     teamviewer.enable = true;
     usbmuxd.enable = true;
     xserver.enable = true; # Used by sddm

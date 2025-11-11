@@ -37,6 +37,8 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  local.tailscale.enable = true;
+
   services.pipewire.enable = true;
 
   hardware.bluetooth = {

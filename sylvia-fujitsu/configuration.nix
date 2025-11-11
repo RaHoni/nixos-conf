@@ -30,6 +30,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  local.tailscale = {
+    enable = true;
+    user = "sylvia";
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 

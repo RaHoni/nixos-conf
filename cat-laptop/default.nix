@@ -4,6 +4,11 @@
     ./hardware-configuration.nix
   ];
 
+  local.tailscale = {
+    enable = true;
+    extern = true;
+  };
+
   boot = {
     loader = {
       grub = {
