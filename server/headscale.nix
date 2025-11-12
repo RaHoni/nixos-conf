@@ -22,7 +22,7 @@
           "localdomain"
         ];
         nameservers.global = [
-          "192.168.1.202"
+          "100.64.0.5"
         ];
       };
       policy.path = ./headscale_acl.hujson;
