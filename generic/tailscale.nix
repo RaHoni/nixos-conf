@@ -55,7 +55,7 @@ in
       authKeyFile = config.sops.secrets."${cfg.user}-auth-key".path;
       openFirewall = true;
       extraUpFlags = [
-        "--login-url=headscale.honermann.info"
+        "--login-server=headscale.honermann.info"
       ]
       ++ optional (cfg.tags != null) "--advertise-tags=${formattedTags}";
       extraSetFlags = mkIf cfg.exit-node [ "--advertise-exit-node" ];
