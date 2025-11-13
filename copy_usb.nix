@@ -6,7 +6,10 @@ let
 in
 {
 
-  services.udev.extraRules = ''SUBSYSTEMS=="usb",ATTRS{idVendor}=="abcd", ATTRS{idProduct}=="1234", ACTION=="add", RUN+="${pkgs.bash}/bin/bash ${launcher}/bin/launcher $devnode"'';
+  services.udev.extraRules = ''
+    SUBSYSTEMS=="usb",ATTRS{idVendor}=="abcd", ATTRS{idProduct}=="1234", ACTION=="add", RUN+="${pkgs.bash}/bin/bash ${launcher}/bin/launcher $devnode"
+    SUBSYSTEMS=="usb",ATTRS{idVendor}=="346d", ATTRS{idProduct}=="5678", ACTION=="add", RUN+="${pkgs.bash}/bin/bash ${launcher}/bin/launcher $devnode"
+  '';
 
   systemd.services."usbcopy@" = {
     enable = true;

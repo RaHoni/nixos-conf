@@ -5,11 +5,11 @@ whoami
 #Close standard output file descriptor
 #    echo "This line will appear in $LOG_FILE, not 'on screen'"
 echo "Starting with $devicepath"
-fatlabel "$devicepath" "Freizeit 24"
+fatlabel "$devicepath" "Freizeit 25"
 mkdir -p "/mnt/$devicepath"
 mount "$devicepath" "/mnt/$devicepath"
-rm -r "/mnt/$devicepath/*" || true
-cp -rL /usbcopy/* "/mnt/$devicepath"
+#rm -r /mnt$devicepath/* || true
+rsync -rLP /usbcopy/* "/mnt/$devicepath"
 umount "$devicepath"
 end=$(date +%s)
 
