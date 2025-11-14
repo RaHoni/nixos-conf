@@ -69,6 +69,8 @@ in
       ve = "onemore"; # allow cursor to be at first empty space after line
       encoding = "utf8";
       updatetime = 200;
+      spell = true;
+      spelllang = "en";
     };
     autoCmd = [
       {
