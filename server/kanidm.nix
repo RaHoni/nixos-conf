@@ -197,4 +197,5 @@ in
     443
     3636
   ];
+  system.stateVersion = "25.05";
 }
