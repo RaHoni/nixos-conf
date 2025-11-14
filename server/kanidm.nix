@@ -190,6 +190,16 @@ in
             "messdiener"
           ];
         };
+        maximilian = {
+          displayName = "maximilian";
+          legalName = "Maximilian Inckmann";
+          mailAddresses = [ "maximilian@inckmann.de" ];
+          groups = [
+            "nextcloud"
+            "audiobookshelf"
+            "headscale"
+          ];
+        };
       };
     };
   };
