@@ -59,7 +59,7 @@ in
       ]
       ++ optional (cfg.tags != null) "--advertise-tags=${formattedTags}";
       extraSetFlags = mkIf cfg.exit-node [ "--advertise-exit-node" ];
-      useRoutingFeatures = mkIf cfg.exit-node "server";
+      useRoutingFeatures = mkIf cfg.exit-node "both";
     };
   };
 }
