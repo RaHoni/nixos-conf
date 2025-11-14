@@ -18,11 +18,11 @@
       dns = rec {
         base_domain = "tailnet.honermann.info";
         search_domains = [
-          base_domain
           "localdomain"
         ];
         nameservers.global = [
           "100.64.0.5"
+          "1.1.1.1"
         ];
       };
       policy.path = ./headscale_acl.hujson;
