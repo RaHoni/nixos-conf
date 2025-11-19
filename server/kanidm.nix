@@ -125,6 +125,18 @@ in
           };
 
         };
+        homeassistant_service = {
+          displayName = "Home Assistant";
+          originLanding = "https://home.honermann.info/auth/oidc/welcome";
+          originUrl = "https://home.honermann.info/auth/oidc/callback";
+          public = true;
+          scopeMaps."hass" = [
+            "openid"
+            "profile"
+            "email"
+            "groups"
+          ];
+        };
       };
 
       persons = {
@@ -161,6 +173,8 @@ in
             "nextcloud"
             "audiobookshelf"
             "headscale"
+            "hass"
+            "hass-admin"
           ];
         };
         sylvia = {
@@ -175,6 +189,7 @@ in
             "nextcloud"
             "audiobookshelf"
             "headscale"
+            "hass"
           ];
         };
         stella = {
