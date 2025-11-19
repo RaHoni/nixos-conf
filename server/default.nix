@@ -36,6 +36,22 @@ in
 
   boot.zfs.package = pkgs.zfs_2_3;
 
+  systemd.services = {
+    "container@kanidm" = rec {
+      wants = [
+        "container@proxy.service"
+      ];
+      after = wants;
+    };
+    "container@mailserver" = rec {
+      wants = [
+        "container@proxy.service"
+        "container@kanidm.service"
+      ];
+      after = wants;
+    };
+  };
+
   containers = {
     proxy = {
       autoStart = true;

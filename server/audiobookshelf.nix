@@ -6,4 +6,8 @@
     openFirewall = true;
     host = "0.0.0.0";
   };
+  systemd.services.audiobookshelf = rec {
+    wants = [ "container@kanidm.service" ];
+    after = wants;
+  };
 }

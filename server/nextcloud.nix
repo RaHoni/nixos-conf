@@ -104,7 +104,11 @@ in
     '';
   };
   systemd.services.nextcloud-custom-setup = {
-    after = [ "nextcloud-setup.service" ];
+    wants = [ "container@kanidm.service" ];
+    after = [
+      "nextcloud-setup.service"
+      "container@kanidm.service"
+    ];
     wantedBy = [ "multi-user.target" ];
     path = [
       occ

@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  serviceName = config.virtualisation.oci-containers.containers.homeassistant.serviceName;
+in
 {
   services.wyoming = {
     faster-whisper.servers."German" = {
@@ -34,6 +37,17 @@
     extraOptions = [
       "--network=host"
       "--device=/dev/ttyACM0:/dev/ttyACM0" # ZigBee stick
+    ];
+  };
+
+  systemd.services."${serviceName}" = {
+    wants = [
+      "container@proxy.service"
+      "phpfpm-nextcloud.service"
+    ];
+    after = [
+      "container@proxy.service"
+      "phpfpm-nextcloud.service"
     ];
   };
 
