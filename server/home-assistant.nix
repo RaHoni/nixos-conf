@@ -4,7 +4,7 @@
     faster-whisper.servers."German" = {
       enable = true;
       language = "de";
-      model = "medium";
+      model = "medium-int8";
       beamSize = 3;
       uri = "tcp://0.0.0.0:10300";
     };
