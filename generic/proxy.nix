@@ -94,6 +94,9 @@ in
         proxyWebsockets = true;
         extraConfig = "proxy_buffering off;"; # Disable buffering when the nginx proxy gets very resource heavy upon streaming
       };
+      "anfragen.honermann.info" = proxyHost {
+        address = "http://127.0.0.1:5055";
+      };
     };
   };
 }

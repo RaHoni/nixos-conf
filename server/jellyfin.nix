@@ -1,9 +1,14 @@
 { config, ... }:
 let
   jellyfin = config.services.jellyfin;
+  jellyseerr = config.services.jellyseerr;
 in
 {
   services.jellyfin = {
+    enable = true;
+  };
+
+  services.jellyseerr = {
     enable = true;
   };
 
@@ -13,5 +18,6 @@ in
     dataDir
     configDir
     logDir
+    "/var/lib/private/jellyseerr/"
   ];
 }
