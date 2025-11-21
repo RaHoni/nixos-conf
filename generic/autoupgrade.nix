@@ -41,7 +41,9 @@ in
     };
     system.autoUpgrade = {
       enable = true;
-      flake = "github:RaHoni/nixos-conf" + lib.optionalString (cfg.branch != null) "/${cfg.branch}";
+      flake =
+        "git+https://github.com/RaHoni/nixos-conf"
+        + lib.optionalString (cfg.branch != null) "?ref=${cfg.branch}";
       allowReboot = lib.mkDefault cfg.allowReboot;
     };
     # Allow nixos-upgrade to restart on failure (e.g. when laptop wakes up before network connection is set)
