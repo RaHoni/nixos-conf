@@ -14,6 +14,7 @@
     secrets = {
       example-key = { };
       yubikey-auths = { };
+      git-credentials = { };
       # Setup ssh-Hostkeys from sops
       "ssh_host_ed25519_key" = {
         sopsFile = ../secrets/${config.networking.hostName}/sshd.yaml;
