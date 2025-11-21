@@ -98,18 +98,18 @@ in
     directories = [
       "/backmeup"
       "/etc/nixos/"
-      "/var/pihole" # This is a Volume for te pihole container so that we can set the adlists
-      "/var/lib/nixos/"
-      "/var/lib/nebula/"
       "/var/lib/containers"
+      "/var/lib/nebula/"
+      "/var/lib/nixos-containers/kanidm"
+      "/var/lib/nixos-containers/mailserver"
+      "/var/lib/nixos/"
       "/var/lib/private" # because of too much errors
+      "/var/pihole" # This is a Volume for the pihole container so that we can set the adlists
       {
         directory = "/var/lib/private/factorio";
         user = "factorio";
         group = "factorio";
       }
-      "/var/lib/nixos-containers/mailserver"
-      "/var/lib/nixos-containers/kanidm"
       {
         directory = "/var/lib/audiobookshelf";
         user = "audiobookshelf";
