@@ -19,8 +19,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GH_PAT }}   # PAT with repo access
+          submodules: true               # Fetch submodules recursively
+          fetch-depth: 0                 # Recommended when using submodules
       - name: Run check
-        run: "nix -L flake check --accept-flake-config"
+        env:
+          NIX_CONFIG: access-tokens = github.com=${{ secrets.GH_PAT }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: "gh auth setup-git && nix -L flake check --accept-flake-config"
   merge:
     permissions:
       contents: write
