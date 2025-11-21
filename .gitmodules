@@ -1,0 +1,3 @@
+[submodule "private"]
+	path = private
+	url = https://github.com/RaHoni/nixos-private-conf.git
