@@ -55,6 +55,15 @@ in
     };
   };
 
+  # critical fix for mullvad-daemon to run in container, otherwise errors with: "EPERM: Operation not permitted"
+  # It seems net_cls API filesystem is deprecated as it's part of cgroup v1. So it's not available by default on hosts using cgroup v2.
+  # https://github.com/mullvad/mullvadvpn-app/issues/5408#issuecomment-1805189128
+  fileSystems."/tmp/net_cls" = {
+    device = "net_cls";
+    fsType = "cgroup";
+    options = [ "net_cls" ];
+  };
+
   containers = {
     proxy = {
       autoStart = true;
@@ -93,13 +102,15 @@ in
       autoStart = true;
       config = (import ../private/seerr.nix);
       enableTun = true;
+      hostAddress = "169.253.27.1";
+      localAddress = "169.253.27.3";
       specialArgs = {
         sops = inputs.sops-nix.nixosModules.sops;
       };
       privateNetwork = true;
       bindMounts = {
-        "/var/Filme" = { };
-        "/var/Serien" = { };
+        "/var/Filme".isReadOnly = false;
+        "/var/Serien".isReadOnly = false;
       };
     };
   };
