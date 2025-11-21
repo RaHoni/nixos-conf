@@ -2,6 +2,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -17,6 +18,7 @@ in
   config = {
     sops.secrets.github-runner-key.sopsFile = ../secrets/r-desktop/github.yaml;
     services.github-nix-ci = {
+      runnerSettings.extraPackages = with pkgs; [ gh ];
       age.secretsDir = null;
       personalRunners = {
         "RaHoni/nixos-conf" = {
