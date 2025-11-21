@@ -89,6 +89,19 @@ in
       privateNetwork = true;
       bindMounts."/var/lib/acme/account.honermann.info" = { };
     };
+    torrent = {
+      autoStart = true;
+      config = (import ../private/seerr.nix);
+      enableTun = true;
+      specialArgs = {
+        sops = inputs.sops-nix.nixosModules.sops;
+      };
+      privateNetwork = true;
+      bindMounts = {
+        "/var/Filme" = { };
+        "/var/Serien" = { };
+      };
+    };
   };
 
   systemd.tmpfiles.rules = [ "d /var/lib/private/ 0700" ];
@@ -102,6 +115,7 @@ in
       "/var/lib/nebula/"
       "/var/lib/nixos-containers/kanidm"
       "/var/lib/nixos-containers/mailserver"
+      "/var/lib/nixos-containers/torrent"
       "/var/lib/nixos/"
       "/var/lib/private" # because of too much errors
       "/var/pihole" # This is a Volume for the pihole container so that we can set the adlists
