@@ -131,6 +131,9 @@ in
     git = {
       enable = true;
       extraConfig = {
+        credential = {
+          helper = "store --file=/run/secrets/git-credentials";
+        };
         push = {
           autoSetupRemote = true;
         };
