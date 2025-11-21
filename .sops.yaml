@@ -18,6 +18,7 @@ keys:
   - &lenovo-linux age1tzvmm6j2cvqjzk0ehqzgnd3sl3qvencq42zx6r08rr85vwuce4us94q6hn
   - &sylvia-fujitsu age1pfgy86c6sc4wv3wuy24yz44fkew7355pj24rsc5sha0gx0xqefdq32039d
   - &kanidm age1efke664655y2vvhzn9asrw4wdn9j3qh2js4cm9am0g47q69s99dq4vhzmy
+  - &torrent age167yzenqqsh9zrg9kux9clppvwk3x43zwjzrr9e96ev3tsyns0dys74u76m
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -32,6 +33,13 @@ creation_rules:
       - *christop
       age:
       - *sylvia-fujitsu
+  - path_regex: ^secrets/torrent/.*$
+    key_groups:
+    - pgp:
+      - *admin
+      - *christop
+      age:
+      - *torrent
   - path_regex: ^secrets/lenovo-linux/.*$
     key_groups:
     - pgp:
@@ -107,6 +115,7 @@ creation_rules:
       - *surface
       - *sylvia-fujitsu
       - *vps
+      - *torrent
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
     - pgp:
