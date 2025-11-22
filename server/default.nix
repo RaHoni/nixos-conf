@@ -16,9 +16,12 @@ in
     ../generic/networking.nix
   ];
   sops.age.keyFile = lib.mkForce "/permament/sops-nix/key.txt";
-  sops.secrets."wireguard/wireguard-priv-key" = {
-    key = "wireguard-priv-key";
-    sopsFile = ../secrets/server/wireguard.yaml;
+  sops.secrets = {
+    "wireguard/wireguard-priv-key" = {
+      key = "wireguard-priv-key";
+      sopsFile = ../secrets/server/wireguard.yaml;
+    };
+    cloudflare-api-key.sopsFile = ../secrets/server/ddns.yaml;
   };
 
   systemd.timers.podman-auto-update.enable = true;
@@ -141,6 +144,14 @@ in
 
   boot.zfs.extraPools = [ "MainZFS" ];
   services.zfs.autoScrub.enable = true;
+
+  services.cloudflare-dyndns = {
+    enable = true;
+    ipv4 = false;
+    ipv6 = true;
+    domains = [ "honermann.info" ];
+    apiTokenFile = config.sops.secrets.cloudflare-api-key.path;
+  };
 
   myModules.autoUpgrade.enable = true;
   myModules.autoUpgrade.allowReboot = true;
