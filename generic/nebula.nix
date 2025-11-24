@@ -34,7 +34,7 @@ in
 
     # nebula config
     services.nebula.networks."${netName}" = rec {
-      enable = config.local.nebula.enable;
+      enable = false; # config.local.nebula.enable;
       listen.port = lib.mkDefault 0;
       ca = config.sops.secrets."nebula/ca.crt".path;
       key = config.sops.secrets."nebula/${hostName}.key".path;
