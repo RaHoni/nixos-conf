@@ -159,6 +159,7 @@
 
   services = {
     fwupd.enable = true;
+    fwupd.package = pkgs.unstable.fwupd;
     gvfs.enable = true; # Allow programs to directly acces remote shares
     pcscd.enable = true; # yubikey ccid
     teamviewer.enable = true;
