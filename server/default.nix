@@ -55,6 +55,15 @@ in
     };
   };
 
+  # critical fix for mullvad-daemon to run in container, otherwise errors with: "EPERM: Operation not permitted"
+  # It seems net_cls API filesystem is deprecated as it's part of cgroup v1. So it's not available by default on hosts using cgroup v2.
+  # https://github.com/mullvad/mullvadvpn-app/issues/5408#issuecomment-1805189128
+  fileSystems."/tmp/net_cls" = {
+    device = "net_cls";
+    fsType = "cgroup";
+    options = [ "net_cls" ];
+  };
+
   containers = {
     proxy = {
       autoStart = true;
@@ -89,6 +98,21 @@ in
       privateNetwork = true;
       bindMounts."/var/lib/acme/account.honermann.info" = { };
     };
+    torrent = {
+      autoStart = true;
+      config = (import ../private/seerr.nix);
+      enableTun = true;
+      hostAddress = "169.253.27.1";
+      localAddress = "169.253.27.3";
+      specialArgs = {
+        sops = inputs.sops-nix.nixosModules.sops;
+      };
+      privateNetwork = true;
+      bindMounts = {
+        "/var/Filme".isReadOnly = false;
+        "/var/Serien".isReadOnly = false;
+      };
+    };
   };
 
   systemd.tmpfiles.rules = [ "d /var/lib/private/ 0700" ];
@@ -98,18 +122,19 @@ in
     directories = [
       "/backmeup"
       "/etc/nixos/"
-      "/var/pihole" # This is a Volume for te pihole container so that we can set the adlists
-      "/var/lib/nixos/"
-      "/var/lib/nebula/"
       "/var/lib/containers"
+      "/var/lib/nebula/"
+      "/var/lib/nixos-containers/kanidm"
+      "/var/lib/nixos-containers/mailserver"
+      "/var/lib/nixos-containers/torrent"
+      "/var/lib/nixos/"
       "/var/lib/private" # because of too much errors
+      "/var/pihole" # This is a Volume for the pihole container so that we can set the adlists
       {
         directory = "/var/lib/private/factorio";
         user = "factorio";
         group = "factorio";
       }
-      "/var/lib/nixos-containers/mailserver"
-      "/var/lib/nixos-containers/kanidm"
       {
         directory = "/var/lib/audiobookshelf";
         user = "audiobookshelf";
