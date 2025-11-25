@@ -12,7 +12,7 @@ in
     };
   };
   config = rec {
-    sops = lib.mkIf config.local.nebula.enable {
+    sops = lib.mkIf false {
       secrets."nebula/${hostName}.key" = {
         mode = "0440";
         owner = "nebula-${netName}";
