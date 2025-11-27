@@ -77,6 +77,10 @@ with lib;
       };
       extraConfig = {
         merge.tool = "kdiff3";
+        "credential \"https://github.com\"".helper =
+          "!/etc/profiles/per-user/raoul/bin/gh auth git-credential";
+        "credential \"https://gist.github.com\"".helper =
+          "!/etc/profiles/per-user/raoul/bin/gh auth git-credential";
       };
     };
   };
