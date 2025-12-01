@@ -204,7 +204,6 @@
       soundconverter
       mpv # mpv Media Player
       smplayer # SM-Player (Video und Ton)
-      mp3splt
       vdhcoapp # Für Video DownloadHelper AddOn Firefox
 
       # KDE-Programme
