@@ -30,7 +30,7 @@
       #      jetbrains.pycharm-professional
       nixos-generators
       kdePackages.kleopatra
-      whatsapp-for-linux
+      wasistlos
       gh
       tetex
       nixpkgs-fmt

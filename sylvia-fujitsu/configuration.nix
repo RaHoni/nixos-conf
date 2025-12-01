@@ -150,7 +150,7 @@
       nextcloud-client
       digikam
       signal-desktop
-      whatsapp-for-linux
+      wasistlos
       zoom
       mediathekview
       tvbrowser

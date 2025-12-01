@@ -16,7 +16,7 @@
       keepassxc
       kdePackages.kmail
       kdePackages.kleopatra
-      whatsapp-for-linux
+      wasistlos
       ddcutil
       kdePackages.kaddressbook
       yubioath-flutter

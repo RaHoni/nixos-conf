@@ -30,7 +30,7 @@ with lib;
     })
     (makeAutostartItem {
       name = "com.github.xeco23.WasIstLos";
-      package = whatsapp-for-linux;
+      package = wasistlos;
     })
     (makeAutostartItem {
       name = "org.keepassxc.KeePassXC";
