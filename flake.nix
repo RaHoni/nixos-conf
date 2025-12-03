@@ -282,7 +282,6 @@
             ./r-desktop/configuration.nix
             ./r-desktop/incron.nix
             ./r-desktop/pio.nix
-            ./generic/intelgpu.nix
             ./generic/localisation.nix
             ./generic/pipewire.nix
             ./generic/plasma.nix
