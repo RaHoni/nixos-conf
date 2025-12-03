@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-bacula.url = "github:RaHoni/nixpkgs/bacula";
     nixpkgs-master.url = "github:NixOS/nixpkgs";
 
@@ -18,7 +18,7 @@
     };
 
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -54,7 +54,7 @@
     };
 
     nixvim-stable = {
-      url = "github:nix-community/nixvim/nixos-25.05";
+      url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -77,9 +77,8 @@
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
     simple-mail-server = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.05";
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-25_05.follows = "nixpkgs-stable";
     };
 
     sops-nix = {
@@ -93,7 +92,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix/release-25.05";
+      url = "github:danth/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
