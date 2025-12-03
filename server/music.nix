@@ -32,20 +32,10 @@
     snapserver = {
       enable = true;
       openFirewall = true;
-      streams = {
-        spotify = {
-          type = "librespot";
-          location = "${pkgs.librespot}/bin/librespot";
-          query = {
-            params = "-z 50000 -i \"192.168.1.200\" "; # listen Port
-          };
-        };
-
-        airplay = {
-          type = "airplay";
-          location = "${pkgs.shairport-sync}/bin/shairport-sync";
-        };
-      };
+      settings.stream.source = [
+        "librespot://${pkgs.librespot}/bin/librespot?name=Spotify&devicename=Snapcast&params=-z+50000+-i+%22192.168.1.200%22"
+        "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Airplay"
+      ];
     };
   };
   systemd.services.music-assistant.path = [ pkgs.snapcast ];
