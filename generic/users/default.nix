@@ -132,7 +132,7 @@ in
 
     git = {
       enable = true;
-      extraConfig = {
+      settings = {
         credential = {
           helper = "store --file=/run/secrets/git-credentials";
         };
