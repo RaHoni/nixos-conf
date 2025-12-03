@@ -70,6 +70,7 @@ in
 
   mailserver = {
     enable = true;
+    stateVersion = 1;
     fqdn = "mail.honermann.info";
     domains = [ "honermann.info" ];
 
