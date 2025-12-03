@@ -13,11 +13,6 @@ in
     };
     openwakeword = {
       enable = true;
-      preloadModels = [
-        "hey_jarvis"
-        "ok_nabu"
-        "hey_rhasspy"
-      ];
     };
     piper.servers."German" = {
       enable = true;
