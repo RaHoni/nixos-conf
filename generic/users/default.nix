@@ -36,9 +36,7 @@ in
 
     ssh = {
       enable = true;
-      extraConfig = ''
-        identitiesOnly yes
-      '';
+      enableDefaultConfig = false;
       matchBlocks = rec {
         cat-laptop = {
           user = "cathach";
@@ -124,6 +122,10 @@ in
         };
         server-extern = server // {
           hostname = "honermann.info";
+        };
+        "*" = {
+          forwardAgent = false;
+          identitiesOnly = true;
         };
       };
     };
