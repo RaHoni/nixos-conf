@@ -65,9 +65,9 @@ in
     ]
     ++ genericHomeManagerModules
     ++ (switchStable
-      [ inputs.nixvim-stable.homeManagerModules.nixvim ]
+      [ inputs.nixvim-stable.homeModules.nixvim ]
       [
-        inputs.nixvim.homeManagerModules.nixvim
+        inputs.nixvim.homeModules.nixvim
       ]
     );
     /*
