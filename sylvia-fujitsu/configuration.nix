@@ -130,7 +130,7 @@
       wget
       coreutils
       soundconverter
-      mp3splt
+      # mp3splt Unmaintained #TODO: find replacement
       vdhcoapp # Für Video DownloadHelper AddOn Firefox
 
       # KDE-Programme

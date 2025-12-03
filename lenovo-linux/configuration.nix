@@ -175,7 +175,7 @@
       qsynth
       fluidsynth
       soundfont-fluid # Zielpfad: /run/current-system/sw/share/soundfonts/
-      frescobaldi
+      # frescobaldi depends on qtwebengine which is unmaintained and has a lot of vulnerabilities
       musescore
       kdenlive
       #  midica        # Midi mit Lauftext anzeigen lassen

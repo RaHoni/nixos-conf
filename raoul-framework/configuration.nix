@@ -234,7 +234,7 @@
         sops
         spotify
         texliveFull # full latex
-        vmware-horizon-client # FH VDI
+        omnissa-horizon-client # FH VDI
         wasistlos
         yubioath-flutter
       ];
