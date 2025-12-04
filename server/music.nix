@@ -32,6 +32,7 @@
     snapserver = {
       enable = true;
       openFirewall = true;
+      tcp.enable = true;
       settings.stream.source = [
         "librespot://${pkgs.librespot}/bin/librespot?name=Spotify&devicename=Snapcast&params=-z%2050000%20-i%20192.168.1.200"
         "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Airplay"
