@@ -49,17 +49,18 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    discord
+    firefox
+    git
+    gnupg
+    kdePackages.kate
+    neovim
+    nmap
+    signal-desktop
+    trayscale
     wl-clipboard
     xournalpp
-    firefox
-    kdePackages.kate
-    signal-desktop
     zsh-completions
-    git
-    nmap
-    gnupg
-    neovim
-    discord
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
   ];
