@@ -73,6 +73,7 @@ in
     stateVersion = 3;
     fqdn = "mail.honermann.info";
     domains = [ "honermann.info" ];
+    enableManageSieve = true;
 
     extraVirtualAliases = {
       "abuse@honermann.info" = [ "raoul@honermann.info" ];
