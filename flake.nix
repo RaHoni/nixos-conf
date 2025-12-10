@@ -346,10 +346,8 @@
           systemModules = [
             ./vps
             ./generic/networking.nix
-            ./nebula-lighthouse/nebula.nix
           ];
           stable = true;
-          nebula = true;
         };
 
         petronillaStreaming = makeSystem {
