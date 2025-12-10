@@ -317,8 +317,10 @@ in
           sources = [
             { name = "nvim_lsp"; }
             { name = "luasnip"; } # For luasnip users.
-            { name = "path"; }
+            { name = "spell"; }
             { name = "buffer"; }
+            { name = "spell"; }
+            { name = "dictionary"; }
           ];
           mapping = {
             "<CR>" = "cmp.mapping.confirm({select = true})";
