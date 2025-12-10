@@ -217,6 +217,10 @@ in
       #LaTeX support
       vimtex.enable = full;
 
+      # Typst support
+      typst-vim.enable = true;
+      typst-preview.enable = true;
+
       #file browser/switcher
       telescope = {
         enable = true;
@@ -267,7 +271,7 @@ in
         enable = true;
         servers = {
           bashls.enable = true; # lsp server for Bash
-          clangd.enable = full; # lsp server for C/C++
+          # clangd.enable = full; # lsp server for C/C++
           pyright.enable = full; # lsp server for Python
           nil_ls = {
             enable = true; # lsp server for nix
@@ -280,7 +284,10 @@ in
             };
           };
           texlab.enable = full; # lsp Server for LaTeX
-          java_language_server.enable = full; # lsp Server for Java
+          typst_lsp = {
+            enable = true;
+            package = pkgs.tinymist;
+          };
         };
 
         keymaps.lspBuf = {

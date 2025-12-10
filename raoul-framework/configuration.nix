@@ -225,16 +225,17 @@
         discord
         gh
         jameica
-        kdePackages.kleopatra
         kanidm_1_7
+        kdePackages.kleopatra
         libation # Audible downloader
         nebula
         nixpkgs-fmt
+        omnissa-horizon-client # FH VDI
         prismlauncher # Minecraft
         sops
         spotify
         texliveFull # full latex
-        omnissa-horizon-client # FH VDI
+        typst
         wasistlos
         yubioath-flutter
       ];
