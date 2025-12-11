@@ -279,7 +279,7 @@ in
               formatting.command = [ "nixfmt" ];
               nix = {
                 flake.autoEvalInputs = true;
-                maxMemoryMB = 6144;
+                maxMemoryMB = 12884;
               };
             };
           };
