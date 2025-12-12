@@ -32,6 +32,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  hardware.microsoft-surface.kernelVersion = "stable";
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
