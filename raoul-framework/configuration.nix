@@ -229,7 +229,6 @@
         nebula
         nixpkgs-fmt
         omnissa-horizon-client # FH VDI
-        prismlauncher # Minecraft
         sops
         spotify
         texliveFull # full latex
