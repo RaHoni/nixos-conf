@@ -44,6 +44,7 @@ in
         };
         stereoanlage = {
           user = "root";
+          hostname = "stereoanlage.localdomain";
           identityFile = sshIdentity "id_ed25519_kodi";
         };
         vps = {
