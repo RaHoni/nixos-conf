@@ -18,7 +18,7 @@ jobs:
     runs-on: x86_64-linux
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.GH_PAT }}   # PAT with repo access
           submodules: true               # Fetch submodules recursively
@@ -38,7 +38,7 @@ jobs:
       !github.event.pull_request.draft
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.base.ref }}
