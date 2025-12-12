@@ -17,14 +17,7 @@
 
   local.tailscale.enable = true;
 
-  environment.etc = {
-    "libinput/local-overrides.quirks".text = ''
-      [Keyboard]
-      MatchUdevType=keyboard
-      MatchName=Framework Laptop 16 Keyboard Module - ANSI Keyboard
-      AttrKeyboardIntegration=internal
-    '';
-  };
+  i18n.extraLocaleSettings.LANGUAGE = "en_us,de_de";
 
   environment.systemPackages = with pkgs; [
     bacula

@@ -323,7 +323,7 @@ in
             { name = "dictionary"; }
           ];
           mapping = {
-            "<CR>" = "cmp.mapping.confirm({select = true})";
+            "<CR>" = "cmp.mapping.confirm()";
             "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
           };
         };
