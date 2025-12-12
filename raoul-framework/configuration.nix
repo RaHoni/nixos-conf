@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -206,8 +211,8 @@
         "video"
         "wheel"
         config.users.groups.keys.name
-        config.users.groups.vboxusers.name
-      ];
+      ]
+      ++ lib.optional (config.virtualisation.virtualbox.host.enable) config.users.groups.vboxusers.name;
       openssh.authorizedKeys.keyFiles = [
         ../generic/sshPubkeys/Surface_id_ed25519.pub
       ];
@@ -236,7 +241,7 @@
   };
 
   virtualisation.virtualbox.host = {
-    enable = true;
+    enable = false;
     enableExtensionPack = true;
   };
 
