@@ -111,6 +111,7 @@ in
       bindMounts = {
         "/var/Filme".isReadOnly = false;
         "/var/Serien".isReadOnly = false;
+        "/var/nginx".isReadOnly = false;
       };
     };
   };
@@ -149,6 +150,10 @@ in
         directory = "/var/lib/acme";
         user = "acme";
         group = "acme";
+      }
+      {
+        directory = "/var/nginx";
+        mode = "0777";
       }
     ];
     files = [
