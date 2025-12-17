@@ -33,6 +33,18 @@
   networking.networkmanager.enable = true;
 
   hardware.microsoft-surface.kernelVersion = "stable";
+  boot.kernelParams = [ "rust=0" ];
+
+  boot.kernelPatches = [
+    {
+      name = "disable-rust";
+      patch = null;
+      extraConfig = ''
+        RUST n
+      '';
+    }
+  ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
