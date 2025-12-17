@@ -19,6 +19,8 @@
     hashedPassword = "$y$j9T$T8WEf6v2b62kafCbeV.vI/$GgcjKnF/HfyHFxDdlel5o/ziOxSPN87rBfob0SMdV0C";
   };
 
+  system.autoUpgrade.flake = "git+https://github.com/RaHoni/nixos-conf";
+
   myModules.servers.wireguard = {
     enable = true;
     externalInterface = "ens6";
