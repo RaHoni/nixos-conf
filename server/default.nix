@@ -79,10 +79,7 @@ in
       };
       bindMounts."/wireguard".hostPath = "/run/secrets/wireguard";
       privateNetwork = true;
-      hostAddress = "169.254.26.129";
-      localAddress = "169.254.26.130";
-      hostAddress6 = "fc00::1";
-      localAddress6 = "fc00::2";
+      hostBridge = "br0";
       enableTun = true;
       timeoutStartSec = "4min";
     };
