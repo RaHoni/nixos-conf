@@ -1,7 +1,7 @@
 { lib, config, ... }:
 {
   #proxmoxLXC.manageNetwork = lib.mkForce true;
-  services.nginx.defaultListenAddresses = [ config.local.ips.ssl-proxy.ipv4 ];
+  services.nginx.defaultListenAddresses = [ config.local.ips.ssl-proxy.ipv4.address ];
   imports = [ ../generic/proxy.nix ];
 
   services.automx2 = {

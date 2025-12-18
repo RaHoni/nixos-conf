@@ -9,8 +9,8 @@ let
   ips = config.local.ips;
   ipv4ts = "100.91.218.48";
   ipv6ts = "fd7a:115c:a1e0::8001:da3c";
-  ipv4 = ips."pi.hole".ipv4;
-  ipv6 = ips."pi.hole".ipv6;
+  ipv4 = ips."pi.hole".ipv4.address;
+  ipv6 = ips."pi.hole".ipv6.address;
   default_data = {
     address = [ ];
     type = "block";

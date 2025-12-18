@@ -58,7 +58,9 @@ in
         address = "https://169.253.26.1";
       };
 
-      "binarycache.honermann.info" = proxyHost { address = "http://${ips.binarycache.ipv4}:5000"; };
+      "binarycache.honermann.info" = proxyHost {
+        address = "http://${ips.binarycache.ipv4.address}:5000";
+      };
 
       "headscale.honermann.info" = proxyHost {
         address = "http://localhost:8081";
@@ -71,16 +73,16 @@ in
       };
 
       "hoerbuecher.honermann.info" = proxyHost {
-        address = "http://${ips.audiobookshelf.ipv4}:8000";
+        address = "http://${ips.audiobookshelf.ipv4.address}:8000";
         proxyWebsockets = true;
         extraConfig = "client_max_body_size 8G;";
       };
 
-      "hydra.honermann.info" = proxyHost { address = "http://${ips.hydra.ipv4}:3000"; };
+      "hydra.honermann.info" = proxyHost { address = "http://${ips.hydra.ipv4.address}:3000"; };
 
       "honermann.info" = proxyHost {
         serverAliases = [ "nextcloud.honermann.info" ];
-        address = "http://${ips.server.ipv4}";
+        address = "http://${ips.server.ipv4.address}";
         proxyWebsockets = true;
         extraConfig = "client_max_body_size 10G;";
       };

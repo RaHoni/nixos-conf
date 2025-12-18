@@ -119,7 +119,7 @@ in
     };
   };
 
-  services.nginx.defaultListenAddresses = [ ips.server.ipv4 ];
+  services.nginx.defaultListenAddresses = [ ips.server.ipv4.address ];
 
   networking.firewall.allowedTCPPorts = [
     80
