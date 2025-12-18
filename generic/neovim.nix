@@ -317,7 +317,7 @@ in
           sources = [
             { name = "nvim_lsp"; }
             { name = "luasnip"; } # For luasnip users.
-            { name = "spell"; }
+            { name = "path"; }
             { name = "buffer"; }
             { name = "spell"; }
             { name = "dictionary"; }
