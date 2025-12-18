@@ -187,6 +187,7 @@ in
 
   networking = {
     dhcpcd.IPv6rs = true;
+    useDHCP = false;
     hostName = "server";
     hostId = "abb92398";
     useNetworkd = false;
@@ -196,6 +197,11 @@ in
       "192.168.2.1"
       "1.1.1.1"
     ];
+    bridges = {
+      br0 = {
+        interfaces = [ "eth0" ];
+      };
+    };
     nat = {
       enable = true;
       internalInterfaces = [
@@ -206,7 +212,7 @@ in
       enableIPv6 = true;
     };
     interfaces = {
-      eth0 = {
+      br0 = {
         macAddress = "86:2E:6C:D4:F6:1E";
         useDHCP = true;
         tempAddress = "disabled";
@@ -215,6 +221,11 @@ in
             address = "192.168.1.14";
             prefixLength = 24;
           }
+        ];
+      };
+      eth1 = {
+        virtual = true;
+        ipv4.addresses = [
           ips.server.ipv4
           ips."pi.hole".ipv4
           ips.audiobookshelf.ipv4
