@@ -98,8 +98,7 @@ in
       autoStart = true;
       config = (import ../private/seerr.nix);
       enableTun = true;
-      hostAddress = "169.253.27.1";
-      localAddress = "169.253.27.3";
+      hostBridge = "br0";
       specialArgs = {
         sops = inputs.sops-nix.nixosModules.sops;
       };
