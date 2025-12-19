@@ -217,11 +217,6 @@ in
             address = "192.168.1.14";
             prefixLength = 24;
           }
-        ];
-      };
-      eth1 = {
-        virtual = true;
-        ipv4.addresses = [
           ips.server.ipv4
           ips."pi.hole".ipv4
           ips.audiobookshelf.ipv4
