@@ -86,6 +86,7 @@ in
         ipv4.address = "192.168.1.200";
         ipv6.address = "fe80::946e:8793:2804:17e9";
       };
+      pikaraoke.ipv4.address = "192.168.1.210";
       hydra = {
         inherit (binarycache) ipv4 ipv6;
       };

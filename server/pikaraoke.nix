@@ -3,7 +3,7 @@
   virtualisation.oci-containers.containers.pikaraoke = {
     image = "docker.io/vicwomg/pikaraoke:latest";
     pull = "newer";
-    extraOptions = [ "--ip=10.88.0.5" ];
+    networks = [ "podman:mac=e2:99:a8:5a:17:d6" ];
     cmd = [
       "-u https://karaoke.honermann.info"
       "--high-quality"

@@ -88,7 +88,7 @@ in
       };
 
       "karaoke.honermann.info" = proxyHost {
-        address = "http://10.88.0.5:5555";
+        address = "http://${ips.pikaraoke.ipv4.address}:5555";
       };
 
       "media.honermann.info" = proxyHost {
