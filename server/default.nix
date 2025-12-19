@@ -218,7 +218,6 @@ in
             prefixLength = 24;
           }
           ips.server.ipv4
-          ips."pi.hole".ipv4
           ips.audiobookshelf.ipv4
           ips.nebula-lighthouse.ipv4
           ips.ssl-proxy.ipv4

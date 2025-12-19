@@ -71,7 +71,7 @@ in
         };
       };
       "pi.hole" = {
-        ipv4.address = "192.168.1.202";
+        ipv4.address = "192.168.1.252";
         ipv6.address = "fd00::4:102";
       };
       nebula-lighthouse = {

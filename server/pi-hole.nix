@@ -221,12 +221,13 @@ in
     image = "docker.io/pihole/pihole:latest";
     pull = "newer";
     ports = ports_for_ips [
-      ipv4
+      #ipv4
       #"[${ipv6}]"
       "[::]"
-      ipv4ts
+      #ipv4ts
       #"[${ipv6ts}]"
     ];
+    networks = [ "podman:mac=ce:e7:86:a2:da:13" ];
     environment = {
       TZ = "Europe/Berlin";
       FTLCONF_webserver_api_password = "";
