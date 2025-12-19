@@ -7,8 +7,9 @@
       defaultNetwork.settings = {
         dns_enabled = true;
         ipv6_enabled = true;
-        network_interface = "eth0";
+        network_interface = "br0";
         driver = "macvlan";
+        ipam_options.driver = "dhcp";
       };
     };
   };
