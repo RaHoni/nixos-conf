@@ -7,7 +7,7 @@
 let
   inherit (lib.lists) forEach flatten;
   ips = config.local.ips;
-  ipv4ts = "100.91.218.48";
+  ipv4ts = "100.110.238.97";
   ipv6ts = "fd7a:115c:a1e0::8001:da3c";
   ipv4 = ips."pi.hole".ipv4.address;
   ipv6 = ips."pi.hole".ipv6.address;
@@ -221,11 +221,9 @@ in
     image = "docker.io/pihole/pihole:latest";
     pull = "newer";
     ports = ports_for_ips [
-      #ipv4
-      #"[${ipv6}]"
       "[::]"
-      #ipv4ts
-      #"[${ipv6ts}]"
+      ipv4ts
+      "127.0.0.1"
     ];
     networks = [ "podman:mac=ce:e7:86:a2:da:13" ];
     environment = {

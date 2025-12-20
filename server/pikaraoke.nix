@@ -4,6 +4,7 @@
     image = "docker.io/vicwomg/pikaraoke:latest";
     pull = "newer";
     networks = [ "podman:mac=e2:99:a8:5a:17:d6" ];
+    ports = [ "127.0.0.1:5555:5555/tcp" ];
     cmd = [
       "-u https://karaoke.honermann.info"
       "--high-quality"
