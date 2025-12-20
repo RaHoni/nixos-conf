@@ -45,6 +45,8 @@ jobs:
           ref: ${{ github.event.pull_request.base.ref }}
 
       - name: Merge if current and checks passed
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES}}
         run: |
           LATEST_COMMIT=$(gh pr view ${{ github.event.pull_request.number }} --json headRefOid -q .headRefOid)
           if [[ "$LATEST_COMMIT" != "${{ github.event.pull_request.head.sha }}" ]]; then
@@ -65,6 +67,4 @@ jobs:
           git branch -vv
           git merge --ff-only origin/${{ github.event.pull_request.head.ref }}
           git push
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
