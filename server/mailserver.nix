@@ -18,27 +18,8 @@ in
     firewall.enable = false;
     hostName = "mail";
     useHostResolvConf = lib.mkForce false;
-    #useDHCP = lib.mkForce true;
-    defaultGateway = {
-      address = "169.254.26.129";
-      interface = "eth0";
-    };
+    useDHCP = lib.mkForce true;
     nameservers = [ "1.1.1.1" ];
-    interfaces."eth0" = {
-      ipv4.addresses = [
-        {
-          address = "169.254.26.130";
-          prefixLength = 16;
-        }
-      ];
-      ipv4.routes = [
-        {
-          address = "212.227.135.200";
-          prefixLength = 32;
-          via = "169.254.26.129";
-        }
-      ];
-    };
   };
 
   systemd.services."acme-mail.honermann.info" = {
