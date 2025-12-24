@@ -12,9 +12,14 @@ let
       extraConfig ? "",
       serverAliases ? [ ],
     }:
+    let
+      acmePath = "/var/lib/acme/${name}";
+    in
     {
       inherit serverAliases extraConfig;
-      enableACME = true;
+      sslCertificate = "${acmePath}/fullchain.pem";
+      sslCertificateKey = "${acmePath}/key.pem";
+      sslTrustedCertificate = "${acmePath}/chain.pem";
       forceSSL = true;
       http2 = true;
       locations."/" = {

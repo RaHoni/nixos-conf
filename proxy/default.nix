@@ -1,7 +1,6 @@
 { lib, config, ... }:
 {
   #proxmoxLXC.manageNetwork = lib.mkForce true;
-  services.nginx.defaultListenAddresses = [ config.local.ips.ssl-proxy.ipv4.address ];
   imports = [ ../generic/proxy.nix ];
 
   services.automx2 = {
@@ -27,7 +26,8 @@
     hostName = "ssl-proxy";
     enableIPv6 = true;
     useDHCP = lib.mkForce true;
-    useNetworkd = lib.mkForce false;
+    useNetworkd = true;
+    useHostResolvConf = false;
     firewall = {
       allowPing = true;
       allowedTCPPorts = [
