@@ -37,8 +37,6 @@ in
 
   boot.tmp.cleanOnBoot = true;
 
-  boot.zfs.package = pkgs.zfs_2_3;
-
   systemd.services = {
     "container@kanidm" = rec {
       wants = [
