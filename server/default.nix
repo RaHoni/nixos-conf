@@ -66,7 +66,13 @@ in
     proxy = {
       autoStart = true;
       config = (import ../proxy/default.nix);
-      bindMounts."/var/lib/acme".isReadOnly = false;
+      bindMounts = {
+        "/var/lib/acme" = { };
+        "${config.sops.secrets.cloudflare-api-key.path}" = { };
+      };
+      specialArgs = {
+        cloudflare-api-key = config.sops.secrets.cloudflare-api-key.path;
+      };
     };
     mailserver = {
       autoStart = true;
@@ -168,14 +174,6 @@ in
 
   boot.zfs.extraPools = [ "MainZFS" ];
   services.zfs.autoScrub.enable = true;
-
-  services.cloudflare-dyndns = {
-    enable = true;
-    ipv4 = false;
-    ipv6 = true;
-    domains = [ "honermann.info" ];
-    apiTokenFile = config.sops.secrets.cloudflare-api-key.path;
-  };
 
   myModules.autoUpgrade.enable = true;
   myModules.autoUpgrade.allowReboot = true;

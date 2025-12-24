@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  cloudflare-api-key,
+  ...
+}:
 {
   #proxmoxLXC.manageNetwork = lib.mkForce true;
   imports = [ ../generic/proxy.nix ];
@@ -20,6 +25,14 @@
         }
       ];
     };
+  };
+
+  services.cloudflare-dyndns = {
+    enable = true;
+    ipv4 = false;
+    ipv6 = true;
+    domains = [ "honermann.info" ];
+    apiTokenFile = cloudflare-api-key;
   };
 
   networking = {
