@@ -39,8 +39,11 @@
     hostName = "ssl-proxy";
     enableIPv6 = true;
     useDHCP = lib.mkForce true;
-    useNetworkd = true;
     useHostResolvConf = false;
+    tempAddresses = "disabled";
+    interfaces.eth0 = {
+      useDHCP = true;
+    };
     firewall = {
       allowPing = true;
       allowedTCPPorts = [

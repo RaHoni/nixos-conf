@@ -42,7 +42,6 @@ in
           ips.server.ipv4
           ips.audiobookshelf.ipv4
           ips.nebula-lighthouse.ipv4
-          ips.ssl-proxy.ipv4
         ];
         ipv6.addresses = [
           ips.server.ipv6

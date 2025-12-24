@@ -73,6 +73,8 @@ in
       specialArgs = {
         cloudflare-api-key = config.sops.secrets.cloudflare-api-key.path;
       };
+      privateNetwork = true;
+      hostBridge = "br0";
     };
     mailserver = {
       autoStart = true;
