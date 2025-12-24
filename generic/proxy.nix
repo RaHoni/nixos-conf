@@ -5,6 +5,7 @@ let
   ips = config.local.ips;
 
   proxyHost =
+    name:
     {
       address,
       proxyWebsockets ? false,
@@ -21,6 +22,7 @@ let
         inherit proxyWebsockets;
       };
     };
+  inherit (lib) mapAttrs;
 in
 {
   imports = [ ./ips.nix ];
@@ -53,50 +55,52 @@ in
       proxy_cookie_path / "/; secure; HttpOnly; SameSite=strict";
     '';
 
-    virtualHosts = {
-      "account.honermann.info" = proxyHost {
+    virtualHosts = mapAttrs proxyHost {
+      "account.honermann.info" = {
         address = "https://169.253.26.1";
       };
 
-      "binarycache.honermann.info" = proxyHost {
+      "binarycache.honermann.info" = {
         address = "http://${ips.binarycache.ipv4.address}:5000";
       };
 
-      "headscale.honermann.info" = proxyHost {
+      "headscale.honermann.info" = {
         address = "http://localhost:8081";
         proxyWebsockets = true;
       };
 
-      "home.honermann.info" = proxyHost {
+      "home.honermann.info" = {
         address = "http://127.0.0.1:8123";
         proxyWebsockets = true;
       };
 
-      "hoerbuecher.honermann.info" = proxyHost {
+      "hoerbuecher.honermann.info" = {
         address = "http://${ips.audiobookshelf.ipv4.address}:8000";
         proxyWebsockets = true;
         extraConfig = "client_max_body_size 8G;";
       };
 
-      "hydra.honermann.info" = proxyHost { address = "http://${ips.hydra.ipv4.address}:3000"; };
+      "hydra.honermann.info" = {
+        address = "http://${ips.hydra.ipv4.address}:3000";
+      };
 
-      "honermann.info" = proxyHost {
+      "honermann.info" = {
         serverAliases = [ "nextcloud.honermann.info" ];
         address = "http://${ips.server.ipv4.address}";
         proxyWebsockets = true;
         extraConfig = "client_max_body_size 10G;";
       };
 
-      "karaoke.honermann.info" = proxyHost {
+      "karaoke.honermann.info" = {
         address = "http://${ips.pikaraoke.ipv4.address}:5555";
       };
 
-      "media.honermann.info" = proxyHost {
+      "media.honermann.info" = {
         address = "http://127.0.0.1:8096";
         proxyWebsockets = true;
         extraConfig = "proxy_buffering off;"; # Disable buffering when the nginx proxy gets very resource heavy upon streaming
       };
-      "anfragen.honermann.info" = proxyHost {
+      "anfragen.honermann.info" = {
         address = "http://127.0.0.1:5055";
       };
     };
