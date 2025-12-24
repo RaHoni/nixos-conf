@@ -70,12 +70,12 @@ in
       };
 
       "headscale.honermann.info" = {
-        address = "http://localhost:8081";
+        address = "http://192.168.1.14:8081";
         proxyWebsockets = true;
       };
 
       "home.honermann.info" = {
-        address = "http://127.0.0.1:8123";
+        address = "http://192.168.1.14:8123";
         proxyWebsockets = true;
       };
 
@@ -101,12 +101,12 @@ in
       };
 
       "media.honermann.info" = {
-        address = "http://127.0.0.1:8096";
+        address = "http://192.168.1.14:8096";
         proxyWebsockets = true;
         extraConfig = "proxy_buffering off;"; # Disable buffering when the nginx proxy gets very resource heavy upon streaming
       };
       "anfragen.honermann.info" = {
-        address = "http://127.0.0.1:5055";
+        address = "http://192.168.1.14:5055";
       };
     };
   };
