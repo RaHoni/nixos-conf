@@ -6,10 +6,12 @@ in
 {
   services.jellyfin = {
     enable = true;
+    openFirewall = true;
   };
 
   services.jellyseerr = {
     enable = true;
+    openFirewall = true;
   };
 
   services.nginx.virtualHosts = {

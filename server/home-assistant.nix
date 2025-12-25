@@ -48,6 +48,7 @@ in
 
   networking.firewall.allowedUDPPorts = [ 1900 ]; # SSDP
   networking.firewall.allowedTCPPorts = [
+    8123 # Webinterface
     10200
     10300
     10400

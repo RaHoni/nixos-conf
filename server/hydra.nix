@@ -14,6 +14,8 @@
     notificationSender = "hydra@honermann.info";
   };
 
+  networking.firewall.allowedTCPPorts = [ config.services.hydra.port ];
+
   nix.buildMachines = [
     {
       hostName = "localhost";
