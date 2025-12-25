@@ -93,6 +93,9 @@ in
       ssl-proxy = {
         ipv4.address = "192.168.1.207";
       };
+      kanidm = {
+        ipv4.address = "192.168.1.201";
+      };
     };
   };
 }

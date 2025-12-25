@@ -62,7 +62,7 @@ in
 
     virtualHosts = mapAttrs proxyHost {
       "account.honermann.info" = {
-        address = "https://169.253.26.1";
+        address = "https://${ips.kanidm.ipv4.address}";
       };
 
       "binarycache.honermann.info" = {

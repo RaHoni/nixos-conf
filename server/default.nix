@@ -93,8 +93,7 @@ in
     kanidm = {
       autoStart = true;
       config = (import ./kanidm.nix);
-      hostAddress = "169.253.26.100";
-      localAddress = "169.253.26.1";
+      hostBridge = "br0";
       specialArgs = {
         sops = inputs.sops-nix.nixosModules.sops;
       };

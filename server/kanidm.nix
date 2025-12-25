@@ -8,8 +8,19 @@ let
   secrets = config.sops.secrets;
 in
 {
-  imports = [ sops ];
-  networking.hostName = "kanidm";
+  imports = [
+    sops
+    ../generic/ips.nix
+  ];
+  networking = {
+    hostName = "kanidm";
+    defaultGateway.address = "192.168.1.1";
+    interfaces.eth0 = {
+      ipv4.addresses = [
+        config.local.ips.kanidm.ipv4
+      ];
+    };
+  };
 
   nix.settings.extra-experimental-features = [
     "nix-command"
@@ -45,9 +56,9 @@ in
     enableServer = true;
     serverSettings = {
       bindaddress = "0.0.0.0:443";
-      ldapbindaddress = "169.253.26.1:3636";
-      http_client_address_info.proxy-v2 = [
-        "169.254.26.100"
+      ldapbindaddress = "0.0.0.0:3636";
+      http_client_address_info.x-forward-for = [
+        config.local.ips.ssl-proxy.ipv4.address
       ];
       version = "2";
       domain = "account.honermann.info";
