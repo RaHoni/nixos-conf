@@ -42,6 +42,7 @@
     useHostResolvConf = false;
     tempAddresses = "disabled";
     interfaces.eth0 = {
+      macAddress = "2a:42:d6:d4:b8:20";
       useDHCP = true;
     };
     firewall = {
