@@ -46,7 +46,7 @@ jobs:
 
       - name: Merge if current and checks passed
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES}}
+          GH_TOKEN: ${{ secrets.GH_TOKEN_WRITE_PRIVATE }}
         run: |
           LATEST_COMMIT=$(gh pr view ${{ github.event.pull_request.number }} --json headRefOid -q .headRefOid)
           if [[ "$LATEST_COMMIT" != "${{ github.event.pull_request.head.sha }}" ]]; then
