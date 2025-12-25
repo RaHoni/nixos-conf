@@ -38,7 +38,6 @@
   networking = {
     hostName = "ssl-proxy";
     enableIPv6 = true;
-    useDHCP = lib.mkForce true;
     useHostResolvConf = false;
     tempAddresses = "disabled";
     defaultGateway.address = "192.168.1.1";
@@ -46,7 +45,6 @@
       ipv4 = {
         addresses = [ config.local.ips.ssl-proxy.ipv4 ];
       };
-      useDHCP = true;
     };
     firewall = {
       allowPing = true;
