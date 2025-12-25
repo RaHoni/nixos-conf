@@ -32,11 +32,6 @@ in
 {
   imports = [ ./ips.nix ];
 
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "webmaster@honermann.info";
-  };
-
   #reverse proxy
   services.nginx = {
     enable = true;
