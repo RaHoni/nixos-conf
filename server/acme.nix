@@ -22,12 +22,14 @@
           "hydra"
           "karaoke"
           "media"
+          "autoconfig"
         ]
       ) (n: { }))
       // {
         "honermann.info" = {
           extraDomainNames = [ "nextcloud.honermann.info" ];
         };
+        "autoconfig.honermann.info".extraDomainNames = [ "autodiscover.honermann.info" ];
       };
   };
 

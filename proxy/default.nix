@@ -8,23 +8,35 @@
   #proxmoxLXC.manageNetwork = lib.mkForce true;
   imports = [ ../generic/proxy.nix ];
 
-  services.automx2 = {
-    enable = true;
-    domain = "honermann.info";
-    settings = {
-      provider = "Fam. Honermann";
-      domains = [ "honermann.info" ];
-      servers = [
-        {
-          type = "imap";
-          name = "mail.honermann.info";
-        }
-        {
-          type = "smtp";
-          name = "mail.honermann.info";
-        }
-      ];
+  services = rec {
+    automx2 = {
+      enable = true;
+      domain = "honermann.info";
+      settings = {
+        provider = "Fam. Honermann";
+        domains = [ "honermann.info" ];
+        servers = [
+          {
+            type = "imap";
+            name = "mail.honermann.info";
+          }
+          {
+            type = "smtp";
+            name = "mail.honermann.info";
+          }
+        ];
+      };
     };
+    nginx.virtualHosts."autoconfig.${automx2.domain}" =
+      let
+        acmePath = "/var/lib/acme/autoconfig.${automx2.domain}";
+      in
+      {
+        enableACME = lib.mkForce false;
+        sslCertificate = "${acmePath}/fullchain.pem";
+        sslCertificateKey = "${acmePath}/key.pem";
+        sslTrustedCertificate = "${acmePath}/chain.pem";
+      };
   };
 
   services.cloudflare-dyndns = {
