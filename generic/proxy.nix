@@ -70,7 +70,7 @@ in
       };
 
       "home.honermann.info" = {
-        address = "http://${ips.server.ipv4.address}:8123";
+        address = "http://${ips.home-assistant.ipv4.address}:8123";
         proxyWebsockets = true;
       };
 

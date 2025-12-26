@@ -29,10 +29,8 @@ in
     environment.TZ = "Europe/Berlin";
     pull = "newer";
     image = "ghcr.io/home-assistant/home-assistant:stable";
-    extraOptions = [
-      "--network=host"
-      "--device=/dev/ttyACM0:/dev/ttyACM0" # ZigBee stick
-    ];
+    networks = [ "podman:mac=52:31:65:81:c8:fd" ];
+    devices = [ "/dev/ttyACM0:/dev/ttyACM0" ]; # ZigBee stick
   };
 
   systemd.services."${serviceName}" = {
