@@ -106,6 +106,7 @@ creation_rules:
       - *sylvia-fujitsu
       - *vps
       - *torrent
+      - *kanidm
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
     - pgp:
