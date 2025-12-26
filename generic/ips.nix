@@ -75,10 +75,6 @@ in
         ipv4.address = "192.168.1.252";
         ipv6.address = "fd00::4:102";
       };
-      nebula-lighthouse = {
-        ipv4.address = "192.168.1.208";
-        ipv6.address = "fd00::4:208";
-      };
       audiobookshelf = {
         ipv4.address = "192.168.1.209";
         ipv6.address = "fd00::4:209";

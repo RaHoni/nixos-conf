@@ -150,7 +150,6 @@
           homeManagerModules ? { },
           stable ? true,
           system ? "x86_64-linux",
-          nebula ? false,
           secureboot ? false,
           genericHomeManagerModules ? [ ],
           ...
@@ -162,7 +161,6 @@
             inherit
               inputs
               stable
-              nebula
               secureboot
               genericHomeManagerModules
               ; # ToDO: also make proxmox an option
@@ -236,7 +234,6 @@
               plasma-manager-stable.homeModules.plasma-manager
             ];
           };
-          nebula = true;
         };
 
         sylvia-fujitsu = makeSystem {
@@ -273,7 +270,6 @@
               ./generic/users/raoul/plasma6.nix
             ];
           };
-          nebula = true;
           secureboot = true;
         };
 
@@ -299,7 +295,6 @@
             ];
             ffmpeg = [ ./generic/users ];
           };
-          nebula = true;
           stable = true;
         };
 
@@ -311,11 +306,9 @@
           homeManagerModules = {
             jasmine = [ ./jasmine/jasmineHM.nix ];
           };
-          nebula = true;
         };
 
         server = makeSystem {
-          nebula = true;
           systemModules = [
             inputs.impermanence.nixosModules.impermanence
             ./bacula/dir.nix
@@ -367,7 +360,6 @@
             plasma-manager-stable.homeModules.plasma-manager
             ./petronillaStreaming/hm-streaming.nix
           ];
-          nebula = true;
         };
 
         #        rescueIso = makeSystem {
@@ -392,13 +384,11 @@
       #            system = "x86_64-linux";
       #            modules = [
       #              ./generic/newDefault.nix
-      #              ./generic/nebula.nix
       #              ./rescueIso/configuration.nix
       #              #"${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
       #            ];
       #            specialArgs = {
       #              inherit system inputs;
-      #              nebula = false;
       #              stable = true;
       #              secureboot = false;
       #              genericHomeManagerModules = [ ];
@@ -414,12 +404,10 @@
       #            system = "aarch64-linux";
       #            modules = [
       #              ./generic/newDefault.nix
-      #              ./generic/nebula.nix
       #              { networking.hostName = "rescueIso"; }
       #            ];
       #            specialArgs = {
       #              inherit system inputs;
-      #              nebula = false;
       #              stable = true;
       #              secureboot = false;
       #              genericHomeManagerModules = [ ];

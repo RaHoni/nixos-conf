@@ -125,7 +125,6 @@ in
       "/backmeup"
       "/etc/nixos/"
       "/var/lib/containers"
-      "/var/lib/nebula/"
       "/var/lib/nixos-containers/kanidm"
       "/var/lib/nixos-containers/mailserver"
       "/var/lib/nixos-containers/torrent"

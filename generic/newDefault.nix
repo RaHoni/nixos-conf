@@ -4,7 +4,6 @@
   homeManagerModules,
   inputs,
   lib,
-  nebula,
   pkgs,
   stable,
   ...
@@ -53,7 +52,6 @@ in
 
   boot.supportedFilesystems = [ "exfat" ];
 
-  local.nebula.enable = nebula;
   #home manager setup
   programs.dconf.enable = true;
   home-manager = {

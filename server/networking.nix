@@ -41,13 +41,11 @@ in
           }
           ips.server.ipv4
           ips.audiobookshelf.ipv4
-          ips.nebula-lighthouse.ipv4
         ];
         ipv6.addresses = [
           ips.server.ipv6
           ips."pi.hole".ipv6
           ips.audiobookshelf.ipv6
-          ips.nebula-lighthouse.ipv6
         ];
       };
     };
