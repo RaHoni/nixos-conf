@@ -165,6 +165,7 @@
               genericHomeManagerModules
               ; # ToDO: also make proxmox an option
             inherit (hydra.packages.${system}) hydra;
+            inherit (inputs.sops-nix.nixosModules) sops;
             homeManagerModules =
               nixpkgs.lib.attrsets.foldAttrs (item: acc: item ++ acc)
                 [ ]
