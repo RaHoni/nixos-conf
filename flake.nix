@@ -324,7 +324,6 @@
             #./server/esphome.nix
             ./server/factorio.nix
             ./server/github-runner.nix
-            ./server/headscale.nix
             ./server/home-assistant.nix
             ./server/hydra.nix
             ./server/jellyfin.nix
@@ -342,6 +341,7 @@
           systemModules = [
             ./vps
             ./generic/networking.nix
+            ./server/headscale.nix
           ];
           stable = true;
         };

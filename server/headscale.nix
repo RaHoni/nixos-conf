@@ -1,12 +1,13 @@
 { config, ... }:
 {
   sops.secrets.headscale = {
-    sopsFile = ../secrets/server/headscale.yaml;
+    sopsFile = ../secrets/headscale.yaml;
     owner = "headscale";
   };
   services.headscale = {
     enable = true;
-    port = 8081;
+    port = 443;
+    address = "[::]";
     settings = {
       oidc = rec {
         client_id = "headscale_service";
@@ -26,9 +27,11 @@
         ];
       };
       policy.path = ./headscale_acl.hujson;
+      tls_letsencrypt_hostname = "headscale.honermann.info";
     };
   };
-  environment.persistence."/permament".directories = [
-    "/var/lib/headscale"
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
   ];
 }
