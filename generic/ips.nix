@@ -62,6 +62,7 @@ in
 
   config = {
     local.ips = rec {
+      gateway.ipv4.address = "192.168.1.1";
       server = {
         ipv4.address = "192.168.1.200";
         ipv6.address = "fd00::4:1";
@@ -95,6 +96,16 @@ in
       };
       kanidm = {
         ipv4.address = "192.168.1.201";
+      };
+      vps = {
+        ipv4 = {
+          address = "212.227.135.200";
+          prefixLength = "32";
+        };
+        ipv6 = {
+          address = "2a01:239:2b9:9600::1";
+          prefixLength = 128;
+        };
       };
     };
   };

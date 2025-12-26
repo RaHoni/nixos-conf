@@ -7,11 +7,13 @@
 }:
 let
   certPath = "/var/lib/acme/${config.mailserver.fqdn}";
+  vpsipv4 = config.local.ips.vps.ipv4.address;
 in
 {
   imports = [
     sms
     ../generic/networking.nix
+    ../generic/ips.nix
   ];
 
   networking = {
@@ -43,7 +45,7 @@ in
           "0.0.0.0/0"
           "::/0"
         ];
-        endpoint = "212.227.135.200:51820";
+        endpoint = "${vpsipv4}:51820";
         persistentKeepalive = 25;
       }
     ];
@@ -92,7 +94,7 @@ in
   services.nginx.virtualHosts.rspamd = {
     listen = [
       {
-        addr = "169.254.26.130";
+        addr = "0.0.0.0";
         port = 80;
       }
     ];

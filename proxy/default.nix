@@ -52,7 +52,7 @@
     enableIPv6 = true;
     useHostResolvConf = false;
     tempAddresses = "disabled";
-    defaultGateway.address = "192.168.1.1";
+    defaultGateway.address = config.local.ips.gateway.ipv4.address;
     interfaces.eth0 = {
       ipv4 = {
         addresses = [ config.local.ips.ssl-proxy.ipv4 ];
