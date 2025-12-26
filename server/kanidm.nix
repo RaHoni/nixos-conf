@@ -42,7 +42,7 @@ in
       "audiobookshelf_service".owner = "kanidm";
       "headscale" = {
         owner = "kanidm";
-        sopsFile = ../secrets/server/headscale.yaml;
+        sopsFile = ../secrets/headscale.yaml;
       };
     };
   };
