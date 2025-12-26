@@ -332,7 +332,6 @@
             ./server/pi-hole.nix
             ./server/pikaraoke.nix
             ./server/podman.nix
-            ./server/tailscale.nix
             ./server/warrior.nix
           ];
         };

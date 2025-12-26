@@ -100,6 +100,20 @@ in
       privateNetwork = true;
       bindMounts."/var/lib/acme/account.honermann.info" = { };
     };
+    tailscale-exit = {
+      autoStart = true;
+      config = (import ./tailscale.nix);
+      hostBridge = "br0";
+      enableTun = true;
+      specialArgs = {
+        sops = inputs.sops-nix.nixosModules.sops;
+      };
+      privateNetwork = true;
+      bindMounts."/var/lib/tailscale/" = {
+        isReadOnly = false;
+        hostPath = "/var/lib/tailscale-exit-node";
+      };
+    };
     torrent = {
       autoStart = true;
       config = (import ../private/seerr.nix);
@@ -131,6 +145,8 @@ in
       "/var/lib/nixos/"
       "/var/lib/private" # because of too much errors
       "/var/pihole" # This is a Volume for the pihole container so that we can set the adlists
+      "/var/lib/tailscale/"
+      "/var/lib/tailscale-exit-node"
       {
         directory = "/var/lib/private/factorio";
         user = "factorio";
@@ -177,6 +193,10 @@ in
 
   myModules.autoUpgrade.enable = true;
   myModules.autoUpgrade.allowReboot = true;
+  local.tailscale = {
+    enable = true;
+    server = true;
+  };
 
   boot.loader.systemd-boot = {
     enable = true;
