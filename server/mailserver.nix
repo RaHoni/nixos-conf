@@ -24,11 +24,6 @@ in
     nameservers = [ "1.1.1.1" ];
   };
 
-  systemd.services."acme-mail.honermann.info" = {
-    serviceConfig.ExecStartPre = [ "${pkgs.coreutils}/bin/sleep 10" ];
-    path = [ pkgs.coreutils ];
-  };
-
   services.resolved.enable = true;
 
   #networking.wireguard.enable = true;
