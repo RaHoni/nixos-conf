@@ -12,7 +12,7 @@ in
     nameservers = [
       "127.0.0.1"
       ips."pi.hole".ipv6.address
-      "192.168.2.1"
+      "192.168.1.1"
       "1.1.1.1"
     ];
     bridges = {

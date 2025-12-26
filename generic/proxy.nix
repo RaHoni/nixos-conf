@@ -70,7 +70,7 @@ in
       };
 
       "home.honermann.info" = {
-        address = "http://192.168.1.14:8123";
+        address = "http://${ips.server.ipv4.address}:8123";
         proxyWebsockets = true;
       };
 
@@ -96,12 +96,12 @@ in
       };
 
       "media.honermann.info" = {
-        address = "http://192.168.1.14:8096";
+        address = "http://${ips.server.ipv4.address}:8096";
         proxyWebsockets = true;
         extraConfig = "proxy_buffering off;"; # Disable buffering when the nginx proxy gets very resource heavy upon streaming
       };
       "anfragen.honermann.info" = {
-        address = "http://192.168.1.14:5055";
+        address = "http://${ips.server.ipv4.address}:5055";
       };
     };
   };
