@@ -4,6 +4,10 @@
   lib,
   ...
 }:
+let
+  inherit (lib) mkIf;
+  ssh_enabled = config.services.sshd.enable;
+in
 {
   imports = [
     sops
@@ -21,15 +25,15 @@
       yubikey-auths = { };
       git-credentials = { };
       # Setup ssh-Hostkeys from sops
-      "ssh_host_ed25519_key" = {
+      "ssh_host_ed25519_key" = mkIf (ssh_enabled) {
         sopsFile = ../secrets/${config.networking.hostName}/sshd.yaml;
       };
-      "ssh_host_rsa_key" = {
+      "ssh_host_rsa_key" = mkIf (ssh_enabled) {
         sopsFile = ../secrets/${config.networking.hostName}/sshd.yaml;
       };
     };
   };
-  services.openssh.hostKeys = [
+  services.openssh.hostKeys = mkIf ssh_enabled [
     {
       path = config.sops.secrets."ssh_host_ed25519_key".path;
       type = "ed25519";
