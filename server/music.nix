@@ -25,7 +25,6 @@
         "audiobookshelf" # only unstable
         "hass_players"
         "jellyfin"
-        "player_group"
         "theaudiodb"
       ];
     };
