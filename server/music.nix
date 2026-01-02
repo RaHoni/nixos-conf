@@ -17,7 +17,7 @@
     };
     music-assistant = {
       enable = true;
-      package = pkgs.unstable.music-assistant;
+      package = pkgs.music-assistant;
       providers = [
         "snapcast"
         "radiobrowser"
@@ -26,6 +26,8 @@
         "hass_players"
         "jellyfin"
         "theaudiodb"
+        "builtin"
+        "builtin_player"
       ];
     };
     snapserver = {
