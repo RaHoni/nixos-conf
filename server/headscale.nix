@@ -21,10 +21,6 @@
         search_domains = [
           "localdomain"
         ];
-        nameservers.global = [
-          "100.64.0.5"
-          "1.1.1.1"
-        ];
       };
       policy.path = ./headscale_acl.hujson;
       tls_letsencrypt_hostname = "headscale.honermann.info";
