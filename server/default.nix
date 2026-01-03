@@ -90,6 +90,16 @@ in
       enableTun = true;
       timeoutStartSec = "4min";
     };
+    music = {
+      autoStart = true;
+      config = (import ./music.nix);
+      bindMounts = {
+        "/var/lib/private/snapserver".isReadOnly = false;
+        "/var/lib/private/music-assistant".isReadOnly = false;
+      };
+      privateNetwork = true;
+      hostBridge = "br0";
+    };
     kanidm = {
       autoStart = true;
       config = (import ./kanidm.nix);

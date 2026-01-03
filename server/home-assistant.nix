@@ -3,23 +3,6 @@ let
   serviceName = config.virtualisation.oci-containers.containers.homeassistant.serviceName;
 in
 {
-  services.wyoming = {
-    faster-whisper.servers."German" = {
-      enable = true;
-      language = "de";
-      model = "medium-int8";
-      beamSize = 3;
-      uri = "tcp://0.0.0.0:10300";
-    };
-    openwakeword = {
-      enable = true;
-    };
-    piper.servers."German" = {
-      enable = true;
-      voice = "de_DE-thorsten-medium";
-      uri = "tcp://0.0.0.0:10200";
-    };
-  };
 
   virtualisation.oci-containers.containers.homeassistant = {
     volumes = [
@@ -43,12 +26,4 @@ in
       "phpfpm-nextcloud.service"
     ];
   };
-
-  networking.firewall.allowedUDPPorts = [ 1900 ]; # SSDP
-  networking.firewall.allowedTCPPorts = [
-    8123 # Webinterface
-    10200
-    10300
-    10400
-  ];
 }

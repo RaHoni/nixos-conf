@@ -327,7 +327,6 @@
             ./server/home-assistant.nix
             ./server/hydra.nix
             ./server/jellyfin.nix
-            ./server/music.nix
             ./server/nextcloud.nix
             ./server/pi-hole.nix
             ./server/pikaraoke.nix

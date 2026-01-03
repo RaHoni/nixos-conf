@@ -1,10 +1,46 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
+let
+  ips = config.local.ips;
+in
 {
+  imports = [ ../generic/ips.nix ];
+  networking = {
+    hostName = "music";
+    nameservers = [
+      ips."pi.hole".ipv4.address
+      ips."pi.hole".ipv6.address
+      ips.cloudflare.ipv4.address
+      ips.cloudflare.ipv6.address
+    ];
+    defaultGateway = ips.gateway.ipv4.address;
+    interfaces.eth0.ipv4 = {
+      addresses = [ ips.music.ipv4 ];
+    };
+  };
+  system.stateVersion = "25.11";
+
+  services.wyoming = {
+    faster-whisper.servers."German" = {
+      enable = true;
+      language = "de";
+      model = "medium-int8";
+      beamSize = 3;
+      uri = "tcp://0.0.0.0:10300";
+    };
+    openwakeword = {
+      enable = true;
+    };
+    piper.servers."German" = {
+      enable = true;
+      voice = "de_DE-thorsten-medium";
+      uri = "tcp://0.0.0.0:10200";
+    };
+  };
+
   services = {
     avahi = {
       enable = true;
@@ -36,18 +72,13 @@
       settings = {
         tcp.enabled = true;
         stream.source = [
-          "librespot://${pkgs.librespot}/bin/librespot?name=Spotify&devicename=Snapcast&params=-z%2050000%20-i%20192.168.1.200"
+          "librespot://${pkgs.librespot}/bin/librespot?name=Spotify&devicename=Snapcast&params=-z%2050000"
           "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Airplay"
         ];
       };
     };
   };
   systemd.services.music-assistant.path = [ pkgs.snapcast ];
-
-  environment.persistence."/permament".directories = [
-    "/var/lib/private/snapserver"
-    "/var/lib/private/music-assistant"
-  ];
 
   networking.firewall = {
     allowedUDPPorts = [
@@ -60,6 +91,11 @@
       50001 # librespot2
       5000 # airplay
       4444
+
+      # wyoming
+      10200
+      10300
+      10400
 
       # music-assistant
       8095

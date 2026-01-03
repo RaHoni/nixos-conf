@@ -62,6 +62,10 @@ in
 
   config = {
     local.ips = rec {
+      cloudflare = {
+        ipv4.address = "1.1.1.1";
+        ipv6.address = "2606:4700:4700::1001";
+      };
       gateway.ipv4.address = "192.168.1.1";
       server = {
         ipv4.address = "192.168.1.200";
@@ -93,6 +97,9 @@ in
       };
       kanidm = {
         ipv4.address = "192.168.1.201";
+      };
+      music = {
+        ipv4.address = "192.168.1.202";
       };
       vps = {
         ipv4 = {
