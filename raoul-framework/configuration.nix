@@ -163,6 +163,7 @@
     teamviewer.enable = true;
     usbmuxd.enable = true;
     xserver.enable = true; # Used by sddm
+    mullvad-vpn.enable = true;
   };
 
   stylix = {
