@@ -224,6 +224,7 @@
         surface-raoul-nixos = makeSystem {
           systemModules = [
             ./surface-raoul-nixos/configuration.nix
+            ./surface-raoul-nixos/disko.nix
             ./generic/localisation.nix
             #./generic/pipewire.nix
             ./generic/printer.nix

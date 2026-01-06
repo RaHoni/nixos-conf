@@ -33,41 +33,6 @@
 
   services.btrfs.autoScrub.enable = true;
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/45ff13ea-c576-4df6-8fd4-5d39bf28b83a";
-    fsType = "btrfs";
-    options = [
-      "subvol=root"
-      "compress=zstd"
-    ];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/45ff13ea-c576-4df6-8fd4-5d39bf28b83a";
-    fsType = "btrfs";
-    options = [
-      "subvol=home"
-      "compress=zstd"
-    ];
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/45ff13ea-c576-4df6-8fd4-5d39bf28b83a";
-    fsType = "btrfs";
-    options = [
-      "subvol=nix"
-      "compress=zstd"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/BFBC-F2CD";
-    fsType = "vfat";
-  };
-
-  swapDevices = [ { device = "/dev/disk/by-uuid/0a4fc3a2-6196-4086-8774-dfceb166c908"; } ];
-
   hardware.sensor.iio.enable = true;
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
