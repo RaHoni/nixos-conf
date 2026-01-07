@@ -95,6 +95,10 @@ in
       ssl-proxy = {
         ipv4.address = "192.168.1.207";
       };
+      tailscale-exit = {
+        ipv4.address = "192.168.1.229";
+        ipv6.address = "fd00::5:1";
+      };
       kanidm = {
         ipv4.address = "192.168.1.201";
       };
