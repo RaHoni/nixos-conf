@@ -1,5 +1,8 @@
 { config, ... }:
 {
+  imports = [
+    ../generic/ips.nix
+  ];
   sops.secrets.headscale = {
     sopsFile = ../secrets/headscale.yaml;
     owner = "headscale";
@@ -20,6 +23,9 @@
         base_domain = "tailnet.honermann.info";
         search_domains = [
           "localdomain"
+        ];
+        nameservers.global = [
+          config.local.ips."pi.hole".ipv4.address
         ];
       };
       policy.path = ./headscale_acl.hujson;
