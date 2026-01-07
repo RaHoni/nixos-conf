@@ -233,6 +233,7 @@
           homeManagerModules = {
             raoul = [
               ./surface-raoul-nixos/raoulHM.nix
+              ./generic/users/raoul/plasma6.nix
               plasma-manager-stable.homeModules.plasma-manager
             ];
           };
