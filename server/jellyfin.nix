@@ -18,7 +18,7 @@ in
     sonarr = {
       listen = [
         {
-          addr = "127.0.0.1";
+          addr = "0.0.0.0";
           port = 8090;
         }
       ];
@@ -29,7 +29,7 @@ in
     radarr = {
       listen = [
         {
-          addr = "127.0.0.1";
+          addr = "0.0.0.0";
           port = 8091;
         }
       ];
@@ -40,13 +40,19 @@ in
     jackett = {
       listen = [
         {
-          addr = "127.0.0.1";
+          addr = "0.0.0.0";
           port = 8092;
         }
       ];
       locations."/".proxyPass = "http://unix:/var/nginx/jackett.sock";
     };
   };
+
+  networking.firewall.allowedTCPPorts = [
+    8090
+    8091
+    8092
+  ];
 
   users.users.jellyfin.extraGroups = [ "render" ];
 
