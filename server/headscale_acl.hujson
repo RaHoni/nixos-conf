@@ -12,6 +12,12 @@
     "tag:server": [ "group:admin" ],
     "tag:extern": [ "group:admin"],
   },
+  "autoApprovers": {
+    "routes": {
+      "192.168.0.0/16": ["tag:server"]
+    },
+    "exitNode": ["tag:server"]
+  },
 //  "acls": [
 //  {
 //    "action": "accept",
