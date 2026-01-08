@@ -113,7 +113,7 @@ in
         };
         server = {
           #match = ''exec "grepcidr '192.168.3.1/24 fd00::4:1/112' <(host %h) <(echo %h) &>/dev/null"'';
-          hostname = "192.168.1.14";
+          hostname = "server";
           identityFile = [
             (sshIdentity "id_ecdsa_proxmox")
             (sshIdentity "ch-kodi")
