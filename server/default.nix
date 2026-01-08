@@ -207,6 +207,7 @@ in
     enable = true;
     server = true;
   };
+  services.tailscale.extraSetFlags = [ "--accept-dns=false" ];
 
   boot.loader.systemd-boot = {
     enable = true;
