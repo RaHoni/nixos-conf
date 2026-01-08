@@ -24,9 +24,10 @@ in
     localVariables = {
       YSU_IGNORED_ALIASES = [ "g" ];
     };
-    sessionVariables = {
-      SOPS_AGE_KEY_FILE = osConfig.sops.age.keyFile;
-    };
+  };
+
+  home.sessionVariables = {
+    SOPS_AGE_KEY_FILE = osConfig.sops.age.keyFile;
   };
 
   programs = {
