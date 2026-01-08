@@ -220,11 +220,6 @@ in
   virtualisation.oci-containers.containers.pi-hole = {
     image = "docker.io/pihole/pihole:latest";
     pull = "newer";
-    ports = ports_for_ips [
-      "[::]"
-      ipv4ts
-      "127.0.0.1"
-    ];
     networks = [ "podman:mac=ce:e7:86:a2:da:13" ];
     environment = {
       TZ = "Europe/Berlin";
