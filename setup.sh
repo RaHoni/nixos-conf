@@ -1,9 +1,9 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash --packages git sops cryptsetup headscale
+#! nix-shell -i bash --packages git sops cryptsetup headscale jq
 set -e
 
 hostname=""
-remote="server"
+remote="vps"
 remote_sock="/run/headscale/headscale.sock"
 local_sock="/tmp/headscale-tunnel.sock"
 sops_file="secrets/tailscale.yaml"
@@ -67,7 +67,12 @@ updateTailscale() {
     HEADSCALE_CONFIG=./config.yaml
 
     # Fetch user list
-    local headscaleusers=( $(headscale users list -o yaml | sed -nE 's/( +name: )(.*)/\2/p') )
+
+    mapfile -t headscaleusers < <(
+        headscale users list -o json |
+        jq -r '.[] | "\(.id) \(.name)"'
+    )
+
 
     # Detect "-h" in additional args
     show_only=false
@@ -81,23 +86,20 @@ updateTailscale() {
     printf "Fetched %d users from headscale\n" "${#headscaleusers[@]}"
 
     # Generate new auth keys and write them all to one SOPS file
-    for long_user in "${headscaleusers[@]}"; do
-        short_user="${long_user%@account.honermann.info}"
-        echo "Creating auth key for user: ${short_user}"
-        echo "additional args: $@"
+    for entry in "${headscaleusers[@]}"; do
+        read -r user_id long_user <<<"$entry"
 
-        # Generate a reusable preauth key
-        auth_output=$(headscale preauthkeys create --reusable -u "${long_user}" "$@")
+        short_user="${long_user%@account.honermann.info}"
+        echo "Creating auth key for user: ${short_user} (id=${user_id})"
+
+        auth_output=$(headscale preauthkeys create --reusable -u "${user_id}" "$@")
 
         if [ "$show_only" = true ]; then
-            echo -e "headscale Help:\n\n"
             echo "$auth_output"
-            return 0  # or exit 0 if not in a function
+            return 0  # or exit 0 if this is a script
         fi
 
-        # Write or update the key entry in secrets/tailscale.yaml
         sops --set "[\"${short_user}-auth-key\"] \"${auth_output}\"" "${sops_file}"
-
         echo "Updated ${sops_file} with ${short_user}-auth-key"
     done
 }
