@@ -333,6 +333,7 @@
             ./server/pi-hole.nix
             ./server/pikaraoke.nix
             ./server/podman.nix
+            ./server/restic.nix
             ./server/warrior.nix
           ];
         };
