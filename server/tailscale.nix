@@ -28,6 +28,10 @@ in
     enableIPv6 = true;
     useHostResolvConf = false;
     tempAddresses = "disabled";
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
     defaultGateway.address = config.local.ips.gateway.ipv4.address;
     interfaces.eth0 = {
       ipv4.addresses = [ tailscale-exit.ipv4 ];
