@@ -256,6 +256,7 @@
           systemModules = [
             ./raoul-framework/configuration.nix
             ./raoul-framework/disko.nix
+            ./raoul-framework/restic.nix
             ./generic/localisation.nix
             ./generic/networking.nix
             ./generic/pipewire.nix
