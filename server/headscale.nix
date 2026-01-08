@@ -26,6 +26,7 @@
         ];
         nameservers.global = [
           config.local.ips."pi.hole".ipv4.address
+          "1.1.1.1"
         ];
       };
       policy.path = ./headscale_acl.hujson;
