@@ -243,6 +243,7 @@
           systemModules = [
             ./sylvia-fujitsu/configuration.nix
             ./sylvia-fujitsu/disko.nix
+            ./sylvia-fujitsu/restic.nix
             ./generic/pipewire.nix
             ./generic/plasma.nix
             ./generic/printer.nix
