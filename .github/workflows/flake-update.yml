@@ -10,8 +10,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+      - name: Add gh auth
+        run: |
+          echo ${{ secrets.GH_PAT }} | gh auth login --with-token
+          gh auth setup-git
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
+        with:
+          github-token: ${{ secrets.GH_PAT }}
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@main
         with:
