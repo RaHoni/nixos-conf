@@ -13,6 +13,7 @@ in
     ./hardware-config.nix
     ../generic/ips.nix
     ../generic/networking.nix
+    ./backup.nix
     ./networking.nix
   ];
   sops.age.keyFile = lib.mkForce "/permament/sops-nix/key.txt";
