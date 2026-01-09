@@ -83,9 +83,12 @@ in
       specialArgs = {
         sms = inputs.simple-mail-server.nixosModules.mailserver;
       };
-      bindMounts."/var/lib/acme/mail.honermann.info" = {
+      bindMounts = {
+        "/var/lib/acme/mail.honermann.info" = { };
+        "/wireguard".hostPath = "/run/secrets/wireguard";
+        "/resticPass".hostPath = config.sops.secrets.repo-passwd.path;
+        "/restic-http-conf".hostPath = config.sops.templates.restic-http-conf.path;
       };
-      bindMounts."/wireguard".hostPath = "/run/secrets/wireguard";
       privateNetwork = true;
       hostBridge = "br0";
       enableTun = true;

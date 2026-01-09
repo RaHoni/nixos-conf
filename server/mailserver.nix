@@ -7,7 +7,10 @@
 }:
 let
   certPath = "/var/lib/acme/${config.mailserver.fqdn}";
-  vpsipv4 = config.local.ips.vps.ipv4.address;
+  ips = config.local.ips;
+  vpsipv4 = ips.vps.ipv4.address;
+  serverIPv4 = ips.server.ipv4.address;
+  mail = config.mailserver;
 in
 {
   imports = [
@@ -84,6 +87,23 @@ in
     certificateScheme = "manual";
     certificateFile = "${certPath}/fullchain.pem";
     keyFile = "${certPath}/key.pem";
+  };
+
+  services.restic.backups.mail = {
+    repository = "rest:http://${serverIPv4}:8080/raoul/server";
+    passwordFile = "/resticPass";
+    environmentFile = "/restic-http-conf";
+    paths = [
+      mail.mailDirectory
+      mail.sieveDirectory
+      mail.dkimKeyDirectory
+    ];
+    pruneOpts = [
+      "--keep-daily 7"
+      "--keep-weekly 4"
+      "--keep-monthly 12"
+      "--keep-yearly 3"
+    ];
   };
 
   services.nginx.virtualHosts.rspamd = {
