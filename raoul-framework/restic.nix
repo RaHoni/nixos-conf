@@ -1,9 +1,12 @@
 { config, pkgs, ... }:
+let
+  hostname = config.networking.hostName;
+in
 {
   sops = {
     secrets = {
-      repo-passwd.sopsFile = ../secrets/raoul-framework/restic.yaml;
-      restic-server-pass.sopsFile = ../secrets/raoul-framework/restic.yaml;
+      repo-passwd.sopsFile = ../secrets/${hostname}/restic.yaml;
+      restic-server-pass.sopsFile = ../secrets/${hostname}/restic.yaml;
     };
     templates.restic-http-conf = {
       content = ''
