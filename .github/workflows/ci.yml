@@ -40,13 +40,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          token: ${{ secrets.GH_PAT }}   # PAT with repo access
           fetch-depth: 0
           ref: ${{ github.event.pull_request.base.ref }}
 
       - name: Merge if current and checks passed
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN_WRITE_PRIVATE }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           LATEST_COMMIT=$(gh pr view ${{ github.event.pull_request.number }} --json headRefOid -q .headRefOid)
           if [[ "$LATEST_COMMIT" != "${{ github.event.pull_request.head.sha }}" ]]; then
