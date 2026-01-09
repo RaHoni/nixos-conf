@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   virtualisation = {
     podman = {
@@ -10,6 +10,12 @@
         network_interface = "br0";
         driver = "macvlan";
         ipam_options.driver = "dhcp";
+        routes = [
+          {
+            destination = "100.64.0.0/16";
+            gateway = config.local.ips.tailscale-exit.ipv4.address;
+          }
+        ];
       };
     };
   };
