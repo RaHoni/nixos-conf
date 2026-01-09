@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   sops = {
     secrets = {
@@ -16,7 +16,8 @@
     repository = "rest:http://server:8080/raoul/framework";
     passwordFile = config.sops.secrets.repo-passwd.path;
     environmentFile = config.sops.templates.restic-http-conf.path;
-    paths = [ "/home/raoul" ];
+    progressFps = 0.1;
+    paths = [ "/home-snap/raoul" ];
     exclude = [
       "/var/cache"
       "/home/*/.cache"
@@ -36,5 +37,7 @@
       "--keep-monthly 12"
       "--keep-yearly 3"
     ];
+    backupPrepareCommand = "${pkgs.btrfs-progs}/bin/btrfs subvolume snapshot -r /home /home-snap";
+    backupCleanupCommand = "${pkgs.btrfs-progs}/bin/btrfs subvolume delete /home-snap";
   };
 }
