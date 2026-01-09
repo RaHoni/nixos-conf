@@ -27,6 +27,7 @@ in
       ".git"
       ".nsfw/*/game"
       ".local/share/Trash"
+      "baloo/index"
     ];
     extraBackupArgs = [
       "--exclude-caches"

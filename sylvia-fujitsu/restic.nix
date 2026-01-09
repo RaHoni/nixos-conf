@@ -26,6 +26,7 @@ in
       "/home/*/.cache"
       ".git"
       ".local/share/Trash"
+      "baloo/index"
     ];
     extraBackupArgs = [
       "--exclude-caches"
