@@ -39,4 +39,9 @@ in
       ${pkgs.zfs}/bin/zfs destroy MainZFS/Nextcloud@backup
     '';
   };
+
+  services.zfs.autoSnapshot = {
+    enable = true;
+    flags = "-k -p --utc";
+  };
 }
