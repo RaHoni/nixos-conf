@@ -16,6 +16,9 @@ let
   };
 in
 {
+  environment.persistence."/permament".directories = [
+    "/var/cache/restic-backups-nextcloud"
+  ];
   sops = {
     secrets = {
       repo-passwd.sopsFile = ../secrets/${hostname}/restic.yaml;
@@ -31,16 +34,42 @@ in
   services.restic.backups = {
     nextcloud = defaultRestic // {
       paths = [ "/nextcloud" ];
-      backupPrepareCommand = ''
+      exclude = [
+        "files_trashbin"
+        "files_versions"
+        "appdata_*/preview"
+      ];
+    };
+  };
+  systemd.services.nextcloud-backup-snapshot = rec {
+    description = "ZFS snapshot for Nextcloud backup";
+    before = [ "restic-backups-nextcloud.service" ];
+    requiredBy = before;
+    partOf = before;
+    restartIfChanged = false;
+    unitConfig.StopWhenUnneeded = true;
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+
+      ExecStart = pkgs.writeShellScript "nextcloud-snapshot-start" ''
+        set -euo pipefail
+
         echo "Creating snapshot"
-        mkdir /nextcloud
+        mkdir -p /nextcloud
+
         ${pkgs.zfs}/bin/zfs snapshot MainZFS/Nextcloud@backup
         ${pkgs.util-linux}/bin/mount -t zfs MainZFS/Nextcloud@backup /nextcloud
       '';
-      backupCleanupCommand = ''
+
+      ExecStop = pkgs.writeShellScript "nextcloud-snapshot-stop" ''
+        set -euo pipefail
+
+        echo "Cleaning up snapshot"
         ${pkgs.util-linux}/bin/umount /nextcloud
         ${pkgs.zfs}/bin/zfs destroy MainZFS/Nextcloud@backup
-        rm -r /nextcloud
+        rmdir /nextcloud
       '';
     };
   };
