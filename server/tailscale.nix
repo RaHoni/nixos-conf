@@ -12,12 +12,14 @@ in
   local.tailscale = {
     enable = true;
     exit-node = true;
+    routes = [
+      "${pihole.ipv4.address}/32"
+      "${pihole.ipv6.address}/128"
+      "192.168.1.251/32"
+    ];
   };
 
   services.tailscale = {
-    extraSetFlags = [
-      "--advertise-routes=${pihole.ipv4.address}/32,${pihole.ipv6.address}/128"
-    ];
     extraUpFlags = [
       "--snat-subnet-routes=false"
     ];
