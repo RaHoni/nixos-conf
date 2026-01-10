@@ -1,6 +1,19 @@
 { config, pkgs, ... }:
 let
   hostname = config.networking.hostName;
+  defaultRestic = {
+    repository = "rest:http://server:8080/raoul/server";
+    passwordFile = config.sops.secrets.repo-passwd.path;
+    environmentFile = config.sops.templates.restic-http-conf.path;
+    inhibitsSleep = true;
+    progressFps = 0.1;
+    pruneOpts = [
+      "--keep-daily 7"
+      "--keep-weekly 4"
+      "--keep-monthly 12"
+      "--keep-yearly 3"
+    ];
+  };
 in
 {
   sops = {
@@ -15,29 +28,21 @@ in
       '';
     };
   };
-  services.restic.backups.nextcloud = {
-    repository = "rest:http://server:8080/raoul/server";
-    passwordFile = config.sops.secrets.repo-passwd.path;
-    environmentFile = config.sops.templates.restic-http-conf.path;
-    paths = [ "/nextcloud" ];
-    inhibitsSleep = true;
-    progressFps = 0.1;
-    pruneOpts = [
-      "--keep-daily 7"
-      "--keep-weekly 4"
-      "--keep-monthly 12"
-      "--keep-yearly 3"
-    ];
-    backupPrepareCommand = ''
-      echo "Creating snapshot"
-      mkdir /nextcloud
-      ${pkgs.zfs}/bin/zfs snapshot MainZFS/Nextcloud@backup
-      ${pkgs.util-linux}/bin/mount -t zfs MainZFS/Nextcloud@backup /nextcloud
-    '';
-    backupCleanupCommand = ''
-      ${pkgs.util-linux}/bin/umount /nextcloud
-      ${pkgs.zfs}/bin/zfs destroy MainZFS/Nextcloud@backup
-    '';
+  services.restic.backups = {
+    nextcloud = defaultRestic // {
+      paths = [ "/nextcloud" ];
+      backupPrepareCommand = ''
+        echo "Creating snapshot"
+        mkdir /nextcloud
+        ${pkgs.zfs}/bin/zfs snapshot MainZFS/Nextcloud@backup
+        ${pkgs.util-linux}/bin/mount -t zfs MainZFS/Nextcloud@backup /nextcloud
+      '';
+      backupCleanupCommand = ''
+        ${pkgs.util-linux}/bin/umount /nextcloud
+        ${pkgs.zfs}/bin/zfs destroy MainZFS/Nextcloud@backup
+        rm -r /nextcloud
+      '';
+    };
   };
 
   services.zfs.autoSnapshot = {
