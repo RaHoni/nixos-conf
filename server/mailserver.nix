@@ -93,7 +93,7 @@ in
     repository = "rest:http://${serverIPv4}:8080/raoul/server";
     passwordFile = "/resticPass";
     environmentFile = "/restic-http-conf";
-    timerConfig.onCalender = "23:00";
+    timerConfig.onCalendar = "23:00";
     paths = [
       mail.mailDirectory
       mail.sieveDirectory
