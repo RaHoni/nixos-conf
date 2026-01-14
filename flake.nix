@@ -445,6 +445,8 @@
 
             # --- your additions below ---
             git config diff.sopsdiffer.textconv "sops decrypt"
+            pre-commit install
+            echo Shell setup
           '';
           buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
           packages = with (stable-nixpkgs system); [
