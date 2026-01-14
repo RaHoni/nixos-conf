@@ -74,8 +74,20 @@ in
     };
   };
 
-  services.zfs.autoSnapshot = {
-    enable = true;
-    flags = "-k -p --utc";
+  services = {
+    zfs.autoSnapshot = {
+      enable = true;
+      flags = "-k -p --utc";
+    };
+    mysqlBackup = {
+      enable = true;
+      location = "/backmeup/mysql";
+      calendar = "23:00";
+    };
+    postgresqlBackup = {
+      enable = true;
+      location = "/backmeup/postgresql";
+      startAt = "23:00";
+    };
   };
 }
