@@ -15,12 +15,16 @@
       };
     };
 
-    configFile.kwinrc = {
-      Desktops = {
-        Number = 4;
-        Rows = 2;
+    kwin = {
+      virtualDesktops = {
+        number = 4;
+        rows = 2;
       };
-      Windows.RollOverDesktops = true;
+      effects = {
+        desktopSwitching.navigationWrapping = true;
+        dimAdminMode.enable = true;
+      };
     };
+
   };
 }
