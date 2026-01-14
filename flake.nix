@@ -3,7 +3,6 @@
     self.submodules = true;
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-bacula.url = "github:RaHoni/nixpkgs/bacula";
     nixpkgs-master.url = "github:NixOS/nixpkgs";
 
     disko = {
@@ -281,7 +280,6 @@
 
         r-desktop = makeSystem {
           systemModules = [
-            ./r-desktop/bacula.nix
             ./r-desktop/configuration.nix
             ./r-desktop/incron.nix
             ./r-desktop/pio.nix
@@ -317,14 +315,11 @@
         server = makeSystem {
           systemModules = [
             inputs.impermanence.nixosModules.impermanence
-            ./bacula/dir.nix
-            ./bacula/sd.nix
             ./generic/intelgpu.nix
             ./generic/smtp.nix
             ./server
             ./server/acme.nix
             ./server/audiobookshelf.nix
-            ./server/bacula.nix
             ./server/disko.nix
             #./server/esphome.nix
             ./server/factorio.nix

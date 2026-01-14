@@ -798,29 +798,13 @@
         "type": "github"
       }
     },
-    "nixpkgs-bacula": {
-      "locked": {
-        "lastModified": 1721936945,
-        "narHash": "sha256-0viiyqNWiesjCjM//BT/rR7x2aurNwOAxyLMAvscSZk=",
-        "owner": "RaHoni",
-        "repo": "nixpkgs",
-        "rev": "c3ce9d5843e03ce28f564107c075f6c8571bce22",
-        "type": "github"
-      },
-      "original": {
-        "owner": "RaHoni",
-        "ref": "bacula",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1768097066,
-        "narHash": "sha256-39nnGaiymWI4lUdeM5EvYEgGH0s/or4veiMeF4zhGMw=",
+        "lastModified": 1768377085,
+        "narHash": "sha256-jYae0KFTUjasAmr4OFkFMnQx/jPHYJSBsLfqo9qRA+8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cec807f2f2d5bc4fb83d4cc5fce7d934d1616da4",
+        "rev": "5b8c9b50feae34c1b7e0121f7cdeeaa83d9c0f09",
         "type": "github"
       },
       "original": {
@@ -1116,7 +1100,6 @@
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-bacula": "nixpkgs-bacula",
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixvim": "nixvim",

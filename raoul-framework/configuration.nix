@@ -25,7 +25,6 @@
   i18n.extraLocaleSettings.LANGUAGE = "en_us,de_de";
 
   environment.systemPackages = with pkgs; [
-    bacula
     ffmpeg
     firefox
     fw-ectool

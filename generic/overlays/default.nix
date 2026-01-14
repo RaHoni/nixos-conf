@@ -32,23 +32,6 @@
         install -D zsh-autosuggestions* --target-directory $out/share/zsh/plugins/zsh-autosuggestions
       '';
     };
-    bacula = prev.bacula.overrideAttrs {
-      buildInputs = prev.bacula.buildInputs ++ [ final.libmysqlclient ];
-      configureFlags = [
-        "--with-logdir=/var/log/bacula"
-        "--with-working-dir=/var/lib/bacula"
-        "--mandir=\${out}/share/man"
-        "--with-sqlite3=${final.sqlite.dev}"
-        "--with-mysql=${final.libmysqlclient.dev}"
-        "--with-mysql-lib=${final.libmysqlclient}/lib/mariadb"
-      ];
-      preBuild = ''
-        sed -i "/#define HAVE_ZSTD 1/d" src/config.h
-      '';
-      patches = [
-        ./bacula.patch
-      ];
-    };
     pandoc-3-12 = final.stdenv.mkDerivation rec {
       pname = "pandoc";
       version = "3.1.12";

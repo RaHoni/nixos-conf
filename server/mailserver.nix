@@ -71,7 +71,6 @@ in
         aliases = [
           "nextcloud@honermann.info"
           "noreply@honermann.info"
-          "bacula@honermann.info"
           "hydra@honermann.info"
         ];
         sendOnly = true;

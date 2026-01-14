@@ -15,7 +15,6 @@
     ./hardware-configuration.nix
     ./users.nix
     ./secrets.nix
-    ./bacula.nix
   ];
 
   # Bootloader.

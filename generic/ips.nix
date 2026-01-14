@@ -39,21 +39,6 @@ in
             type = submodule (addrOpts 6);
             description = "IPv6 address for the server.";
           };
-          bacula = mkOption {
-            type = types.submodule ({
-              options = {
-                ipv4 = mkOption {
-                  type = types.str;
-                  description = "IPv4 address for Bacula.";
-                };
-                ipv6 = mkOption {
-                  type = types.str;
-                  description = "IPv6 address for Bacula.";
-                };
-              };
-            });
-            description = "Bacula-specific IP configuration.";
-          };
         };
       })
     );
@@ -70,10 +55,6 @@ in
       server = {
         ipv4.address = "192.168.1.200";
         ipv6.address = "fd00::4:1";
-        bacula = {
-          ipv4 = server.ipv4.address;
-          ipv6 = server.ipv6.address;
-        };
       };
       "pi.hole" = {
         ipv4.address = "192.168.1.252";

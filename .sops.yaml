@@ -151,28 +151,5 @@ creation_rules:
       age:
       - *server
       - *kanidm
-  - path_regex: secrets/bacula/clients/r-desktop.yaml
-    key_groups:
-    - age:
-      - *nextcloud
-      - *r-desktop
-      - *server
-      pgp:
-      - *admin
-  - path_regex: secrets/bacula/clients/surface.yaml
-    key_groups:
-    - age:
-      - *surface
-      - *nextcloud
-      - *server
-      pgp:
-      - *admin
-  - path_regex: ^secrets/bacula/.*
-    key_groups:
-    - age:
-      - *nextcloud
-      - *server
-      pgp:
-      - *admin
   - path_regex: ^secrets/
     pgp: *admin
