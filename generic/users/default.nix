@@ -61,13 +61,13 @@ in
           forwardAgent = true;
         };
         streaming = {
-          hostname = "petronillastreaming.nb.honermann.info";
+          hostname = "petronillastreaming";
           user = "streaming";
           identityFile = sshIdentity "support";
           forwardAgent = true;
         };
         jasmine = {
-          hostname = "jasmine-laptop.nb.honermann.info";
+          hostname = "jasmine-laptop";
           user = "jasmine";
           identityFile = sshIdentity "support";
           forwardAgent = true;
@@ -79,34 +79,28 @@ in
           identityFile = sshIdentity "github";
         };
         r-desktop = {
-          hostname = "r-desktop.nb.honermann.info";
+          hostname = "r-desktop";
           identityFile = sshIdentity "r-desktop-ed25519";
           forwardAgent = true;
         };
         surface = {
-          hostname = "surface-raoul-nixos.nb.honermann.info";
+          hostname = "surface-raoul-nixos";
           identityFile = sshIdentity "Surface_id_ed25519";
           forwardAgent = true;
         };
-        ffmpeg = {
-          hostname = r-desktop.hostname;
-          user = "ffmpeg";
-          identityFile = sshIdentity "id_ffmpeg";
-          forwardAgent = true;
-        };
         honermannmedia = {
-          hostname = "honermannmedia.localdomain";
+          hostname = "honermannmedia";
           user = "root";
           identityFile = sshIdentity "id_ed25519_kodi";
         };
 
         lenovo-linux = {
-          hostname = "lenovo-linux.localdomain";
+          hostname = "lenovo-linux";
           identityFile = sshIdentity "id_rsa_lenovo-linux";
           forwardAgent = true;
         };
         sylvia-fujitsu = {
-          hostname = "sylvia-fujitsu.localdomain";
+          hostname = "sylvia-fujitsu";
           user = "sylvia";
           identityFile = [
             (sshIdentity "id_rsa_sylvia")
