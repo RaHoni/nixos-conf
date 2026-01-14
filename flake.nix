@@ -225,6 +225,7 @@
           systemModules = [
             ./surface-raoul-nixos/configuration.nix
             ./surface-raoul-nixos/disko.nix
+            ./surface-raoul-nixos/restic.nix
             ./generic/localisation.nix
             #./generic/pipewire.nix
             ./generic/printer.nix
