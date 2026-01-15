@@ -1,7 +1,7 @@
 { lib, config, ... }:
 let
-  pihole = config.local.ips."pi.hole";
-  tailscale-exit = config.local.ips.tailscale-exit;
+  pihole = config.myModules.ips."pi.hole";
+  tailscale-exit = config.myModules.ips.tailscale-exit;
 in
 {
   imports = [
@@ -33,7 +33,7 @@ in
       "1.1.1.1"
       "1.0.0.1"
     ];
-    defaultGateway.address = config.local.ips.gateway.ipv4.address;
+    defaultGateway.address = config.myModules.ips.gateway.ipv4.address;
     interfaces.eth0 = {
       ipv4.addresses = [ tailscale-exit.ipv4 ];
       ipv6.addresses = [ tailscale-exit.ipv6 ];

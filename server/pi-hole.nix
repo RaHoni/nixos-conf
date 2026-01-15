@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib.lists) forEach flatten;
-  ips = config.local.ips;
+  ips = config.myModules.ips;
   ipv4ts = "100.110.238.97";
   ipv6ts = "fd7a:115c:a1e0::8001:da3c";
   ipv4 = ips."pi.hole".ipv4.address;

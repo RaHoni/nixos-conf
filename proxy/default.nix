@@ -52,10 +52,10 @@
     enableIPv6 = true;
     useHostResolvConf = false;
     tempAddresses = "disabled";
-    defaultGateway.address = config.local.ips.gateway.ipv4.address;
+    defaultGateway.address = config.myModules.ips.gateway.ipv4.address;
     interfaces.eth0 = {
       ipv4 = {
-        addresses = [ config.local.ips.ssl-proxy.ipv4 ];
+        addresses = [ config.myModules.ips.ssl-proxy.ipv4 ];
       };
     };
     firewall = {

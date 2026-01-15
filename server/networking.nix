@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  ips = config.local.ips;
+  ips = config.myModules.ips;
 in
 {
   networking = {

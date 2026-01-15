@@ -13,7 +13,7 @@
         routes = [
           {
             destination = "100.64.0.0/16";
-            gateway = config.local.ips.tailscale-exit.ipv4.address;
+            gateway = config.myModules.ips.tailscale-exit.ipv4.address;
           }
         ];
       };

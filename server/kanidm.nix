@@ -14,10 +14,10 @@ in
   ];
   networking = {
     hostName = "kanidm";
-    defaultGateway.address = config.local.ips.gateway.ipv4.address;
+    defaultGateway.address = config.myModules.ips.gateway.ipv4.address;
     interfaces.eth0 = {
       ipv4.addresses = [
-        config.local.ips.kanidm.ipv4
+        config.myModules.ips.kanidm.ipv4
       ];
     };
   };
@@ -58,7 +58,7 @@ in
       bindaddress = "0.0.0.0:443";
       ldapbindaddress = "0.0.0.0:3636";
       http_client_address_info.x-forward-for = [
-        config.local.ips.ssl-proxy.ipv4.address
+        config.myModules.ips.ssl-proxy.ipv4.address
       ];
       version = "2";
       domain = "account.honermann.info";

@@ -2,7 +2,7 @@
 let
   subnet = "192.168.3.";
 
-  ips = config.local.ips;
+  ips = config.myModules.ips;
 
   proxyHost =
     name:

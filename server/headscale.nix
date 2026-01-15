@@ -25,7 +25,7 @@
           "localdomain"
         ];
         nameservers.global = [
-          config.local.ips."pi.hole".ipv4.address
+          config.myModules.ips."pi.hole".ipv4.address
           "1.1.1.1"
         ];
       };

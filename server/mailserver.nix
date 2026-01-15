@@ -6,7 +6,7 @@
 }:
 let
   certPath = "/var/lib/acme/${config.mailserver.fqdn}";
-  ips = config.local.ips;
+  ips = config.myModules.ips;
   vpsipv4 = ips.vps.ipv4.address;
   serverIPv4 = ips.server.ipv4.address;
   mail = config.mailserver;

@@ -27,7 +27,7 @@ let
     };
 in
 {
-  options.local.ips = mkOption {
+  options.myModules.ips = mkOption {
     type = types.attrsOf (
       types.submodule ({
         options = {
@@ -46,7 +46,7 @@ in
   };
 
   config = {
-    local.ips = rec {
+    myModules.ips = rec {
       cloudflare = {
         ipv4.address = "1.1.1.1";
         ipv6.address = "2606:4700:4700::1001";

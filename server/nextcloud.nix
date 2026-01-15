@@ -8,7 +8,7 @@ let
   cfg = config.services.nextcloud;
   occ = config.services.nextcloud.occ;
   oidc_client_id = "nextcloud_service";
-  ips = config.local.ips;
+  ips = config.myModules.ips;
 in
 {
   sops.secrets = {

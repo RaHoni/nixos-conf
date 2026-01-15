@@ -4,7 +4,7 @@
   ...
 }:
 let
-  ips = config.local.ips;
+  ips = config.myModules.ips;
 in
 {
   imports = [ ../generic/modules ];
