@@ -30,8 +30,7 @@ let
   inherit (lib) mapAttrs;
 in
 {
-  imports = [ ./ips.nix ];
-
+  imports = [ ../generic/modules ];
   #reverse proxy
   services.nginx = {
     enable = true;

@@ -1,8 +1,9 @@
 # Copyright 2024 JulianFP
 {
+  config,
+  inputs,
   lib,
   pkgs,
-  config,
   ...
 }:
 
@@ -34,7 +35,7 @@ in
   config = lib.mkIf cfg.enable {
     #load wireguard server private key
     sops.secrets."wireguard-priv-key" = {
-      sopsFile = ../secrets/${hostName}/wireguard.yaml;
+      sopsFile = inputs.self + /secrets/${hostName}/wireguard.yaml;
     };
 
     # enable NAT

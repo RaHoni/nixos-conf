@@ -5,9 +5,8 @@ let
 in
 {
   imports = [
-    ../generic/tailscale.nix
+    ../generic/modules
     ../generic/sops.nix
-    ../generic/ips.nix
   ];
   local.tailscale = {
     enable = true;

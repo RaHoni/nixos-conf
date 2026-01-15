@@ -15,7 +15,7 @@ in
   imports = [
     inputs.simple-mail-server.nixosModules.mailserver
     ../generic/networking.nix
-    ../generic/ips.nix
+    ../generic/modules
   ];
 
   networking = {

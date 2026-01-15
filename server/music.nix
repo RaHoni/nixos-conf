@@ -7,7 +7,7 @@ let
   ips = config.local.ips;
 in
 {
-  imports = [ ../generic/ips.nix ];
+  imports = [ ../generic/modules ];
   networking = {
     hostName = "music";
     nameservers = [

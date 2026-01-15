@@ -10,7 +10,7 @@ in
 {
   imports = [
     sops
-    ../generic/ips.nix
+    ../generic/modules
   ];
   networking = {
     hostName = "kanidm";

@@ -197,8 +197,6 @@ let
     );
 in
 {
-  imports = [ ../generic/ips.nix ];
-
   services.resolved.enable = false;
 
   networking.firewall.allowedTCPPorts = [ 53 ];

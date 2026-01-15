@@ -1,7 +1,7 @@
 { config, ... }:
 {
   imports = [
-    ../generic/ips.nix
+    ../generic/modules
   ];
   sops.secrets.headscale = {
     sopsFile = ../secrets/headscale.yaml;

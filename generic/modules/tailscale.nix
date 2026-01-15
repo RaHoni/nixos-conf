@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 let
   inherit (lib.types)
     bool
@@ -76,7 +81,7 @@ in
       }
     ];
     sops = {
-      secrets."${cfg.user}-auth-key".sopsFile = ../secrets/tailscale.yaml;
+      secrets."${cfg.user}-auth-key".sopsFile = inputs.self + /secrets/tailscale.yaml;
     };
     local.tailscale.tags = optional cfg.server "server" ++ optional cfg.extern "extern";
     services.tailscale = {

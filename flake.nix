@@ -185,7 +185,7 @@
               }
             )
             ./generic/newDefault.nix
-            ./generic/modules.nix
+            ./generic/modules
             ./generic/kernelpatch.nix
           ]
           ++ systemModules;
