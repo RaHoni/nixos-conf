@@ -1,8 +1,7 @@
 {
   config,
   lib,
-  pkgs,
-  sms,
+  inputs,
   ...
 }:
 let
@@ -14,7 +13,7 @@ let
 in
 {
   imports = [
-    sms
+    inputs.simple-mail-server.nixosModules.mailserver
     ../generic/networking.nix
     ../generic/ips.nix
   ];

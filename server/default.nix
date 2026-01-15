@@ -1,17 +1,29 @@
 {
   config,
-  lib,
   inputs,
+  lib,
   pkgs,
+  sops,
+  stable,
   ...
 }:
 let
   ips = config.local.ips;
+  mkContainer =
+    options:
+    lib.recursiveUpdate {
+      autoStart = true;
+      specialArgs = {
+        inherit inputs stable sops;
+        secureboot = false;
+      };
+      privateNetwork = true;
+      hostBridge = "br0";
+    } options;
 in
 {
   imports = [
     ./hardware-config.nix
-    ../generic/ips.nix
     ../generic/networking.nix
     ./backup.nix
     ./networking.nix
@@ -64,8 +76,7 @@ in
   };
 
   containers = {
-    proxy = {
-      autoStart = true;
+    proxy = mkContainer {
       config = (import ../proxy/default.nix);
       bindMounts = {
         "/var/lib/acme" = { };
@@ -74,69 +85,39 @@ in
       specialArgs = {
         cloudflare-api-key = config.sops.secrets.cloudflare-api-key.path;
       };
-      privateNetwork = true;
-      hostBridge = "br0";
     };
-    mailserver = {
-      autoStart = true;
+    mailserver = mkContainer {
       config = (import ./mailserver.nix);
-      specialArgs = {
-        sms = inputs.simple-mail-server.nixosModules.mailserver;
-      };
+      # specialArgs = { sms = inputs.simple-mail-server.nixosModules.mailserver; };
       bindMounts = {
         "/var/lib/acme/mail.honermann.info" = { };
         "/wireguard".hostPath = "/run/secrets/wireguard";
         "/resticPass".hostPath = config.sops.secrets.repo-passwd.path;
         "/restic-http-conf".hostPath = config.sops.templates.restic-http-conf.path;
       };
-      privateNetwork = true;
-      hostBridge = "br0";
       enableTun = true;
       timeoutStartSec = "4min";
     };
-    music = {
-      autoStart = true;
+    music = mkContainer {
       config = (import ./music.nix);
       bindMounts = {
         "/var/lib/private/snapserver".isReadOnly = false;
         "/var/lib/private/music-assistant".isReadOnly = false;
       };
-      privateNetwork = true;
-      hostBridge = "br0";
     };
-    kanidm = {
-      autoStart = true;
+    kanidm = mkContainer {
       config = (import ./kanidm.nix);
-      hostBridge = "br0";
-      specialArgs = {
-        sops = inputs.sops-nix.nixosModules.sops;
-      };
-      privateNetwork = true;
       bindMounts."/var/lib/acme/account.honermann.info" = { };
     };
-    tailscale-exit = {
-      autoStart = true;
+    tailscale-exit = mkContainer {
       config = (import ./tailscale.nix);
-      hostBridge = "br0";
-      enableTun = true;
-      specialArgs = {
-        sops = inputs.sops-nix.nixosModules.sops;
-      };
-      privateNetwork = true;
       bindMounts."/var/lib/tailscale/" = {
         isReadOnly = false;
         hostPath = "/var/lib/tailscale-exit-node";
       };
     };
-    torrent = {
-      autoStart = true;
+    torrent = mkContainer {
       config = (import ../private/seerr.nix);
-      enableTun = true;
-      hostBridge = "br0";
-      specialArgs = {
-        sops = inputs.sops-nix.nixosModules.sops;
-      };
-      privateNetwork = true;
       bindMounts = {
         "/var/Filme".isReadOnly = false;
         "/var/Serien".isReadOnly = false;
