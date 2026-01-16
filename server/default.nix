@@ -118,6 +118,9 @@ in
     };
     torrent = mkContainer {
       config = (import ../private/seerr.nix);
+      specialArgs = {
+        unstable = pkgs.unstable;
+      };
       bindMounts = {
         "/var/Filme".isReadOnly = false;
         "/var/Serien".isReadOnly = false;
