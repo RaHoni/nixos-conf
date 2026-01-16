@@ -111,6 +111,7 @@ in
     };
     tailscale-exit = mkContainer {
       config = (import ./tailscale.nix);
+      enableTun = true;
       bindMounts."/var/lib/tailscale/" = {
         isReadOnly = false;
         hostPath = "/var/lib/tailscale-exit-node";
@@ -118,6 +119,7 @@ in
     };
     torrent = mkContainer {
       config = (import ../private/seerr.nix);
+      enableTun = true;
       specialArgs = {
         unstable = pkgs.unstable;
       };
