@@ -32,6 +32,7 @@
     gnupg
     kdePackages.filelight
     kdePackages.kate
+    kdotool
     keepassxc-autotype
     libimobiledevice
     libreoffice
