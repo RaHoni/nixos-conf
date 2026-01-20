@@ -50,11 +50,12 @@
       postInstall = ''
         install -D share/linux/org.keepassxc.KeePassXC.policy --target-directory $out/share/polkit-1/actions
       '';
+      doCheck = false;
       src = final.fetchFromGitHub {
-        owner = "rsudev";
+        owner = "azagon63";
         repo = "keepassxc";
-        rev = "47bc1aa";
-        hash = "sha256-rQw/rS/pBh4KSXaoHDrPFK6KwNm4d1oLnp0ETmF/QmM=";
+        rev = "5a4c6c3";
+        hash = "sha256-Yh5fO7behuq3zD+yR1ujHQS9qKAalmWJigKzsOc/3CA=";
       };
     });
 

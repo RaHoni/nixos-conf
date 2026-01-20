@@ -32,7 +32,7 @@
     gnupg
     kdePackages.filelight
     kdePackages.kate
-    keepassxc
+    keepassxc-autotype
     libimobiledevice
     libreoffice
     miraclecast
