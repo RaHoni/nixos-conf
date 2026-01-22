@@ -95,7 +95,7 @@ in
       ++ optional (cfg.routes != [ ]) "--advertise-routes=${formatLists cfg.routes}"
       ++ optional (cfg.tags != [ ]) "--advertise-tags=${formatLists cfg.tags}";
       extraSetFlags = mkIf cfg.exit-node [ "--advertise-exit-node" ];
-      useRoutingFeatures = mkIf cfg.exit-node "both";
+      useRoutingFeatures = if cfg.exit-node then "both" else "client";
     };
   };
 }
