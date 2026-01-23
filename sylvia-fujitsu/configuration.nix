@@ -96,7 +96,7 @@
 
       # Produktivität
       libreoffice
-      thunderbird
+      thunderbird-esr
       keepassxc
 
       # Multimedia

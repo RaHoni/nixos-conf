@@ -62,6 +62,7 @@ with lib;
 
     thunderbird = {
       enable = true;
+      package = pkgs.thunderbird-esr;
       profiles.main = {
         withExternalGnupg = true;
         isDefault = true;

@@ -149,7 +149,7 @@
 
       # Produktivität
       libreoffice
-      thunderbird
+      thunderbird-esr
       xsane
       jameica
       gimp
