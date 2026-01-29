@@ -28,7 +28,7 @@ in
     ./sops.nix
   ];
   config = {
-    #system.configurationRevision = self.shortRev or self.dirtyShortRev;
+    system.nixos.label = lib.mkIf (config.image ? baseName) config.networking.hostName;
 
     nix = {
       settings.experimental-features = [
