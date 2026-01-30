@@ -18,6 +18,7 @@ keys:
   - &sylvia-fujitsu age1pfgy86c6sc4wv3wuy24yz44fkew7355pj24rsc5sha0gx0xqefdq32039d
   - &kanidm age1efke664655y2vvhzn9asrw4wdn9j3qh2js4cm9am0g47q69s99dq4vhzmy
   - &torrent age167yzenqqsh9zrg9kux9clppvwk3x43zwjzrr9e96ev3tsyns0dys74u76m
+  - &tailscale-exit age1l43fw9g935uglhyqwedp4y8sxpkmns0vzd0uhlktg66wzc4mg9kqh592xt
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -107,6 +108,7 @@ creation_rules:
       - *vps
       - *torrent
       - *kanidm
+      - *tailscale-exit
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
     - pgp:
