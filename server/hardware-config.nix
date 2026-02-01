@@ -16,6 +16,7 @@
 
   fileSystems = {
     "/permament".neededForBoot = true;
+    "/var/cache".neededForBoot = true;
   };
 
   boot.initrd.availableKernelModules = [
