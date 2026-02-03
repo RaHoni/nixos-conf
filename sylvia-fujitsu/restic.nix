@@ -27,6 +27,7 @@ in
       ".git"
       ".local/share/Trash"
       "baloo/index"
+      "/home/sylvia/Nextcloud"
     ];
     extraBackupArgs = [
       "--exclude-caches"
