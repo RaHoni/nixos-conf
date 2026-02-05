@@ -35,58 +35,6 @@
 
   services.btrfs.autoScrub.enable = true;
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/a5a903f2-9a3b-45b5-8c92-544107ae9bb2";
-    fsType = "btrfs";
-    options = [
-      "subvol=nix-root"
-      "compress=zstd"
-    ];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/a5a903f2-9a3b-45b5-8c92-544107ae9bb2";
-    fsType = "btrfs";
-    options = [
-      "subvol=home"
-      "compress=zstd"
-    ];
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/a5a903f2-9a3b-45b5-8c92-544107ae9bb2";
-    fsType = "btrfs";
-    options = [
-      "subvol=nix"
-      "compress=zstd"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/mnt/arch" = {
-    device = "/dev/disk/by-uuid/a5a903f2-9a3b-45b5-8c92-544107ae9bb2";
-    fsType = "btrfs";
-    options = [
-      "subvol=arch-root"
-      "compress=zstd"
-      "noatime"
-      "noauto"
-      "user"
-    ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/D0D5-FFD7";
-    fsType = "vfat";
-  };
-
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024; # 16 GB
-    }
-  ];
-
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
