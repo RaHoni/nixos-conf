@@ -281,6 +281,7 @@
         r-desktop = makeSystem {
           systemModules = [
             ./r-desktop/configuration.nix
+            ./r-desktop/disko.nix
             ./r-desktop/incron.nix
             ./r-desktop/pio.nix
             ./generic/localisation.nix
