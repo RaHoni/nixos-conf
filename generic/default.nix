@@ -133,7 +133,9 @@ in
       shellAliases = {
         ll = "ls -l";
         update = "sudo nixos-rebuild switch";
-        update-server = "nixos-rebuild switch --flake ${config.system.autoUpgrade.flake} --refresh";
+        update-server = lib.mkIf (
+          config.system.autoUpgrade.flake != null
+        ) "nixos-rebuild switch --flake ${config.system.autoUpgrade.flake} --refresh";
         upgrade = "nix flake update --commit-lock-file --flake /etc/nixos";
         nixos = "cd /etc/nixos";
         vi = "nvim ";
