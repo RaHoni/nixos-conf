@@ -39,14 +39,14 @@
 
   system.stateVersion = "23.11";
 
-  lib.isoFileSystems."/persitent" = {
-    label = "VentoyBTRFS";
-    fsType = "btrfs";
-    neededForBoot = true;
-    options = [
-      "subvol=nixos"
-      "compress=zstd"
-    ];
-  };
+  #  lib.isoFileSystems."/persitent" = {
+  #    label = "VentoyBTRFS";
+  #    fsType = "btrfs";
+  #    neededForBoot = true;
+  #    options = [
+  #      "subvol=nixos"
+  #      "compress=zstd"
+  #    ];
+  #  };
 
 }
