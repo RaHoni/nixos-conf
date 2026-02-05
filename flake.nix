@@ -363,19 +363,24 @@
           ];
         };
 
-        #        rescueIso = makeSystem {
-        #          systemModules = [
-        #            ./rescueIso/configuration.nix
-        #            "${nixpkgs-stable}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
-        #          ];
-        #          homeManagerModules = {
-        #            nixos = [
-        #              ./generic/users/default.nix
-        #            ];
-        #          };
-        #        };
+        rescueIso = makeSystem {
+          systemModules = [
+            ./rescueIso/configuration.nix
+          ];
+          homeManagerModules = {
+            nixos = [
+              ./generic/users/default.nix
+            ];
+          };
+        };
       };
 
+      packages = {
+        x86_64-linux = rec {
+          iso = nixosConfigurations.rescueIso.config.system.build.images.iso-installer;
+          default = iso;
+        };
+      };
       #      packages = {
       #        x86_64-linux = rec {
       #          default = installer;
@@ -464,7 +469,7 @@
         hosts = mapAttrs getCfg nixosConfigurations;
         #inherit (nixosConfigurations) r-desktop;
         # Each filtered configuration is available as a job
-        inherit devShells; # packages;
+        inherit devShells packages;
       };
 
       images.raspberry = nixosConfigurations.aarch64-image.config.system.build.sdImage;
