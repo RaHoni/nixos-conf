@@ -53,6 +53,7 @@ in
     stateVersion = 3;
     fqdn = "mail.honermann.info";
     domains = [ "honermann.info" ];
+    enableSubmission = true; # Enable SMTP with starttls this is discouraged but needed for jellyseer
     enableManageSieve = true;
 
     extraVirtualAliases = {

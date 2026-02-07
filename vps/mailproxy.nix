@@ -12,8 +12,8 @@ in
   networking.nat.forwardPorts = forwardPortsToHost "10.100.0.3" "tcp" [
     25
     143
-    465
-    587
+    465 # SMTP TLS
+    587 # SMTP Starttls
     993
     4190 # Sieve
   ];
