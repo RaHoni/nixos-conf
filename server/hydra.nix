@@ -46,8 +46,8 @@
     secretKeyFile = config.sops.secrets.binarySigKey.path;
   };
 
-  environment.persistence."/permament".directories = [
-    "/var/lib/postgresql"
-    "/var/lib/hydra"
-  ];
+  myModules.folder.folders = {
+    "/var/lib/postgresql" = { };
+    "/var/lib/hydra".backup = false;
+  };
 }

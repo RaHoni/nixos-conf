@@ -56,10 +56,10 @@ in
 
   users.users.jellyfin.extraGroups = [ "render" ];
 
-  environment.persistence."/permament".directories = with jellyfin; [
-    dataDir
-    configDir
-    logDir
-    "/var/lib/private/jellyseerr/"
-  ];
+  myModules.folder.folders = with jellyfin; {
+    "${dataDir}" = { };
+    "${configDir}" = { };
+    "${logDir}" = { };
+    "/var/lib/private/jellyseerr/" = { };
+  };
 }

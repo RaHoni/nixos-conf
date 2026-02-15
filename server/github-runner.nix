@@ -28,6 +28,6 @@ in
       };
     };
 
-    environment.persistence."/permament".directories = [ "/var/lib/private/github-runner" ];
+    myModules.folder.folders."/var/lib/private/github-runner".backup = false;
   };
 }

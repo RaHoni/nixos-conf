@@ -5,5 +5,5 @@
     address = "0.0.0.0";
     openFirewall = true;
   };
-  environment.persistence."/permament".directories = [ "/var/lib/private/esphome" ];
+  myModules.folder.folders."/var/lib/private/esphome" = { };
 }

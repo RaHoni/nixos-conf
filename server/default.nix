@@ -132,51 +132,54 @@ in
   };
 
   systemd.tmpfiles.rules = [ "d /var/lib/private/ 0700" ];
+  myModules.folder = {
+    persistenceFolder = "/permament";
+    folders = {
+      "/backmeup" = { };
+      "/etc/nixos".backup = false;
+      "/var/lib/containers".backup = false;
+      "/var/lib/nixos-containers/kanidm" = { };
+      "/var/lib/nixos-containers/mailserver".backup = false;
+      "/var/lib/nixos-containers/torrent".backup = false;
+      "/var/lib/nixos/".backup = false;
+      "/var/lib/private".backup = false; # because of too much errors
+      "/var/pihole" = { }; # This is a Volume for the pihole container so that we can set the adlists
+      "/var/lib/tailscale/".backup = false;
+      "/var/lib/tailscale-exit-node".backup = false;
 
-  environment.persistence."/permament" = {
-    hideMounts = true;
-    directories = [
-      "/backmeup"
-      "/etc/nixos/"
-      "/var/lib/containers"
-      "/var/lib/nixos-containers/kanidm"
-      "/var/lib/nixos-containers/mailserver"
-      "/var/lib/nixos-containers/torrent"
-      "/var/lib/nixos/"
-      "/var/lib/private" # because of too much errors
-      "/var/pihole" # This is a Volume for the pihole container so that we can set the adlists
-      "/var/lib/tailscale/"
-      "/var/lib/tailscale-exit-node"
-      {
-        directory = "/var/lib/private/factorio";
+      "/var/lib/private/factorio" = {
         user = "factorio";
         group = "factorio";
-      }
-      {
-        directory = "/var/lib/audiobookshelf";
+      };
+      "/var/lib/audiobookshelf" = {
+        backup = false;
         user = "audiobookshelf";
         group = "audiobookshelf";
-      }
-      {
-        directory = "/var/lib/mysql";
+      };
+      "/var/lib/mysql" = {
         user = "mysql";
         group = "mysql";
-      }
-      {
-        directory = "/var/lib/acme";
+      };
+      "/var/lib/acme" = {
+        backup = false;
         user = "acme";
         group = "acme";
-      }
-      {
-        directory = "/var/nginx";
+      };
+      "/var/nginx" = {
+        backup = false;
         mode = "0777";
-      }
-    ];
+      };
+    };
     files = [
       "/root/.zsh_history"
       "/root/.ssh/known_hosts"
       "/root/.local/share/nix/trusted-settings.json"
     ];
+  };
+  myModules.restic = {
+    enable = true;
+    repositoryName = "server";
+    user = "raoul";
   };
 
   fileSystems."/" = {
