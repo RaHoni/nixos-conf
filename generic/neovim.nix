@@ -9,7 +9,7 @@ let
   full = osConfig.local.full;
 in
 {
-  home.packages = [ pkgs.nixfmt-rfc-style ];
+  home.packages = [ pkgs.nixfmt ];
   programs.nixvim = {
     enable = true;
     defaultEditor = true;

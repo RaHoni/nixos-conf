@@ -438,7 +438,7 @@
             check-merge-conflicts.enable = true;
             markdownlint.enable = true;
             mdformat.enable = true;
-            nixfmt-rfc-style.enable = true;
+            nixfmt.enable = true;
             pre-commit-hook-ensure-sops.enable = true;
             pretty-format-json.enable = true;
           };
