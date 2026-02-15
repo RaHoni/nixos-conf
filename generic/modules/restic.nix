@@ -13,6 +13,7 @@ let
     mkOption
     concat
     mkDefault
+    mapAttrs
     ;
   inherit (lib.types) str attrsOf submodule;
   folderCfg = config.myModules.folder;
@@ -77,5 +78,10 @@ in
       backupCleanupCommand = mkIf folderCfg.restic.makeSnapshot "${pkgs.btrfs-progs}/bin/btrfs subvolume delete ${folderCfg.restic.snapshotPath}";
 
     };
+
+    myModules.folder.folders = mapAttrs (name: value: {
+      directory = "/var/cache/restic-backups-${name}";
+      backup = false;
+    }) config.services.restic.backups;
   };
 }
