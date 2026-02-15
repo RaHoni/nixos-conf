@@ -1,10 +1,11 @@
 { config, lib, ... }:
 let
-  inherit (lib) mkOption mkEnableOption;
+  inherit (lib) mkOption mkEnableOption mapAttrsToList;
   inherit (lib.types)
     str
     nullOr
     listOf
+    attrsOf
     coercedTo
     bool
     submodule
@@ -41,7 +42,8 @@ let
         '';
       };
       directory = mkOption {
-        type = str;
+        type = nullOr str;
+        default = null;
         description = ''
           The path to the directory.
         '';
@@ -101,11 +103,17 @@ in
       };
     };
     folders = mkOption {
-      type = listOf (coercedTo str (d: { directory = d; }) dir);
+      type = attrsOf dir;
       default = [ ];
       description = ''
         Directories to bind mount to persistent storage.
       '';
+      apply =
+        attrs:
+        mapAttrsToList (
+          name: value: value // { directory = if (value.directory == null) then name else value.directory; }
+        ) attrs;
+
     };
     files = mkOption {
       default = [ ];
