@@ -10,6 +10,6 @@ in
     allow = [ "ffmpeg" ];
   };
   system.activationScripts = {
-    incron.text = ''cp ${incroneFile} /var/spool/incron/ffmpeg'';
+    incron.text = "cp ${incroneFile} /var/spool/incron/ffmpeg";
   };
 }
