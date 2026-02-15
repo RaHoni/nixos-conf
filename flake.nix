@@ -161,6 +161,7 @@
               inputs
               stable
               secureboot
+              self
               genericHomeManagerModules
               ; # ToDO: also make proxmox an option
             inherit (hydra.packages.${system}) hydra;
