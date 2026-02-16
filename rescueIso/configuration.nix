@@ -28,9 +28,12 @@
   # Configure console Keymap
   console.keyMap = "de";
 
-  users.users.nixos.openssh.authorizedKeys.keyFiles = [
-    ../generic/sshPubkeys/support.pub
-  ];
+  users.users.nixos = {
+    openssh.authorizedKeys.keyFiles = [
+      ../generic/sshPubkeys/support.pub
+    ];
+    isNormalUser = true;
+  };
   users.users.root.openssh.authorizedKeys.keyFiles = [
     ../generic/sshPubkeys/support.pub
   ];
@@ -39,6 +42,8 @@
 
   system.stateVersion = "23.11";
 
+  fileSystems."/".device = "/dev/sda";
+  boot.loader.grub.device = "/dev/sda";
   #  lib.isoFileSystems."/persitent" = {
   #    label = "VentoyBTRFS";
   #    fsType = "btrfs";
