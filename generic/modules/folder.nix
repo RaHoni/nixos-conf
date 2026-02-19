@@ -98,8 +98,8 @@ in
       snapshotPath = mkOption {
         type = str;
         default =
-          if (cfg.restic.makeSnapshot) then "${cfg.persistenceFolder}-snap" else cfg.persistenceFolder;
-        defaultText = lib.literalExpression ''if (cfg.restic.makeSnapshot) then "${cfg.persistenceFolder}-snap" else cfg.persistenceFolder'';
+          if (cfg.restic.makeSnapshot) then "${cfg.persistenceFolder}/snap" else cfg.persistenceFolder;
+        defaultText = lib.literalExpression ''if (cfg.restic.makeSnapshot) then "${cfg.persistenceFolder}/snap" else cfg.persistenceFolder'';
       };
     };
     folders = mkOption {
