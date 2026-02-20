@@ -51,6 +51,11 @@
     mysqlBackup = {
       enable = true;
       location = "/backmeup/mysql";
+      databases = [
+        "nextcloud"
+        "mysql"
+      ];
+      singleTransaction = true;
       calendar = "23:00";
     };
     postgresqlBackup = {
