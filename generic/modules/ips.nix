@@ -60,10 +60,7 @@ in
         ipv4.address = "192.168.1.252";
         ipv6.address = "fd00::4:102";
       };
-      audiobookshelf = {
-        ipv4.address = "192.168.1.209";
-        ipv6.address = "fd00::4:209";
-      };
+      audiobookshelf = server;
       binarycache = {
         ipv4.address = "192.168.1.200";
         ipv6.address = "fe80::946e:8793:2804:17e9";
