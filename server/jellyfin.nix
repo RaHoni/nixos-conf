@@ -24,6 +24,7 @@ in
       ];
       locations."/" = {
         proxyPass = "http://unix:/var/nginx/sonarr.sock";
+        extraConfig = "proxy_read_timeout 120s;";
       };
     };
     radarr = {
