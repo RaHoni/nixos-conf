@@ -52,7 +52,7 @@ in
   };
 
   services.kanidm = {
-    package = pkgs.kanidmWithSecretProvisioning_1_8;
+    package = pkgs.kanidmWithSecretProvisioning_1_9;
     enableServer = true;
     serverSettings = {
       bindaddress = "0.0.0.0:443";
