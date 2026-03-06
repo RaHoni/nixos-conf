@@ -61,13 +61,6 @@ in
         twofactor_admin
         twofactor_webauthn
         ;
-
-      workflow_script = pkgs.fetchNextcloudApp {
-        url = "https://github.com/nextcloud-releases/workflow_script/releases/download/v3.0.0/workflow_script-v3.0.0.tar.gz";
-        sha256 = "sha256-xP7BmMsBg2rg+BvegjJ2ke/RIQFlIgYGGs7OT3ZZH+I=";
-        license = "agpl3Only";
-      };
-
     };
 
     extraAppsEnable = true;
