@@ -58,7 +58,7 @@ in
         previewgenerator
         recognize
         registration
-        twofactor_admin
+        # twofactor_admin # This seems to be updated very slowly so disable until needed
         twofactor_webauthn
         ;
     };
