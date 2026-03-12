@@ -23,7 +23,7 @@ in
     paths = [ "/home-snap/raoul" ];
     exclude = [
       "/var/cache"
-      "/home/*/.cache"
+      ".cache"
       ".git"
       ".local/share/Trash"
       "baloo/index"
