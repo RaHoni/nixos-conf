@@ -22,136 +22,136 @@ keys:
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *surface
+      - pgp:
+          - *admin
+        age:
+          - *surface
   - path_regex: ^secrets/sylvia-fujitsu/.*$
     key_groups:
-    - pgp:
-      - *admin
-      - *christop
-      age:
-      - *sylvia-fujitsu
+      - pgp:
+          - *admin
+          - *christop
+        age:
+          - *sylvia-fujitsu
   - path_regex: ^secrets/torrent/.*$
     key_groups:
-    - pgp:
-      - *admin
-      - *christop
-      age:
-      - *torrent
+      - pgp:
+          - *admin
+          - *christop
+        age:
+          - *torrent
   - path_regex: ^secrets/lenovo-linux/.*$
     key_groups:
-    - pgp:
-      - *admin
-      - *christop
-      age:
-      - *lenovo-linux
+      - pgp:
+          - *admin
+          - *christop
+        age:
+          - *lenovo-linux
   - path_regex: ^secrets/r-desktop/.*$
     key_groups:
       - pgp:
-        - *admin
+          - *admin
         age:
-        - *r-desktop
-        - *server
+          - *r-desktop
+          - *server
   - path_regex: ^secrets/raoul-framework/.*$
     pgp: *admin
     age: *raoul-framework
   - path_regex: ^secrets/smb/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *smb
-      - *server
+      - pgp:
+          - *admin
+        age:
+          - *smb
+          - *server
   - path_regex: ^secrets/ssl-proxy/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *ssl-proxy
-      - *server
+      - pgp:
+          - *admin
+        age:
+          - *ssl-proxy
+          - *server
   - path_regex: ^secrets/audiobooks/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *audiobooks
-      - *server
+      - pgp:
+          - *admin
+        age:
+          - *audiobooks
+          - *server
   - path_regex: ^secrets/smtp.yaml$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *nextcloud
-      - *server
+      - pgp:
+          - *admin
+        age:
+          - *nextcloud
+          - *server
   - path_regex: ^secrets/[^/]*$
     key_groups:
-    - pgp:
-      - *admin
-      - *christop
-      age:
-      - *audiobooks
-      - *cat
-      - *jasmine-laptop
-      - *lenovo-linux
-      - *nextcloud
-      - *petronillaStreaming
-      - *r-desktop
-      - *raoul-framework
-      - *rescueIso
-      - *server
-      - *smb
-      - *ssl-proxy
-      - *surface
-      - *sylvia-fujitsu
-      - *vps
-      - *torrent
-      - *kanidm
-      - *tailscale-exit
+      - pgp:
+          - *admin
+          - *christop
+        age:
+          - *audiobooks
+          - *cat
+          - *jasmine-laptop
+          - *lenovo-linux
+          - *nextcloud
+          - *petronillaStreaming
+          - *r-desktop
+          - *raoul-framework
+          - *rescueIso
+          - *server
+          - *smb
+          - *ssl-proxy
+          - *surface
+          - *sylvia-fujitsu
+          - *vps
+          - *torrent
+          - *kanidm
+          - *tailscale-exit
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *jasmine-laptop
+      - pgp:
+          - *admin
+        age:
+          - *jasmine-laptop
   - path_regex: ^secrets/nextcloud/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *nextcloud
-      - *server
+      - pgp:
+          - *admin
+        age:
+          - *nextcloud
+          - *server
   - path_regex: ^secrets/cat-laptop/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *cat
+      - pgp:
+          - *admin
+        age:
+          - *cat
   - path_regex: ^secrets/rescueIso/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *rescueIso
+      - pgp:
+          - *admin
+        age:
+          - *rescueIso
   - path_regex: ^secrets/petronillaStreaming/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *petronillaStreaming
+      - pgp:
+          - *admin
+        age:
+          - *petronillaStreaming
   - path_regex: ^secrets/vps/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *vps
+      - pgp:
+          - *admin
+        age:
+          - *vps
   - path_regex: ^secrets/server/.*$
     key_groups:
-    - pgp:
-      - *admin
-      age:
-      - *server
-      - *kanidm
+      - pgp:
+          - *admin
+        age:
+          - *server
+          - *kanidm
   - path_regex: ^secrets/
     pgp: *admin
