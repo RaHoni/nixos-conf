@@ -33,6 +33,10 @@
 
   hardware.microsoft-surface.kernelVersion = "stable";
   boot.kernelParams = [ "rust=0" ];
+  boot.initrd = {
+    systemd.enable = true;
+    luks.devices.encrypted.crypttabExtraOpts = [ "fido2-device=auto" ]; # cryptenroll
+  };
 
   boot.kernelPatches = [
     {
