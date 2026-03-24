@@ -21,6 +21,7 @@
           "home"
           "hydra"
           "karaoke"
+          "mail"
           "media"
           "autoconfig"
         ]
