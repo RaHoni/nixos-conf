@@ -14,35 +14,50 @@ target=$2
 echo "Rotating SOPS key for anchor: $hostname"
 echo
 
+# Create a temporary directory
+temp=$(mktemp -d)
+
+# Function to cleanup temporary directory on exit
+cleanup() {
+    rm -rf "$temp"
+}
+trap cleanup EXIT
+
+# Create the directory where sops expects to find the agekey
+
+install -d -m755 "$temp/var/lib/sops-nix"
+
 ########################################
 # Generate AGE keypair
 ########################################
 
-key_output="$(age-keygen)"
+keypath="$temp/var/lib/sops-nix/key.txt"
 
-private_key="$(printf '%s\n' "$key_output" | grep '^AGE-SECRET-KEY-')"
-public_key="$(printf '%s\n' "$key_output" | grep 'public key:' | awk '{print $4}')"
+age-keygen -o $keypath
+key_output=<$keypath
 
-if [[ -z "$private_key" || -z "$public_key" ]]; then
+public_key="$(age-keygen -y $keypath)"
+
+
+if [[ -z "$public_key" ]]; then
     echo "Failed to generate AGE key"
     exit 1
 fi
 
 echo "Generated public key:"
 echo "  $public_key"
-echo
 
 ########################################
 # Find index of anchor == hostname
 ########################################
 
 index="$(
-  yq -r '
-    .keys
-    | to_entries[]
-    | select(.value | anchor == $hostname)
-    | .key
-  ' "$FILE"
+  yq -r "
+.keys
+| .[]
+| select(anchor == \"$hostname\")
+| key
+" "$FILE"
 )"
 if [[ -z "$index" || "$index" == "null" ]]; then
     echo "No anchor named '$hostname' found in .keys[]"
@@ -83,4 +98,4 @@ yq -i ".keys[$index] = \"$public_key\"" "$FILE"
 # Updating sops-files
 find secrets -name "*" -type f -exec sops updatekeys {} -y \;
 
-nixos-anywhere --disk-encryption-keys /var/lib/sops-nix/key.txt <(echo $key_output) --flake ".#${hostname}" "$target"
+nixos-anywhere --extra-files "$temp"  --flake ".#${hostname}" "$target" --generate-hardware-config nixos-generate-config "$hostname/hardware-configuration.nix"
