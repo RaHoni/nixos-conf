@@ -99,3 +99,5 @@ yq -i ".keys[$index] = \"$public_key\"" "$FILE"
 find secrets -name "*" -type f -exec sops updatekeys {} -y \;
 
 nixos-anywhere --extra-files "$temp"  --flake ".#${hostname}" "$target" --generate-hardware-config nixos-generate-config "$hostname/hardware-configuration.nix"
+
+git commit --all -m "Deploy of $hostname"
