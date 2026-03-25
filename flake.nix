@@ -264,7 +264,7 @@
             ./generic/pipewire.nix
             ./generic/plasma.nix
             ./generic/printer.nix
-            ./raoul-framework/hardwareconfig.nix
+            ./raoul-framework/hardware-configuration.nix
             nixos-hardware.nixosModules.framework-16-7040-amd
             stylix.nixosModules.stylix
           ];
