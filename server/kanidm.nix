@@ -38,9 +38,9 @@ in
     secrets = {
       admin_password.owner = "kanidm";
       idm_admin_password.owner = "kanidm";
-      "nextcloud_service".owner = "kanidm";
-      "audiobookshelf_service".owner = "kanidm";
-      "headscale" = {
+      nextcloud_service.owner = "kanidm";
+      audiobookshelf_service.owner = "kanidm";
+      headscale = {
         owner = "kanidm";
         sopsFile = ../secrets/headscale.yaml;
       };
@@ -69,8 +69,8 @@ in
     };
     provision = {
       enable = true;
-      adminPasswordFile = secrets."admin_password".path;
-      idmAdminPasswordFile = secrets."idm_admin_password".path;
+      adminPasswordFile = secrets.admin_password.path;
+      idmAdminPasswordFile = secrets.idm_admin_password.path;
 
       groups = {
         mail-server = { };
@@ -90,7 +90,7 @@ in
       };
 
       systems.oauth2 = {
-        "audiobookshelf_service" = {
+        audiobookshelf_service = {
           displayName = "Audiobookshelf";
           originLanding = "https://hoerbuecher.honermann.info/audiobookshelf/auth/openid?callback=https://hoerbuecher.honermann.info/audiobookshelf/login/";
           originUrl = [
@@ -98,7 +98,7 @@ in
             "https://hoerbuecher.honermann.info/auth/openid/mobile-redirect"
           ];
           basicSecretFile = secrets.audiobookshelf_service.path;
-          scopeMaps."audiobookshelf" = [
+          scopeMaps.audiobookshelf = [
             "openid"
             "profile"
             "email"
@@ -109,31 +109,31 @@ in
           originLanding = "https://headscale.honermann.info/oidc/callback";
           originUrl = [ "https://headscale.honermann.info/oidc/callback" ];
           basicSecretFile = secrets.headscale.path;
-          scopeMaps."headscale" = [
+          scopeMaps.headscale = [
             "openid"
             "profile"
             "email"
           ];
         };
-        "nextcloud_service" = {
+        nextcloud_service = {
           displayName = "Nextcloud main instance";
           originLanding = "https://honermann.info/apps/user_oidc/login/1";
           originUrl = [
             "https://honermann.info/apps/user_oidc/code"
             "https://nextcloud.honermann.info/apps/user_oidc/code"
           ];
-          basicSecretFile = config.sops.secrets."nextcloud_service".path;
-          scopeMaps."nextcloud" = [
+          basicSecretFile = secrets.nextcloud_service.path;
+          scopeMaps.nextcloud = [
             "openid"
             "profile"
             "email"
           ];
-          claimMaps."groups".valuesByGroup = {
-            "family" = [ "Familie" ];
-            "messdiener" = [ "Messdiener" ];
-            "ferienfreizeit" = [ "Ferienfreizeit" ];
-            "streaming" = [ "Streaming" ];
-            "nextcloud_admin" = [ "admin" ];
+          claimMaps.groups.valuesByGroup = {
+            family = [ "Familie" ];
+            messdiener = [ "Messdiener" ];
+            ferienfreizeit = [ "Ferienfreizeit" ];
+            streaming = [ "Streaming" ];
+            nextcloud_admin = [ "admin" ];
           };
 
         };
@@ -142,7 +142,7 @@ in
           originLanding = "https://home.honermann.info/auth/oidc/welcome";
           originUrl = "https://home.honermann.info/auth/oidc/callback";
           public = true;
-          scopeMaps."hass" = [
+          scopeMaps.hass = [
             "openid"
             "profile"
             "email"
@@ -156,7 +156,7 @@ in
             "https://media.honermann.info/sso/OID/redirect/kanidm"
             "https://media.honermann.info/sso/OID/r/kanidm"
           ];
-          basicSecretFile = config.sops.secrets.jellyfin_service.path;
+          basicSecretFile = secrets.jellyfin_service.path;
           scopeMaps.jellyfin = [
             "openid"
             "profile"
@@ -166,7 +166,7 @@ in
       };
 
       persons = {
-        "raoul" = {
+        raoul = {
           displayName = "Raoul";
           legalName = "Raoul Honermann";
           mailAddresses = [ "raoul@honermann.info" ];
