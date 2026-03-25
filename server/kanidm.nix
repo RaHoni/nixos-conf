@@ -44,6 +44,7 @@ in
         owner = "kanidm";
         sopsFile = ../secrets/headscale.yaml;
       };
+      jellyfin_service.owner = "kanidm";
     };
   };
 
@@ -146,6 +147,20 @@ in
             "profile"
             "email"
             "groups"
+          ];
+        };
+        jellyfin_service = {
+          displayName = "Jellyfin";
+          originLanding = "https://media.honermann.info/sso/OID/start/kanidm";
+          originUrl = [
+            "https://media.honermann.info/sso/OID/redirect/kanidm"
+            "https://media.honermann.info/sso/OID/r/kanidm"
+          ];
+          basicSecretFile = config.sops.secrets.jellyfin_service.path;
+          scopeMaps.jellyfin = [
+            "openid"
+            "profile"
+            "email"
           ];
         };
       };
