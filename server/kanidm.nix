@@ -166,7 +166,7 @@ in
         homeassistant_service = {
           displayName = "Home Assistant";
           imageFile = logos.homeassistant;
-          originLanding = "https://home.honermann.info/auth/oidc/welcome";
+          originLanding = "https://home.honermann.info/auth/oidc/redirect";
           originUrl = "https://home.honermann.info/auth/oidc/callback";
           public = true;
           scopeMaps.hass = [
