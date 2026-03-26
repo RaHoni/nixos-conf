@@ -152,6 +152,7 @@ in
         jellyfin_service = {
           displayName = "Jellyfin";
           originLanding = "https://media.honermann.info/sso/OID/start/kanidm";
+          preferShortUsername = true;
           originUrl = [
             "https://media.honermann.info/sso/OID/redirect/kanidm"
             "https://media.honermann.info/sso/OID/r/kanidm"
