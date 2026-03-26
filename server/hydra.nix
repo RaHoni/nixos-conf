@@ -50,4 +50,5 @@
     "/var/lib/postgresql" = { };
     "/var/lib/hydra".backup = false;
   };
+  users.users.hydra.extraGroups = [ "keys" ];
 }
