@@ -6,6 +6,29 @@
 }:
 let
   secrets = config.sops.secrets;
+  inherit (pkgs) fetchurl fetchzip;
+  logos = {
+    audiobookshelf = ./audiobookshelf.svg;
+    headscale = fetchurl {
+      url = "https://github.com/juanfont/headscale/raw/refs/heads/main/docs/assets/logo/headscale3_header_stacked_left.svg";
+      hash = "sha256-1W+e1cQXKb9izpmKws9OeX9NwoSHwCON/aoYzNbYU2w=";
+    };
+    homeassistant = "${
+      fetchzip {
+        url = "https://github.com/home-assistant/assets/raw/refs/heads/master/logo/home-assistant-logo.zip";
+        stripRoot = false;
+        hash = "sha256-RyHOMs2mniPCclhJoRtrEexzJqBYtRT3lmvSRBB7AFI=";
+      }
+    }/home-assistant-logomark-color-on-light.svg";
+    jellyfin = fetchurl {
+      url = "https://raw.githubusercontent.com/jellyfin/jellyfin-ux/refs/heads/master/logos/SVG/jellyfin-icon--color-on-dark.svg";
+      hash = "sha256-zzJisO7mpHuKCVFe8B3ZohUctYAiZF5orL8J78nQ7SA=";
+    };
+    nextcloud = fetchurl {
+      url = "https://nextcloud.com/c/uploads/2025/10/Nextcloud_01-standard-logo.svg";
+      hash = "sha256-hbruWtEIgxGRgdbWFT877SiAIPablfyxMWvke06EgGs=";
+    };
+  };
 in
 {
   imports = [
@@ -92,6 +115,7 @@ in
       systems.oauth2 = {
         audiobookshelf_service = {
           displayName = "Audiobookshelf";
+          imageFile = logos.audiobookshelf;
           originLanding = "https://hoerbuecher.honermann.info/audiobookshelf/auth/openid?callback=https://hoerbuecher.honermann.info/audiobookshelf/login/";
           originUrl = [
             "https://hoerbuecher.honermann.info/auth/openid/callback"
@@ -106,6 +130,7 @@ in
         };
         headscale_service = {
           displayName = "Headscale";
+          imageFile = logos.headscale;
           originLanding = "https://headscale.honermann.info/oidc/callback";
           originUrl = [ "https://headscale.honermann.info/oidc/callback" ];
           basicSecretFile = secrets.headscale.path;
@@ -117,6 +142,7 @@ in
         };
         nextcloud_service = {
           displayName = "Nextcloud main instance";
+          imageFile = logos.nextcloud;
           originLanding = "https://honermann.info/apps/user_oidc/login/1";
           originUrl = [
             "https://honermann.info/apps/user_oidc/code"
@@ -139,6 +165,7 @@ in
         };
         homeassistant_service = {
           displayName = "Home Assistant";
+          imageFile = logos.homeassistant;
           originLanding = "https://home.honermann.info/auth/oidc/welcome";
           originUrl = "https://home.honermann.info/auth/oidc/callback";
           public = true;
@@ -151,6 +178,7 @@ in
         };
         jellyfin_service = {
           displayName = "Jellyfin";
+          imageFile = logos.jellyfin;
           originLanding = "https://media.honermann.info/sso/OID/start/kanidm";
           preferShortUsername = true;
           originUrl = [
