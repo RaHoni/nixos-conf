@@ -257,6 +257,7 @@ in
             "nextcloud"
             "audiobookshelf"
             "headscale"
+            "hass"
 
             "messdiener"
           ];
