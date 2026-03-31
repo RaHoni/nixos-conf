@@ -19,7 +19,15 @@
     enable = true;
     enableVteIntegration = true;
     autosuggestion.enable = true;
-    initContent = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
+    initContent = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    compdef _restic ${
+          builtins.concatStringsSep " " (
+            lib.mapAttrsToList (name: _: "restic-${name}") (
+              lib.filterAttrs (_: v: v.createWrapper) osConfig.services.restic.backups
+            )
+          )
+        }";
+
     localVariables = {
       YSU_IGNORED_ALIASES = [ "g" ];
     };

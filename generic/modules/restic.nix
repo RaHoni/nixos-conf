@@ -55,6 +55,7 @@ in
     };
   };
   config = mkIf cfg.enable {
+    environment.systemPackages = [ pkgs.restic ];
     sops = {
       secrets = {
         repo-passwd.sopsFile = self + /secrets/${hostname}/restic.yaml;
