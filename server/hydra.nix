@@ -8,7 +8,7 @@
   ];
   services.hydra = {
     enable = true;
-    package = hydra;
+    #package = hydra;
     useSubstitutes = true;
     hydraURL = "https://hydra.honermann.info";
     notificationSender = "hydra@honermann.info";
