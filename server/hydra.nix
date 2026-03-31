@@ -9,6 +9,7 @@
   services.hydra = {
     enable = true;
     #package = hydra;
+    smtpHost = "localhost";
     useSubstitutes = true;
     hydraURL = "https://hydra.honermann.info";
     notificationSender = "hydra@honermann.info";
