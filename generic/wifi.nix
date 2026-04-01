@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }:
@@ -10,15 +11,13 @@ let
     file = config.sops.secrets."wifi/${name}".path;
     key = "psk";
     matchId = name;
-    matchSetting = "wifi-security";
-    matchType = "wifi";
+    matchSetting = "802-11-wireless-security";
   };
   mkEduroamSecret = name: key: {
     file = config.sops.secrets."wifi/${name}".path;
     inherit key;
     matchId = "eduroam";
     matchSetting = "802-1x";
-    matchType = "wifi";
   };
   wifiSops =
     names:
@@ -33,8 +32,8 @@ let
 in
 {
   sops.secrets = wifiSops [
-    "Commander Data"
-    "Commander Data WPA2"
+    "Commander DATA"
+    "Commander DATA WPA2"
     "FP4-RH"
     "eduroam-identity"
     "eduroam-password"
@@ -42,8 +41,8 @@ in
   ];
   networking.networkmanager.ensureProfiles = {
     secrets.entries = [
-      (mkWifiSecret "Commander Data")
-      (mkWifiSecret "Commander Data WPA2")
+      (mkWifiSecret "Commander DATA")
+      (mkWifiSecret "Commander DATA WPA2")
       (mkWifiSecret "FP4-RH")
       (mkEduroamSecret "eduroam-identity" "identity")
       (mkEduroamSecret "eduroam-password" "password")
@@ -188,6 +187,7 @@ in
           ca-cert = config.sops.secrets."wifi/eduroam-ca-cert".path;
           eap = "peap;";
           phase2-auth = "mschapv2";
+          identity = "rh792919@fh-muenster.de";
         };
         connection = {
           autoconnect-priority = "1";
