@@ -153,5 +153,12 @@ creation_rules:
         age:
           - *server
           - *kanidm
+  - path_regex: ^secrets/wifi/.*$
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *raoul-framework
+          - *surface
   - path_regex: ^secrets/
     pgp: *admin

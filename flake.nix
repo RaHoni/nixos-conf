@@ -229,6 +229,7 @@
             ./generic/localisation.nix
             #./generic/pipewire.nix
             ./generic/printer.nix
+            ./generic/wifi.nix
             nixos-hardware.nixosModules.microsoft-surface-go
           ];
           homeManagerModules = {
@@ -264,6 +265,7 @@
             ./generic/pipewire.nix
             ./generic/plasma.nix
             ./generic/printer.nix
+            ./generic/wifi.nix
             ./raoul-framework/hardware-configuration.nix
             nixos-hardware.nixosModules.framework-16-7040-amd
             stylix.nixosModules.stylix
