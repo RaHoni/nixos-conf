@@ -78,6 +78,7 @@ in
           id = "Commander DATA WPA2";
           interface-name = "wlp1s0";
           permissions = "user:raoul:;";
+          autoconnect-priority = -1;
           type = "wifi";
         };
         ipv4 = {
