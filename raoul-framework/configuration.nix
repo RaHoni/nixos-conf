@@ -20,7 +20,10 @@
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
-  local.tailscale.enable = true;
+  local.tailscale = {
+    enable = true;
+    operator = "raoul";
+  };
 
   i18n.extraLocaleSettings.LANGUAGE = "en_us,de_de";
 

@@ -53,7 +53,10 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  local.tailscale.enable = true;
+  local.tailscale = {
+    enable = true;
+    operator = "raoul";
+  };
 
   services.pipewire.enable = true;
 
