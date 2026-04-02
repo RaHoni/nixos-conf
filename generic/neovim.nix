@@ -11,7 +11,7 @@ in
 {
   home.packages = [ pkgs.nixfmt ];
   programs.nixvim = {
-    enable = true;
+    enable = full;
     defaultEditor = true;
     vimdiffAlias = true;
     vimAlias = true;
