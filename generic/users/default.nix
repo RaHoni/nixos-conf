@@ -39,7 +39,7 @@
 
   programs = {
     direnv = {
-      enable = true;
+      enable = osConfig.local.full;
       enableZshIntegration = true;
       nix-direnv.enable = true;
     };

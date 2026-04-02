@@ -161,7 +161,7 @@ in
     plugins = {
       #improved highlighting
       treesitter = {
-        enable = true;
+        enable = full;
         settings.disabledLanguages = [ "latex" ];
       };
 
@@ -218,12 +218,12 @@ in
       vimtex.enable = full;
 
       # Typst support
-      typst-vim.enable = true;
-      typst-preview.enable = true;
+      typst-vim.enable = full;
+      typst-preview.enable = full;
 
       #file browser/switcher
       telescope = {
-        enable = true;
+        enable = full;
         settings.defaults = {
           initial_mode = "normal";
           mappings.n = {
@@ -248,7 +248,7 @@ in
 
       #snippet engine
       luasnip = {
-        enable = true;
+        enable = full;
         fromVscode = [
           {
             include = [
@@ -268,7 +268,7 @@ in
 
       #error highlighting and autocomplete (different language servers + luasnip config)
       lsp = {
-        enable = true;
+        enable = full;
         servers = {
           bashls.enable = true; # lsp server for Bash
           # clangd.enable = full; # lsp server for C/C++
