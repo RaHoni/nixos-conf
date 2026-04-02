@@ -31,14 +31,20 @@ let
     );
 in
 {
-  sops.secrets = wifiSops [
-    "Commander DATA"
-    "Commander DATA WPA2"
-    "FP4-RH"
-    "eduroam-identity"
-    "eduroam-password"
-    "eduroam-ca-cert"
-  ];
+  sops.secrets =
+    (wifiSops [
+      "Commander DATA"
+      "Commander DATA WPA2"
+      "FP4-RH"
+      "eduroam-identity"
+      "eduroam-password"
+    ])
+    // {
+      "wifi/eduroam-ca-cert" = {
+        sopsFile = self + /secrets/wifi/password.yaml;
+        mode = "444";
+      };
+    };
   networking.networkmanager = {
     plugins = [ pkgs.networkmanager-openconnect ];
     ensureProfiles = {
