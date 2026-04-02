@@ -24,6 +24,11 @@
         "src": [ "group:supporter" ],
         "dst": [ "tag:extern:22" ],
     },
+    {
+        "action": "accept",
+        "src": [ "group:admin" ],
+        "dst": [ "tag:server:*" ]
+    },
     // Allow users to access their own devices using autogroup:self (see below for more details about performance impact)
     // autogroups are only from 0.27.0 supported works only above nixos 25.11
    {
