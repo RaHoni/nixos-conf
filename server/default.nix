@@ -199,6 +199,7 @@ in
   local.tailscale = {
     enable = true;
     server = true;
+    accept-routes = false;
   };
   services.tailscale.extraSetFlags = [ "--accept-dns=false" ];
 

@@ -76,6 +76,11 @@ in
         default = true;
         description = "Enable the webclient for management via the Browser";
       };
+      accept-routes = mkOption {
+        type = bool;
+        default = true;
+        description = "Accept advertised Routes";
+      };
     };
   };
   config = mkIf cfg.enable rec {
@@ -102,6 +107,7 @@ in
         [ ]
         ++ optional cfg.exit-node "--advertise-exit-node"
         ++ optional cfg.webclient "--webclient"
+        ++ optional cfg.accept-routes "--accept-routes"
         ++ optional (cfg.operator != null) "--operator=${cfg.operator}"
         ++ optional (cfg.routes != [ ]) "--advertise-routes=${formatLists cfg.routes}";
       useRoutingFeatures = if cfg.exit-node then "both" else "client";
