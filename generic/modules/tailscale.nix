@@ -71,6 +71,11 @@ in
         default = null;
         description = "operator who can controll tailscale without sudo";
       };
+      webclient = mkOption {
+        type = bool;
+        default = true;
+        description = "Enable the webclient for management via the Browser";
+      };
     };
   };
   config = mkIf cfg.enable rec {
@@ -91,10 +96,14 @@ in
       extraUpFlags = [
         "--login-server=https://headscale.honermann.info"
       ]
-      ++ optional (cfg.operator != null) "--operator=${cfg.operator}"
-      ++ optional (cfg.routes != [ ]) "--advertise-routes=${formatLists cfg.routes}"
       ++ optional (cfg.tags != [ ]) "--advertise-tags=${formatLists cfg.tags}";
-      extraSetFlags = mkIf cfg.exit-node [ "--advertise-exit-node" ];
+
+      extraSetFlags =
+        [ ]
+        ++ optional cfg.exit-node "--advertise-exit-node"
+        ++ optional cfg.webclient "--webclient"
+        ++ optional (cfg.operator != null) "--operator=${cfg.operator}"
+        ++ optional (cfg.routes != [ ]) "--advertise-routes=${formatLists cfg.routes}";
       useRoutingFeatures = if cfg.exit-node then "both" else "client";
     };
   };
