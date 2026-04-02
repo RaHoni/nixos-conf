@@ -13,6 +13,11 @@
   local.full = false;
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;
+  local.tailscale = {
+    enable = true;
+    exit-node = true;
+    accept-routes = false;
+  };
 
   users.users.root = {
     openssh.authorizedKeys.keyFiles = [ ../generic/sshPubkeys/id_strato.pub ];
