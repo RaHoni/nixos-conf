@@ -81,6 +81,11 @@ in
         default = true;
         description = "Accept advertised Routes";
       };
+      ssh = mkOption {
+        type = bool;
+        default = true;
+        description = "Enable the tailscale ssh Server";
+      };
     };
   };
   config = mkIf cfg.enable rec {
@@ -108,6 +113,7 @@ in
         ++ optional cfg.exit-node "--advertise-exit-node"
         ++ optional cfg.webclient "--webclient"
         ++ optional cfg.accept-routes "--accept-routes"
+        ++ optional cfg.ssh "--ssh"
         ++ optional (cfg.operator != null) "--operator=${cfg.operator}"
         ++ optional (cfg.routes != [ ]) "--advertise-routes=${formatLists cfg.routes}";
       useRoutingFeatures = if cfg.exit-node then "both" else "client";
