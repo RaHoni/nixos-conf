@@ -13,7 +13,7 @@ let
     ;
   inherit (lib) mkOption mkIf optional;
   cfg = config.local.tailscale;
-  formatLists = list: (builtins.concatStringsSep "," (map (t: "tag:${t}") list));
+  formatLists = prefix: list: (builtins.concatStringsSep "," (map (t: "${prefix}${t}") list));
 
   ipv4CidrRelaxStrict = "^([0-9]{1,3}\\.){3}[0-9]{1,3}/(3[0-2]|[12]?[0-9]|0)$";
   ipv6CidrRelaxStrict =
@@ -106,7 +106,7 @@ in
       extraUpFlags = [
         "--login-server=https://headscale.honermann.info"
       ]
-      ++ optional (cfg.tags != [ ]) "--advertise-tags=${formatLists cfg.tags}";
+      ++ optional (cfg.tags != [ ]) "--advertise-tags=${formatLists "tag:" cfg.tags}";
 
       extraSetFlags =
         [ ]
@@ -115,7 +115,7 @@ in
         ++ optional cfg.accept-routes "--accept-routes"
         ++ optional cfg.ssh "--ssh"
         ++ optional (cfg.operator != null) "--operator=${cfg.operator}"
-        ++ optional (cfg.routes != [ ]) "--advertise-routes=${formatLists cfg.routes}";
+        ++ optional (cfg.routes != [ ]) "--advertise-routes=${formatLists "" cfg.routes}";
       useRoutingFeatures = if cfg.exit-node then "both" else "client";
     };
   };
