@@ -74,6 +74,7 @@ in
         stream.source = [
           "librespot://${pkgs.librespot}/bin/librespot?name=Spotify&devicename=Snapcast&params=-z%2050000"
           "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Airplay"
+          "tcp://0.0.0.0:3333?name=Bluetooth%20Sesselzimmer&sampleformat=44100:16:2"
         ];
       };
     };
@@ -91,6 +92,9 @@ in
       50001 # librespot2
       5000 # airplay
       4444
+
+      #Bluetooth
+      3333
 
       # wyoming
       10200
