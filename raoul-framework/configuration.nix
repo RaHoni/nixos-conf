@@ -232,6 +232,7 @@
         libation # Audible downloader
         nixpkgs-fmt
         omnissa-horizon-client # FH VDI
+        pdfpc
         sops
         spotify
         texliveFull # full latex
