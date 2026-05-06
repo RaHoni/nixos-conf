@@ -53,6 +53,10 @@
     useHostResolvConf = false;
     tempAddresses = "disabled";
     defaultGateway.address = config.myModules.ips.gateway.ipv4.address;
+    nameservers = [
+      config.myModules.ips."pi.hole".ipv4.address
+      config.myModules.ips."pi.hole".ipv6.address
+    ];
     interfaces.eth0 = {
       ipv4 = {
         addresses = [ config.myModules.ips.ssl-proxy.ipv4 ];
