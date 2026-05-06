@@ -236,6 +236,7 @@
         sops
         spotify
         texliveFull # full latex
+        touying
         typst
         wasistlos
         yubioath-flutter
