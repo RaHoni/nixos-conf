@@ -37,6 +37,10 @@
   };
 
   networking.networkmanager.enable = true;
+  local.tailscale = {
+    enable = true;
+    operator = "raoul";
+  };
 
   nix.settings.trusted-users = [
     "root"
