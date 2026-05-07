@@ -289,6 +289,7 @@
             ./generic/pipewire.nix
             ./generic/plasma.nix
             ./generic/printer.nix
+            ./generic/wifi.nix
             #./server/esphome.nix
             #./server/github-runner.nix
             #./server/hydra.nix
