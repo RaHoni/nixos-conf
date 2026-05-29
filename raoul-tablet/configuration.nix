@@ -32,7 +32,7 @@
 
   boot.initrd = {
     systemd.enable = true;
-    unl0kr.enable = true; # Luks decrypt using touchscreen
+    #unl0kr.enable = true; # Luks decrypt using touchscreen
     luks.devices.encrypted.crypttabExtraOpts = [ "fido2-device=auto" ]; # cryptenroll
   };
 
