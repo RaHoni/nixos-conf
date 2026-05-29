@@ -19,6 +19,7 @@ keys:
   - &kanidm age1efke664655y2vvhzn9asrw4wdn9j3qh2js4cm9am0g47q69s99dq4vhzmy
   - &torrent age167yzenqqsh9zrg9kux9clppvwk3x43zwjzrr9e96ev3tsyns0dys74u76m
   - &tailscale-exit age1l43fw9g935uglhyqwedp4y8sxpkmns0vzd0uhlktg66wzc4mg9kqh592xt
+  - &raoul-tablet age1hspewa9gzhyp564z6lek5cwkw5hjnuyujqqy4vmqu5h2xhjaf37qcpk7na
 creation_rules:
   - path_regex: ^secrets/surface-raoul-nixos/.*$
     key_groups:
@@ -109,6 +110,7 @@ creation_rules:
           - *torrent
           - *kanidm
           - *tailscale-exit
+          - *raoul-tablet
   - path_regex: ^secrets/jasmine-laptop/.*$
     key_groups:
       - pgp:
@@ -161,5 +163,12 @@ creation_rules:
           - *raoul-framework
           - *surface
           - *r-desktop
+          - *raoul-tablet
+  - path_regex: ^secrets/raoul-tablet.*$
+    key_groups:
+      - pgp:
+          - *admin
+        age:
+          - *raoul-tablet
   - path_regex: ^secrets/
     pgp: *admin

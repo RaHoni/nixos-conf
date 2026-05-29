@@ -281,6 +281,27 @@
           secureboot = true;
         };
 
+        raoul-tablet = makeSystem {
+          systemModules = [
+            ./raoul-tablet/configuration.nix
+            ./raoul-tablet/disko.nix
+            ./raoul-tablet/restic.nix
+            ./generic/localisation.nix
+            #./generic/pipewire.nix
+            ./generic/printer.nix
+            ./generic/wifi.nix
+            nixos-hardware.nixosModules.framework-12-13th-gen-intel
+          ];
+          homeManagerModules = {
+            raoul = [
+              ./raoul-tablet/raoulHM.nix
+              ./generic/users/raoul/plasma6.nix
+              plasma-manager-stable.homeModules.plasma-manager
+            ];
+          };
+          secureboot = true;
+        };
+
         r-desktop = makeSystem {
           systemModules = [
             ./r-desktop/configuration.nix
