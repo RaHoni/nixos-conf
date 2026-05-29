@@ -61,6 +61,7 @@
     git
     gnupg
     kdePackages.kate
+    libreoffice
     neovim
     nmap
     signal-desktop
