@@ -64,7 +64,9 @@
     libreoffice
     neovim
     nmap
+    pdfpc
     signal-desktop
+    touying
     trayscale
     wl-clipboard
     xournalpp
