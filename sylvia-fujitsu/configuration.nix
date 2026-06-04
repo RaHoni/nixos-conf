@@ -101,7 +101,7 @@
 
       # Multimedia
       audacity
-      kaffeine # libVLC Optionen: Default: --no-video-title-show  Optionale Ergänzungen: -V xcb_xv  oder  -V xcb_glx:w
+      #kaffeine # libVLC Optionen: Default: --no-video-title-show  Optionale Ergänzungen: -V xcb_xv  oder  -V xcb_glx:w
       vlc # Zielpfad: /run/current-system/sw/share/soundfonts/
       # Bereich vdr
       # rapVdr # Alternative TV-Software zu KAFFEINE (und SERVICE)
@@ -178,6 +178,9 @@
 
   # Bluetooth Funktion aktivieren
   hardware.bluetooth.enable = true;
+
+  #Flatpak
+  services.flatpak.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
