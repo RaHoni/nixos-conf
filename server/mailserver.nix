@@ -83,7 +83,6 @@ in
       };
     };
 
-    certificateScheme = "manual";
     certificateFile = "${certPath}/fullchain.pem";
     keyFile = "${certPath}/key.pem";
   };
