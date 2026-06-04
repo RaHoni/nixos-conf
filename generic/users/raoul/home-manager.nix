@@ -30,7 +30,7 @@ with lib;
     })
     (makeAutostartItem {
       name = "com.github.xeco23.WasIstLos";
-      package = wasistlos;
+      package = karere;
     })
     (makeAutostartItem {
       name = "org.keepassxc.KeePassXC";

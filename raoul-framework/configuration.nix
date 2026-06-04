@@ -236,7 +236,7 @@
         texliveFull # full latex
         touying
         typst
-        wasistlos
+        karere
         yubioath-flutter
       ];
     };

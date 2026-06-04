@@ -148,7 +148,7 @@
       nextcloud-client
       digikam
       signal-desktop
-      wasistlos
+      karere
       zoom
       mediathekview
       tvbrowser

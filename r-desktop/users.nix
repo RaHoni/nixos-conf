@@ -30,7 +30,7 @@
       #      jetbrains.pycharm-professional
       nixos-generators
       kdePackages.kleopatra
-      wasistlos
+      karere
       gh
       tetex
       nixpkgs-fmt

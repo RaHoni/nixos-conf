@@ -16,7 +16,7 @@
       keepassxc
       kdePackages.kmail
       kdePackages.kleopatra
-      wasistlos
+      karere
       ddcutil
       kdePackages.kaddressbook
       yubioath-flutter
