@@ -97,9 +97,8 @@ in
       Persistent = true;
     };
     paths = [
-      mail.mailDirectory
-      mail.sieveDirectory
-      mail.dkimKeyDirectory
+      mail.storage.path
+      mail.dkim.keyDirectory
     ];
     pruneOpts = [
       "--keep-daily 7"
