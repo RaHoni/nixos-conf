@@ -79,7 +79,7 @@ in
 
   services.kanidm = {
     package = pkgs.kanidmWithSecretProvisioning_1_10;
-    enableServer = true;
+    server.enable = true;
     serverSettings = {
       bindaddress = "0.0.0.0:443";
       ldapbindaddress = "0.0.0.0:3636";
