@@ -56,13 +56,13 @@ in
     enableSubmission = true; # Enable SMTP with starttls this is discouraged but needed for jellyseer
     enableManageSieve = true;
 
-    extraVirtualAliases = {
+    aliases = {
       "abuse@honermann.info" = [ "raoul@honermann.info" ];
       "postmaster@honermann.info" = "raoul@honermann.info";
     };
 
     # Generate password with 'mkpasswd -m bcrypt'
-    loginAccounts = {
+    accounts = {
       "raoul@honermann.info" = {
         hashedPassword = "$2b$05$XpvYiA47SAxYaFu8OVp7NOGOgpWUxEhis7czLSCE2ZgtVMk4pg9gu";
       };
@@ -83,8 +83,10 @@ in
       };
     };
 
-    certificateFile = "${certPath}/fullchain.pem";
-    keyFile = "${certPath}/key.pem";
+    x509 = {
+      certificateFile = "${certPath}/fullchain.pem";
+      privateKeyFile = "${certPath}/key.pem";
+    };
   };
 
   services.restic.backups.mail = {

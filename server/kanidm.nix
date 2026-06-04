@@ -79,18 +79,20 @@ in
 
   services.kanidm = {
     package = pkgs.kanidmWithSecretProvisioning_1_10;
-    server.enable = true;
-    serverSettings = {
-      bindaddress = "0.0.0.0:443";
-      ldapbindaddress = "0.0.0.0:3636";
-      http_client_address_info.x-forward-for = [
-        config.myModules.ips.ssl-proxy.ipv4.address
-      ];
-      version = "2";
-      domain = "account.honermann.info";
-      origin = "https://account.honermann.info";
-      tls_key = "/var/lib/acme/account.honermann.info/key.pem";
-      tls_chain = "/var/lib/acme/account.honermann.info/fullchain.pem";
+    server = {
+      enable = true;
+      settings = {
+        bindaddress = "0.0.0.0:443";
+        ldapbindaddress = "0.0.0.0:3636";
+        http_client_address_info.x-forward-for = [
+          config.myModules.ips.ssl-proxy.ipv4.address
+        ];
+        version = "2";
+        domain = "account.honermann.info";
+        origin = "https://account.honermann.info";
+        tls_key = "/var/lib/acme/account.honermann.info/key.pem";
+        tls_chain = "/var/lib/acme/account.honermann.info/fullchain.pem";
+      };
     };
     provision = {
       enable = true;
