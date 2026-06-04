@@ -50,7 +50,7 @@ in
 
   mailserver = {
     enable = true;
-    stateVersion = 3;
+    stateVersion = 5;
     fqdn = "mail.honermann.info";
     domains = [ "honermann.info" ];
     enableSubmission = true; # Enable SMTP with starttls this is discouraged but needed for jellyseer
