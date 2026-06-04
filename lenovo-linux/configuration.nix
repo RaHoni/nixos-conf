@@ -157,7 +157,6 @@
 
       # Multimedia
       audacity
-      kaffeine # libVLC Optionen: Default: --no-video-title-show  Optionale Ergänzungen: -V xcb_xv  oder  -V xcb_glx:w
       vlc # Zielpfad: /run/current-system/sw/share/soundfonts/
       # Bereich vdr
       # rapVdr # Alternative TV-Software zu KAFFEINE (und SERVICE)
