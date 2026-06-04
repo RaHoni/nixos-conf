@@ -54,7 +54,6 @@ with lib;
     firefox = {
       enable = true;
       nativeMessagingHosts = with pkgs; [
-        vdhcoapp
         keepassxc
         kdePackages.plasma-browser-integration
       ];

@@ -203,7 +203,6 @@
       soundconverter
       mpv # mpv Media Player
       smplayer # SM-Player (Video und Ton)
-      vdhcoapp # Für Video DownloadHelper AddOn Firefox
 
       # KDE-Programme
       kdePackages.partitionmanager
@@ -253,7 +252,6 @@
       tvbrowser
       skanlite
       simplescreenrecorder
-      vdhcoapp # Im Anschluss als User den Befehl "vdhcoapp install" ausführen
     ];
 
   # Some programs need SUID wrappers, can be configured further or are

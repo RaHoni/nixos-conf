@@ -130,7 +130,6 @@
       coreutils
       soundconverter
       # mp3splt Unmaintained #TODO: find replacement
-      vdhcoapp # Für Video DownloadHelper AddOn Firefox
 
       # KDE-Programme
       kdePackages.partitionmanager
@@ -155,7 +154,6 @@
       tvbrowser
       skanlite
       simplescreenrecorder
-      vdhcoapp # Im Anschluss als User den Befehl "vdhcoapp install" ausführen
     ];
 
   # List services that you want to enable:

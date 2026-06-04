@@ -45,7 +45,6 @@
     qpwgraph
     signal-desktop
     trayscale
-    vdhcoapp
     vlc
     xournalpp
     zsh-completions
