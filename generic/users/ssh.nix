@@ -6,7 +6,7 @@ in
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = rec {
+    settings = rec {
       cat-laptop = {
         user = "cathach";
         identityFile = sshIdentity "support";
