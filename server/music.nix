@@ -62,8 +62,6 @@ in
         "hass_players"
         "jellyfin"
         "theaudiodb"
-        "builtin"
-        "builtin_player"
       ];
     };
     snapserver = {
