@@ -16,6 +16,7 @@ in
     vimdiffAlias = true;
     vimAlias = true;
     viAlias = true;
+    nixpkgs.config.allowUnfree = true;
 
     #set colorscheme
     colorschemes.gruvbox = {
