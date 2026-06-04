@@ -58,7 +58,6 @@
   programs.noisetorch.enable = true;
 
   services.gvfs.enable = true;
-  programs.adb.enable = true;
 
   # Needed for yubikey ccid Functionality
   services.pcscd.enable = true;

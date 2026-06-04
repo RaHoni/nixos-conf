@@ -72,7 +72,6 @@
   ];
 
   programs = {
-    adb.enable = true;
     ausweisapp = {
       enable = true;
       openFirewall = true;
