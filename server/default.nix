@@ -191,7 +191,10 @@ in
     ]; # mode=755 so only root can write to those files
   };
 
-  boot.zfs.extraPools = [ "MainZFS" ];
+  boot.zfs = {
+    extraPools = [ "MainZFS" ];
+    forceImportRoot = false;
+  };
   services.zfs.autoScrub.enable = true;
 
   myModules.autoUpgrade.enable = true;
