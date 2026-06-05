@@ -42,7 +42,10 @@
 
   system.stateVersion = "23.11";
 
-  fileSystems."/".device = "/dev/sda";
+  fileSystems."/" = {
+    device = "/dev/sda";
+    fsType = "ext4";
+  };
   boot.loader.grub.device = "/dev/sda";
   #  lib.isoFileSystems."/persitent" = {
   #    label = "VentoyBTRFS";
