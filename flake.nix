@@ -2,7 +2,7 @@
   inputs = {
     self.submodules = true;
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-master.url = "github:NixOS/nixpkgs";
 
     disko = {
@@ -18,7 +18,7 @@
     };
 
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -50,12 +50,10 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixvim-stable = {
-      url = "github:nix-community/nixvim/nixos-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:nix-community/nixvim/nixos-26.05";
     };
 
     plasma-manager = {
@@ -77,7 +75,7 @@
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
     simple-mail-server = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.11";
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -92,7 +90,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix/release-25.11";
+      url = "github:danth/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
