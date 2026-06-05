@@ -53,6 +53,7 @@ with lib;
 
     firefox = {
       enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       nativeMessagingHosts = with pkgs; [
         keepassxc
         kdePackages.plasma-browser-integration
