@@ -46,16 +46,39 @@
     };
 
     keepassxc-autotype = prev.keepassxc.overrideAttrs (oldAttrs: {
-      buildInputs = oldAttrs.buildInputs ++ [ final.keyutils ];
+      buildInputs = with final; [
+        keyutils
+        qt6Packages.qtbase
+        qt6Packages.qtsvg
+        botan3
+        curl
+        libxi
+        libxtst
+        libargon2
+        minizip
+        pcsclite
+        qrencode
+        readline
+        zlib
+        libusb1
+      ];
       postInstall = ''
         install -D share/linux/org.keepassxc.KeePassXC.policy --target-directory $out/share/polkit-1/actions
       '';
       doCheck = false;
+      patches = [ ];
+      nativeBuildInputs = with final; [
+        asciidoctor
+        cmake
+        qt6Packages.wrapQtAppsHook
+        qt6Packages.qttools
+        pkg-config
+      ];
       src = final.fetchFromGitHub {
-        owner = "azagon63";
+        owner = "hifi";
         repo = "keepassxc";
-        rev = "5a4c6c3";
-        hash = "sha256-Yh5fO7behuq3zD+yR1ujHQS9qKAalmWJigKzsOc/3CA=";
+        rev = "80fbcb3aaa9b59062a7063496296de330e7ecaad";
+        hash = "sha256-KHVzKl7fY6MAZ0WV1cbiqu8wz0w8iAp/1PcYDN1SSos=";
       };
     });
 
