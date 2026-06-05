@@ -29,7 +29,7 @@ with lib;
       package = signal-desktop;
     })
     (makeAutostartItem {
-      name = "com.github.xeco23.WasIstLos";
+      name = "io.github.tobagin.karere.desktop";
       package = karere;
     })
     (makeAutostartItem {
