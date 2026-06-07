@@ -214,16 +214,11 @@ in
       #FTLCONF_dns_hostRecord = ''honermann.info,ssl-proxy,server.otlqu2p5cvqqpnid.myfritz.net,192.168.1.207''; # add ipv4, ipv6 and ptr record
       FTLCONF_dns_listeningMode = "ALL";
       FTLCONF_dns_revServers = "true,192.168.0.0/16,192.168.1.1,localdomain";
-      #FTLCONF_dns_reply_host_force4 = "true"; # Use specified IP
-      #FTLCONF_dns_reply_host_force6 = "true";
-      #FTLCONF_dns_reply_host_IPv4 = ipv4;
-      #FTLCONF_dns_reply_host_IPv6 = ipv6;
       FTLCONF_dns_dnssec = "true";
       DNSSEC = "true";
       REV_SERVER = "true";
       REV_SERVER_CIDR = "192.168.1.0/23";
       REV_SERVER_TARGET = "192.168.1.1";
-      #        FTLCONF_LOCAL_IPV4 = ipv4;
     };
     volumes = [
       "etc-pihole:/etc/pihole"
