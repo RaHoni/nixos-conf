@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   networking.hostName = "raspberry";
   users.users.root.openssh.authorizedKeys.keys = [

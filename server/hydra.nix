@@ -1,4 +1,4 @@
-{ hydra, config, ... }:
+{ config, ... }:
 {
   nix.settings.allowed-uris = [
     "github:"

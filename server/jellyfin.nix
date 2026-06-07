@@ -1,7 +1,6 @@
 { config, ... }:
 let
   jellyfin = config.services.jellyfin;
-  jellyseerr = config.services.jellyseerr;
 in
 {
   services.jellyfin = {

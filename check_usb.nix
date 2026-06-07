@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   launcher = pkgs.writeScriptBin "launcher" ''
     ${pkgs.systemd}/bin/systemctl start usbcheck@$(${pkgs.systemd}/bin/systemd-escape -p $1)

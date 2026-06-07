@@ -1,7 +1,7 @@
 { config, lib, ... }:
 let
   cfg = config.myModules.folder;
-  inherit (lib) mkIf filter filterAttrs;
+  inherit (lib) filter filterAttrs;
   filterExtras =
     list:
     map (filterAttrs (n: v: (n != "persistent" && n != "backup" && v != null))) (

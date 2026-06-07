@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 let
   serviceName = config.virtualisation.oci-containers.containers.homeassistant.serviceName;
 in

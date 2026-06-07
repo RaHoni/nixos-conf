@@ -9,7 +9,6 @@
   ...
 }:
 let
-  inherit (lib) optionals;
   switchStable = stableModuls: unstableModuls: if stable then stableModuls else unstableModuls;
 in
 {

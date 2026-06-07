@@ -1,6 +1,5 @@
 { config, lib, ... }:
 let
-  subnet = "192.168.3.";
 
   ips = config.myModules.ips;
 

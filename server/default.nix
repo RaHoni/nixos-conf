@@ -8,7 +8,6 @@
   ...
 }:
 let
-  ips = config.myModules.ips;
   mkContainer =
     options:
     lib.recursiveUpdate {

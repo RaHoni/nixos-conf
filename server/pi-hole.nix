@@ -5,12 +5,8 @@
   ...
 }:
 let
-  inherit (lib.lists) forEach flatten;
   ips = config.myModules.ips;
-  ipv4ts = "100.110.238.97";
-  ipv6ts = "fd7a:115c:a1e0::8001:da3c";
   ipv4 = ips."pi.hole".ipv4.address;
-  ipv6 = ips."pi.hole".ipv6.address;
   default_data = {
     address = [ ];
     type = "block";
@@ -186,15 +182,6 @@ let
     }
   ];
   add_all_adlists = lib.strings.concatMapStrings add_adlists adLists;
-  ports_for_ips =
-    ips:
-    flatten (
-      forEach ips (ip: [
-        "${ip}:53:53/udp"
-        "${ip}:53:53/tcp"
-        "${ip}:80:80/tcp"
-      ])
-    );
 in
 {
   services.resolved.enable = false;

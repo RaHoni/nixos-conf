@@ -1,7 +1,4 @@
 { config, pkgs, ... }:
-let
-  hostname = config.networking.hostName;
-in
 {
   myModules.restic = {
     enable = true;

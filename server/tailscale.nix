@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ config, ... }:
 let
   pihole = config.myModules.ips."pi.hole";
   tailscale-exit = config.myModules.ips.tailscale-exit;

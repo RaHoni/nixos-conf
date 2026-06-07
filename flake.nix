@@ -111,7 +111,7 @@
     { self, systems, ... }@inputs:
     with inputs;
     let
-      inherit (inputs.nixpkgs.lib) filterAttrs mapAttrs elem;
+      inherit (inputs.nixpkgs.lib) mapAttrs;
       getCfg = _: cfg: cfg.config.system.build.toplevel;
       pkgsConfig =
         pkgs: system:
@@ -178,7 +178,7 @@
           };
           modules = [
             (
-              { config, pkgs, ... }:
+              { ... }:
               {
                 nixpkgs.overlays = [ (overlays system) ];
               }
