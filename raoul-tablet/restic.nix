@@ -7,6 +7,10 @@
   };
   services.restic.backups.home = {
     paths = [ "/home-snap/raoul" ];
+    pruneOpts = [
+      "--group-by"
+      "paths"
+    ]; # Don't split snapshots based on hostname
     exclude = [
       "/var/cache"
       ".cache"
