@@ -28,7 +28,7 @@ let
       passwordFile = mkDefault config.sops.secrets.repo-passwd.path;
       environmentFile = mkDefault config.sops.templates.restic-http-conf.path;
       progressFps = mkDefault 0.1;
-      pruneOpts = mkDefault [
+      pruneOpts = [
         "--keep-daily 7"
         "--keep-weekly 4"
         "--keep-monthly 12"
