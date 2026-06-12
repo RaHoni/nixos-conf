@@ -14,7 +14,7 @@ in
     routes = [
       "${pihole.ipv4.address}/32"
       "${pihole.ipv6.address}/128"
-      "192.168.1.251/32"
+      "192.168.1.0/24"
     ];
   };
 
