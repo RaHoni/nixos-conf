@@ -55,12 +55,13 @@ in
       enable = true;
       package = pkgs.music-assistant;
       providers = [
-        "snapcast"
-        "radiobrowser"
-        "hass"
         "audiobookshelf" # only unstable
+        "hass"
         "hass_players"
         "jellyfin"
+        "radiobrowser"
+        "sendspin"
+        "snapcast"
         "theaudiodb"
       ];
     };
