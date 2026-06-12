@@ -98,6 +98,12 @@ in
         proxyWebsockets = true;
         extraConfig = "proxy_buffering off;"; # Disable buffering when the nginx proxy gets very resource heavy upon streaming
       };
+
+      "music.honermann.info" = {
+        address = "http://${ips.music.ipv4.address}:8095";
+        proxyWebsockets = true;
+      };
+
       "anfragen.honermann.info" = {
         address = "http://${ips.server.ipv4.address}:5055";
       };

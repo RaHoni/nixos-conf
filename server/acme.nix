@@ -23,6 +23,7 @@
           "karaoke"
           "mail"
           "media"
+          "music"
           "autoconfig"
         ]
       ) (n: { }))
