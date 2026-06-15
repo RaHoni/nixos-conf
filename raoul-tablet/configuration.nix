@@ -58,6 +58,7 @@
     git
     gnupg
     kdePackages.kate
+    kdePackages.krdc
     libreoffice
     neovim
     nmap
