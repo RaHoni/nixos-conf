@@ -85,7 +85,7 @@ in
         forwardAgent = true;
       };
       server-extern = server // {
-        hostname = "honermann.info";
+        hostname = "wg.honermann.info";
       };
       "*" = {
         forwardAgent = false;
