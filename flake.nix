@@ -277,6 +277,7 @@
           homeManagerModules = {
             raoul = [
               ./raoul-tablet/raoulHM.nix
+              ./generic/users/raoul/home-manager.nix
               ./generic/users/raoul/plasma6.nix
               plasma-manager-stable.homeModules.plasma-manager
             ];
