@@ -108,5 +108,23 @@
         })
       else
         prev.factorio-headless;
+
+    seerr-oidc = prev.seerr.overrideAttrs (oldAttrs: rec {
+      src = final.fetchFromGitHub {
+        owner = "seerr-team";
+        repo = "seerr";
+        tag = "preview-new-oidc";
+        sha256 = "sha256-YPpicQlArAqWnRbUbtUYlwTJk0AGxcaeQmaYNT0vogo=";
+      };
+
+      pnpmDeps = final.fetchPnpmDeps {
+        inherit (oldAttrs) pname;
+        inherit src;
+        version = "preview-new-oidc";
+        pnpm = final.pnpm_10.override { nodejs = final.nodejs_22; };
+        fetcherVersion = 3;
+        hash = "sha256-7nBkeXGJfDRSvNesOjOK+Mtzp6SlBvbytyfsQl9eh/Y=";
+      };
+    });
   }
 )

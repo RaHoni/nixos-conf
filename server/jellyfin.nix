@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   jellyfin = config.services.jellyfin;
 in
@@ -11,6 +11,7 @@ in
   services.seerr = {
     enable = true;
     openFirewall = true;
+    package = pkgs.seerr-oidc;
   };
 
   services.nginx.virtualHosts = {
