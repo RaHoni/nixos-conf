@@ -14,11 +14,12 @@ with lib;
 
   home.packages = with pkgs; [
     anki
-    qalculate-gtk
+    karere
     nextcloud-client
+    qalculate-gtk
     signal-desktop
-    wl-clipboard-x11
     wl-clipboard
+    wl-clipboard-x11
     (makeAutostartItem {
       name = "com.nextcloud.desktopclient.nextcloud";
       package = nextcloud-client;

@@ -66,6 +66,7 @@
     signal-desktop
     touying
     trayscale
+    vlc
     wl-clipboard
     xournalpp
     zsh-completions
