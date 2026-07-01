@@ -14,9 +14,8 @@ in
     image = "ghcr.io/home-assistant/home-assistant:stable";
     networks = [ "podman:mac=52:31:65:81:c8:fd" ];
     devices = [
-      "/dev/ttyACM0:/dev/ttyACM0"
-      "/dev/ttyUSB0:/dev/ttyUSB0"
-    ]; # ZigBee stick
+      "/dev/ttyUSB0:/dev/ttyUSB0" # ZigBee stick
+    ];
   };
 
   systemd.services."${serviceName}" = {
