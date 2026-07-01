@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Add gh auth
         run: |
           echo ${{ secrets.GH_PAT }} | gh auth login --with-token
