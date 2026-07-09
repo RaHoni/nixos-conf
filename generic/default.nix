@@ -92,6 +92,8 @@ in
 
     environment.systemPackages = with pkgs; [
       git
+      pciutils
+      usbutils
     ];
 
     # Set your time zone.
