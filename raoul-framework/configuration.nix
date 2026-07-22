@@ -33,6 +33,7 @@
     fw-ectool
     git
     gnupg
+    itch
     kdePackages.filelight
     kdePackages.kate
     kdotool
