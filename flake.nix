@@ -108,9 +108,14 @@
   };
 
   outputs =
-    { self, systems, ... }@inputs:
+    { self, ... }@inputs:
     with inputs;
     let
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
       inherit (inputs.nixpkgs.lib) mapAttrs;
       getCfg = _: cfg: cfg.config.system.build.toplevel;
       pkgsConfig =
@@ -191,7 +196,7 @@
         };
 
       # Small tool to iterate over each systems
-      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+      eachSystem = f: nixpkgs.lib.genAttrs (systems) (system: f nixpkgs.legacyPackages.${system});
     in
     rec {
       nixosConfigurations = {
@@ -432,7 +437,7 @@
       #        };
       #      };
 
-      checks = nixpkgs.lib.genAttrs (import systems) (system: {
+      checks = nixpkgs.lib.genAttrs (systems) (system: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
           addGcRoot = true;
           src = ./.;
@@ -450,7 +455,7 @@
         };
       });
 
-      devShells = nixpkgs.lib.genAttrs (import systems) (system: {
+      devShells = nixpkgs.lib.genAttrs (systems) (system: {
         default = nixpkgs.legacyPackages.${system}.mkShell {
           shellHook = ''
             ${self.checks.${system}.pre-commit-check.shellHook}
