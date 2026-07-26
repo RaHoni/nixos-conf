@@ -97,6 +97,7 @@
       libreoffice
       thunderbird-esr
       keepassxc
+      ausweisapp
 
       # Multimedia
       audacity
