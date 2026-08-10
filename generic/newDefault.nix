@@ -34,17 +34,14 @@ in
     substituters = [
       "https://nix-community.cachix.org"
       "https://binarycache.honermann.info"
-      "https://cache.garnix.io"
     ];
     trusted-substituters = [
       "https://nix-community.cachix.org"
       "https://binarycache.honermann.info"
-      "https://cache.garnix.io"
     ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "binarycache.honermann.info:ta4rxqLXx+RoTmZjybD96dm0fwcpTDQqFnF3HBRTeWg="
-      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
 
   };
