@@ -18,6 +18,12 @@ let
       };
       privateNetwork = true;
       hostBridge = "br0";
+      bindMounts = {
+        "${config.sops.age.keyFile}" = {
+          mountPoint = "/var/lib/sops-nix/key.txt";
+          hostPath = config.sops.age.keyFile;
+        };
+      };
     } options;
 in
 {
@@ -77,7 +83,7 @@ in
   containers = {
     proxy = mkContainer {
       config = (import ../proxy/default.nix);
-      bindMounts = {
+      bindMounts = lib.mkForce {
         "/var/lib/acme" = { };
         "${config.sops.secrets.cloudflare-api-key.path}" = { };
       };
@@ -88,7 +94,7 @@ in
     mailserver = mkContainer {
       config = (import ./mailserver.nix);
       # specialArgs = { sms = inputs.simple-mail-server.nixosModules.mailserver; };
-      bindMounts = {
+      bindMounts = lib.mkForce {
         "/var/lib/acme/mail.honermann.info" = { };
         "/wireguard".hostPath = "/run/secrets/wireguard";
         "/resticPass".hostPath = config.sops.secrets.repo-passwd.path;
@@ -99,7 +105,7 @@ in
     };
     music = mkContainer {
       config = (import ./music.nix);
-      bindMounts = {
+      bindMounts = lib.mkForce {
         "/var/lib/private/snapserver".isReadOnly = false;
         "/var/lib/private/music-assistant".isReadOnly = false;
       };
