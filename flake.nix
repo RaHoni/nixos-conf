@@ -336,6 +336,7 @@
             #./server/esphome.nix
             ./server/factorio.nix
             ./server/github-runner.nix
+            ./server/headscale_console.nix
             ./server/home-assistant.nix
             ./server/hydra.nix
             ./server/jellyfin.nix

@@ -65,6 +65,14 @@ in
         identityFile = sshIdentity "id_rsa_lenovo-linux";
         forwardAgent = true;
       };
+      raoul-framework = {
+        identityFile = sshIdentity "Surface_id_ed25519";
+        forwardAgent = true;
+      };
+      raoul-tablet = {
+        identityFile = sshIdentity "Surface_id_ed25519";
+        forwardAgent = true;
+      };
       sylvia-fujitsu = {
         hostname = "sylvia-fujitsu";
         user = "sylvia";
