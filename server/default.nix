@@ -128,7 +128,7 @@ in
       specialArgs = {
         unstable = pkgs.unstable;
       };
-      bindMounts = {
+      bindMounts = lib.mkForce {
         "/var/Filme".isReadOnly = false;
         "/var/Serien".isReadOnly = false;
         "/var/nginx".isReadOnly = false;
