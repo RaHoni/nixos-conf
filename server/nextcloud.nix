@@ -69,12 +69,23 @@ in
     };
 
     https = true;
+    secrets = {
+      mail_smtppassword = config.sops.secrets.smtp-password.path;
+    };
     settings = {
       trusted_proxies = [
         config.myModules.ips.ssl-proxy.ipv4.address
       ];
       default_phone_region = "DE";
       trusted_domains = [ "nextcloud.honermann.info" ];
+      mail_from_address = "noreply";
+      mail_domain = "honermann.info";
+      mail_smtpmode = "smtp";
+      mail_smtphost = "mail.honermann.info";
+      mail_smtpport = 465;
+      mail_smtpsecure = "ssl";
+      mail_smtpauth = true;
+      mail_smtpname = "server@honermann.info";
 
       #OIDC related
       allow_local_remote_servers = true;
