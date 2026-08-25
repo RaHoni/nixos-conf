@@ -97,7 +97,6 @@
       libreoffice
       thunderbird-esr
       keepassxc
-      ausweisapp
 
       # Multimedia
       audacity
@@ -178,6 +177,12 @@
 
   #Flatpak
   services.flatpak.enable = true;
+
+  # Ausweisapp
+  programs.ausweisapp = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
