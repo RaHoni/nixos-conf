@@ -75,10 +75,10 @@
         pkg-config
       ];
       src = final.fetchFromGitHub {
-        owner = "hifi";
+        owner = "keepassxreboot";
         repo = "keepassxc";
-        rev = "80fbcb3aaa9b59062a7063496296de330e7ecaad";
-        hash = "sha256-KHVzKl7fY6MAZ0WV1cbiqu8wz0w8iAp/1PcYDN1SSos=";
+        rev = "5ac1b0c98d4fafb958490d7d78f7e78533d18cc8";
+        hash = "sha256-HlO1p1ZmJ2ToZKa8RLxzPwh4cFRqD2wBRh4OtDC96DE=";
       };
     });
 
