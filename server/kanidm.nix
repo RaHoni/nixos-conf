@@ -68,6 +68,7 @@ in
         sopsFile = ../secrets/headscale.yaml;
       };
       jellyfin_service.owner = "kanidm";
+      jellyseerr_service.owner = "kanidm";
     };
   };
 
@@ -103,6 +104,8 @@ in
         mail-server = { };
         jellyfin = { };
         jellyfin-admin = { };
+        jellyseerr = { };
+        jellyseerr-admin = { };
         nextcloud = { };
         hass-admin = { };
         hass = { };
@@ -197,6 +200,21 @@ in
             "groups"
           ];
         };
+        jellyseerr_service = {
+          displayName = "Jellyseerr";
+          originLanding = "https://anfragen.honermann.info/login";
+          preferShortUsername = true;
+          originUrl = [
+            "https://anfragen.honermann.info/profile/settings/linked-accounts"
+          ];
+          basicSecretFile = secrets.jellyseerr_service.path;
+          scopeMaps.jellyseerr = [
+            "openid"
+            "profile"
+            "email"
+            "groups"
+          ];
+        };
       };
 
       persons = {
@@ -210,6 +228,8 @@ in
             "nextcloud_admin"
             "jellyfin"
             "jellyfin-admin"
+            "jellyseerr"
+            "jellyseerr-admin"
             "hass"
             "hass-admin"
             "headscale"
@@ -275,6 +295,7 @@ in
             "audiobookshelf"
             "headscale"
             "jellyfin"
+            "jellyseerr"
           ];
         };
       };
