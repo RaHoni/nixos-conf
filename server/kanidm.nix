@@ -24,6 +24,10 @@ let
       url = "https://raw.githubusercontent.com/jellyfin/jellyfin-ux/refs/heads/master/logos/SVG/jellyfin-icon--color-on-dark.svg";
       hash = "sha256-zzJisO7mpHuKCVFe8B3ZohUctYAiZF5orL8J78nQ7SA=";
     };
+    jellyseerr = fetchurl {
+      url = "https://raw.githubusercontent.com/seerr-team/seerr/refs/heads/develop/public/logo_stacked.svg";
+      hash = "sha256-z02uPZnGLc/QDyi3zsgO6H2UajFrfxe7Lsy1Hs8BGbM=";
+    };
     nextcloud = fetchurl {
       url = "https://nextcloud.com/c/uploads/2025/10/Nextcloud_01-standard-logo.svg";
       hash = "sha256-hbruWtEIgxGRgdbWFT877SiAIPablfyxMWvke06EgGs=";
@@ -202,6 +206,7 @@ in
         };
         jellyseerr_service = {
           displayName = "Jellyseerr";
+          imageFile = logos.jellyseerr;
           originLanding = "https://anfragen.honermann.info/login";
           preferShortUsername = true;
           originUrl = [
