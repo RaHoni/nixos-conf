@@ -274,6 +274,7 @@ in
             "nextcloud"
             "audiobookshelf"
             "headscale"
+            "jellyfin"
           ];
         };
       };
