@@ -14,7 +14,7 @@ with lib;
 
   home.packages = with pkgs; [
     anki
-    karere
+    whatsie
     nextcloud-client
     qalculate-gtk
     signal-desktop
@@ -29,8 +29,8 @@ with lib;
       package = signal-desktop;
     })
     (makeAutostartItem {
-      name = "io.github.tobagin.karere";
-      package = karere;
+      name = "com.ktechpit.whatsie.desktop";
+      package = whatsie;
     })
     (makeAutostartItem {
       name = "org.keepassxc.KeePassXC";

@@ -16,12 +16,12 @@
       keepassxc
       kdePackages.kmail
       kdePackages.kleopatra
-      karere
       ddcutil
       kdePackages.kaddressbook
       yubioath-flutter
       kdePackages.korganizer
       nextcloud-client
+      whatsie
     ];
     openssh.authorizedKeys.keyFiles = [
       ../generic/sshPubkeys/support.pub

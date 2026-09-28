@@ -140,19 +140,19 @@
       kdePackages.kleopatra
 
       # Sonstiges
-      gh
-      mc
-      gocr
-      ocrfeeder
-      nextcloud-client
       digikam
-      signal-desktop
-      karere
-      zoom
+      gh
+      gocr
+      mc
       mediathekview
-      tvbrowser
-      skanlite
+      nextcloud-client
+      ocrfeeder
+      signal-desktop
       simplescreenrecorder
+      skanlite
+      tvbrowser
+      whatsie
+      zoom
     ];
 
   # List services that you want to enable:
