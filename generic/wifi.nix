@@ -197,6 +197,7 @@ in
             eap = "peap;";
             phase2-auth = "mschapv2";
             identity = "rh792919@fh-muenster.de";
+            anonymous-identity = "newpki2026@fh-muenster.de";
           };
           connection = {
             autoconnect-priority = "1";
