@@ -29,7 +29,7 @@ with lib;
       package = signal-desktop;
     })
     (makeAutostartItem {
-      name = "com.ktechpit.whatsie.desktop";
+      name = "com.ktechpit.whatsie";
       package = whatsie;
     })
     (makeAutostartItem {
