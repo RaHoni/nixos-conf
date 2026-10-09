@@ -153,6 +153,7 @@
       tvbrowser
       whatsie
       zoom
+      yubioath-flutter
     ];
 
   # List services that you want to enable:
