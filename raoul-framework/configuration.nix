@@ -226,7 +226,7 @@
         discord
         gh
         jameica
-        kanidm_1_9
+        kanidm_1_11
         kdePackages.kleopatra
         libation # Audible downloader
         nixpkgs-fmt
