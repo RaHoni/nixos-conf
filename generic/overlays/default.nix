@@ -114,16 +114,16 @@
         owner = "seerr-team";
         repo = "seerr";
         tag = "preview-new-oidc";
-        sha256 = "sha256-YPpicQlArAqWnRbUbtUYlwTJk0AGxcaeQmaYNT0vogo=";
+        sha256 = "sha256-eu3ITUhwQYzMPdMu0Adi/Hpu5e+ho18ye/pX/KsDaVw=";
       };
 
       pnpmDeps = final.fetchPnpmDeps {
         inherit (oldAttrs) pname;
         inherit src;
         version = "preview-new-oidc";
-        pnpm = final.pnpm_10.override { nodejs = final.nodejs_22; };
+        pnpm = final.pnpm_10.override { nodejs = final.nodejs-slim_22; };
         fetcherVersion = 3;
-        hash = "sha256-7nBkeXGJfDRSvNesOjOK+Mtzp6SlBvbytyfsQl9eh/Y=";
+        hash = "sha256-bfdmNLBypcoJ79/lMRSgRKSIddQJJohcn3/dL21edog=";
       };
     });
   }
