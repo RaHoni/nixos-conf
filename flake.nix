@@ -128,6 +128,7 @@
           inherit system;
           config = {
             allowUnfree = true; # allow Unfree packages
+            permittedInsecurePackages = [ "pnpm-10.34.0" ];
           };
         };
 
