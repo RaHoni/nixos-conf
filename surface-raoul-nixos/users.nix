@@ -29,6 +29,7 @@
     gast = {
       isNormalUser = true;
       description = "Gast Account";
+      password = "";
       inherit (raoul) extraGroups;
       openssh.authorizedKeys.keyFiles = [ (self + /generic/sshPubkeys/Surface_id_ed25519.pub) ];
     };
