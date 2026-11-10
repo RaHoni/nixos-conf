@@ -45,43 +45,6 @@
       '';
     };
 
-    keepassxc-autotype = prev.keepassxc.overrideAttrs (oldAttrs: {
-      buildInputs = with final; [
-        keyutils
-        qt6Packages.qtbase
-        qt6Packages.qtsvg
-        botan3
-        curl
-        libxi
-        libxtst
-        libargon2
-        minizip
-        pcsclite
-        qrencode
-        readline
-        zlib
-        libusb1
-      ];
-      postInstall = ''
-        install -D share/linux/org.keepassxc.KeePassXC.policy --target-directory $out/share/polkit-1/actions
-      '';
-      doCheck = false;
-      patches = [ ];
-      nativeBuildInputs = with final; [
-        asciidoctor
-        cmake
-        qt6Packages.wrapQtAppsHook
-        qt6Packages.qttools
-        pkg-config
-      ];
-      src = final.fetchFromGitHub {
-        owner = "keepassxreboot";
-        repo = "keepassxc";
-        rev = "5ac1b0c98d4fafb958490d7d78f7e78533d18cc8";
-        hash = "sha256-HlO1p1ZmJ2ToZKa8RLxzPwh4cFRqD2wBRh4OtDC96DE=";
-      };
-    });
-
     snapcast = prev.snapcast.overrideAttrs (oldAttrs: rec {
       version = "0.31.0";
       src = final.fetchFromGitHub {

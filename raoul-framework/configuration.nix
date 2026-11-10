@@ -37,7 +37,7 @@
     kdePackages.filelight
     kdePackages.kate
     kdotool
-    keepassxc-autotype
+    keepassxc
     libimobiledevice
     libreoffice
     miraclecast
