@@ -73,6 +73,7 @@
         "dst": [ "tag:extern" ],
         "src": [ "group:supporter" ],
         "users": [ "autogroup:nonroot", "root" ],
+
         "checkPeriod": "2h"
     }
   ]
