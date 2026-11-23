@@ -53,9 +53,9 @@ in
     };
     music-assistant = {
       enable = true;
-      package = pkgs.music-assistant;
+      package = pkgs.unstable.music-assistant;
       providers = [
-        "audiobookshelf" # only unstable
+        "audiobookshelf"
         "hass"
         "hass_players"
         "jellyfin"
