@@ -45,7 +45,7 @@
       '';
     };
 
-    snapcast = prev.snapcast.overrideAttrs (oldAttrs: rec {
+    snapcast_31 = prev.snapcast.overrideAttrs (oldAttrs: rec {
       version = "0.31.0";
       src = final.fetchFromGitHub {
         owner = "badaix";
